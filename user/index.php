@@ -10,13 +10,13 @@ require('lib/number.php');
 require('lib/data.php');
 
 require('lib/pages.php');
-// require('lib/authentication.php');
-require('lib/product.php');
-require('lib/cart.php');
+require('lib/authentication.php');
+// require('lib/product.php');
+// require('lib/cart.php');
 require('lib/mail/sendmail.php');
 
 //du lieu
-require('data/pages.php');
+// require('data/pages.php');
 // require('data/product.php');
 
 db_connect($db);

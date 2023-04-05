@@ -1,92 +1,144 @@
-
-    <!-- ##### Newsletter Area Start ##### -->
-    <section class="newsletter-area section-padding-100-0">
-        <div class="container">
-            <div class="row align-items-center">
-                <!-- Newsletter Text -->
-                <div class="col-12 col-lg-6 col-xl-7">
-                    <div class="newsletter-text mb-100">
-                        <h2>Subscribe for a <span>25% Discount</span></h2>
-                        <p>Nulla ac convallis lorem, eget euismod nisl. Donec in libero sit amet mi vulputate consectetur. Donec auctor interdum purus, ac finibus massa bibendum nec.</p>
-                    </div>
+<!-- ============================================================= FOOTER ============================================================= -->
+<footer id="footer" class="footer color-bg">
+  <div class="footer-bottom">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-3">
+        <div class="address-block">
+        
+          <!-- /.module-heading -->
+          
+          <div class="module-body">
+            <ul class="toggle-footer" style="">
+              <li class="media">
+                <div class="pull-left"> <span class="icon fa-stack fa-lg"> <i class="fa fa-map-marker fa-stack-1x fa-inverse"></i> </span> </div>
+                <div class="media-body">
+                  <p>ThemesGround, 789 Main rd, Anytown, CA 12345 USA</p>
                 </div>
-                <!-- Newsletter Form -->
-                <div class="col-12 col-lg-6 col-xl-5">
-                    <div class="newsletter-form mb-100">
-                        <form action="#" method="post">
-                            <input type="email" name="email" class="nl-email" placeholder="Your E-mail">
-                            <input type="submit" value="Subscribe">
-                        </form>
-                    </div>
+              </li>
+              <li class="media">
+                <div class="pull-left"> <span class="icon fa-stack fa-lg"> <i class="fa fa-mobile fa-stack-1x fa-inverse"></i> </span> </div>
+                <div class="media-body">
+                  <p> + (888) 123-4567 / + (888) 456-7890</p>
                 </div>
-            </div>
+              </li>
+              <li class="media">
+                <div class="pull-left"> <span class="icon fa-stack fa-lg"> <i class="fa fa-envelope fa-stack-1x fa-inverse"></i> </span> </div>
+                <div class="media-body"> <span><a href="#">marazzo@themesground.com</a></span> </div>
+              </li>
+            </ul>
+          </div>
+          </div>
+          <!-- /.module-body --> 
         </div>
-    </section>
-    <!-- ##### Newsletter Area End ##### -->
-
-    <!-- ##### Footer Area Start ##### -->
-    <footer class="footer_area clearfix">
-        <div class="container">
-            <div class="row align-items-center">
-                <!-- Single Widget Area -->
-                <div class="col-12 col-lg-4">
-                    <div class="single_widget_area">
-                        <!-- Logo -->
-                        <div class="footer-logo mr-50">
-                            <a href="index.html"><img src="public/img/core-img/logo2.png" alt=""></a>
-                        </div>
-                        <!-- Copywrite Text -->
-                        <p class="copywrite"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a> & Re-distributed by <a href="https://themewagon.com/" target="_blank">Themewagon</a>
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
-                    </div>
-                </div>
-                <!-- Single Widget Area -->
-                <div class="col-12 col-lg-8">
-                    <div class="single_widget_area">
-                        <!-- Footer Menu -->
-                        <div class="footer_menu">
-                            <nav class="navbar navbar-expand-lg justify-content-end">
-                                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#footerNavContent" aria-controls="footerNavContent" aria-expanded="false" aria-label="Toggle navigation"><i class="fa fa-bars"></i></button>
-                                <div class="collapse navbar-collapse" id="footerNavContent">
-                                    <ul class="navbar-nav ml-auto">
-                                        <li class="nav-item active">
-                                            <a class="nav-link" href="index.html">Home</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="shop.html">Shop</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="product-details.html">Product</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="cart.html">Cart</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="checkout.html">Checkout</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </nav>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <!-- /.col -->
+        
+        <div class="col-xs-12 col-sm-6 col-md-3">
+          <div class="module-heading">
+            <h4 class="module-title">Customer Service</h4>
+          </div>
+          <!-- /.module-heading -->
+          
+          <div class="module-body">
+            <ul class='list-unstyled'>
+              <li class="first"><a href="#" title="Contact us">My Account</a></li>
+              <li><a href="#" title="About us">Order History</a></li>
+              <li><a href="#" title="faq">FAQ</a></li>
+              <li><a href="#" title="Popular Searches">Specials</a></li>
+              <li class="last"><a href="#" title="Where is my order?">Help Center</a></li>
+            </ul>
+          </div>
+          <!-- /.module-body --> 
         </div>
-    </footer>
-    <!-- ##### Footer Area End ##### -->
+        <!-- /.col -->
+        
+        <div class="col-xs-12 col-sm-6 col-md-3">
+          <div class="module-heading">
+            <h4 class="module-title">Corporation</h4>
+          </div>
+          <!-- /.module-heading -->
+          
+          <div class="module-body">
+            <ul class='list-unstyled'>
+              <li class="first"><a title="Your Account" href="#">About us</a></li>
+              <li><a title="Information" href="#">Customer Service</a></li>
+              <li><a title="Addresses" href="#">Company</a></li>
+              <li><a title="Addresses" href="#">Investor Relations</a></li>
+              <li class="last"><a title="Orders History" href="#">Advanced Search</a></li>
+            </ul>
+          </div>
+          <!-- /.module-body --> 
+        </div>
+        <!-- /.col -->
+        
+        <div class="col-xs-12 col-sm-6 col-md-3">
+          <div class="module-heading">
+            <h4 class="module-title">Why Choose Us</h4>
+          </div>
+          <!-- /.module-heading -->
+          
+          <div class="module-body">
+            <ul class='list-unstyled'>
+              <li class="first"><a href="#" title="About us">Shopping Guide</a></li>
+              <li><a href="#" title="Blog">Blog</a></li>
+              <li><a href="#" title="Company">Company</a></li>
+              <li><a href="#" title="Investor Relations">Investor Relations</a></li>
+              <li class=" last"><a href="contact-us.html" title="Suppliers">Contact Us</a></li>
+            </ul>
+          </div>
+          <!-- /.module-body --> 
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="copyright-bar">
+    <div class="container">
+      <div class="col-xs-12 col-sm-4 no-padding social">
+        <ul class="link">
+          <li class="fb pull-left"><a target="_blank" rel="nofollow" href="#" title="Facebook"></a></li>
+          <li class="tw pull-left"><a target="_blank" rel="nofollow" href="#" title="Twitter"></a></li>
+          <li class="googleplus pull-left"><a target="_blank" rel="nofollow" href="#" title="GooglePlus"></a></li>
+          <li class="rss pull-left"><a target="_blank" rel="nofollow" href="#" title="RSS"></a></li>
+          <li class="pintrest pull-left"><a target="_blank" rel="nofollow" href="#" title="PInterest"></a></li>
+          <li class="linkedin pull-left"><a target="_blank" rel="nofollow" href="#" title="Linkedin"></a></li>
+          <li class="youtube pull-left"><a target="_blank" rel="nofollow" href="#" title="Youtube"></a></li>
+        </ul>
+      </div>
+      <div class="col-xs-12 col-sm-4 no-padding copyright"><a target="_blank" href="https://www.templateshub.net">Templates Hub</a> </div>
+      <div class="col-xs-12 col-sm-4 no-padding">
+        <div class="clearfix payment-methods">
+          <ul>
+            <li><img src="public/assets/images/payments/1.png" alt=""></li>
+            <li><img src="public/assets/images/payments/2.png" alt=""></li>
+            <li><img src="public/assets/images/payments/3.png" alt=""></li>
+            <li><img src="public/assets/images/payments/4.png" alt=""></li>
+            <li><img src="public/assets/images/payments/5.png" alt=""></li>
+          </ul>
+        </div>
+        <!-- /.payment-methods --> 
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- ============================================================= FOOTER : END============================================================= --> 
 
-    <!-- ##### jQuery (Necessary for All JavaScript Plugins) ##### -->
-    <script src="public/js/jquery/jquery-2.2.4.min.js"></script>
-    <!-- Popper js -->
-    <script src="public/js/popper.min.js"></script>
-    <!-- Bootstrap js -->
-    <script src="public/js/bootstrap.min.js"></script>
-    <!-- Plugins js -->
-    <script src="public/js/plugins.js"></script>
-    <!-- Active js -->
-    <script src="public/js/active.js"></script>
+<!-- For demo purposes – can be removed on production --> 
 
+<!-- For demo purposes – can be removed on production : End --> 
+
+<!-- JavaScripts placed at the end of the document so the pages load faster --> 
+<script src="public/assets/js/jquery-1.11.1.min.js"></script> 
+<script src="public/assets/js/bootstrap.min.js"></script> 
+<script src="public/assets/js/bootstrap-hover-dropdown.min.js"></script> 
+<script src="public/assets/js/owl.carousel.min.js"></script> 
+<script src="public/assets/js/echo.min.js"></script> 
+<script src="public/assets/js/jquery.easing-1.3.min.js"></script> 
+<script src="public/assets/js/bootstrap-slider.min.js"></script> 
+<script src="public/assets/js/jquery.rateit.min.js"></script> 
+<script src="public/assets/js/lightbox.min.js"></script> 
+<script src="public/assets/js/bootstrap-select.min.js"></script> 
+<script src="public/assets/js/wow.min.js"></script> 
+<script src="public/assets/js/scripts.js"></script>
 </body>
 
 </html>
