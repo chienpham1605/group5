@@ -1,0 +1,48 @@
+body {
+    font-size: 14px;
+    font-family: arial;
+    line-height: 23px;
+    background: #FBB808;
+    
+}
+#wp-form-register{
+     width: 300px;
+     background: aliceblue;
+     border-radius: 3px;
+     padding: 30px 20px 20px 20px;
+     margin: 150px auto  ;
+     text-align: center;
+}
+
+#form-register #username, #form-login #password{
+    display: block;
+    padding: 6px 10px;
+    width: 100%;
+    
+ 
+}
+#form-register #btn-register{
+    display: block;
+    width: 100%;
+    background: #FBB808;
+    border: none;
+    color: #fff;
+    padding: 10px 0px;
+    margin: 15px 0px 10px;
+    cursor: pointer;
+}
+
+#lost-pass{
+    color: #F091B1A;
+    text-decoration: underline;
+    
+}
+#h1.title_form_register{
+    font-size: 50px;
+    padding: 0px 0px 20px;
+}
+p.error{
+       font-size: 13px;
+    color: #F27B57;
+    }
+
