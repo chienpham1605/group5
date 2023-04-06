@@ -360,7 +360,8 @@ if (!isset($_GET['book_id'])):
 
     </div><!-- /.single-product-gallery -->
 </div><!-- /.gallery-holder -->        			
-					<div class='col-sm-12 col-md-8 col-lg-8 product-info-block'>
+					<div class='col-sm-12 col-md-8 col-lg-8 product-info-block'>					
+						<form action="?mod=cart&act=add" method="POST">
 						<div class="product-info">
 							<h1 class="name"><?= $book_detail['book_name']?></h1>
 							
@@ -445,14 +446,28 @@ if (!isset($_GET['book_id'])):
 								                  <div class="arrow plus gradient"><span class="ir"><i class="icon fa fa-sort-asc"></i></span></div>
 								                  <div class="arrow minus gradient"><span class="ir"><i class="icon fa fa-sort-desc"></i></span></div>
 								                </div>
-								                <input type="text" class="input-qty" value="1">
+								                <input type="text" name="qty" class="input-qty" value="1">
 							              </div>
 							            </div>
 									</div>
 
+
+									<input type="hidden" name="book_id" value="<?= $book_detail['book_id'] ?>">
+									
+									<input type="hidden" name="book_price" value="<?= $book_detail['book_price'] ?>">
+									
+								
+
 									<div class="add-btn" data-id="<?= $book_detail['book_id']?>" data-price="<?= $book_detail['book_price']?>">
-										<a href="#" class="btn btn-primary" ><i class="fa fa-shopping-cart inner-right-vs"></i> ADD TO CART</a>
+										<input type="submit" name="btnAdd" class="btn btn-primary" value="ADD TO CART"></input>
 									</div>
+									<?php
+									//show mess if book is aldready in cart
+									if (isset($_GET['errAdd'])):
+										echo '<div class="alert alert-danger">book is aldready in cart</div>';
+									endif;
+									?>
+									
 
 									
 								</div><!-- /.row -->
@@ -460,10 +475,11 @@ if (!isset($_GET['book_id'])):
 
 							
 
-							
+
 
 							
 						</div><!-- /.product-info -->
+						</form>
 					</div><!-- /.col-sm-7 -->
 				</div><!-- /.row -->
                 </div>

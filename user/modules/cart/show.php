@@ -1,14 +1,21 @@
 <?php
+if (isset($_SESSION['auth'])) {
 
-$user_id = $_SESSION['auth']['id'];
+	$user_id = $_SESSION['auth']['id'] = 3;
 
-$query = "SELECT `book`.`book_id`, `book`.`book_name`, `book`.`book_price`, `cart`.`qty` FROM `cart`, `book` WHERE `cart`.`book_id`=`book`.`book_id` AND `cart`.`user_id`={$user_id}";
-$list_cart = mysqli_query($conn, $query);
-$total =0;
-// show_array($list_cart);
+	$query = "SELECT `book`.`book_id`, `book`.`book_name`, `book`.`book_price`, `cart`.`qty` FROM `cart`, `book` WHERE `cart`.`book_id`=`book`.`book_id` AND `cart`.`user_id`={$user_id}";
+	$list_cart = mysqli_query($conn, $query);
+	$total = 0;
+	// while ($item = mysqli_fetch_assoc($list_cart)) {
+	//   $total += $item['book_price'] * $item['qty'];
+	// }
+}
 
 
 ?>
+
+
+
 <div class="breadcrumb">
 	<div class="container">
 		<div class="breadcrumb-inner">
@@ -22,6 +29,7 @@ $total =0;
 
 <div class="body-content outer-top-xs">
 	<div class="container">
+	<form action="?mod=cart&act=checkout" method="POST">
 		<div class="row ">
 			<div class="shopping-cart">
 				<div class="shopping-cart-table ">
@@ -29,7 +37,6 @@ $total =0;
 						<table class="table">
 							<thead>
 								<tr>
-									<th class="cart-edit item"><input type="checkbox" name="" id="" class="select_all">All</th>
 									<th class="cart-description item">Image</th>
 									<th class="cart-product-name item">Product Name</th>
 									<th class="cart-qty item">Quantity</th>
@@ -45,14 +52,9 @@ $total =0;
 									echo "No item in cart";
 								else:
 									while ($item = mysqli_fetch_assoc($list_cart)):
-										$total += $item['book_price']*$item['qty'];
+										$total += $item['book_price'] * $item['qty'];
 										?>
 										<tr>
-											<td class="cart-product-edit">
-												
-												<input type="checkbox" name="cart_checkbox" class="cart_checkbox" value=100>
-												
-											</td>
 											<td class="cart-image">
 												<a class="entry-thumbnail" href="detail.html">
 													<img src="assets/images/products/p1.jpg" alt="">
@@ -85,21 +87,24 @@ $total =0;
 														<div class="arrow minus gradient"><span class="ir"><i
 																	class="icon fa fa-sort-desc"></i></span></div>
 													</div> -->
-													<input class="input-qty" type="number" min="1" max="200" 
-													data-price="<?php echo $item['book_price']?>" 
-													data-id="<?php echo $item['book_id']?>" 
-													value="<?php echo $item['qty'] ?>" 
-													name="qty[<?php echo $item['book_id'] ?>]">                                                                              
-                                       
+													<input class="input-qty" type="number" min="1" max="200"
+														data-price="<?php echo $item['book_price'] ?>"
+														data-id="<?php echo $item['book_id'] ?>"
+														value="<?php echo $item['qty'] ?>"
+														name="qty[<?php echo $item['book_id'] ?>]">
+
 												</div>
 											</td>
 											<td class="cart-product-sub-total"><span class="cart-sub-total-price">$
 													<?= $item['book_price'] ?>
 												</span></td>
-											<td class="cart-product-grand-total"><span
-													class="cart-grand-total-price" id="sub-total-<?= $item['book_id']?>"><?= $item['qty']*$item['book_price']?></span></td>
-											<td class="remove-item" onclick="return confirm('Are you sure to delete this item ?')"><a href="?mod=cart&act=delete&book_id=<?= $item['book_id']?>" title="cancel" class="icon"><i
-														class="fa fa-trash-o"></i></a></td>
+											<td class="cart-product-grand-total"><span class="cart-grand-total-price"
+													id="sub-total-<?= $item['book_id'] ?>"><?= $item['qty'] * $item['book_price'] ?></span>
+											</td>
+											<td class="remove-item"
+												onclick="return confirm('Are you sure to delete this item ?')"><a
+													href="?mod=cart&act=delete&book_id=<?= $item['book_id'] ?>" title="cancel"
+													class="icon"><i class="fa fa-trash-o"></i></a></td>
 										</tr>
 
 										<?php
@@ -113,10 +118,13 @@ $total =0;
 									<td colspan="7">
 										<div class="shopping-cart-btn">
 											<span class="">
-												<a href="?mod=home&act=main" class="btn btn-upper btn-primary outer-left-xs">Continue
+												<a href="?mod=home&act=main"
+													class="btn btn-upper btn-primary outer-left-xs">Continue
 													Shopping</a>
-												<a href="?mod=cart&act=delete_all&book_id=all" onclick="return confirm('Are you sure to delete all items ?')"
-													class="btn btn-upper btn-primary pull-right outer-right-xs">Delete all
+												<a href="?mod=cart&act=delete_all&book_id=all"
+													onclick="return confirm('Are you sure to delete all items ?')"
+													class="btn btn-upper btn-primary pull-right outer-right-xs">Delete
+													all
 													shopping cart</a>
 											</span>
 										</div><!-- /.shopping-cart-btn -->
@@ -131,7 +139,7 @@ $total =0;
 						<thead>
 							<tr>
 								<th>
-									<span class="estimate-title">Estimate shipping and tax</span>
+									<span class="estimate-title">Shipping Information</span>
 									<p>Enter your destination to get shipping and tax.</p>
 								</th>
 							</tr>
@@ -140,34 +148,30 @@ $total =0;
 							<tr>
 								<td>
 									<div class="form-group">
-										<label class="info-title control-label">Country <span>*</span></label>
-										<select class="form-control unicase-form-control selectpicker">
-											<option>--Select options--</option>
-											<option>India</option>
-											<option>SriLanka</option>
-											<option>united kingdom</option>
-											<option>saudi arabia</option>
-											<option>united arab emirates</option>
-										</select>
-									</div>
-									<div class="form-group">
-										<label class="info-title control-label">State/Province <span>*</span></label>
-										<select class="form-control unicase-form-control selectpicker">
-											<option>--Select options--</option>
-											<option>TamilNadu</option>
-											<option>Kerala</option>
-											<option>Andhra Pradesh</option>
-											<option>Karnataka</option>
-											<option>Madhya Pradesh</option>
-										</select>
-									</div>
-									<div class="form-group">
-										<label class="info-title control-label">Zip/Postal Code</label>
-										<input type="text" class="form-control unicase-form-control text-input"
+										<label class="info-title control-label">Fullname <span>*</span></label>
+										<input type="text" name="fullname" class="form-control unicase-form-control text-input"
 											placeholder="">
 									</div>
-									<div class="pull-right">
-										<button type="submit" class="btn-upper btn btn-primary">GET A QOUTE</button>
+									<div class="form-group">
+										<label class="info-title control-label">Email <span>*</span></label>
+										<input type="text" name="email" class="form-control unicase-form-control text-input"
+											placeholder="">
+									</div>
+									<div class="form-group">
+										<label class="info-title control-label">Address <span>*</span></label>
+										<input type="text" name="address" class="form-control unicase-form-control text-input"
+											placeholder="">
+									</div>
+									<div class="form-group">
+										<label class="info-title control-label">Phone <span>*</span></label>
+										<input type="text" name="phone" class="form-control unicase-form-control text-input"
+											placeholder="">
+									</div>
+									<div class="form-group">
+										<label class="info-title control-label">
+											<input type="checkbox"> <span>Ship to a different address</span>
+									</label>
+										
 									</div>
 								</td>
 							</tr>
@@ -180,8 +184,8 @@ $total =0;
 						<thead>
 							<tr>
 								<th>
-									<span class="estimate-title">Discount Code</span>
-									<p>Enter your coupon code if you have one..</p>
+									<span class="estimate-title">Note</span>
+									<p>Leave a comment about your order.</p>
 								</th>
 							</tr>
 						</thead>
@@ -189,11 +193,24 @@ $total =0;
 							<tr>
 								<td>
 									<div class="form-group">
-										<input type="text" class="form-control unicase-form-control text-input"
-											placeholder="You Coupon..">
+										<input type="text" name="note" class="form-control unicase-form-control text-input"
+											placeholder="Your Note..">
 									</div>
 									<div class="clearfix pull-right">
-										<button type="submit" class="btn-upper btn btn-primary">APPLY COUPON</button>
+										<!-- <button type="submit" class="btn-upper btn btn-primary">APPLY COUPON</button> -->
+									</div>
+								</td>
+
+							</tr>
+							<tr>
+								<td>
+									<div class="form-group">
+										<label class="info-title control-label">Payment Method <span>*</span></label>
+										<select name="payment_method" class="form-control unicase-form-control selectpicker">
+											<option>--Select options--</option>
+											<option value="COD">COD</option>
+											<option value="Bank Transfer">Bank Transfer</option>
+										</select>
 									</div>
 								</td>
 							</tr>
@@ -207,10 +224,12 @@ $total =0;
 							<tr>
 								<th>
 									<!-- <div class="cart-sub-total">
-										Subtotal<span class="inner-left-md">$<?= $total?></span>
+										Subtotal<span class="inner-left-md">$<?= $total ?></span>
 									</div>						 -->
 									<div class="cart-grand-total">
-										Grand Total<span class="inner-left-md" id="overall_total">$0</span>
+										Total<span class="inner-left-md" id="overall_total">$
+											<?= $total ?>
+										</span>
 									</div>
 								</th>
 							</tr>
@@ -220,8 +239,8 @@ $total =0;
 								<td>
 									<div class="cart-checkout-btn pull-right">
 										<button type="submit" class="btn btn-primary checkout-btn">PROCCED TO
-											CHEKOUT</button>
-										<span class="">Checkout with multiples address!</span>
+											CHECKOUT</button>
+										<!-- <span class="">Checkout with multiples address!</span> -->
 									</div>
 								</td>
 							</tr>
@@ -229,6 +248,7 @@ $total =0;
 					</table><!-- /table -->
 				</div><!-- /.cart-shopping-total -->
 			</div><!-- /.shopping-cart -->
+			</form>
 		</div> <!-- /.row -->
 		<!-- ============================================== BRANDS CAROUSEL ============================================== -->
 		<div id="brands-carousel" class="logo-slider wow fadeInUp">
@@ -330,7 +350,7 @@ $total =0;
 			<li>
 				<div class="feature-box">
 					<div class="icon-return"></div>
-					<div class="content">30 days return</div>
+					<div class="content">7 days return</div>
 				</div>
 			</li>
 

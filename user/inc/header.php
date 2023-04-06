@@ -1,13 +1,18 @@
 <?php
 // session_start();
-if (!isset($_SESSION['auth'])) {
-  redirect("?mod=login&act=main");
-}
-  $user_id = $_SESSION['auth']['id']=3;
+$_SESSION['auth']['id'] = 3;
+if (isset($_SESSION['auth'])) {
+
+  $user_id = $_SESSION['auth']['id'] = 3;
 
   $query = "SELECT `book`.`book_id`, `book`.`book_name`, `book`.`book_price`, `cart`.`qty` FROM `cart`, `book` WHERE `cart`.`book_id`=`book`.`book_id` AND `cart`.`user_id`={$user_id}";
   $list_cart = mysqli_query($conn, $query);
-    $total =0;
+  $total = 0;
+  // while ($item = mysqli_fetch_assoc($list_cart)) {
+  //   $total += $item['book_price'] * $item['qty'];
+  // }
+}
+
 
 
 // echo $total;
@@ -149,22 +154,27 @@ if (!isset($_SESSION['auth'])) {
             <div class="dropdown dropdown-cart"> <a href="#" class="dropdown-toggle lnk-cart" data-toggle="dropdown">
                 <div class="items-cart-inner">
                   <div class="basket">
-                    <div class="basket-item-count"><span class="count">2</span></div>
-                    <div class="total-price-basket"> <span class="lbl">Shopping Cart</span> <span
-                        class="value">$4580</span> </div>
+                    <div class="basket-item-count"><span class="count">
+                        <?= mysqli_num_rows($list_cart) ?>
+                      </span></div>
+                    <div class="total-price-basket"> <span class="lbl">Shopping Cart</span>
+                      <span class="value">$
+                       
+                      </span>
+                    </div>
                   </div>
                 </div>
               </a>
               <ul class="dropdown-menu">
                 <li>
                   <div class="cart-item product-summary">
-                    
+
                     <?php
                     if (mysqli_num_rows($list_cart) == 0):
                       echo "No item in cart";
                     else:
-                      while ($item = mysqli_fetch_assoc($list_cart)):     
-                        $total += $item['book_price']*$item['qty'];              
+                      while ($item = mysqli_fetch_assoc($list_cart)):
+                        $total += $item['book_price'] * $item['qty'];
                         ?>
                         <div class="row">
                           <div class="col-xs-4">
@@ -172,10 +182,16 @@ if (!isset($_SESSION['auth'])) {
                                   alt=""></a> </div>
                           </div>
                           <div class="col-xs-7">
-                            <h3 class="name"><a href="index8a95.html?page-detail"><?= $item['book_name']?></a></h3>
-                            <div class="price">$<?= $item['book_price']?> x <span id="qty-book-id-<?= $item['book_id']?>" ><?= $item['qty']?></span></div>
+                            <h3 class="name"><a href="index8a95.html?page-detail">
+                                <?= $item['book_name'] ?>
+                              </a></h3>
+                            <div class="price">$
+                              <?= $item['book_price'] ?> x <span id="qty-book-id-<?= $item['book_id'] ?>"><?= $item['qty'] ?></span>
+                            </div>
                           </div>
-                          <div class="col-xs-1 action"> <a href="?mod=cart&act=delete&book_id=<?= $item['book_id']?>" onclick="return confirm('Are you sure to delete this item ?')"><i class="fa fa-trash"></i></a> </div>
+                          <div class="col-xs-1 action"> <a href="?mod=cart&act=delete&book_id=<?= $item['book_id'] ?>"
+                              onclick="return confirm('Are you sure to delete this item ?')"><i class="fa fa-trash"></i></a>
+                          </div>
                         </div>
                         <?php
                       endwhile;
@@ -187,7 +203,9 @@ if (!isset($_SESSION['auth'])) {
                   <div class="clearfix"></div>
                   <hr>
                   <div class="clearfix cart-total">
-                    <div class="pull-right"> <span class="text">Total :</span><span class='price'>$<?= $total?></span>
+                    <div class="pull-right"> <span class="text">Total :</span><span class='price'>$
+                        <?= $total ?>
+                      </span>
                     </div>
                     <div class="clearfix"></div>
                     <a href="checkout.html" class="btn btn-upper btn-primary btn-block m-t-20">Checkout</a>

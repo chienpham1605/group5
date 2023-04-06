@@ -24,25 +24,22 @@ $(document).ready(function () {
       var qty = $(".input-qty").val();
       var book_id = $(this).attr("data-id");
       var book_price = $(this).attr("data-price");
+      location.reload(true);
       $.ajax({
         url: "modules/cart/add.php",
         method: "POST",
-        data: { qty: qty, book_id: book_id, book_price:book_price},
+        data: { qty: qty, book_id: book_id},
         success: function (data) {
-          if (data.response == 201) {
-            alert("Product added to cart");
-            $("#sub-total-"+book_id).text(data.sub_total);
-            $("#subtotal-check-"+book_id).text(data.sub_total);
-            $(".cart-grand-total span").text(data.total);
-            $("#qty-book-id-"+book_id).text(data.qty);
-          }
-          else if (data.response == 401) {
+          if (data == 201) {
+            alert("Product added to cart");        
+          } 
+          if (data == 401) {
             alert("Login to continue");
           }
-          else if (data.response == 501) {
+          if (data == 501) {
             alert("Something went wrong");
           }
-          else if (data.response == "existing") {
+          if (data == "existing") {
             alert("Product aldready in cart");
           }
         },
@@ -58,6 +55,7 @@ $(document).ready(function () {
       var qty = $(this).val();  
       var book_price = $(this).attr("data-price");
       var book_id = $(this).attr("data-id");
+     
       $.ajax({
         url: "modules/cart/update.php",
         method: "POST",     
@@ -66,8 +64,7 @@ $(document).ready(function () {
         success: function (response) {
           console.log(response);
           $("#sub-total-"+book_id).text(response.sub_total);
-          $(".cart_checkbox").attr('subtotal', response.sub_total);
-          $(".cart-grand-total span").text(response.total);
+          $(".cart_checkbox").attr('subtotal', response.sub_total);        
           $("#qty-book-id-"+book_id).text(response.qty);
           if (response == 401) {
             alert("Login to continue");
@@ -83,17 +80,9 @@ $(document).ready(function () {
       });  
   
     }); 
-$('input:checkbox').change(function ()
-{
+    
 
-      var total = 0;
-      $('input:checkbox:checked').each(function(){
-       total += isNaN(parseInt($(this).val())) ? 0 : parseInt($(this).val());
-      });   
-  
-      $("#overall_total").val(total);
-
-});
+ 
   
   });
   
