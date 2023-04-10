@@ -1,51 +1,16 @@
 <?PHP
 require_once './data/DBConnect.php';
 require './lib/users.php';
+session_start();
+ob_start();
 //$rs = mysqli_query($conn, $query);
 //$count = mysqli_num_rows($rs);
 
 if (isset($_POST["btn_submit"])) {
-    //isset de kiem tra button co name la btn_submit da duoc click hay chua
-//    $id = $_POST["id"];
-    $username = $_POST["name"];
-    $password = md5($_POST["pass"]);
-    $cpassword = md5($_POST["cpass"]);
-    $email = $_POST["email"];
-    $phone = $_POST["phone"];
-    $address = $_POST["address"];
-    $gender = $_POST["gender"];
-    // lấy thông tin tu cac form bang phuong thuc POST
-    //$_POST lây gia tri the thong qua name"" - chu khong phai id"" 
-    if ($username == "" || $password == "" || $cpassword == "" || $email == "" || $phone == "" || $address == "" || $gender == "") {
-        echo " Ban vui long nhap day du thong tin";
-    } else {
-        // Kiem tra tai khoan da ton tai chua
-        $sql = "select * from customer  where name= '$username' ";
-        $rs = mysqli_query($conn, $sql);
-
-        if (mysqli_num_rows($rs) > 0) {
-            echo "Account already exist";
-        } else {
-            if ($password === $cpassword) {
-                // thuc hien viec luu tru du lieu vao db      
-                $sql = "INSERT INTO customer(
-             name, pwd,email, phone,address,gender) VALUES (
-                                       
-                                        '{$username}',
-                                        '{$password}',
-                                        '{$email}',
-                                        '{$phone}',
-                                        '{$address}',
-                                        '{$gender}')";
-                // thuc thi cau $sql vao bien conn lay tu file DBConnect.php                            
-                mysqli_query($conn, $sql);
-
-                echo " Signup Successfull";
-            } else {
-                echo "Password didn't match";
-            }
-        }
-    }
+    register();
+}
+if (isset($_POST['btn-login'])) {
+    $error = login();
 }
 ?>
 <html>
@@ -83,22 +48,43 @@ if (isset($_POST["btn_submit"])) {
         <div class="col-md-6 col-sm-6 sign-in">
             <h4 class="">Sign in</h4>
             <p class="">Hello, Welcome to your account.</p>
-            <form class="register-form outer-top-xs" role="form">
+            <form id="form-login" action="" method="POST" 
+                  class="register-form outer-top-xs" role="form">
+
                 <div class="form-group">
                     <label class="info-title" for="name">Username <span>*</span></label>
-                    <input type="text" name ="name" id="name"class="form-control unicase-form-control text-input"  >
+                    <input type ="text" name="name" id ="name" value ="" placeholder="Username"
+                           class ="  form-control unicase-form-control text-input"  />
+                           <?php
+                           if (!empty($error['name'])) {
+                               ?>
+                        <p class="error"><?php echo $error['name'] ?></p>
+                        <?php
+                    }
+                    ?>
                 </div>
                 <div class="form-group">
                     <label class="info-title" for="pass">Password <span>*</span></label>
-                    <input type="password"  ame ="pass" id="pass" class="form-control unicase-form-control text-input" >
+                    <input type ="password" name="pass" id="pass"  value ="" placeholder="Password"
+                           class="form-control unicase-form-control text-input" 
+                           />
+                           <?php
+                           if (!empty($error['pass'])) {
+                               ?>
+                        <p class="error"><?php echo $error['pass'] ?></p><!-- comment -->
+                        <?php
+                    }
+                    ?>
                 </div>
-                <div class="radio outer-xs">
-                    <label>
-                        <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">Remember me!
-                    </label>
-                    <a href="#" class="forgot-password pull-right">Forgot your Password?</a>
-                </div>
-                <button type="submit" id="btn-login" name="btn-login" value ="Login" class="btn-upper btn btn-primary checkout-page-button">Login</button>
+                <button type ="submit" id="btn-login" name="btn-login"  value ="Login" 
+                        class="btn-upper btn btn-primary checkout-page-button">Login </button>
+                        <?php
+                        if (!empty($error['common'])) {
+                            ?>
+                    <p class="error"><?php echo $error['common'] ?></p>
+                    <?php
+                }
+                ?>
             </form>					
         </div>
         <!-- Sign-in -->

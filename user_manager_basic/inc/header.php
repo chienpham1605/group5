@@ -32,7 +32,7 @@
                 <a id="logo">onBookStore</a>
                 <div id ="user-login">
 
-                    <p>     Hello <strong><?php if (is_login()) echo info_user('fullname'); ?></strong><a href="?page=logout">Logout</a></p>
+                    <p>     Hello <strong><?php if (is_login()) echo info_user(); ?></strong><a href="?page=logout">Logout</a></p>
                 </div>
                                 <ul id ="main-menu">
                                     <li><a href="?page=home">Trang chủ</a></li>

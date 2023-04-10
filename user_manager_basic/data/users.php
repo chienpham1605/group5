@@ -40,7 +40,7 @@
 //    ),
 //);
 
-if($_SERVER['REQUEST_METHOD']== 'POST'){
+//if($_SERVER['REQUEST_METHOD']== 'POST'){
     include 'DBConnect.php';
     if(isset($_POST['login'])){
         $username=$_POST['name'];
@@ -58,4 +58,4 @@ if($_SERVER['REQUEST_METHOD']== 'POST'){
             }
         }
     }
-}
+//}
