@@ -14,9 +14,6 @@ body {
         position: relative;
 }
 
- #footer{
-    background: #FBB808;
-}
 
 #logo{
     text-align: center;
@@ -35,7 +32,7 @@ body {
 
 ul#main-menu{
         text-align: center;
-         background: #FBB808;
+         background: #157ed2;
 }
 
 ul#main-menu li{
@@ -52,7 +49,8 @@ ul#main-menu li a{
      padding: 20px 0px;
 }
 #footer{
-    color: #fff;
+       background: #FFFFFF;
+    color: #157ed2;
     text-align: center;
     padding: 8px 0px;
 }

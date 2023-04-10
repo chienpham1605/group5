@@ -1,9 +1,13 @@
 <?php
+
+
 function check_login($username, $password) {
-    global $list_users;
+//    global $list_users;
     
-    foreach ($list_users as $user) {
-        if ($username == $user['username'] && md5($password) == $user['password']) {
+    if(isset($_POST['btn-login'])){
+    
+    foreach ($_POST['btn-login'] as $user) {
+        if ($username == $user['name'] && md5($password) == $user['pass']) {
             return TRUE;
         }
     }
@@ -11,7 +15,7 @@ function check_login($username, $password) {
     
     
     return FALSE;
-}
+}}
 
 function is_login() {
   if(isset($_SESSION['is_login']))
@@ -28,10 +32,10 @@ function user_login() {
 }
 
 function info_user($field ='id') {
-    global $list_users;
+//    global $list_users;
     if (isset($_SESSION['is_login'])){
         foreach($list_users as $user){  
-            if($_SESSION["user_login"] == $user[ 'username']){
+            if($_SESSION["user_login"] == $user[ 'name']){
                return $user["fullname"];
             }
         }

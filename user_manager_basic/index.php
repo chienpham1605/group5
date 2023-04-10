@@ -21,6 +21,7 @@ $path = "pages/{$page}.php"; //13.4 9:30s
 //
 //#check login
 if (!is_login() && $page != 'index')
+    
 header ('Location:login.php');
 
 
