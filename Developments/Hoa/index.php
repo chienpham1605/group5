@@ -11,8 +11,7 @@ require('lib/data.php');
 
 require('lib/pages.php');
 require('lib/authentication.php');
-// require('lib/product.php');
-// require('lib/cart.php');
+
 require('lib/mail/sendmail.php');
 
 //du lieu
@@ -32,9 +31,9 @@ require './inc/header.php';
 if (file_exists($path)) {
     require "{$path}";
 } else {
-    require "./pages/404.php";
+    require "./inc/404.php";
 }
 
 require './inc/footer.php';
-?>
+
 

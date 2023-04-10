@@ -13,8 +13,6 @@ if (isset($_SESSION['auth'])) {
   // }
 }
 
-
-
 // echo $total;
 // show_array($list_cart);
 
@@ -30,7 +28,7 @@ if (isset($_SESSION['auth'])) {
   <meta name="author" content="">
   <meta name="keywords" content="MediaCenter, Template, eCommerce">
   <meta name="robots" content="all">
-  <title>Marazzo premium HTML5 & CSS3 Template</title>
+  <title>OnBookStore</title>
   <!-- Jquery -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
   <script src="public/assets/js/custom.js"></script>
@@ -69,7 +67,6 @@ if (isset($_SESSION['auth'])) {
           <div class="cnt-account">
             <ul class="list-unstyled">
               <li class="myaccount"><a href="#"><span>My Account</span></a></li>
-              <li class="wishlist"><a href="#"><span>Wishlist</span></a></li>
               <li class="header_cart hidden-xs"><a href="?mod=cart&act=show"><span>My Cart</span></a></li>
               <li class="check"><a href="#"><span>Checkout</span></a></li>
               <li class="login"><a href="?mod=login&act=main"><span>Login</span></a></li>
@@ -124,20 +121,6 @@ if (isset($_SESSION['auth'])) {
             <div class="search-area">
               <form>
                 <div class="control-group">
-                  <ul class="categories-filter animate-dropdown">
-                    <li class="dropdown"> <a class="dropdown-toggle" data-toggle="dropdown"
-                        href="category.html">Categories <b class="caret"></b></a>
-                      <ul class="dropdown-menu" role="menu">
-                        <li class="menu-header">Computer</li>
-                        <li role="presentation"><a role="menuitem" tabindex="-1" href="category.html">- Clothing</a>
-                        </li>
-                        <li role="presentation"><a role="menuitem" tabindex="-1" href="category.html">- Electronics</a>
-                        </li>
-                        <li role="presentation"><a role="menuitem" tabindex="-1" href="category.html">- Shoes</a></li>
-                        <li role="presentation"><a role="menuitem" tabindex="-1" href="category.html">- Watches</a></li>
-                      </ul>
-                    </li>
-                  </ul>
                   <input class="search-field" placeholder="Search here..." />
                   <a class="search-button" href="#"></a>
                 </div>
@@ -151,16 +134,16 @@ if (isset($_SESSION['auth'])) {
           <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12 animate-dropdown top-cart-row">
             <!-- ============================================================= SHOPPING CART DROPDOWN ============================================================= -->
 
-            <div class="dropdown dropdown-cart"> <a href="#" class="dropdown-toggle lnk-cart" data-toggle="dropdown">
+            <div class="dropdown dropdown-cart"> <a href="?mod=cart&act=show" class="dropdown-toggle lnk-cart" data-toggle="dropdown">
                 <div class="items-cart-inner">
                   <div class="basket">
                     <div class="basket-item-count"><span class="count">
                         <?= mysqli_num_rows($list_cart) ?>
                       </span></div>
                     <div class="total-price-basket"> <span class="lbl">Shopping Cart</span>
-                      <span class="value">$
+                      <!-- <span class="value">$<?= $total?>
                        
-                      </span>
+                      </span> -->
                     </div>
                   </div>
                 </div>
@@ -203,12 +186,12 @@ if (isset($_SESSION['auth'])) {
                   <div class="clearfix"></div>
                   <hr>
                   <div class="clearfix cart-total">
-                    <div class="pull-right"> <span class="text">Total :</span><span class='price'>$
+                    <div class="pull-right"> <span class="text">Total :</span><span id='total'>$
                         <?= $total ?>
                       </span>
                     </div>
                     <div class="clearfix"></div>
-                    <a href="checkout.html" class="btn btn-upper btn-primary btn-block m-t-20">Checkout</a>
+                    <a href="?mod=cart&act=show" class="btn btn-upper btn-primary btn-block m-t-20">Checkout</a>
                   </div>
                   <!-- /.cart-total-->
 
@@ -339,10 +322,54 @@ if (isset($_SESSION['auth'])) {
                             </div>
                             <!-- /.col -->
 
-                            <!-- /.col -->
-
+                            <div class="col-xs-12 col-sm-12 col-md-2 col-menu">
+                              <h2 class="title">Desktops</h2>
+                              <ul class="links">
+                                <li><a href="#">Routers & Modems</a></li>
+                                <li><a href="#">CPUs, Processors</a></li>
+                                <li><a href="#">PC Gaming Store</a></li>
+                                <li><a href="#">Graphics Cards</a></li>
+                                <li><a href="#">Components</a></li>
+                                <li><a href="#">Webcam</a></li>
+                                <li><a href="#">Memory (RAM)</a></li>
+                                <li><a href="#">Motherboards</a></li>
+                                <li><a href="#">Keyboards</a></li>
+                                <li><a href="#">Headphones</a></li>
+                              </ul>
                             </div>
                             <!-- /.col -->
+
+                            <div class="col-xs-12 col-sm-12 col-md-2 col-menu">
+                              <h2 class="title">Cameras</h2>
+                              <ul class="links">
+                                <li><a href="#">Accessories</a></li>
+                                <li><a href="#">Binoculars</a></li>
+                                <li><a href="#">Telescopes</a></li>
+                                <li><a href="#">Camcorders</a></li>
+                                <li><a href="#">Digital</a></li>
+                                <li><a href="#">Film Cameras</a></li>
+                                <li><a href="#">Flashes</a></li>
+                                <li><a href="#">Lenses</a></li>
+                                <li><a href="#">Surveillance</a></li>
+                                <li><a href="#">Tripods</a></li>
+                              </ul>
+                            </div>
+                            <!-- /.col -->
+                            <div class="col-xs-12 col-sm-12 col-md-2 col-menu">
+                              <h2 class="title">Mobile Phones</h2>
+                              <ul class="links">
+                                <li><a href="#">Apple</a></li>
+                                <li><a href="#">Samsung</a></li>
+                                <li><a href="#">Lenovo</a></li>
+                                <li><a href="#">Motorola</a></li>
+                                <li><a href="#">LeEco</a></li>
+                                <li><a href="#">Asus</a></li>
+                                <li><a href="#">Acer</a></li>
+                                <li><a href="#">Accessories</a></li>
+                                <li><a href="#">Headphones</a></li>
+                                <li><a href="#">Memory Cards</a></li>
+                              </ul>
+                            </div>
                             <div class="col-xs-12 col-sm-12 col-md-4 col-menu custom-banner"> <a href="#"><img alt=""
                                   src="public/assets/images/banners/top-menu-banner1.jpg"></a> </div>
                           </div>

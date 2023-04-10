@@ -1,5 +1,5 @@
 <?php
-$query = "SELECT * FROM `book`";
+$query = "SELECT * FROM `categories`";
 $rs = mysqli_query($conn, $query);
 $count = mysqli_num_rows($rs);
 $list_cat = mysqli_fetch_assoc($rs);
