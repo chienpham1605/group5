@@ -59,33 +59,6 @@ $list_book = db_fetch_array("SELECT * FROM `book` WHERE cat_id = '{$cat_id}' ");
                           <li><a href="#">Shorts</a></li>
                         </ul>
                       </div>
-                      <!-- /.col -->
-                      <div class="col-sm-12 col-md-3">
-                        <ul class="links list-unstyled">
-                          <li><a href="#">Handbags</a></li>
-                          <li><a href="#">Jwellery</a></li>
-                          <li><a href="#">Swimwear </a></li>
-                          <li><a href="#">Tops</a></li>
-                          <li><a href="#">Flats</a></li>
-                          <li><a href="#">Shoes</a></li>
-                          <li><a href="#">Winter Wear</a></li>
-                          <li><a href="#">Night Suits</a></li>
-                        </ul>
-                      </div>
-                      <!-- /.col -->
-                      <div class="col-sm-12 col-md-3">
-                        <ul class="links list-unstyled">
-                          <li><a href="#">Toys &amp; Games</a></li>
-                          <li><a href="#">Jeans</a></li>
-                          <li><a href="#">Shirts</a></li>
-                          <li><a href="#">Shoes</a></li>
-                          <li><a href="#">School Bags</a></li>
-                          <li><a href="#">Lunch Box</a></li>
-                          <li><a href="#">Footwear</a></li>
-                          <li><a href="#">Wipes</a></li>
-                        </ul>
-                      </div>
-                      <!-- /.col -->
                       <div class="col-sm-12 col-md-3">
                         <ul class="links list-unstyled">
                           <li><a href="#">Sandals </a></li>
@@ -112,34 +85,6 @@ $list_book = db_fetch_array("SELECT * FROM `book` WHERE cat_id = '{$cat_id}' ");
                 <ul class="dropdown-menu mega-menu">
                   <li class="yamm-content">
                     <div class="row">
-                      <div class="col-xs-12 col-sm-12 col-lg-4">
-                        <ul>
-                          <li><a href="#">Gaming</a></li>
-                          <li><a href="#">Laptop Skins</a></li>
-                          <li><a href="#">Apple</a></li>
-                          <li><a href="#">Dell</a></li>
-                          <li><a href="#">Lenovo</a></li>
-                          <li><a href="#">Microsoft</a></li>
-                          <li><a href="#">Asus</a></li>
-                          <li><a href="#">Adapters</a></li>
-                          <li><a href="#">Batteries</a></li>
-                          <li><a href="#">Cooling Pads</a></li>
-                        </ul>
-                      </div>
-                      <div class="col-xs-12 col-sm-12 col-lg-4">
-                        <ul>
-                          <li><a href="#">Routers &amp; Modems</a></li>
-                          <li><a href="#">CPUs, Processors</a></li>
-                          <li><a href="#">PC Gaming Store</a></li>
-                          <li><a href="#">Graphics Cards</a></li>
-                          <li><a href="#">Components</a></li>
-                          <li><a href="#">Webcam</a></li>
-                          <li><a href="#">Memory (RAM)</a></li>
-                          <li><a href="#">Motherboards</a></li>
-                          <li><a href="#">Keyboards</a></li>
-                          <li><a href="#">Headphones</a></li>
-                        </ul>
-                      </div>
                       <div class="dropdown-banner-holder"> <a href="#"><img alt="" src="public/assets/images/banners/banner-side.png" /></a> </div>
                     </div>
                     <!-- /.row --> 
@@ -495,23 +440,6 @@ $list_book = db_fetch_array("SELECT * FROM `book` WHERE cat_id = '{$cat_id}' ");
                   </div>
                   <!-- /.accordion-group -->
                   
-                  <div class="accordion-group">
-                    <div class="accordion-heading"> <a href="#collapseSix" data-toggle="collapse" class="accordion-toggle collapsed"> Accessories </a> </div>
-                    <!-- /.accordion-heading -->
-                    <div class="accordion-body collapse" id="collapseSix" style="height: 0px;">
-                      <div class="accordion-inner">
-                        <ul>
-                          <li><a href="#">gaming</a></li>
-                          <li><a href="#">office</a></li>
-                          <li><a href="#">kids</a></li>
-                          <li><a href="#">for women</a></li>
-                        </ul>
-                      </div>
-                      <!-- /.accordion-inner --> 
-                    </div>
-                    <!-- /.accordion-body --> 
-                  </div>
-                  <!-- /.accordion-group --> 
                   
                 </div>
                 <!-- /.accordion --> 

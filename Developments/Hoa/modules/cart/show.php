@@ -12,12 +12,7 @@ if (isset($_SESSION['auth'])) {
 	$customerInfo = db_fetch_row("SELECT * FROM customer WHERE id = $user_id");
 }
 
-
-
-
 ?>
-
-
 
 <div class="breadcrumb">
 	<div class="container">
@@ -68,19 +63,6 @@ if (isset($_SESSION['auth'])) {
 															href="?mod=product&act=detail&book_id=<?= $item['book_id'] ?>">
 															<?= $item['book_name'] ?>
 														</a></h4>
-													<!-- <div class="row">
-														<div class="col-sm-12">
-															<div class="rating rateit-small"></div>
-														</div>
-														<div class="col-sm-12">
-															<div class="reviews">
-																(06 Reviews)
-															</div>
-														</div>
-													</div>/.row -->
-													<!-- <div class="cart-product-info">
-														<span class="product-color">COLOR:<span>Blue</span></span>
-													</div> -->
 												</td>
 
 												<td class="cart-product-quantity">

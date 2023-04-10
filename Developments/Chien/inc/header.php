@@ -101,7 +101,7 @@ if (isset($_SESSION['auth'])) {
             <!-- /.contact-row -->
             <!-- ============================================================= SEARCH AREA ============================================================= -->
             <div class="search-area">
-              <form>
+              <form method="post">
                 <div class="control-group">
                   <input class="search-field" placeholder="Search here..." />
                   <a class="search-button" href="#"></a>
