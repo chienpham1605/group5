@@ -1,10 +1,10 @@
 <?php 
-if (!isset($_GET['book_id'])):
+if (isset($_GET['book_id'])):
     redirect("?mod=home&act=main");
   endif;
   $book_id = $_GET['book_id'];
   //5. excecute query (for data old reading by Item code) 
-  $book_detail = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM `book` WHERE book_id = '{$book_id}' "));
+  $book_detail = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM `book` WHERE book_id = '{$book_id}'"));
 //   show_array($book_detail);
 ?>
 <div class="breadcrumb">
@@ -12,7 +12,6 @@ if (!isset($_GET['book_id'])):
 		<div class="breadcrumb-inner">
 			<ul class="list-inline list-unstyled">
 				<li><a href="#">Home</a></li>
-				<li><a href="#">Clothing</a></li>
 				<li class='active'>Floral Print Buttoned</li>
 			</ul>
 		</div><!-- /.breadcrumb-inner -->
