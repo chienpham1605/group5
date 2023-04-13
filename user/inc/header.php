@@ -1,4 +1,6 @@
+<?php
 
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -48,7 +50,8 @@
       <div class="container">
         <div class="row">
           <div class="col-xs-12 col-sm-12 col-md-3 logo-holder">
-            <div class="logo"> <a href="home.html"> <img src="public/assets/images/logo.png" alt="logo"> </a> </div>
+            <div class="logo"> <a href="?mod=home&act=main"> <img src="public/assets/images/logo.png" alt="logo"> </a>
+            </div>
           </div>
           <div class="col-lg-7 col-md-6 col-sm-8 col-xs-12 top-search-holder">
             <div class="search-area">
@@ -67,19 +70,84 @@
           </div>
 
           <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12 animate-dropdown top-cart-row">
-            <div class="dropdown dropdown-cart"> <a href="?mod=home&act=main" class="lnk-cart" data-toggle="dropdown">
+            <div class="dropdown dropdown-cart"> <a href="#" class="dropdown-toggle lnk-cart" data-toggle="dropdown">
                 <div class="items-cart-inner">
                   <div class="basket">
                     <div class="basket-item-count"><span class="count">
-                        0
-                      </span></div>
+                        <?php
+                        if (isset($_SESSION['cart'])) {
+                          echo count($_SESSION['cart']);
+                        } else
+                          echo "0"
+                            ?>
+                        </span></div>
+                      <div class="total-price-basket"> </div>
+                    </div>
                   </div>
-                </div>
+                </a>
+                <ul class="dropdown-menu">
+                  <?php
+                        if (!isset($_SESSION['cart'])) {
+                          echo "No item";
+                        } else {
+                          foreach ($_SESSION['cart'] as $item) {
+                            ?>
+                    <li>
+                      <div class="cart-item product-summary">
+                        <div class="row">
+                          <div class="col-xs-4">
+                            <div class="image"> <a href="detail.html"><img src="assets/images/products/p4.jpg" alt=""></a>
+                            </div>
+                          </div>
+                          <div class="col-xs-7">
+                            <h3 class="name"><a href="index8a95.html?page-detail">
+                                <?= $item['book_name'] ?>
+                              </a></h3>
+                            <div class="price">$
+                              <?= $item['book_price'] ?>
+                            </div>
+                            X <span id="qty-book-id-<?= $item['book_id'] ?>"><?= $item['qty'] ?></span>
+                          </div>
+                        </div>
+                      </div>         
+                    </li>
+
+                    <?php
+                          }
+                        }
+                        ?>
+                <li>
+                  <div class="clearfix"></div>
+                  <hr>
+                  <div class="clearfix cart-total">
+                    <div class="pull-right"> <span class="text">Total :$</span><span id="total">
+                        <?php
+                        $total = 0;
+                        if (!isset($_SESSION['cart'])) {
+                          echo "0";
+                        } else {
+                          foreach ($_SESSION['cart'] as $item) {
+                            $total += $item['subtotal'];
+                          }
+                          echo $total;
+                        }
+                        ?>
+                      </span> </div>
+                    <div class="clearfix"></div>
+                    <a href="?mod=cart&act=show" class="btn btn-upper btn-primary btn-block m-t-20">View Cart</a>
+                  </div>
+                  <!-- /.cart-total-->
+                </li>
+
+              </ul>
+              <!-- /.dropdown-menu-->
             </div>
+
             <div class="dropdown dropdown-cart" style="padding: 12px"> <a href="?mod=home&act=main" class="lnk-cart"
                 data-toggle="dropdown">
                 <div class="items-cart-inner">
-                  <h4><i class="fa fa-user" style='font-size:24px'></i> Account</h4>
+                  <h4><i class="fa fa-user" style='font-size:24px'></i><a href="?mod=login&act=main"
+                      style="color:white">Account</a></h4>
                 </div>
             </div>
           </div>

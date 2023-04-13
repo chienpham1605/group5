@@ -5,15 +5,15 @@ if (!isset($_GET['book_id'])):
   $book_id = $_GET['book_id'];
   //5. excecute query (for data old reading by Item code) 
   $book_detail = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM `book` WHERE book_id = '{$book_id}' "));
-//   show_array($book_detail);
+  $detail = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM categories, book WHERE categories.cat_id=book.cat_id AND book.book_id = '{$book_id}' "));
 ?>
 <div class="breadcrumb">
 	<div class="container">
 		<div class="breadcrumb-inner">
 			<ul class="list-inline list-unstyled">
-				<li><a href="#">Home</a></li>
-				<li><a href="#">Clothing</a></li>
-				<li class='active'>Floral Print Buttoned</li>
+				<li><a href="?mod=home&act=main">Home</a></li>
+				<li><a href="#"><?= $detail['cat_name']?></a></li>
+				<li class='active'><?= $detail['book_name']?></li>
 			</ul>
 		</div><!-- /.breadcrumb-inner -->
 	</div><!-- /.container -->
@@ -363,7 +363,7 @@ if (!isset($_GET['book_id'])):
 					<div class='col-sm-12 col-md-8 col-lg-8 product-info-block'>					
 						<form action="?mod=cart&act=add" method="POST">
 						<div class="product-info">
-							<h1 class="name"><?= $book_detail['book_name']?></h1>
+							<h1 class="name"><?= $detail['book_name']?></h1>
 							
 							<div class="rating-reviews m-t-20">
 								<div class="row">
@@ -398,9 +398,9 @@ if (!isset($_GET['book_id'])):
 							</div><!-- /.stock-container -->
 
 							<div class="description-container m-t-20">
-								<p>Author: <?= $book_detail['book_author']?> </p>
-								<p>Publisher: <?= $book_detail['book_publisher']?> </p>
-								<p>Publication Year: <?= $book_detail['book_publication_year']?> </p>
+								<p>Author: <?= $detail['book_author']?> </p>
+								<p>Publisher: <?= $detail['book_publisher']?> </p>
+								<p>Publication Year: <?= $detail['book_publication_year']?> </p>
                                 <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 							</div><!-- /.description-container -->
 
@@ -410,8 +410,8 @@ if (!isset($_GET['book_id'])):
 
 									<div class="col-sm-6 col-xs-6">
 										<div class="price-box">
-											<span class="price">$<?= $book_detail['book_price']*0.9?></span>
-											<span class="price-strike">$<?= $book_detail['book_price']?></span>
+											<span class="price">$<?= $detail['book_price']*0.9?></span>
+											<span class="price-strike">$<?= $detail['book_price']?></span>
 										</div>
 									</div>
 
@@ -446,26 +446,23 @@ if (!isset($_GET['book_id'])):
 								                  <div class="arrow plus gradient"><span class="ir"><i class="icon fa fa-sort-asc"></i></span></div>
 								                  <div class="arrow minus gradient"><span class="ir"><i class="icon fa fa-sort-desc"></i></span></div>
 								                </div>
-								                <input type="text" name="qty" class="input-qty" value="1">
+								                <input type="number" name="qty" class="input-qty" value="1">
 							              </div>
 							            </div>
 									</div>
 
 
-									<input type="hidden" name="book_id" value="<?= $book_detail['book_id'] ?>">
+									<input type="hidden" name="book_id" value="<?= $detail['book_id'] ?>">
 									
-									<input type="hidden" name="book_price" value="<?= $book_detail['book_price'] ?>">
+									<input type="hidden" name="book_price" value="<?= $detail['book_price'] ?>">
 									
 								
 
-									<div class="add-btn" data-id="<?= $book_detail['book_id']?>" data-price="<?= $book_detail['book_price']?>">
-										<input type="submit" name="btnAdd" class="btn btn-primary" value="ADD TO CART"></input>
+									<div class="add-btn" data-id="<?= $detail['book_id']?>" data-price="<?= $detail['book_price']?>">
+										<input type="submit" name="btnAdd" class="btn btn-primary" value="add"></input>
 									</div>
 									<?php
-									//show mess if book is aldready in cart
-									if (isset($_GET['errAdd'])):
-										echo '<div class="alert alert-danger">book is aldready in cart</div>';
-									endif;
+								
 									?>
 									
 
@@ -639,7 +636,7 @@ if (!isset($_GET['book_id'])):
 <section class="section featured-product">
 <div class="row">
 <div class="col-lg-3">
-          <h3 class="section-title">Upsell Products</h3>
+          <h3 class="section-title">Relative Products</h3>
          <div class="ad-imgs">
          <img class="img-responsive" src="public/assets/images/banners/home-banner1.jpg" alt="">
           <img class="img-responsive" src="public/assets/images/banners/home-banner2.jpg" alt="">

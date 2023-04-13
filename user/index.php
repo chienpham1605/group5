@@ -4,7 +4,10 @@ ob_start();
 //thu vien ham
 require('db/config.php');
 require('db/database.php');
+require("lib/cart.php");
 require("lib/url.php");
+require("lib/product.php");
+
 require('lib/number.php');
 require('lib/mail/sendmail.php');
 

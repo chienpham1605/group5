@@ -20,28 +20,17 @@ $(document).ready(function () {
     }
   });
   $(".add-btn").click(function (e) {
-    e.preventDefault();
-    var qty = $(".input-qty").val();
+    e.preventDefault();  
+    var qty_input = $(".input-qty").val();
     var book_id = $(this).attr("data-id");
-    var book_price = $(this).attr("data-price");
+    var book_price = $(this).attr("data-price");   
     location.reload(true);
     $.ajax({
       url: "modules/cart/add.php",
       method: "POST",
-      data: { qty: qty, book_id: book_id },
-      success: function (data) {
-        if (data == 201) {
-          alert("Product added to cart");
-        }
-        if (data == 401) {
-          alert("Login to continue");
-        }
-        if (data == 501) {
-          alert("Something went wrong");
-        }
-        if (data == "existing") {
-          alert("Product aldready in cart");
-        }
+      data: { qty_input: qty_input, book_id: book_id, book_price:book_price  },
+      success: function (data) {       
+        alert("Add cart successfully");       
       },
       error: function (xhr, ajaxOptions, thrownError) {
         alert(xhr.status);
@@ -51,24 +40,18 @@ $(document).ready(function () {
   });
 
   $(".input-qty").change(function () {
-    var qty = $(this).val();
+    var qty_input = $(this).val();
     var book_price = $(this).attr("data-price");
-    var book_id = $(this).attr("data-id");
-
+    var book_id = $(this).attr("data-id");      
     $.ajax({
       url: "modules/cart/update.php",
       method: "POST",
-      data: { qty: qty, book_id: book_id, book_price: book_price },
+      data: { qty_input: qty_input, book_id: book_id, book_price: book_price },
       dataType: "JSON",
-      success: function (response) {
-        console.log(response);
-        $("#sub-total-" + book_id).text(response.sub_total);      
+      success: function (response) {       
+        $("#subtotal-" + book_id).text(response.subtotal);      
         $("#qty-book-id-" + book_id).text(response.qty);
-        if (response == 401) {
-          alert("Login to continue");
-        } else if (response == 501) {
-          alert("Something went wrong");
-        }
+        $("#total").text(response.total);
       },
       error: function (xhr, ajaxOptions, thrownError) {
         alert(xhr.status);
@@ -86,12 +69,5 @@ $(document).ready(function () {
       total = total+ subtotal;      
     });
     $("#overall_total").text(total);
-  });
-
-  // $(".top-cart-row").click(function () {
-  //   console.log(location.href+"#total");
-  //   // $("#total").load(location.href+"#total");
-  // });
-
-  
+  });  
 });

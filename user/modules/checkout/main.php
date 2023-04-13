@@ -1,8 +1,11 @@
 <?php
-
+$_SESSION['auth']['id'] =3;
+if(!isset($_SESSION['auth']['id'])){
+    redirect("?mod=login&act=main");
+}
 
 $user_id = (int) $_SESSION['auth']['id'];
-$checkoutList = db_fetch_array("SELECT `book`.`book_name`,`book`.`book_price`,`book`.`book_id`, `cart`.`qty` FROM `cart`, `book` WHERE `cart`.`user_id` = $user_id AND `cart`.`book_id`=`book`.`book_id`;");
+$checkoutList = $_SESSION['cart'];
 $total = 0;
 foreach ($checkoutList as $item) {
     $total += $item['book_price'] * $item['qty'];
@@ -12,7 +15,7 @@ foreach ($checkoutList as $item) {
     <div class="container">
         <div class="breadcrumb-inner">
             <ul class="list-inline list-unstyled">
-                <li><a href="#">Home</a></li>
+                <li><a href="?mod=hom&act=main">Home</a></li>
                 <li class='active'>Checkout</li>
             </ul>
         </div><!-- /.breadcrumb-inner -->

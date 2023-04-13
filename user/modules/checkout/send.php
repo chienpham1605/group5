@@ -1,6 +1,7 @@
 <?php
+$user_id = (int) $_SESSION['auth']['id'];
 $fullname = $_POST['fullname'];
-$user = db_fetch_row("SELECT * FROM customer WHERE id = 3");
+$user = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM customer WHERE id =$user_id"));
 
 $email = $user['email'];
 
@@ -10,9 +11,8 @@ $note = $_POST['note'];
 $payment_method = $_POST['payment_method'];
 $order_status = 0;
 // $checkoutList = $_SESSION['cart']['buy'];
-$user_id = (int) $_SESSION['auth']['id'];
-$checkoutList = db_fetch_array("SELECT `book`.`book_name`,`book`.`book_price`,`book`.`book_id`, `cart`.`qty` FROM `cart`, `book` WHERE `cart`.`user_id` = $user_id AND `cart`.`book_id`=`book`.`book_id`;");
-// $cat_infor = $_SESSION['cart']['infor'];
+
+$checkoutList = $_SESSION['cart'];
 
 // show_array($_SESSION['cart']['buy']);
 //3. save new ordermaster
@@ -35,7 +35,7 @@ VALUES ('{$no}', '{$date}', '{$user_id}', '{$order_status}', '{$fullname}', '{$a
 mysqli_query($conn, $query);
 
 // $checkoutList = $_SESSION['cart']['buy'];
-show_array($checkoutList);
+// show_array($checkoutList);
 $total =0;
 foreach ($checkoutList as $item):
 $total += $item['book_price']*$item['qty'];
@@ -50,8 +50,6 @@ $total += $item['book_price']*$item['qty'];
     $query = "INSERT INTO `orderdetail` (`order_id`, `book_id`, `quantity`, `book_price`) VALUES ('{$no}', '{$book_id}', '{$qty}', '{$book_price}')";
     mysqli_query($conn, $query);
 endforeach;
-
-mysqli_query($conn, "DELETE FROM `cart` WHERE user_id = {$user_id}");
 
 $mailBody = "<body style='margin: 0 !important; padding: 0 !important; background-color: #eeeeee;' bgcolor='#eeeeee'>
 
@@ -396,7 +394,7 @@ $mailBody = "<body style='margin: 0 !important; padding: 0 !important; backgroun
 
 $mailSubject = "[Order Confirm] # $no - OnBookStore";
 sendmail($email, $mailSubject, $mailBody);
-
-redirect("?mod=checkout&act=success");
+unset($_SESSION['cart']);
+redirect("?mod=checkout&act=success&order_id=$no");
 
             

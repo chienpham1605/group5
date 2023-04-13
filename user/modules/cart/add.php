@@ -2,26 +2,38 @@
 session_start();
 ob_start();
 $conn = mysqli_connect('localhost', 'root', '', 'onbookstore_db');
-if (isset($_SESSION['auth'])) {
-    $user_id = (int) $_SESSION['auth']['id'];
-    $book_id = $_POST['book_id'];   
-    $qty = $_POST['qty'];
-        
-    $check_existing_cart = "SELECT * FROM `cart` WHERE `user_id` = $user_id AND `book_id` = $book_id";
-    $check_existing_cart_run = mysqli_query($conn, $check_existing_cart);
 
-    if (mysqli_num_rows($check_existing_cart_run) > 0) {
-        echo "existing";
-    } else {
-        $insert_query = "INSERT INTO `cart` (`id`, `user_id`, `book_id`, `qty`) VALUES (NULL, '$user_id', '$book_id', '$qty');";
-        $insert_query_run = mysqli_query($conn, $insert_query);
-        if ($insert_query_run) {
-                 echo 201;               
-       } else {
-            echo 501;
-        }
-    }
+$book_id = (int)$_POST['book_id'];
+$book_price = (int)$_POST['book_price'];
+$qty_input = (int)$_POST['qty_input'];
+
+$item= mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM book WHERE book_id='{$book_id}'"));
+
+if(isset($_SESSION['cart'])&&array_key_exists($book_id, $_SESSION['cart'])){
+    $_SESSION['cart'][$book_id]['qty'] +=$qty_input;
 } else {
-    echo 401;
+    $_SESSION['cart'][$book_id] = array(
+        'book_id' => $item['book_id'],
+        'book_name' => $item['book_name'],
+        'book_price' => $item['book_price'],
+        'qty'=> $qty_input,
+        'subtotal' => $item['book_price']*$qty_input
+    );
 }
+
+$total = 0;
+foreach( $_SESSION['cart'] as $item){
+    $total += $item['subtotal'];
+}
+
+$result = array(  
+    'book_name' => $item['book_name'],
+    'qty' => $qty_input,
+    'book_id' => $book_id,
+    'book_price' => $item['book_price'],
+    'subtotal' => $qty_input * $book_price,   
+    'total' => $total
+);
+echo json_encode($result);
+
 ?>
