@@ -1,8 +1,17 @@
 <?php
+<<<<<<< Updated upstream
 
 ?>
 <!DOCTYPE html>
 <html lang="en">
+=======
+if (isset($_POST['btn'])) {
+  $search = $_POST['search'];
+} else {
+  $search = false;
+}
+?>
+>>>>>>> Stashed changes
 
 <head>
   <!-- Meta -->
@@ -12,7 +21,7 @@
   <meta name="author" content="">
   <meta name="keywords" content="MediaCenter, Template, eCommerce">
   <meta name="robots" content="all">
-  <title>Marazzo premium HTML5 & CSS3 Template</title>
+  <title></title>
   <!-- Jquery -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
   <script src="public/assets/js/custom.js"></script>
@@ -55,15 +64,15 @@
           </div>
           <div class="col-lg-7 col-md-6 col-sm-8 col-xs-12 top-search-holder">
             <div class="search-area">
-              <form>
+              <form method="post">
                 <div class="control-group">
                   <ul class="categories-filter animate-dropdown">
                     <li class="dropdown"> <a class="dropdown-toggle" data-toggle="dropdown" href="category.html">Search
                         <b class="caret"></b></a>
                     </li>
                   </ul>
-                  <input class="search-field" placeholder="Enter keyword..." />
-                  <a class="search-button" href="#"></a>
+                  <input class="search-field" name="search" placeholder="Enter keyword..." />
+                  <button class="search-button" name="btn"> </button>
                 </div>
               </form>
             </div>

@@ -74,6 +74,9 @@
 <script src="public/assets/js/bootstrap-select.min.js"></script>
 <script src="public/assets/js/wow.min.js"></script>
 <script src="public/assets/js/scripts.js"></script>
+<script src="public/assets/js/ajaxLiveSearch.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
 </body>
 
 </html>
