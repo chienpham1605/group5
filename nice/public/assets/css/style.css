@@ -763,7 +763,7 @@ h6 {
 /* Filter dropdown */
 .dashboard .filter {
   position: absolute;
-  right: 0px;
+  right: 15px;
   top: 15px;
 }
 
