@@ -18,11 +18,18 @@ $cat_detail = mysqli_fetch_assoc($rs);
 
 //select book by cat_id
 // $list_book = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM `book` WHERE cat_id = '{$cat_id}' "));
-$list_book = db_fetch_array("SELECT * FROM `book` WHERE cat_id = '{$cat_id}' ");
+// $list_book = db_fetch_array("SELECT * FROM `book` WHERE cat_id = '{$cat_id}' ");
 // show_array($list_book);
-$query1 = "select * from boook where book_name like '%$search%' ";
-$rs1 = mysqli_query($conn, $query1);
+
 ?>
+<?php
+ if (isset($_GET['btn'])) {
+          $search = $_GET['search_data'];
+        } 
+        $query = "select * from book where book_name like '%".$search."%' ";
+        $rs = mysqli_query($conn, $query);
+        $row = mysqli_fetch_assoc($rs);
+        ?>
 <div class="breadcrumb">
   <div class="container">
     <div class="breadcrumb-inner">
@@ -430,9 +437,9 @@ $rs1 = mysqli_query($conn, $query1);
           <div id="myTabContent" class="tab-content category-list">
             <div class="tab-pane active " id="grid-container">
               <div class="category-product">
-                <div c lass="row">
+                <div class="row">
                   <?php
-                      while ($row = mysqli_fetch_array($rs1)):
+                      while ($row = mysqli_fetch_assoc($rs)):
                   ?>
                     
                  <div class="col-sm-6 col-md-4 col-lg-3">

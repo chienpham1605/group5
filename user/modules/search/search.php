@@ -2,8 +2,8 @@
         if (isset($_POST['btn'])) {
           $search = $_POST['search_data'];
         } 
-    $sql = "SELECT * from book where book_name like '%".$search."%'";
-   $result = mysqli_query($conn, $sql);
+    $query = "SELECT * from book where book_name like '%".$search."%'";
+   $result = mysqli_query($conn, $query);
    while ($item= mysqli_fetch_assoc($result)):
 ?>
    <div class="search-result-container ">
