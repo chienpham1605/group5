@@ -25,10 +25,11 @@ $cat_detail = mysqli_fetch_assoc($rs);
 <?php
  if (isset($_GET['btn'])) {
           $search = $_GET['search_data'];
+          $query = "select * from book where book_name like '%".$search."%' ";
+        }else{
+          $query = "select * from book ";
         } 
-        $query = "select * from book where book_name like '%".$search."%' ";
         $rs = mysqli_query($conn, $query);
-        $row = mysqli_fetch_assoc($rs);
         ?>
 <div class="breadcrumb">
   <div class="container">
