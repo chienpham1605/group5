@@ -29,6 +29,9 @@
   <!-- Template Main CSS File -->
   <link href="public/assets/css/style.css" rel="stylesheet">
 
+  <!-- jquery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
 </head>
 
 <body>

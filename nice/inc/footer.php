@@ -26,6 +26,7 @@
 
   <!-- Template Main JS File -->
   <script src="public/assets/js/main.js"></script>
+  <script src="public/assets/js/custom.js"></script>
 
 </body>
 
