@@ -1,16 +1,6 @@
-<?php
-<<<<<<< Updated upstream
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 =======
-if (isset($_POST['btn'])) {
-  $search = $_POST['search'];
-} else {
-  $search = false;
-}
-?>
 >>>>>>> Stashed changes
 
 <head>
@@ -64,15 +54,10 @@ if (isset($_POST['btn'])) {
           </div>
           <div class="col-lg-7 col-md-6 col-sm-8 col-xs-12 top-search-holder">
             <div class="search-area">
-              <form method="post">
+              <form action="search.php" method="get">
                 <div class="control-group">
-                  <ul class="categories-filter animate-dropdown">
-                    <li class="dropdown"> <a class="dropdown-toggle" data-toggle="dropdown" href="category.html">Search
-                        <b class="caret"></b></a>
-                    </li>
-                  </ul>
-                  <input class="search-field" name="search" placeholder="Enter keyword..." />
-                  <button class="search-button" name="btn"> </button>
+                  <input class="search-field" name="search_data" placeholder="Enter keyword..." />
+                  <button type="submit" class="search-button" name="btn"> </button>
                 </div>
               </form>
             </div>
@@ -118,7 +103,7 @@ if (isset($_POST['btn'])) {
                             X <span id="qty-book-id-<?= $item['book_id'] ?>"><?= $item['qty'] ?></span>
                           </div>
                         </div>
-                      </div>         
+                      </div>
                     </li>
 
                     <?php
