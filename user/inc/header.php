@@ -1,7 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-=======
->>>>>>> Stashed changes
 
 <head>
   <!-- Meta -->
@@ -54,10 +52,10 @@
           </div>
           <div class="col-lg-7 col-md-6 col-sm-8 col-xs-12 top-search-holder">
             <div class="search-area">
-              <form action="search.php" method="get">
-                <div class="control-group">
+              <form action="?mod=home&act=search" method="post">
+                <div class="control-group" action="search.php" method="post">
                   <input class="search-field" name="search_data" placeholder="Enter keyword..." />
-                  <button type="submit" class="search-button" name="btn"> </button>
+                  <button type="submit" class="search-button" name="btnSearch"> </button>
                 </div>
               </form>
             </div>

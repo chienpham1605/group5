@@ -1,9 +1,9 @@
 <?php
-if (isset($_GET['btn'])) {
-  $search = $_GET['search_data'];
-  $query = "select * from book where book_name like '%" . $search . "%' ";
+if (isset($_POST['btnSearch'])) {
+  $search = $_POST['search_data'];
+  $query = "select * from book where book_name like '%$search%' or book_author like '%$search%'";
 } else {
-  $query = "select * from book ";
+  echo "Please choose again";
 }
 $rs = mysqli_query($conn, $query);
 ?>
@@ -152,55 +152,34 @@ $rs = mysqli_query($conn, $query);
                 <h4 class="widget-title">Author</h4>
               </div>
               <div class="sidebar-widget-body">
+                <?php
+                $query = "select book_author from book";
+                $rs = mysqli_query($conn, $query);
+                if(mysqli_num_rows($rs) > 0):
+                  foreach($rs as $authorName):
+                    $checked = [];
+                    if(isset($_GET['author'])){
+                        $checked = $_GET['author'];
+                    }
+                ?>
                 <ul class="list">
-                  <li><a href="#"><input type="checkbox"> Adams Media</a></li>
-                  <li><a href="#"><input type="checkbox"> Bryan Burrough</a></li>
-                  <li><a href="#"><input type="checkbox"> Camilla Arnold</a></li>
-                  <li><a href="#"><input type="checkbox"> Eric Barker</a></li>
-                  <li><a href="#"><input type="checkbox"> John Helyar</a></li>
-                  <li><a href="#"><input type="checkbox"> Napoleon Hill</a></li>
-                </ul>
+                  <li><a href="#"><input name="author[]" value="<?= $authorName['book_id'];?>"type="checkbox"> Adams Media</a></li>
+                  <?php
+                    if(in_array($authorName['book_id'],$checked)){ echo "checked"; };
+                ?>
+                  <?= $authorName['book_id']?>
               </div>
+              <?php
+              endforeach;
+            else:
+                echo 'no records';
+            endif;
+            ?>
               <!-- /.sidebar-widget-body -->
             </div>
 
             <!-- /.sidebar-widget -->
             <!-- /.Testimonials -->
-            <div class="sidebar-widget  outer-top-vs ">
-              <h3>You also maybe like</h3>
-              <div id="advertisement" class="advertisement">
-                <div class="item">
-                  <div class="avatar"><img src="public/assets/images/testimonials/member1.png" alt="Image"></div>
-                  <div class="testimonials"><em>"</em> Vtae sodales aliq uam morbi non sem lacus port mollis. Nunc
-                    condime tum metus eud molest sed consectetuer. Sed quia non numquam eius modi tempora incidunt ut
-                    labore et dolore.<em>"</em></div>
-                  <div class="clients_author">English Grammar in Use Book<span>Raymond Murphy</span> </div>
-                  <!-- /.container-fluid -->
-                </div>
-                <!-- /.item -->
-
-                <div class="item">
-                  <div class="avatar"><img src="public/assets/images/testimonials/member3.png" alt="Image"></div>
-                  <div class="testimonials"><em>"</em>Vtae sodales aliq uam morbi non sem lacus port mollis. Nunc
-                    condime tum metus eud molest sed consectetuer. Sed quia non numquam eius modi tempora incidunt ut
-                    labore et dolore.<em>"</em></div>
-                  <div class="clients_author">Atomic Habits <span>Random House Business</span> </div>
-                </div>
-                <!-- /.item -->
-
-                <div class="item">
-                  <div class="avatar"><img src="public/assets/images/testimonials/member2.png" alt="Image"></div>
-                  <div class="testimonials"><em>"</em> Vtae sodales aliq uam morbi non sem lacus port mollis. Nunc
-                    condime tum metus eud molest sed consectetuer. Sed quia non numquam eius modi tempora incidunt ut
-                    labore et dolore.<em>"</em></div>
-                  <div class="clients_author">Thinking, Fast and Slow <span>Daniel Kahneman</span> </div>
-                  <!-- /.container-fluid -->
-                </div>
-                <!-- /.item -->
-
-              </div>
-              <!-- /.owl-carousel -->
-            </div>
 
             <!-- ============================================== Testimonials: END ============================================== -->
 
@@ -320,7 +299,6 @@ $rs = mysqli_query($conn, $query);
                 <?php
                 while ($row = mysqli_fetch_assoc($rs)):
                   ?>
-
                   <div class="col-sm-6 col-md-4 col-lg-3">
                     <div class="item">
                       <div class="products">
