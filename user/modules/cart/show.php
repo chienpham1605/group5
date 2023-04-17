@@ -1,5 +1,8 @@
 <?php
-if(isset($_SESSION['auth'])){
+include_once("../../db/DBConnect.php");
+include_once("../../db/database.php");
+include("../../inc/header.php");
+
 	$list_cart = array();
 	if (isset($_SESSION['cart'])) {		
 		$list_cart = $_SESSION['cart'];
@@ -9,11 +12,6 @@ if(isset($_SESSION['auth'])){
 		}
 		$count_item = count($_SESSION['cart']);
 	}
-}
-else{
-	redirect("?mod=login&act=main");
-}
-
 
 ?>
 
@@ -238,38 +236,6 @@ else{
 
 <!-- ============================================================= FOOTER ============================================================= -->
 
-<!-- ============================================== INFO BOXES ============================================== -->
-<div class="row our-features-box">
-	<div class="container">
-		<ul>
-			<li>
-				<div class="feature-box">
-					<div class="icon-truck"></div>
-					<div class="content-blocks">We ship worldwide</div>
-				</div>
-			</li>
-			<li>
-				<div class="feature-box">
-					<div class="icon-support"></div>
-					<div class="content-blocks">call
-						+1 800 789 0000</div>
-				</div>
-			</li>
-			<li>
-				<div class="feature-box">
-					<div class="icon-money"></div>
-					<div class="content-blocks">Money Back Guarantee</div>
-				</div>
-			</li>
-			<li>
-				<div class="feature-box">
-					<div class="icon-return"></div>
-					<div class="content">7 days return</div>
-				</div>
-			</li>
-
-		</ul>
-	</div>
-</div>
-<!-- /.info-boxes -->
-<!-- ============================================== INFO BOXES : END ============================================== -->
+<?php 
+include("../../inc/footer.php");
+?>

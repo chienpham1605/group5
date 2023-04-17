@@ -393,7 +393,7 @@ $mailBody = "<body style='margin: 0 !important; padding: 0 !important; backgroun
 
 
 $mailSubject = "[Order Confirm] # $no - OnBookStore";
-sendmail($email, $mailSubject, $mailBody);
+// sendmail($email, $mailSubject, $mailBody);
 unset($_SESSION['cart']);
 redirect("?mod=checkout&act=success&order_id=$no");
 

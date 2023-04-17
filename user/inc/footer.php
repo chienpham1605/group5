@@ -1,3 +1,38 @@
+        <!-- ============================================== INFO BOXES ============================================== -->
+        <div class="row our-features-box">
+     <div class="container">
+      <ul>
+        <li>
+          <div class="feature-box">
+            <div class="icon-truck"></div>
+            <div class="content-blocks">We ship worldwide</div>
+          </div>
+        </li>
+        <li>
+          <div class="feature-box">
+            <div class="icon-support"></div>
+            <div class="content-blocks">call 
+              +1 800 789 0000</div>
+          </div>
+        </li>
+        <li>
+          <div class="feature-box">
+            <div class="icon-money"></div>
+            <div class="content-blocks">Money Back Guarantee</div>
+          </div>
+        </li>
+        <li>
+          <div class="feature-box">
+            <div class="icon-return"></div>
+            <div class="content">30 days return</div>
+          </div>
+        </li>
+        
+      </ul>
+    </div>
+  </div>
+        <!-- /.info-boxes --> 
+        <!-- ============================================== INFO BOXES : END ============================================== --> 
 <!-- ============================================================= FOOTER ============================================================= -->
 <footer id="footer" class="footer color-bg">
   <div class="footer-bottom">
@@ -61,22 +96,26 @@
 <!-- ============================================================= FOOTER : END============================================================= -->
 
 
-<!-- JavaScripts placed at the end of the document so the pages load faster -->
-<script src="public/assets/js/jquery-1.11.1.min.js"></script>
-<script src="public/assets/js/bootstrap.min.js"></script>
-<script src="public/assets/js/bootstrap-hover-dropdown.min.js"></script>
-<script src="public/assets/js/owl.carousel.min.js"></script>
-<script src="public/assets/js/echo.min.js"></script>
-<script src="public/assets/js/jquery.easing-1.3.min.js"></script>
-<script src="public/assets/js/bootstrap-slider.min.js"></script>
-<script src="public/assets/js/jquery.rateit.min.js"></script>
-<script src="public/assets/js/lightbox.min.js"></script>
-<script src="public/assets/js/bootstrap-select.min.js"></script>
-<script src="public/assets/js/wow.min.js"></script>
-<script src="public/assets/js/scripts.js"></script>
-<script src="public/assets/js/ajaxLiveSearch.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<!-- JavaScripts placed at the end of the document so the pages load faster --> 
+<script src="../../public/assets/js/jquery-1.11.1.min.js"></script> 
+<script src="../../public/assets/js/bootstrap.min.js"></script> 
+<script src="../../public/assets/js/bootstrap-hover-dropdown.min.js"></script> 
+<script src="../../public/assets/js/owl.carousel.min.js"></script> 
+<script src="../../public/assets/js/echo.min.js"></script> 
+<script src="../../public/assets/js/jquery.easing-1.3.min.js"></script> 
+<script src="../../public/assets/js/bootstrap-slider.min.js"></script> 
+<script src="../../public/assets/js/jquery.rateit.min.js"></script> 
+<script src="../../public/assets/js/lightbox.min.js"></script> 
+<script src="../../public/assets/js/bootstrap-select.min.js"></script> 
+<script src="../../public/assets/js/wow.min.js"></script> 
+<script src="../../public/assets/js/scripts.js"></script>
 
+
+
+
+<!-- Khu vực khai báo file js viết thêm -->
+<script src="../../public/assets/js/custom.js"></script>
+<!-- <script src="../../public/assets/js/ajaxLiveSearch.js"></script> -->
 </body>
 
 </html>

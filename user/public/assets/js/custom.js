@@ -26,7 +26,7 @@ $(document).ready(function () {
     var book_price = $(this).attr("data-price");   
     location.reload(true);
     $.ajax({
-      url: "modules/cart/add.php",
+      url: "../cart/add.php",
       method: "POST",
       data: { qty_input: qty_input, book_id: book_id, book_price:book_price  },
       success: function (data) {       

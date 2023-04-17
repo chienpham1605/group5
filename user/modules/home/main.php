@@ -1,10 +1,11 @@
 <?php
+include("../../inc/header.php");
+include_once("../../db/DBConnect.php");
 $query = "SELECT * FROM `categories`";
 $rs = mysqli_query($conn, $query);
 $count = mysqli_num_rows($rs);
 $list_cat = mysqli_fetch_assoc($rs);
-// $list_cat = db_fetch_array("SELECT * FROM `categories`");
-// show_array($list_cat);
+
 ?>
 <div class="body-content outer-top-vs" id="top-banner-and-menu">
   <div class="container">
@@ -26,13 +27,10 @@ $list_cat = mysqli_fetch_assoc($rs);
                 while ($field = mysqli_fetch_assoc($rs)):
                   ?>
                   <li class="dropdown menu-item"> 
-                    <a href="?mod=product&act=main&cat_id=<?= $field['cat_id'] ?>"><?= $field['cat_name'] ?></a>
+                    <a href="../product/main.php?cat_id=<?= $field['cat_id'] ?>"><?= $field['cat_name'] ?></a>
                     <ul class="dropdown-menu mega-menu">
                       <li class="yamm-content">
-                        <div class="row">                   
-        
-                          <div> <a href="?mod=product&act=main&cat_id=<?= $field['cat_id'] ?>"></a> </div>
-                        </div>            
+                                   
                       </li>                 
                     </ul>
                   </li>
@@ -60,7 +58,7 @@ $list_cat = mysqli_fetch_assoc($rs);
         
         <div id="hero">
           <div id="owl-main" class="owl-carousel owl-inner-nav owl-ui-sm">
-            <div class="item" style="background-image: url(public/assets/images/sliders/01.jpg);">
+            <div class="item" style="background-image: url(../../public/assets/images/sliders/01.jpg);">
               <div class="container-fluid">
                 <div class="caption bg-color vertical-center text-left">
                   <div class="slider-header fadeInDown-1">In 2023</div>
@@ -74,7 +72,7 @@ $list_cat = mysqli_fetch_assoc($rs);
             </div>
             <!-- /.item -->
             
-            <div class="item" style="background-image: url(public/assets/images/sliders/02.jpg);">
+            <div class="item" style="background-image: url(../../public/assets/images/sliders/02.jpg);">
               <div class="container-fluid">
                 <div class="caption bg-color vertical-center text-left">
                   <div class="slider-header fadeInDown-1">This Summer</div>
@@ -117,8 +115,8 @@ $list_cat = mysqli_fetch_assoc($rs);
                         <div class="product-image">
                           <div class="image"> 
                           <a href="detail.html">
-                             <img src="public/assets/images/products/p1.jpg" alt=""> 
-                              <img src="public/assets/images/products/p1_hover.jpg" alt="" class="hover-image">
+                             <img src="../../public/assets/images/products/p1.jpg" alt=""> 
+                              <img src="../../public/assets/images/products/p1_hover.jpg" alt="" class="hover-image">
                           </a> 
                        </div>
                           <!-- /.image -->
@@ -164,8 +162,8 @@ $list_cat = mysqli_fetch_assoc($rs);
                         <div class="product-image">
                           <div class="image"> 
                           <a href="detail.html">
-                             <img src="public/assets/images/products/p4.jpg" alt=""> 
-                              <img src="public/assets/images/products/p4_hover.jpg" alt="" class="hover-image">
+                             <img src="../../public/assets/images/products/p4.jpg" alt=""> 
+                              <img src="../../public/assets/images/products/p4_hover.jpg" alt="" class="hover-image">
                           </a>
                            </div>
                           <!-- /.image -->
@@ -211,8 +209,8 @@ $list_cat = mysqli_fetch_assoc($rs);
                         <div class="product-image">
                           <div class="image"> 
                            <a href="detail.html">
-                             <img src="public/assets/images/products/p3.jpg" alt=""> 
-                              <img src="public/assets/images/products/p3_hover.jpg" alt="" class="hover-image">
+                             <img src="../../public/assets/images/products/p3.jpg" alt=""> 
+                              <img src="../../public/assets/images/products/p3_hover.jpg" alt="" class="hover-image">
                           </a>
                            </div>
                           <!-- /.image -->
@@ -258,8 +256,8 @@ $list_cat = mysqli_fetch_assoc($rs);
                         <div class="product-image">
                           <div class="image"> 
                            <a href="detail.html">
-                             <img src="public/assets/images/products/p2.jpg" alt=""> 
-                              <img src="public/assets/images/products/p2_hover.jpg" alt="" class="hover-image">
+                             <img src="../../public/assets/images/products/p2.jpg" alt=""> 
+                              <img src="../../public/assets/images/products/p2_hover.jpg" alt="" class="hover-image">
                           </a> 
                           </div>
                           <!-- /.image -->
@@ -305,8 +303,8 @@ $list_cat = mysqli_fetch_assoc($rs);
                         <div class="product-image">
                           <div class="image"> 
                            <a href="detail.html">
-                             <img src="public/assets/images/products/p6.jpg" alt=""> 
-                              <img src="public/assets/images/products/p6_hover.jpg" alt="" class="hover-image">
+                             <img src="../../public/assets/images/products/p6.jpg" alt=""> 
+                              <img src="../../public/assets/images/products/p6_hover.jpg" alt="" class="hover-image">
                           </a> 
                           </div>
                           <!-- /.image -->
@@ -352,8 +350,8 @@ $list_cat = mysqli_fetch_assoc($rs);
                         <div class="product-image">
                           <div class="image"> 
                            <a href="detail.html">
-                             <img src="public/assets/images/products/p5.jpg" alt=""> 
-                              <img src="public/assets/images/products/p5_hover.jpg" alt="" class="hover-image">
+                             <img src="../../public/assets/images/products/p5.jpg" alt=""> 
+                              <img src="../../public/assets/images/products/p5_hover.jpg" alt="" class="hover-image">
                           </a>
                           </div>
                           <!-- /.image -->
@@ -408,8 +406,8 @@ $list_cat = mysqli_fetch_assoc($rs);
                         <div class="product-image">
                           <div class="image"> 
                           <a href="detail.html">
-                             <img src="public/assets/images/products/p7.jpg" alt=""> 
-                              <img src="public/assets/images/products/p7_hover.jpg" alt="" class="hover-image">
+                             <img src="../../public/assets/images/products/p7.jpg" alt=""> 
+                              <img src="../../public/assets/images/products/p7_hover.jpg" alt="" class="hover-image">
                           </a>
                           
                           </div>
@@ -456,8 +454,8 @@ $list_cat = mysqli_fetch_assoc($rs);
                         <div class="product-image">
                           <div class="image"> 
                           <a href="detail.html">
-                             <img src="public/assets/images/products/p8.jpg" alt=""> 
-                              <img src="public/assets/images/products/p8_hover.jpg" alt="" class="hover-image">
+                             <img src="../../public/assets/images/products/p8.jpg" alt=""> 
+                              <img src="../../public/assets/images/products/p8_hover.jpg" alt="" class="hover-image">
                           </a>
                           
                           </div>
@@ -504,8 +502,8 @@ $list_cat = mysqli_fetch_assoc($rs);
                         <div class="product-image">
                           <div class="image"> 
                           <a href="detail.html">
-                             <img src="public/assets/images/products/p9.jpg" alt=""> 
-                              <img src="public/assets/images/products/p9_hover.jpg" alt="" class="hover-image">
+                             <img src="../../public/assets/images/products/p9.jpg" alt=""> 
+                              <img src="../../public/assets/images/products/p9_hover.jpg" alt="" class="hover-image">
                           </a>
                           
                           </div>
@@ -552,8 +550,8 @@ $list_cat = mysqli_fetch_assoc($rs);
                         <div class="product-image">
                           <div class="image"> 
                           <a href="detail.html">
-                             <img src="public/assets/images/products/p10.jpg" alt=""> 
-                              <img src="public/assets/images/products/p10_hover.jpg" alt="" class="hover-image">
+                             <img src="../../public/assets/images/products/p10.jpg" alt=""> 
+                              <img src="../../public/assets/images/products/p10_hover.jpg" alt="" class="hover-image">
                           </a>
                           
                           </div>
@@ -600,8 +598,8 @@ $list_cat = mysqli_fetch_assoc($rs);
                         <div class="product-image">
                           <div class="image"> 
                           <a href="detail.html">
-                             <img src="public/assets/images/products/p11.jpg" alt=""> 
-                              <img src="public/assets/images/products/p11_hover.jpg" alt="" class="hover-image">
+                             <img src="../../public/assets/images/products/p11.jpg" alt=""> 
+                              <img src="../../public/assets/images/products/p11_hover.jpg" alt="" class="hover-image">
                           </a>
                           
                           </div>
@@ -648,8 +646,8 @@ $list_cat = mysqli_fetch_assoc($rs);
                         <div class="product-image">
                           <div class="image"> 
                           <a href="detail.html">
-                             <img src="public/assets/images/products/p12.jpg" alt=""> 
-                              <img src="public/assets/images/products/p12_hover.jpg" alt="" class="hover-image">
+                             <img src="../../public/assets/images/products/p12.jpg" alt=""> 
+                              <img src="../../public/assets/images/products/p12_hover.jpg" alt="" class="hover-image">
                           </a>
                           
                           </div>
@@ -705,8 +703,8 @@ $list_cat = mysqli_fetch_assoc($rs);
                         <div class="product-image">
                           <div class="image"> 
                           <a href="detail.html">
-                             <img src="public/assets/images/products/p15.jpg" alt=""> 
-                              <img src="public/assets/images/products/p15_hover.jpg" alt="" class="hover-image">
+                             <img src="../../public/assets/images/products/p15.jpg" alt=""> 
+                              <img src="../../public/assets/images/products/p15_hover.jpg" alt="" class="hover-image">
                           </a>
                           
                           </div>
@@ -753,8 +751,8 @@ $list_cat = mysqli_fetch_assoc($rs);
                         <div class="product-image">
                           <div class="image"> 
                           <a href="detail.html">
-                             <img src="public/assets/images/products/p2.jpg" alt=""> 
-                              <img src="public/assets/images/products/p2_hover.jpg" alt="" class="hover-image">
+                             <img src="../../public/assets/images/products/p2.jpg" alt=""> 
+                              <img src="../../public/assets/images/products/p2_hover.jpg" alt="" class="hover-image">
                           </a>
                           
                           </div>
@@ -801,8 +799,8 @@ $list_cat = mysqli_fetch_assoc($rs);
                         <div class="product-image">
                           <div class="image"> 
                           <a href="detail.html">
-                             <img src="public/assets/images/products/p8.jpg" alt=""> 
-                              <img src="public/assets/images/products/p8_hover.jpg" alt="" class="hover-image">
+                             <img src="../../public/assets/images/products/p8.jpg" alt=""> 
+                              <img src="../../public/assets/images/products/p8_hover.jpg" alt="" class="hover-image">
                           </a>
                           
                           </div>
@@ -848,8 +846,8 @@ $list_cat = mysqli_fetch_assoc($rs);
                       <div class="product">
                         <div class="image"> 
                           <a href="detail.html">
-                             <img src="public/assets/images/products/p14.jpg" alt=""> 
-                              <img src="public/assets/images/products/p14_hover.jpg" alt="" class="hover-image">
+                             <img src="../../public/assets/images/products/p14.jpg" alt=""> 
+                              <img src="../../public/assets/images/products/p14_hover.jpg" alt="" class="hover-image">
                           </a>
                           
                           </div>
@@ -892,8 +890,8 @@ $list_cat = mysqli_fetch_assoc($rs);
                         <div class="product-image">
                           <div class="image"> 
                           <a href="detail.html">
-                             <img src="public/assets/images/products/p12.jpg" alt=""> 
-                              <img src="public/assets/images/products/p12_hover.jpg" alt="" class="hover-image">
+                             <img src="../../public/assets/images/products/p12.jpg" alt=""> 
+                              <img src="../../public/assets/images/products/p12_hover.jpg" alt="" class="hover-image">
                           </a>
                           
                           </div>
@@ -940,8 +938,8 @@ $list_cat = mysqli_fetch_assoc($rs);
                         <div class="product-image">
                           <div class="image"> 
                           <a href="detail.html">
-                             <img src="public/assets/images/products/p9.jpg" alt=""> 
-                              <img src="public/assets/images/products/p9_hover.jpg" alt="" class="hover-image">
+                             <img src="../../public/assets/images/products/p9.jpg" alt=""> 
+                              <img src="../../public/assets/images/products/p9_hover.jpg" alt="" class="hover-image">
                           </a>
                           
                           </div>
@@ -997,8 +995,8 @@ $list_cat = mysqli_fetch_assoc($rs);
                         <div class="product-image">
                           <div class="image"> 
                           <a href="detail.html">
-                             <img src="public/assets/images/products/p13.jpg" alt=""> 
-                              <img src="public/assets/images/products/p13_hover.jpg" alt="" class="hover-image">
+                             <img src="../../public/assets/images/products/p13.jpg" alt=""> 
+                              <img src="../../public/assets/images/products/p13_hover.jpg" alt="" class="hover-image">
                           </a>
                           
                           </div>
@@ -1045,8 +1043,8 @@ $list_cat = mysqli_fetch_assoc($rs);
                         <div class="product-image">
                           <div class="image"> 
                           <a href="detail.html">
-                             <img src="public/assets/images/products/p11.jpg" alt=""> 
-                              <img src="public/assets/images/products/p11_hover.jpg" alt="" class="hover-image">
+                             <img src="../../public/assets/images/products/p11.jpg" alt=""> 
+                              <img src="../../public/assets/images/products/p11_hover.jpg" alt="" class="hover-image">
                           </a>
                           
                           </div>
@@ -1093,8 +1091,8 @@ $list_cat = mysqli_fetch_assoc($rs);
                         <div class="product-image">
                           <div class="image"> 
                           <a href="detail.html">
-                             <img src="public/assets/images/products/p4.jpg" alt=""> 
-                              <img src="public/assets/images/products/p4_hover.jpg" alt="" class="hover-image">
+                             <img src="../../public/assets/images/products/p4.jpg" alt=""> 
+                              <img src="../../public/assets/images/products/p4_hover.jpg" alt="" class="hover-image">
                           </a>
                           
                           </div>
@@ -1141,8 +1139,8 @@ $list_cat = mysqli_fetch_assoc($rs);
                         <div class="product-image">
                           <div class="image"> 
                           <a href="detail.html">
-                             <img src="public/assets/images/products/p1.jpg" alt=""> 
-                              <img src="public/assets/images/products/p1_hover.jpg" alt="" class="hover-image">
+                             <img src="../../public/assets/images/products/p1.jpg" alt=""> 
+                              <img src="../../public/assets/images/products/p1_hover.jpg" alt="" class="hover-image">
                           </a>
                           
                           </div>
@@ -1189,8 +1187,8 @@ $list_cat = mysqli_fetch_assoc($rs);
                         <div class="product-image">
                           <div class="image"> 
                           <a href="detail.html">
-                             <img src="public/assets/images/products/p10.jpg" alt=""> 
-                              <img src="public/assets/images/products/p10_hover.jpg" alt="" class="hover-image">
+                             <img src="../../public/assets/images/products/p10.jpg" alt=""> 
+                              <img src="../../public/assets/images/products/p10_hover.jpg" alt="" class="hover-image">
                           </a>
                           
                           </div>
@@ -1237,8 +1235,8 @@ $list_cat = mysqli_fetch_assoc($rs);
                         <div class="product-image">
                           <div class="image"> 
                           <a href="detail.html">
-                             <img src="public/assets/images/products/p6.jpg" alt=""> 
-                              <img src="public/assets/images/products/p6_hover.jpg" alt="" class="hover-image">
+                             <img src="../../public/assets/images/products/p6.jpg" alt=""> 
+                              <img src="../../public/assets/images/products/p6_hover.jpg" alt="" class="hover-image">
                           </a>
                           
                           </div>
@@ -1302,8 +1300,8 @@ $list_cat = mysqli_fetch_assoc($rs);
                   <div class="product-image">
                     <div class="image"> 
                           <a href="detail.html">
-                             <img src="public/assets/images/products/p10.jpg" alt=""> 
-                              <img src="public/assets/images/products/p10_hover.jpg" alt="" class="hover-image">
+                             <img src="../../public/assets/images/products/p10.jpg" alt=""> 
+                              <img src="../../public/assets/images/products/p10_hover.jpg" alt="" class="hover-image">
                           </a>
                           
                           </div>
@@ -1350,8 +1348,8 @@ $list_cat = mysqli_fetch_assoc($rs);
                   <div class="product-image">
                     <div class="image"> 
                           <a href="detail.html">
-                             <img src="public/assets/images/products/p2.jpg" alt=""> 
-                              <img src="public/assets/images/products/p2_hover.jpg" alt="" class="hover-image">
+                             <img src="../../public/assets/images/products/p2.jpg" alt=""> 
+                              <img src="../../public/assets/images/products/p2_hover.jpg" alt="" class="hover-image">
                           </a>
                           
                           </div>
@@ -1398,8 +1396,8 @@ $list_cat = mysqli_fetch_assoc($rs);
                   <div class="product-image">
                     <div class="image"> 
                           <a href="detail.html">
-                             <img src="public/assets/images/products/p3.jpg" alt=""> 
-                              <img src="public/assets/images/products/p3_hover.jpg" alt="" class="hover-image">
+                             <img src="../../public/assets/images/products/p3.jpg" alt=""> 
+                              <img src="../../public/assets/images/products/p3_hover.jpg" alt="" class="hover-image">
                           </a>
                           
                           </div>
@@ -1446,8 +1444,8 @@ $list_cat = mysqli_fetch_assoc($rs);
                   <div class="product-image">
                     <div class="image"> 
                           <a href="detail.html">
-                             <img src="public/assets/images/products/p1.jpg" alt=""> 
-                              <img src="public/assets/images/products/p1_hover.jpg" alt="" class="hover-image">
+                             <img src="../../public/assets/images/products/p1.jpg" alt=""> 
+                              <img src="../../public/assets/images/products/p1_hover.jpg" alt="" class="hover-image">
                           </a>
                           
                           </div>
@@ -1494,8 +1492,8 @@ $list_cat = mysqli_fetch_assoc($rs);
                   <div class="product-image">
                     <div class="image"> 
                           <a href="detail.html">
-                             <img src="public/assets/images/products/p7.jpg" alt=""> 
-                              <img src="public/assets/images/products/p7_hover.jpg" alt="" class="hover-image">
+                             <img src="../../public/assets/images/products/p7.jpg" alt=""> 
+                              <img src="../../public/assets/images/products/p7_hover.jpg" alt="" class="hover-image">
                           </a>
                           
                           </div>
@@ -1542,8 +1540,8 @@ $list_cat = mysqli_fetch_assoc($rs);
                   <div class="product-image">
                     <div class="image"> 
                           <a href="detail.html">
-                             <img src="public/assets/images/products/p9.jpg" alt=""> 
-                              <img src="public/assets/images/products/p9_hover.jpg" alt="" class="hover-image">
+                             <img src="../../public/assets/images/products/p9.jpg" alt=""> 
+                              <img src="../../public/assets/images/products/p9_hover.jpg" alt="" class="hover-image">
                           </a>
                           
                           </div>
@@ -1593,86 +1591,10 @@ $list_cat = mysqli_fetch_assoc($rs);
       <!-- /.homebanner-holder --> 
       <!-- ============================================== CONTENT : END ============================================== --> 
     </div>
-    <!-- /.row --> 
-    <!-- ============================================== BRANDS CAROUSEL ============================================== -->
-    <div id="brands-carousel" class="logo-slider">
-      <div class="logo-slider-inner">
-        <div id="brand-slider" class="owl-carousel brand-slider custom-carousel owl-theme">
-          <div class="item m-t-15"> <a href="#" class="image"> <img data-echo="public/assets/images/brands/brand1.png" src="public/assets/images/blank.gif" alt=""> </a> </div>
-          <!--/.item-->
-          
-          <div class="item m-t-10"> <a href="#" class="image"> <img data-echo="public/assets/images/brands/brand2.png" src="public/assets/images/blank.gif" alt=""> </a> </div>
-          <!--/.item-->
-          
-          <div class="item"> <a href="#" class="image"> <img data-echo="public/assets/images/brands/brand3.png" src="public/assets/images/blank.gif" alt=""> </a> </div>
-          <!--/.item-->
-          
-          <div class="item"> <a href="#" class="image"> <img data-echo="public/assets/images/brands/brand4.png" src="public/assets/images/blank.gif" alt=""> </a> </div>
-          <!--/.item-->
-          
-          <div class="item"> <a href="#" class="image"> <img data-echo="public/assets/images/brands/brand5.png" src="public/assets/images/blank.gif" alt=""> </a> </div>
-          <!--/.item-->
-          
-          <div class="item"> <a href="#" class="image"> <img data-echo="public/assets/images/brands/brand6.png" src="public/assets/images/blank.gif" alt=""> </a> </div>
-          <!--/.item-->
-          
-          <div class="item"> <a href="#" class="image"> <img data-echo="public/assets/images/brands/brand2.png" src="public/assets/images/blank.gif" alt=""> </a> </div>
-          <!--/.item-->
-          
-          <div class="item"> <a href="#" class="image"> <img data-echo="public/assets/images/brands/brand4.png" src="public/assets/images/blank.gif" alt=""> </a> </div>
-          <!--/.item-->
-          
-          <div class="item"> <a href="#" class="image"> <img data-echo="public/assets/images/brands/brand1.png" src="public/assets/images/blank.gif" alt=""> </a> </div>
-          <!--/.item-->
-          
-          <div class="item"> <a href="#" class="image"> <img data-echo="public/assets/images/brands/brand5.png" src="public/assets/images/blank.gif" alt=""> </a> </div>
-          <!--/.item--> 
-        </div>
-        <!-- /.owl-carousel #logo-slider --> 
-      </div>
-      <!-- /.logo-slider-inner --> 
-      
-    </div>
-    <!-- /.logo-slider --> 
-    <!-- ============================================== BRANDS CAROUSEL : END ============================================== --> 
   </div>
   <!-- /.container --> 
 </div>
-<!-- /#top-banner-and-menu --> 
-
-        <!-- ============================================== INFO BOXES ============================================== -->
-        <div class="row our-features-box">
-     <div class="container">
-      <ul>
-        <li>
-          <div class="feature-box">
-            <div class="icon-truck"></div>
-            <div class="content-blocks">We ship worldwide</div>
-          </div>
-        </li>
-        <li>
-          <div class="feature-box">
-            <div class="icon-support"></div>
-            <div class="content-blocks">call 
-              +1 800 789 0000</div>
-          </div>
-        </li>
-        <li>
-          <div class="feature-box">
-            <div class="icon-money"></div>
-            <div class="content-blocks">Money Back Guarantee</div>
-          </div>
-        </li>
-        <li>
-          <div class="feature-box">
-            <div class="icon-return"></div>
-            <div class="content">7 days return</div>
-          </div>
-        </li>
-        
-      </ul>
-    </div>
-  </div>
-        <!-- /.info-boxes --> 
-        <!-- ============================================== INFO BOXES : END ============================================== --> 
-
+ 
+<?php 
+include("../../inc/footer.php");
+?>

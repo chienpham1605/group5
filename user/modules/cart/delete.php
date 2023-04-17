@@ -10,4 +10,4 @@
 
         }
    
-        redirect("?mod=cart&act=show");
+        header("Location: show.php");
