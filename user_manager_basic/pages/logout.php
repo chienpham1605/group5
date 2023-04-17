@@ -5,4 +5,4 @@ unset ($_SESSION['is_login']);
 unset ($_SESSION['user_login']);
 
 
-redirect('login.php');
+redirect('register.php');

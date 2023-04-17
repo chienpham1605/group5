@@ -66,11 +66,16 @@ function login() {
                  and pwd ='$password' ";
         global $conn;
         $rs = mysqli_query($conn, $sql);
+       
         if ($rs->num_rows > 0) {
-            $num = mysqli_num_rows($rs);
+            
+            $num = mysqli_fetch_assoc($rs);
+// var_dump($num);die();
+
             $_SESSION['is_login'] = true;
-            $_SESSION['user_login'] = $username;
-//            var_dump('here');die();
+            $_SESSION['user_login'] = $num;
+            
+          $user_login = $_SESSION['num'];
             header('Location:index.php');
         } else {
             $error['common'] = "Login fail!";

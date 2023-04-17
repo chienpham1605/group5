@@ -8,6 +8,8 @@ get_header();
         </div> 
         <?php
 show_array($_SESSION);
+        echo $_SESSION['name'];
+
         ?>
 <?php
 get_footer();

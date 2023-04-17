@@ -35,7 +35,18 @@ if (isset($_POST['btn-login'])) {
         <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
     </head>
     <body>
-        <div id="wp-form-login" class="col-md-6 col-sm-6 sign-in">
+        <?php
+        require './lib/template.php';
+        get_header();
+        ?>
+          <div class="body-content">
+            <div class="container">
+                <div class="sign-in-page">
+                    <div class="row">
+        
+        <div class="col-md-6 col-sm-6 sign-in">
+            
+            <div id="wp-form-login" class=" sign-in">
             <h1 class="title_form_login">Login</h1>
             <form id="form-login" action="" method="POST" 
                   class="register-form outer-top-xs" role="form">
@@ -74,10 +85,14 @@ if (isset($_POST['btn-login'])) {
                     <?php
                 }
                 ?>
-            </form>
-            <a href="" id ="lost-pass" class="forgot-password pull-right">Forget Password?</a>
+<!--            </form>
+            <a href="" id ="lost-pass" class="forgot-password pull-right">Forget Password?</a>-->
         </div>
-
+        </div>
+        </div><!-- create a new account --></div><!-- /.row -->
+</div><!-- /.sign-in-->
+</div><!-- /.body-content -->
+        
 
         <!-- JavaScripts placed at the end of the document so the pages load faster --> 
         <script src="public/js/jquery-1.11.1.min.js"></script> 
@@ -92,6 +107,11 @@ if (isset($_POST['btn-login'])) {
         <script src="public/js/bootstrap-select.min.js"></script> 
         <script src="public/js/wow.min.js"></script> 
         <script src="public/js/scripts.js"></script>
+        
+        <?php
+get_footer();
+?>
     </body>
 </html>
+
 

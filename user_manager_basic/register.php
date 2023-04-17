@@ -43,6 +43,11 @@ if (isset($_POST['btn-login'])) {
     get_header();
     ?>
     <body class="cnt-home">
+        
+        <div class="body-content">
+            <div class="container">
+                <div class="sign-in-page">
+                    <div class="row">
 
         <!-- Sign-in -->			
         <div class="col-md-6 col-sm-6 sign-in">
@@ -133,8 +138,11 @@ if (isset($_POST['btn-login'])) {
                         <a class="font-weight-bold small" href="index.php">Return your page!</a>
                     </div>
             </div>
+          
         </form>
-
+            </div><!-- create a new account --></div><!-- /.row -->
+</div><!-- /.sign-in-->
+</div><!-- /.body-content -->
         <!-- JavaScripts placed at the end of the document so the pages load faster --> 
         <script src="public/js/jquery-1.11.1.min.js"></script> 
         <script src="public/js/bootstrap.min.js"></script> 
@@ -150,10 +158,11 @@ if (isset($_POST['btn-login'])) {
         <script src="public/js/scripts.js"></script>
 
 
-
-    </body>
-   
-</html>
-
-
+        <div>
+    <?php
+                get_footer();
+?>
+            </div>
+            </body>
+            </html>
 
