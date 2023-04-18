@@ -40,8 +40,8 @@
   <header id="header" class="header fixed-top d-flex align-items-center">
 
     <div class="d-flex align-items-center justify-content-between">
-      <a href="../home/main.php" class="logo d-flex align-items-center">
-        <img src="public/assets/img/logo.png" alt="">
+      <a href="../home.main.php" class="logo d-flex align-items-center">
+        <img src="../../public/assets/img/logo.png" alt="">
         <span class="d-none d-lg-block">NiceAdmin</span>
       </a>
       <i class="bi bi-list toggle-sidebar-btn"></i>
@@ -156,7 +156,7 @@
 
             <li class="message-item">
               <a href="#">
-                <img src="public/assets/img/messages-1.jpg" alt="" class="rounded-circle">
+                <img src="../../public/assets/img/messages-1.jpg" alt="" class="rounded-circle">
                 <div>
                   <h4>Maria Hudson</h4>
                   <p>Velit asperiores et ducimus soluta repudiandae labore officia est ut...</p>
@@ -170,7 +170,7 @@
 
             <li class="message-item">
               <a href="#">
-                <img src="public/assets/img/messages-2.jpg" alt="" class="rounded-circle">
+                <img src="../../public/assets/img/messages-2.jpg" alt="" class="rounded-circle">
                 <div>
                   <h4>Anna Nelson</h4>
                   <p>Velit asperiores et ducimus soluta repudiandae labore officia est ut...</p>
@@ -184,7 +184,7 @@
 
             <li class="message-item">
               <a href="#">
-                <img src="public/assets/img/messages-3.jpg" alt="" class="rounded-circle">
+                <img src="../../public/assets/img/messages-3.jpg" alt="" class="rounded-circle">
                 <div>
                   <h4>David Muldon</h4>
                   <p>Velit asperiores et ducimus soluta repudiandae labore officia est ut...</p>
@@ -207,7 +207,7 @@
         <li class="nav-item dropdown pe-3">
 
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-            <img src="public/assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
+            <img src="../../public/assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
             <span class="d-none d-md-block dropdown-toggle ps-2">K. Anderson</span>
           </a><!-- End Profile Iamge Icon -->
 
@@ -271,7 +271,7 @@
     <ul class="sidebar-nav" id="sidebar-nav">
 
       <li class="nav-item">
-        <a class="nav-link " href="?mod=dashboard&act=main">
+        <a class="nav-link " href="../dashboard/main.php">
           <i class="bi bi-grid"></i>
           <span>Dashboard</span>
         </a>
@@ -311,12 +311,12 @@
       </li><!-- End Components Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="../order/main.php">
+        <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
           <i class="bi bi-journal-text"></i><span>Sale</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-            <a href="../../modules/order/main.php">
+            <a href="../order/main.php">
               <i class="bi bi-circle"></i><span>Order List</span>
             </a>
           </li>

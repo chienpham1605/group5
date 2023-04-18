@@ -1,14 +1,7 @@
 <?php
-
-$server = "localhost"; 
-$account = "root";
-$password = "";
-$database = "onbookstore_db";
-
-$conn = mysqli_connect($server, $account, $password, $database);
-
-if ($conn == null):
-    die("Connection fails!");
-else:
-    echo"Congratulation!!!";    
-endif;
+//ket noi database
+$conn = mysqli_connect('localhost', 'root', '', 'onbookstore_db');
+if(!$conn){
+    // echo "ket noi khong thanh cong".mysqli_connect_error();
+    die();
+}

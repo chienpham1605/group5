@@ -1,8 +1,10 @@
 <?php
 session_start();
+
 include("../../inc/header.php");
 include_once("../../db/DBConnect.php");
 include_once("../../db/database.php");
+
 $query="SELECT SUM(quantity*book_price) as total, ordermaster.order_id, customer.fullname, 
 ordermaster.order_id, STR_TO_DATE(ordermaster.order_date, '%d/%m/%Y') as order_date, ordermaster.order_status 
 FROM orderdetail, ordermaster, customer 
@@ -88,12 +90,11 @@ $order_list = db_fetch_array($query);
                 foreach ($order_list as $item) {
                   ?>
                   <tr>
-                    <th scope="row"><a
-                        href="?mod=order&act=detail&order_id=<?= $item['order_id'] ?>">#<?= $item['order_id'] ?></a></th>
+                    <th scope="row"><span>#<?= $item['order_id'] ?></span></th>
                     <td>
                       <?= $item['fullname'] ?>
                     </td>
-                    <td><a href="?mod=order&act=detail&order_id=<?= $item['order_id'] ?>" class="text-primary"><?= $item['order_status'] ?></a></td>
+                    <td><span class="text-primary"><?= $item['order_status'] ?></span></td>
                     <td>
                       <?= $item['total'] ?>
                     </td>

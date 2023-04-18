@@ -10,7 +10,7 @@ include_once("../../db/DBConnect.php");
         <h3>HI, ADMIN</h3>
         <h2>Welcome Back</h2>
         <a class="btn" href="../dashboard/main.php">Let's work</a>
-        <img src="../../public/assets/img/not-found.svg" class="img-fluid py-5" alt="Page Not Found">      
+        <img src="../../assets/img/not-found.svg" class="img-fluid py-5" alt="Page Not Found">      
       </section>
 
     </div>

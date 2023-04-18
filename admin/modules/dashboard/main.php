@@ -51,7 +51,7 @@ foreach($revenue_report_month as $field){
         <h1>Dashboard</h1>
         <nav>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="../../index.php">Home</a></li>
+                <li class="breadcrumb-item"><a href="../home/main.php">Home</a></li>
                 <li class="breadcrumb-item active">Dashboard</li>
             </ol>
         </nav>
@@ -283,12 +283,12 @@ foreach($revenue_report_month as $field){
                                             foreach ($order_list as $item) {
                                                 ?>
                                                 <tr>
-                                                    <th scope="row"><a href="?mod=order&act=detail&order_id=<?= $item['order_id']?>">#<?=$item['order_id']?></a></th>
+                                                    <th scope="row"><span>#<?=$item['order_id']?></span></th>
                                                     <td><?= $item['fullname']?></td>
-                                                    <td><a href="#" class="text-primary"><?= $item['order_date']?></a></td>
+                                                    <td><span><?= $item['order_date']?></span></td>
                                                     <td><?= $item['total']?></td>
                                                     <td><span class="badge bg-success"><?= $item['order_status']?></span></td>
-                                                    <td><a href="?mod=order&act=detail&order_id=<?= $item['order_id']?>" class="badge bg-info">Edit</a></td>
+                                                    <td><a href="../order/detail.php?order_id=<?= $item['order_id']?>" class="badge bg-info">Edit</a></td>
                                                 </tr>
                                                 <?php
                                             }

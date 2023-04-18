@@ -4,7 +4,7 @@ $('#sale').change(function() {
   var scope= "sale";
        
   $.ajax({
-    url: "modules/dashboard/detail.php",
+    url: "../../modules/dashboard/detail.php",
     method: "POST",
     data: {filter:filter, scope:scope},
     dataType: "JSON",
@@ -25,7 +25,7 @@ $('#revenue').change(function() {
   var scope= "revenue";
        
   $.ajax({
-    url: "modules/dashboard/detail.php",
+    url: "../../modules/dashboard/detail.php",
     method: "POST",
     data: {filter:filter, scope:scope},
     dataType: "JSON",
@@ -46,7 +46,7 @@ $('#customer').change(function() {
   var scope= "customer";
        
   $.ajax({
-    url: "modules/dashboard/detail.php",
+    url: "../../modules/dashboard/detail.php",
     method: "POST",
     data: {filter:filter, scope:scope},
     dataType: "JSON",
