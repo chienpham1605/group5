@@ -50,7 +50,7 @@
               <form action="../home/main.php" method="post">
                 <div class="control-group">
                   <input class="search-field" name="search_data" placeholder="Enter keyword..." />
-                  <input type="submit" class="search-button" name="btn" value="Search">
+                  <input type="submit" class="search-button" name="btnSearch" value="Search">
                 </div>
               </form>
             </div>

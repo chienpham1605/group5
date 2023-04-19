@@ -27,7 +27,7 @@ $list_cat = mysqli_fetch_assoc($rs);
                 while ($field = mysqli_fetch_assoc($rs)):
                   ?>
                   <li class="dropdown menu-item"> 
-                    <a href="../product/main.php?cat_id=<?= $field['cat_id'] ?>"><?= $field['cat_name'] ?></a>
+                    <a href="../../product/main.php?cat_id=<?= $field['cat_id'] ?>"><?= $field['cat_name'] ?></a>
                     <ul class="dropdown-menu mega-menu">
                       <li class="yamm-content">
                                    
@@ -126,7 +126,7 @@ $list_cat = mysqli_fetch_assoc($rs);
                         <!-- /.product-image -->
                         
                         <div class="product-info text-left">
-                          <h3 class="name"><a href="detail.html">Floral Print Buttoned</a></h3>
+                          <h3 class="name"><a href="">Floral Print Buttoned</a></h3>
                           <div class="rating rateit-small"></div>
                           <div class="description"></div>
                           <div class="product-price"> <span class="price"> $450.99 </span> <span class="price-before-discount">$ 800</span> </div>
