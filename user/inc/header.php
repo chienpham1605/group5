@@ -47,10 +47,14 @@
           </div>
           <div class="col-lg-7 col-md-6 col-sm-8 col-xs-12 top-search-holder">
             <div class="search-area">
-              <form action="../home/main.php" method="post">
+              <form action="../product/main.php" method="post">
                 <div class="control-group">
                   <input class="search-field" name="search_data" placeholder="Enter keyword..." />
+<<<<<<< Updated upstream
                   <input type="submit" class="search-button" name="btnSearch" value="Search">
+=======
+                  <input type="submit" class="search-button" name="btnSearch">
+>>>>>>> Stashed changes
                 </div>
               </form>
             </div>
