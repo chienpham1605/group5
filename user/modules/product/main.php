@@ -2,52 +2,30 @@
 include_once("../../db/DBConnect.php");
 include_once("../../db/database.php");
 if (!isset($_GET['cat_id'])):
-<<<<<<< Updated upstream
-  header("location:../../home/main.php");
- endif;
-  
-?>
-<?php
- if (isset($_GET['btnSearch'])) {
-          $search = $_GET['search_data'];
-          $query = "select * from book where book_name like '%".$search."%' ";
-        }else{
-          $query = "select * from book ";
-        } 
-        $rs_search = mysqli_query($conn, $query);
-        ?>
-=======
  header("location:../home/main.php");
 endif;  
   $cat_id = $_GET['cat_id'];
-  $query = "select * from book where cat_id = {$cat_id}";
-  $rs = mysqli_query($conn, $query);
-  $book_detail = mysqli_fetch_array($rs);
+  $cat_detail = mysqli_fetch_array(mysqli_query($conn, "select * from book where cat_id = {$cat_id}"));
   ?>
 <!-- ? -->
 <?php
 include("../../inc/header.php");
 ?>
->>>>>>> Stashed changes
 <div class="breadcrumb">
   <div class="container">
     <div class="breadcrumb-inner">
       <ul class="list-inline list-unstyled">
-<<<<<<< Updated upstream
         <li><a href="./home/main.php">Home</a></li>
         <li class='active'><?= $cat_detail['cat_name'] ?></li>
-=======
         <li><a href="../home/main.php">Home</a></li>
-        <li class='active'><?= $book_detail['book_name'] ?></li>
->>>>>>> Stashed changes
+        <li class='active'><?= $cat_detail['book_name'] ?></li>
       </ul>
     </div>
     <!-- /.breadcrumb-inner --> 
   </div>
   <!-- /.container --> 
 </div>
-<<<<<<< Updated upstream
-<!-- /.breadcrumb -->
+
 <div class="body-content outer-top-xs">
   <div class='container'>
     <div class='row'>
@@ -55,33 +33,6 @@ include("../../inc/header.php");
 
         <!-- ================================== TOP NAVIGATION ================================== -->
         <div class="side-menu animate-dropdown outer-bottom-xs">
-          <div class="head"><i class="icon fa fa-align-justify fa-fw"></i> Categories</div>
-          <nav class="yamm megamenu-horizontal">
-            <ul class="nav">
-              <?php                
-                  if (isset($_GET['cat_id'])):
-                      $cat_id = $_GET['cat_id'];
-                      $query = "select * from categories where cat_id= '$cat_id'";
-                      $rs = mysqli_query($conn, $query);
-                      if (mysqli_num_rows($rs) > 0):
-                          while ($field = mysqli_fetch_assoc($rs)):
-                       ?>
-                      <li >
-                                    <a href="../product/main.php?cat_id=<?= $field['cat_id'] ?>">
-                                    <i class="icon fa fa-envira"></i><?= $field['cat_name'] ?>
-                                  </a> 
-                       </li>
-                              <?php
-                endwhile;
-                endif;
-                endif;
-              ?>
-                            
-            </ul>
-            <!-- /.nav --> 
-          </nav>
-          <!-- /.megamenu-horizontal --> 
-        </div>
         <!-- /.side-menu --> 
         <!-- ================================== TOP NAVIGATION : END ================================== -->
         <div class="sidebar-module-container">
@@ -125,7 +76,6 @@ include("../../inc/header.php");
             <div class="sidebar-widget">
               <div class="widget-header">
                 <h4 class="widget-title">Publisher</h4>
-=======
 <div class="body-content outer-top-xs">
   <div class='container'>
     <div class='row'>
@@ -181,7 +131,6 @@ include("../../inc/header.php");
               <div class="sidebar-widget">
                <div class="widget-header">
                   <h4 class="widget-title">Publisher</h4>
->>>>>>> Stashed changes
               </div>
               <div class="sidebar-widget-body">
                 <ul class="list">
@@ -192,21 +141,20 @@ include("../../inc/header.php");
                   <li><a href="#"><input type="checkbox"> Penguin Random House</a></li>
                   <li><a href="#"><input type="checkbox"> TarcherPerigee</a></li>
                 </ul>
-<<<<<<< Updated upstream
+
                 <!--<a href="#" class="lnk btn btn-primary">Show Now</a>--> 
               </div>
               <!-- /.sidebar-widget-body --> 
             </div>
             <!-- /.sidebar-widget --> 
             <!-- ============================================== MANUFACTURES: END ============================================== --> 
-=======
+
                 <!--<a href="#" class="lnk btn btn-primary">Show Now</a>-->
               </div>
               <!-- /.sidebar-widget-body -->
             </div>
             <!-- /.sidebar-widget -->
             <!-- ============================================== MANUFACTURES: END ============================================== -->
->>>>>>> Stashed changes
             <!-- ============================================== COLOR============================================== -->
             <div class="sidebar-widget">
               <div class="widget-header">
@@ -333,7 +281,7 @@ include("../../inc/header.php");
                 <ul class="list-inline list-unstyled">
                   <li class="prev"><a href="#"><i class="fa fa-angle-left"></i></a></li>
                   <li><a href="#">1</a></li>
-                  <li class="active"><a href="#">2</a></li>
+                  <li><a href="#">2</a></li>
                   <li><a href="#">3</a></li>
                   <li><a href="#">4</a></li>
                   <li class="next"><a href="#"><i class="fa fa-angle-right"></i></a></li>
