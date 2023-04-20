@@ -29,7 +29,7 @@ $list_cat = mysqli_fetch_assoc($rs);
                 while ($field = mysqli_fetch_assoc($rs)):
                   ?>
                   <li class="dropdown menu-item"> 
-                    <a href="../../product/main.php?cat_id=<?= $field['cat_id'] ?>"><?= $field['cat_name'] ?></a>
+                    <a href="../product/main.php?cat_id=<?= $field['cat_id'] ?>"><?= $field['cat_name'] ?></a>
                     <ul class="dropdown-menu mega-menu">
                       <li class="yamm-content">
                                    
