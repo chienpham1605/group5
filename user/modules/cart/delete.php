@@ -1,4 +1,5 @@
 <?php
+session_start();
    
         $book_id = (int) $_GET['book_id'];
        

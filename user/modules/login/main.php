@@ -1,3 +1,10 @@
+<?php
+session_start();
+include_once("../../db/DBConnect.php");
+include_once("../../db/database.php");
+include("../../inc/header.php");
+?>
+ <div>
  <form method="POST" action="?mod=login&act=auth">
 
             <div class="form-group">
@@ -15,4 +22,13 @@
             </div>
             <button type="submit" class="btn btn-primary" name = "btnLogin">Submit</button>
         </form>
+
+        </div>
+
+        <?php
+include("../../inc/footer.php");
+?>
+
+
+    
 

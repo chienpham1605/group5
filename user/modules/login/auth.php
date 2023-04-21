@@ -1,5 +1,6 @@
 <?php
-
+session_start();
+include_once("../../db/DBConnect.php");
 if (isset($_POST['btnLogin'])):
 
     $user = $_POST['txtName'];
@@ -10,7 +11,7 @@ if (isset($_POST['btnLogin'])):
     $count = mysqli_num_rows($rs);   
     if ($count > 0):
         $_SESSION['auth'] =  $row;
-        redirect("?mod=home&act=main");     
+        header("Location: ../home/main.php");     
     endif; 
 endif;
 

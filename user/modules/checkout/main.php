@@ -1,7 +1,11 @@
 <?php
+session_start();
+include_once("../../db/DBConnect.php");
+include_once("../../db/database.php");
+include("../../inc/header.php");
 $_SESSION['auth']['id'] =3;
 if(!isset($_SESSION['auth']['id'])){
-    redirect("?mod=login&act=main");
+    header("Location: ../login/main.php");
 }
 
 $user_id = (int) $_SESSION['auth']['id'];
@@ -24,7 +28,7 @@ foreach ($checkoutList as $item) {
 
 <div class="body-content">
     <div class="container">
-        <form method="POST" action="?mod=checkout&act=send">
+        <form method="POST" action="send.php">
             <div class="checkout-box ">
                 <div class="row">
                     <div class="col-xs-12 col-sm-6 col-md-6">
@@ -221,112 +225,10 @@ foreach ($checkoutList as $item) {
             </div><!-- /.row -->
         </form>
     </div><!-- /.checkout-box -->
-    <!-- ============================================== BRANDS CAROUSEL ============================================== -->
-    <div id="brands-carousel" class="logo-slider wow fadeInUp">
 
-        <div class="logo-slider-inner">
-            <div id="brand-slider" class="owl-carousel brand-slider custom-carousel owl-theme">
-                <div class="item m-t-15">
-                    <a href="#" class="image">
-                        <img data-echo="assets/images/brands/brand1.png" src="assets/images/blank.gif" alt="">
-                    </a>
-                </div><!--/.item-->
-
-                <div class="item m-t-10">
-                    <a href="#" class="image">
-                        <img data-echo="assets/images/brands/brand2.png" src="assets/images/blank.gif" alt="">
-                    </a>
-                </div><!--/.item-->
-
-                <div class="item">
-                    <a href="#" class="image">
-                        <img data-echo="assets/images/brands/brand3.png" src="assets/images/blank.gif" alt="">
-                    </a>
-                </div><!--/.item-->
-
-                <div class="item">
-                    <a href="#" class="image">
-                        <img data-echo="assets/images/brands/brand4.png" src="assets/images/blank.gif" alt="">
-                    </a>
-                </div><!--/.item-->
-
-                <div class="item">
-                    <a href="#" class="image">
-                        <img data-echo="assets/images/brands/brand5.png" src="assets/images/blank.gif" alt="">
-                    </a>
-                </div><!--/.item-->
-
-                <div class="item">
-                    <a href="#" class="image">
-                        <img data-echo="assets/images/brands/brand6.png" src="assets/images/blank.gif" alt="">
-                    </a>
-                </div><!--/.item-->
-
-                <div class="item">
-                    <a href="#" class="image">
-                        <img data-echo="assets/images/brands/brand2.png" src="assets/images/blank.gif" alt="">
-                    </a>
-                </div><!--/.item-->
-
-                <div class="item">
-                    <a href="#" class="image">
-                        <img data-echo="assets/images/brands/brand4.png" src="assets/images/blank.gif" alt="">
-                    </a>
-                </div><!--/.item-->
-
-                <div class="item">
-                    <a href="#" class="image">
-                        <img data-echo="assets/images/brands/brand1.png" src="assets/images/blank.gif" alt="">
-                    </a>
-                </div><!--/.item-->
-
-                <div class="item">
-                    <a href="#" class="image">
-                        <img data-echo="assets/images/brands/brand5.png" src="assets/images/blank.gif" alt="">
-                    </a>
-                </div><!--/.item-->
-            </div><!-- /.owl-carousel #logo-slider -->
-        </div><!-- /.logo-slider-inner -->
-
-    </div><!-- /.logo-slider -->
-    <!-- ============================================== BRANDS CAROUSEL : END ============================================== -->
+   
 </div><!-- /.container -->
-</div><!-- /.body-content -->
-<!-- ============================================================= FOOTER ============================================================= -->
-<!-- ============================================================= FOOTER ============================================================= -->
 
-<!-- ============================================== INFO BOXES ============================================== -->
-<div class="row our-features-box">
-    <div class="container">
-        <ul>
-            <li>
-                <div class="feature-box">
-                    <div class="icon-truck"></div>
-                    <div class="content-blocks">We ship worldwide</div>
-                </div>
-            </li>
-            <li>
-                <div class="feature-box">
-                    <div class="icon-support"></div>
-                    <div class="content-blocks">call
-                        +1 800 789 0000</div>
-                </div>
-            </li>
-            <li>
-                <div class="feature-box">
-                    <div class="icon-money"></div>
-                    <div class="content-blocks">Money Back Guarantee</div>
-                </div>
-            </li>
-            <li>
-                <div class="feature-box">
-                    <div class="icon-return"></div>
-                    <div class="content">7 days return</div>
-                </div>
-            </li>
-
-        </ul>
-    </div>
-</div>
-<!-- /.info-boxes -->
-<!-- ============================================== INFO BOXES : END ============================================== -->
+<?php
+include("../../inc/footer.php");
+?>
