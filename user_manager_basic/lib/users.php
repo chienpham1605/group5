@@ -66,16 +66,16 @@ function login() {
                  and pwd ='$password' ";
         global $conn;
         $rs = mysqli_query($conn, $sql);
-       
+
         if ($rs->num_rows > 0) {
-            
+
             $num = mysqli_fetch_assoc($rs);
 // var_dump($num);die();
 
             $_SESSION['is_login'] = true;
             $_SESSION['user_login'] = $num;
-            
-          $user_login = $_SESSION['num'];
+
+            $user_login = $_SESSION['num'];
             header('Location:index.php');
         } else {
             $error['common'] = "Login fail!";
@@ -85,9 +85,9 @@ function login() {
     return $error;
 }
 
-function register(){
-    
-        //isset de kiem tra button co name la btn_submit da duoc click hay chua
+function register() {
+
+    //isset de kiem tra button co name la btn_submit da duoc click hay chua
 //    $id = $_POST["id"];
     $username = $_POST["name"];
     $password = md5($_POST["pass"]);
@@ -130,3 +130,13 @@ function register(){
         }
     }
 }
+
+function logout( ){
+    unset ($_SESSION['is_login']);
+
+
+unset ($_SESSION['user_login']);
+
+header('Location:index.php');
+}
+

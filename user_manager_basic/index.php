@@ -2,12 +2,12 @@
 session_start();
 ob_start();
 //data
-require './data/users.php';
+require_once './data/users.php';
 //function
 
-require './lib/data.php';
+require_once  './lib/data.php';
 require './lib/url.php';
-require './lib/users.php';
+require_once './lib/users.php';
 require './lib/template.php';
 
 //var_dump(is_login());

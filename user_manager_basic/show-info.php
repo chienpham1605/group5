@@ -2,7 +2,7 @@
 <?php
 session_start();
 
-require './data/DBConnect.php';
+require_once  './data/DBConnect.php';
 
 $info_user = $_SESSION['user_login'];
 $emailerror = "";

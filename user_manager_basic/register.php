@@ -1,6 +1,6 @@
 <?PHP
 require_once './data/DBConnect.php';
-require './lib/users.php';
+require_once './lib/users.php';
 session_start();
 ob_start();
 //$rs = mysqli_query($conn, $query);
@@ -43,106 +43,100 @@ if (isset($_POST['btn-login'])) {
     get_header();
     ?>
     <body class="cnt-home">
-        
+
         <div class="body-content">
             <div class="container">
                 <div class="sign-in-page">
                     <div class="row">
 
-        <!-- Sign-in -->			
-        <div class="col-md-6 col-sm-6 sign-in">
-            <h4 class="">Sign in</h4>
-            <p class="">Hello, Welcome to your account.</p>
-            <form id="form-login" action="" method="POST" 
-                  class="register-form outer-top-xs" role="form">
+                        <!-- Sign-in -->			
+                        <div class="col-md-6 col-sm-6 sign-in">
+                            <h4 class="">Sign in</h4>
+                            <p class="">Hello, Welcome to your account.</p>
+                            <form id="form-login" action="" method="POST" 
+                                  class="register-form outer-top-xs" role="form">
 
-                <div class="form-group">
-                    <label class="info-title" for="name">Username <span>*</span></label>
-                    <input type ="text" name="name" id ="name" value ="" placeholder="Username"
-                           class ="  form-control unicase-form-control text-input"  />
-                           <?php
-                           if (!empty($error['name'])) {
-                               ?>
-                        <p class="error"><?php echo $error['name'] ?></p>
-                        <?php
-                    }
-                    ?>
-                </div>
-                <div class="form-group">
-                    <label class="info-title" for="pass">Password <span>*</span></label>
-                    <input type ="password" name="pass" id="pass"  value ="" placeholder="Password"
-                           class="form-control unicase-form-control text-input" 
-                           />
-                           <?php
-                           if (!empty($error['pass'])) {
-                               ?>
-                        <p class="error"><?php echo $error['pass'] ?></p><!-- comment -->
-                        <?php
-                    }
-                    ?>
-                </div>
-                <button type ="submit" id="btn-login" name="btn-login"  value ="Login" 
-                        class="btn-upper btn btn-primary checkout-page-button">Login </button>
-                        <?php
-                        if (!empty($error['common'])) {
-                            ?>
-                    <p class="error"><?php echo $error['common'] ?></p>
-                    <?php
-                }
-                ?>
-            </form>					
-        </div>
-        <!-- Sign-in -->
-        <form action="register.php" method="post">
-            <div class="col-md-6 col-sm-6 create-new-account">
-                <h4 class="checkout-subtitle">Create a new account</h4>
-                <p class="text title-tag-line">Create your new account.</p>
-                <form class="register-form outer-top-xs" role="form">
-                    <div class="form-group">
-                        <label class="info-title" for="name">User Name <span>*</span></label>
-                        <input type="text" name ="name" class="form-control unicase-form-control text-input" id="name" >
-                    </div>
-                    <div class="form-group">
-                        <label class="info-title" for="pass">Password <span>*</span></label>
-                        <input type="password" name ="pass"class="form-control unicase-form-control text-input" id="pass" >
-                    </div>
-                    <div class="form-group">
-                        <label class="info-title" for="cpass">Confirm Password <span>*</span></label>
-                        <input type="password" name ="cpass" class="form-control unicase-form-control text-input" id="cpass" >
-                    </div>
-                    <div class="form-group">
-                        <label class="info-title" for="email">Email <span>*</span></label>
-                        <input type="email" name ="email" class="form-control unicase-form-control text-input" id="email" >
-                    </div>
-                    <div class="form-group">
-                        <label class="info-title" for="phone">Phone Number <span>*</span></label>
-                        <input type="text" name ="phone" class="form-control unicase-form-control text-input" id="phone" >
-                    </div>
-                    <div class="form-group">
-                        <label class="info-title" for="address"> Address <span>*</span></label>
-                        <input type="text" name ="address" class="form-control unicase-form-control text-input" id="address" >
-                    </div>
-                    <div class="form-group">
-                        <label class="info-title" for="gender">Gender <span>*</span></label>
-                        <input type="radio" class="form-control unicase-form-control text-input" value="1"name="gender" checked>Male
-                        <input type="radio" class="form-control unicase-form-control text-input" value="0"name="gender" > Female
-                    </div>
+                                <div class="form-group">
+                                    <label class="info-title" for="name">Username <span>*</span></label>
+                                    <input type ="text" name="name" id ="name" value ="" placeholder="Username"
+                                           class ="  form-control unicase-form-control text-input"  />
+                                           <?php
+                                           if (!empty($error['name'])) {
+                                               ?>
+                                        <p class="error"><?php echo $error['name'] ?></p>
+                                        <?php
+                                    }
+                                    ?>
+                                </div>
+                                <div class="form-group">
+                                    <label class="info-title" for="pass">Password <span>*</span></label>
+                                    <input type ="password" name="pass" id="pass"  value ="" placeholder="Password"
+                                           class="form-control unicase-form-control text-input" 
+                                           />
+                                           <?php
+                                           if (!empty($error['pass'])) {
+                                               ?>
+                                        <p class="error"><?php echo $error['pass'] ?></p><!-- comment -->
+                                        <?php
+                                    }
+                                    ?>
+                                </div>
+                                <button type ="submit" id="btn-login" name="btn-login"  value ="Login" 
+                                        class="btn-upper btn btn-primary checkout-page-button">Login </button>
+                                        <?php
+                                        if (!empty($error['common'])) {
+                                            ?>
+                                    <p class="error"><?php echo $error['common'] ?></p>
+                                    <?php
+                                }
+                                ?>
+                            </form>					
+                        </div>
+                        <!-- Sign-in -->
+                        <form action="register.php" method="post">
+                            <div class="col-md-6 col-sm-6 create-new-account">
+                                <h4 class="checkout-subtitle">Create a new account</h4>
+                                <p class="text title-tag-line">Create your new account.</p>
+                                <form class="register-form outer-top-xs" role="form">
+                                    <div class="form-group">
+                                        <label class="info-title" for="name">User Name <span>*</span></label>
+                                        <input type="text" name ="name" class="form-control unicase-form-control text-input" id="name" >
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="info-title" for="pass">Password <span>*</span></label>
+                                        <input type="password" name ="pass"class="form-control unicase-form-control text-input" id="pass" >
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="info-title" for="cpass">Confirm Password <span>*</span></label>
+                                        <input type="password" name ="cpass" class="form-control unicase-form-control text-input" id="cpass" >
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="info-title" for="email">Email <span>*</span></label>
+                                        <input type="email" name ="email" class="form-control unicase-form-control text-input" id="email" >
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="info-title" for="phone">Phone Number <span>*</span></label>
+                                        <input type="text" name ="phone" class="form-control unicase-form-control text-input" id="phone" >
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="info-title" for="address"> Address <span>*</span></label>
+                                        <input type="text" name ="address" class="form-control unicase-form-control text-input" id="address" >
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="info-title" for="gender">Gender <span>*</span></label>
+                                        <input type="radio" class="form-control unicase-form-control text-input" value="1"name="gender" checked>Male
+                                        <input type="radio" class="form-control unicase-form-control text-input" value="0"name="gender" > Female
+                                    </div>
 
-                    <button type="submit" name ="btn_submit" value ="Register" class="btn-upper btn btn-primary checkout-page-button">Sign Up</button>
+                                    <button type="submit" name ="btn_submit" value ="Register" class="btn-upper btn btn-primary checkout-page-button">Sign Up</button>
 
 
-                    <div class="text-center">
-                        <a class="font-weight-bold small" href="login.php">Already have an account?</a>
-                    </div>
-                    <div class="text-center">
-                        <a class="font-weight-bold small" href="index.php">Return your page!</a>
-                    </div>
-            </div>
-          
-        </form>
-            </div><!-- create a new account --></div><!-- /.row -->
-</div><!-- /.sign-in-->
-</div><!-- /.body-content -->
+                            </div>
+
+                        </form>
+                    </div><!-- create a new account --></div><!-- /.row -->
+            </div><!-- /.sign-in-->
+        </div><!-- /.body-content -->
         <!-- JavaScripts placed at the end of the document so the pages load faster --> 
         <script src="public/js/jquery-1.11.1.min.js"></script> 
         <script src="public/js/bootstrap.min.js"></script> 
@@ -159,10 +153,10 @@ if (isset($_POST['btn-login'])) {
 
 
         <div>
-    <?php
-                get_footer();
-?>
-            </div>
-            </body>
-            </html>
+            <?php
+            get_footer();
+            ?>
+        </div>
+    </body>
+</html>
 
