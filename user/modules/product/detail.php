@@ -7,15 +7,16 @@ if (!isset($_GET['book_id'])):
     header("../../home/main.php");
 endif;
 $book_id = $_GET['book_id'];
-$book_detail = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM `book` WHERE book_id = '{$book_id}' "));
+$book_detail = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM `book`, publisher  WHERE book_id = '{$book_id}' and book.publisher_id = publisher.publisher_id"));
 $detail = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM categories, book WHERE categories.cat_id=book.cat_id AND book.book_id = '{$book_id}' "));
+$img = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM book_image, book WHERE book_image.book_image_id=book.book_id AND book.book_id = '{$book_id}' "));
 // $feedback = mysqli_fetch_assoc(mysqli_query("SELECT * FROM feedback where feedback.book_id=book.book_id AND book.book_id = '{$book_id}' "));
 ?>
 <div class="breadcrumb">
     <div class="container">
         <div class="breadcrumb-inner">
             <ul class="list-inline list-unstyled">
-                <li><a href="?mod=home&act=main">Home</a></li>
+                <li><a href="../home/main.php">Home</a></li>
                 <li><a href="#"><?= $detail['cat_name'] ?></a></li>
                 <li class='active'><?= $detail['book_name'] ?></li>
             </ul>
@@ -226,16 +227,15 @@ $detail = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM categories, book
                          <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 gallery-holder">
     <div class="product-item-holder size-big single-product-gallery small-gallery">
 
-        <div id="owl-single-product">
+        <div id="owl-single-product" method="post">
             <div class="single-product-gallery-item" id="slide1">
-                <a data-lightbox="image-1" data-title="Gallery" href="../../public/assets/images/products/p1.jpg">
-                    <img class="img-responsive" alt="" src="../../public/assets/images/blank.gif" data-echo="../../public/assets/images/products/p1.jpg" />
+                    <img class="img-responsive"  src="<?= $img['img_url'] ?>" data-echo="<?= $img['img_url'] ?>" />
                 </a>
             </div><!-- /.single-product-gallery-item -->
 
             <div class="single-product-gallery-item" id="slide2">
-                <a data-lightbox="image-1" data-title="Gallery" href="../../public/assets/images/products/p2.jpg">
-                    <img class="img-responsive" alt="" src="../../public/assets/images/blank.gif" data-echo="../../public/assets/images/products/p2.jpg" />
+                <a data-lightbox="image-1" data-title="Gallery" href=" <?= $img['img_url'] ?> ">
+                    <img class="img-responsive" alt="" src="<?= $img['img_url'] ?>" data-echo="<?= $img['img_url'] ?>" />
                 </a>
             </div><!-- /.single-product-gallery-item -->
 
@@ -286,65 +286,9 @@ $detail = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM categories, book
 
         <div class="single-product-gallery-thumbs gallery-thumbs">
 
-            <div id="owl-single-product-thumbnails">
-                <div class="item">
-                    <a class="horizontal-thumb active" data-target="#owl-single-product" data-slide="1" href="#slide1">
-                        <img class="img-responsive" alt="" src="../../public/assets/images/blank.gif" data-echo="../../public/assets/images/products/p1.jpg" />
-                    </a>
-                </div>
-
-                <div class="item">
-                    <a class="horizontal-thumb" data-target="#owl-single-product" data-slide="2" href="#slide2">
-                        <img class="img-responsive" alt="" src="../../public/assets/images/blank.gif" data-echo="../../public/assets/images/products/p2.jpg"/>
-                    </a>
-                </div>
-                <div class="item">
-
-                    <a class="horizontal-thumb" data-target="#owl-single-product" data-slide="3" href="#slide3">
-                        <img class="img-responsive" alt="" src="../../public/assets/images/blank.gif" data-echo="../../public/assets/images/products/p3.jpg" />
-                    </a>
-                </div>
-                <div class="item">
-
-                    <a class="horizontal-thumb" data-target="#owl-single-product" data-slide="4" href="#slide4">
-                        <img class="img-responsive" alt="" src="../../public/assets/images/blank.gif" data-echo="../../public/assets/images/products/p4.jpg" />
-                    </a>
-                </div>
-                <div class="item">
-
-                    <a class="horizontal-thumb" data-target="#owl-single-product" data-slide="5" href="#slide5">
-                        <img class="img-responsive" alt="" src="../../public/assets/images/blank.gif" data-echo="../../public/assets/images/products/p5.jpg" />
-                    </a>
-                </div>
-                <div class="item">
-
-                    <a class="horizontal-thumb" data-target="#owl-single-product" data-slide="6" href="#slide6">
-                        <img class="img-responsive" alt="" src="../../public/assets/images/blank.gif" data-echo="../../public/assets/images/products/p6.jpg" />
-                    </a>
-                </div>
-                <div class="item">
-
-                    <a class="horizontal-thumb" data-target="#owl-single-product" data-slide="7" href="#slide7">
-                        <img class="img-responsive" alt="" src="../../public/assets/images/blank.gif" data-echo="../../public/assets/images/products/p7.jpg" />
-                    </a>
-                </div>
-                <div class="item">
-
-                    <a class="horizontal-thumb" data-target="#owl-single-product" data-slide="8" href="#slide8">
-                        <img class="img-responsive" alt="" src="../../public/assets/images/blank.gif" data-echo="../../public/assets/images/products/p8.jpg" />
-                    </a>
-                </div>
-                <div class="item">
-
-                    <a class="horizontal-thumb" data-target="#owl-single-product" data-slide="9" href="#slide9">
-                        <img class="img-responsive" alt="" src="../../public/assets/images/blank.gif" data-echo="../../public/assets/images/products/p9.jpg" />
-                    </a>
-                </div>
-            </div><!-- /#owl-single-product-thumbnails -->
 
             
-
-        </div><!-- /.gallery-thumbs -->
+      </div><!-- /.gallery-thumbs -->
 
     </div><!-- /.single-product-gallery -->
 </div><!-- /.gallery-holder -->        			
@@ -387,7 +331,7 @@ $detail = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM categories, book
 
                                 <div class="description-container m-t-20">
                                     <p>Author: <?= $detail['book_author'] ?> </p>
-                                    <p>Publisher: <?= $detail['book_publisher'] ?> </p>
+                                    <p>Publisher: <?= $book_detail['publisher_name'] ?> </p>
                                     <p>publication Year: <?= $detail['YearBook'] ?> </p>
                                     <p>Page: <?= $detail['page'] ?></p>
                                 </div>
