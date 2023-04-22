@@ -32,6 +32,32 @@
   <!-- jquery -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
+  <!-- fonts discount_date -->
+
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+        <link rel="stylesheet" href="/resources/demos/style.css">
+        <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+        <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+
+        <script>
+             $( function() {
+                $( "#start_discount" ).datepicker({
+                    prevText:"Last month",
+                    nextText:"Next month",
+                    dateFormat:"dd/mm/yy",
+                    dayNamesMin: ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"],
+                    discount_start:"slow"
+                });
+                $( "#end_discount" ).datepicker({
+                    prevText:"Last month",
+                    nextText:"Next month",
+                    dateFormat:"dd/mm/yy",
+                    dayNamesMin: ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"],
+                    discount_start:"slow"
+                });
+            } );
+        </script>
+
 </head>
 
 <body>

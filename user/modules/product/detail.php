@@ -13,6 +13,7 @@ $detail = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM categories, book
 $img = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM book_image, book WHERE book_image.book_image_id=book.book_id AND book.book_id = '{$book_id}' "));
 
 // $feedback = mysqli_fetch_assoc(mysqli_query("SELECT * FROM feedback where feedback.book_id=book.book_id AND book.book_id = '{$book_id}' "));
+// var_dump($img);
 ?>
 <div class="breadcrumb">
     <div class="container">
