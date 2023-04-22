@@ -9,7 +9,7 @@ $query = "delete from book where book_id = '{$book_id}'";
 $rs = mysqli_query($conn, $query);
 if (!$rs):
     error_clear_last();
-    echo 'can not be updated';
+    echo 'can not be deleted';
 endif;
 header("location:../home/main.php");
 #5. Close the connection

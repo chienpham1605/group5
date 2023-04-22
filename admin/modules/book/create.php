@@ -2,6 +2,7 @@
 include_once("../../db/DBConnect.php");
 include_once("../../db/database.php");
 include_once("../../inc/header.php");
+
 if (isset($_POST['btnAdd'])):
         $name = $_POST['txtName'];
         $Description = $_POST['txtDescription'];
@@ -9,8 +10,14 @@ if (isset($_POST['btnAdd'])):
         $Price = $_POST['txtPrice'];
         $page = $_POST['txtPage'];
         $yearbook = $_POST['txtYear'];
-    
-        $query = "insert into book (book_name, book_des, book_author, book_price, page, yearBook) values ('{$name}', '{$Description}', '{$Author}', '{$Price}', '{$page}', '{$yearBook}')";
+
+        $folder = "../../public/assets/img/publisher/";
+        $fileName = $_FILES['txtLogo']['name'];
+        $fileTmp = $_FILES['txtLogo']['tmp_name'];
+        $logo = $folder . $fileName;
+
+        move_uploaded_file($fileTmp, $logo);
+        $query = "insert into book (book_name, book_des, book_author, book_price, page, yearBook, book_image) values ('{$name}', '{$Description}', '{$Author}', '{$Price}', '{$page}', '{$yearBook}', '{$logo})";
         $rs = mysqli_query($conn, $query);
         if (!$rs):
             echo 'Nothing to insert!';
@@ -65,6 +72,10 @@ endif;
             <div class="col-12">
               <label class="form-label">Year of book</label>
               <input type="text" class="form-control"  name="txtYear" id="end_discount">
+            </div>
+            <div class="col-12">
+              <label class="form-label">Book Image</label>
+              <input class="form-control" type="file" name="txtLogo">
             </div>
             <div class="text-center">
               <button type="submit" class="btn btn-primary" name="btnAdd">Submit</button>
