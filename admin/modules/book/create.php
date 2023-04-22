@@ -1,13 +1,13 @@
 <?php 
 include_once("../../db/DBConnect.php");
 include_once("../../db/database.php");
-include_once("../../inc/header.php");
+
 if (isset($_POST['btnAdd'])):
         $name = $_POST['txtName'];
         $Description = $_POST['txtDescription'];
-        $Percentage = $_POST['txtPercentage'];
-        $Strat = $_POST['txtStart'];
-        $End = $_POST['txtEnd'];
+        $Author = $_POST['txtAuthor'];
+        $Price = $_POST['txtPrice'];
+        $iven = $_POST['txtEnd'];
     
         $query = "insert into discount (discount_name, discount_des, discount_per, discount_start, discount_end) values ('{$name}', '{$Description}', '{$Percentage}', '{$Strat}', '{$End}')";
         $rs = mysqli_query($conn, $query);
@@ -68,7 +68,7 @@ endif;
     <div class="d-flex align-items-center justify-content-between">
       <a href="../home.main.php" class="logo d-flex align-items-center">
         <img src="../../public/assets/img/logo.png" alt="">
-        <span class="d-none d-lg-block">OnBookStore</span>
+        <span class="d-none d-lg-block">NiceAdmin</span>
       </a>
       <i class="bi bi-list toggle-sidebar-btn"></i>
     </div><!-- End Logo -->
@@ -95,6 +95,74 @@ endif;
             <i class="bi bi-bell"></i>
             <span class="badge bg-primary badge-number">4</span>
           </a><!-- End Notification Icon -->
+
+          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
+            <li class="dropdown-header">
+              You have 4 new notifications
+              <a href="#"><span class="badge rounded-pill bg-primary p-2 ms-2">View all</span></a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li class="notification-item">
+              <i class="bi bi-exclamation-circle text-warning"></i>
+              <div>
+                <h4>Lorem Ipsum</h4>
+                <p>Quae dolorem earum veritatis oditseno</p>
+                <p>30 min. ago</p>
+              </div>
+            </li>
+
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li class="notification-item">
+              <i class="bi bi-x-circle text-danger"></i>
+              <div>
+                <h4>Atque rerum nesciunt</h4>
+                <p>Quae dolorem earum veritatis oditseno</p>
+                <p>1 hr. ago</p>
+              </div>
+            </li>
+
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li class="notification-item">
+              <i class="bi bi-check-circle text-success"></i>
+              <div>
+                <h4>Sit rerum fuga</h4>
+                <p>Quae dolorem earum veritatis oditseno</p>
+                <p>2 hrs. ago</p>
+              </div>
+            </li>
+
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li class="notification-item">
+              <i class="bi bi-info-circle text-primary"></i>
+              <div>
+                <h4>Dicta reprehenderit</h4>
+                <p>Quae dolorem earum veritatis oditseno</p>
+                <p>4 hrs. ago</p>
+              </div>
+            </li>
+
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li class="dropdown-footer">
+              <a href="#">Show all notifications</a>
+            </li>
+
+          </ul><!-- End Notification Dropdown Items -->
+
+        </li><!-- End Notification Nav -->
 
         <li class="nav-item dropdown">
 

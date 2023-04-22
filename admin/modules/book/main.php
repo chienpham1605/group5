@@ -3,12 +3,10 @@ session_start();
 include("../../inc/header.php");
 include_once("../../db/DBConnect.php");
 
-$query = "SELECT * from book, categories, publisher, book_image where 
+$query = "SELECT * from book, categories, publisher  where 
 book.cat_id = categories.cat_id and 
-book.publisher_id = publisher.publisher_id and
-book.book_id = book_image.book_image_id";
+book.publisher_id = publisher.publisher_id";
 $rs = mysqli_query($conn, $query);
-
 ?>
 <main id="main" class="main">
 
@@ -35,7 +33,6 @@ $rs = mysqli_query($conn, $query);
                     <th scope="col">Book Pages</th>
                     <th scope="col">Book Publisher</th>
                     <th scope="col">Category</th>
-                    <th scope="col">Image</th>
                     <th scope="col">Edit</th>
 
 
@@ -43,7 +40,7 @@ $rs = mysqli_query($conn, $query);
             </thead>
             <tbody>
                 <?php
-                while ($item = mysqli_fetch_array($rs)) {
+                while ($item = mysqli_fetch_assoc($rs)) {
                     ?>
                     <tr>
                         <td>
@@ -69,9 +66,6 @@ $rs = mysqli_query($conn, $query);
                         </td>
                         <td>
                             <?= $item['cat_name'] ?>
-                        </td>
-                        <td>
-                            <img src=<?= $item['img_url']?> width = "100" >
                         </td>
                         <td>
                             <button href="edit.php?boook_id=<?= $item['book_id'] ?>">Edit</button>

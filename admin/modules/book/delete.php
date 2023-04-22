@@ -1,11 +1,15 @@
 <?php
+include("../../inc/header.php");
+include_once("../../db/DBConnect.php");
+include_once("../../db/database.php");
+
 if (!isset($_GET['book_id'])):
     header("location:../home/main.php");
 endif;
 
-$code = $_GET['book_id'];
+$book_id = $_GET['book_id'];
 #4. Execute 
-$query = "delete from book where book_id = '{$code}'";
+$query = "delete from book where book_id = '{$book_id}'";
 $rs = mysqli_query($conn, $query);
 if (!$rs):
     error_clear_last();

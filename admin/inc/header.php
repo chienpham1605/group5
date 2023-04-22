@@ -285,22 +285,17 @@
         </a>
         <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-            <a href="components-alerts.html">
-              <i class="bi bi-circle"></i><span>Category</span>
-            </a>
-          </li>
-          <li>
             <a href="../publisher/pub_read.php">
               <i class="bi bi-circle"></i><span>Publisher</span>
             </a>
           </li>
           <li>
-            <a href="components-badges.html">
+            <a href="../book/main.php">
               <i class="bi bi-circle"></i><span>Book Detail</span>
             </a>
           </li>   
           <li>
-            <a href="components-buttons.html">
+            <a href="../discount/read.php">
               <i class="bi bi-circle"></i><span>Discount</span>
             </a>
           </li>     

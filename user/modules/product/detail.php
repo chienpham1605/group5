@@ -8,9 +8,10 @@ if (!isset($_GET['book_id'])):
     header("../../home/main.php");
 endif;
 $book_id = $_GET['book_id'];
-$book_detail = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM `book`, publisher  WHERE book_id = '{$book_id}' and book.publisher_id = publisher.publisher_id"));
+$book_detail = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM `book`, publisher, discount  WHERE book_id = '{$book_id}' and book.publisher_id = publisher.publisher_id and book.discount_id = discount.discount_id"));
 $detail = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM categories, book WHERE categories.cat_id=book.cat_id AND book.book_id = '{$book_id}' "));
 $img = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM book_image, book WHERE book_image.book_image_id=book.book_id AND book.book_id = '{$book_id}' "));
+
 // $feedback = mysqli_fetch_assoc(mysqli_query("SELECT * FROM feedback where feedback.book_id=book.book_id AND book.book_id = '{$book_id}' "));
 ?>
 <div class="breadcrumb">
@@ -343,7 +344,7 @@ $img = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM book_image, book WH
 
                                         <div class="col-sm-6 col-xs-6">
                                             <div class="price-box">
-                                                <span class="price">$<?= $detail['book_price'] * 0.9 ?></span>
+                                                <span class="price">$<?= $detail['book_price'] * $book_detail['discount_per'] ?></span>
                                                 <span class="price-strike">$<?= $detail['book_price'] ?></span>
                                             </div>
                                         </div>
