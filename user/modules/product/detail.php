@@ -10,8 +10,7 @@ endif;
 $book_id = $_GET['book_id'];
 $book_detail = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM `book`, publisher, discount  WHERE book_id = '{$book_id}' and book.publisher_id = publisher.publisher_id and book.discount_id = discount.discount_id"));
 $detail = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM categories, book WHERE categories.cat_id=book.cat_id AND book.book_id = '{$book_id}' "));
-$img = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM book_image, book WHERE book_image.book_image_id=book.book_id AND book.book_id = '{$book_id}' "));
-
+$discount = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM  publisher"));
 // $feedback = mysqli_fetch_assoc(mysqli_query("SELECT * FROM feedback where feedback.book_id=book.book_id AND book.book_id = '{$book_id}' "));
 // var_dump($img);
 ?>
@@ -50,11 +49,11 @@ $img = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM book_image, book WH
                   <img src="../../public/assets/images/hot-deals/p13_hover.jpg" alt="" class="hover-image">
                   </a>
                   </div>
-                  <div class="sale-offer-tag"><span>49%<br>
-                    off</span></div>
+                  <div class="sale-offer-tag"><span><?= $discount['discount_name']?><br>
+                    </span></div>
                   <div class="timing-wrapper">
                     <div class="box-wrapper">
-                      <div class="date box"> <span class="key">120</span> <span class="value">DAYS</span> </div>
+                      <div class="date box"> <span class="key"><?= $book_detail['']?>/span> </div>
                     </div>
                     <div class="box-wrapper">
                       <div class="hour box"> <span class="key">20</span> <span class="value">HRS</span> </div>
@@ -196,28 +195,6 @@ $img = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM book_image, book WH
 
 
 <!-- ============================================== Testimonials============================================== -->
-<div class="sidebar-widget  outer-top-vs ">
-    <div id="advertisement" class="advertisement">
-        <div class="item">
-            <div class="avatar"><img src="../../public/assets/images/testimonials/member1.png" alt="Image"></div>
-        <div class="testimonials"><em>"</em> Vtae sodales aliq uam morbi non sem lacus port mollis. Nunc condime tum metus eud molest sed consectetuer.<em>"</em></div>
-        <div class="clients_author">John Doe	<span>Abc Company</span>	</div><!-- /.container-fluid -->
-        </div><!-- /.item -->
-
-         <div class="item">
-             <div class="avatar"><img src="../../public/assets/images/testimonials/member3.png" alt="Image"></div>
-        <div class="testimonials"><em>"</em>Vtae sodales aliq uam morbi non sem lacus port mollis. Nunc condime tum metus eud molest sed consectetuer.<em>"</em></div>
-        <div class="clients_author">Stephen Doe	<span>Xperia Designs</span>	</div>    
-        </div><!-- /.item -->
-
-        <div class="item">
-            <div class="avatar"><img src="../../public/assets/images/testimonials/member2.png" alt="Image"></div>
-        <div class="testimonials"><em>"</em> Vtae sodales aliq uam morbi non sem lacus port mollis. Nunc condime tum metus eud molest sed consectetuer.<em>"</em></div>
-        <div class="clients_author">Saraha Smith	<span>Datsun &amp; Co</span>	</div><!-- /.container-fluid -->
-        </div><!-- /.item -->
-
-    </div><!-- /.owl-carousel -->
-</div>
     
 <!-- ============================================== Testimonials: END ============================================== -->
 
@@ -232,55 +209,7 @@ $img = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM book_image, book WH
 
         <div id="owl-single-product" method="post">
             <div class="single-product-gallery-item" id="slide1">
-                    <img class="img-responsive"  src="<?= $img['img_url'] ?>" data-echo="<?= $img['img_url'] ?>" />
-                </a>
-            </div><!-- /.single-product-gallery-item -->
-
-            <div class="single-product-gallery-item" id="slide2">
-                <a data-lightbox="image-1" data-title="Gallery" href=" <?= $img['img_url'] ?> ">
-                    <img class="img-responsive" alt="" src="<?= $img['img_url'] ?>" data-echo="<?= $img['img_url'] ?>" />
-                </a>
-            </div><!-- /.single-product-gallery-item -->
-
-            <div class="single-product-gallery-item" id="slide3">
-                <a data-lightbox="image-1" data-title="Gallery" href="../../public/assets/images/products/p3.jpg">
-                    <img class="img-responsive" alt="" src="../../public/assets/images/blank.gif" data-echo="../../public/assets/images/products/p3.jpg" />
-                </a>
-            </div><!-- /.single-product-gallery-item -->
-
-            <div class="single-product-gallery-item" id="slide4">
-                <a data-lightbox="image-1" data-title="Gallery" href="../../public/assets/images/products/p4.jpg">
-                    <img class="img-responsive" alt="" src="../../public/assets/images/blank.gif" data-echo="../../public/assets/images/products/p4.jpg" />
-                </a>
-            </div><!-- /.single-product-gallery-item -->
-
-            <div class="single-product-gallery-item" id="slide5">
-                <a data-lightbox="image-1" data-title="Gallery" href="../../public/assets/images/products/p5.jpg">
-                    <img class="img-responsive" alt="" src="../../public/assets/images/blank.gif" data-echo="../../public/assets/images/products/p5.jpg" />
-                </a>
-            </div><!-- /.single-product-gallery-item -->
-
-            <div class="single-product-gallery-item" id="slide6">
-                <a data-lightbox="image-1" data-title="Gallery" href="../../public/assets/images/products/p6.jpg">
-                    <img class="img-responsive" alt="" src="../../public/assets/images/blank.gif" data-echo="../../public/assets/images/products/p6.jpg" />
-                </a>
-            </div><!-- /.single-product-gallery-item -->
-
-            <div class="single-product-gallery-item" id="slide7">
-                <a data-lightbox="image-1" data-title="Gallery" href="../../public/assets/images/products/p7.jpg">
-                    <img class="img-responsive" alt="" src="../../public/assets/images/blank.gif" data-echo="../../public/assets/images/products/p7.jpg" />
-                </a>
-            </div><!-- /.single-product-gallery-item -->
-
-            <div class="single-product-gallery-item" id="slide8">
-                <a data-lightbox="image-1" data-title="Gallery" href="../../public/assets/images/products/p8.jpg">
-                    <img class="img-responsive" alt="" src="../../public/assets/images/blank.gif" data-echo="../../public/assets/images/products/p8.jpg" />
-                </a>
-            </div><!-- /.single-product-gallery-item -->
-
-            <div class="single-product-gallery-item" id="slide9">
-                <a data-lightbox="image-1" data-title="Gallery" href="../../public/assets/images/products/p9.jpg">
-                    <img class="img-responsive" alt="" src="../../public/assets/images/blank.gif" data-echo="../../public/assets/images/products/p9.jpg" />
+                    <img class="img-responsive"  src="<?= $book_detail['book_img'] ?>" data-echo="<?= $book_detail['book_img']  ?>" />
                 </a>
             </div><!-- /.single-product-gallery-item -->
 
@@ -288,9 +217,7 @@ $img = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM book_image, book WH
 
 
         <div class="single-product-gallery-thumbs gallery-thumbs">
-
-
-            
+     
       </div><!-- /.gallery-thumbs -->
 
     </div><!-- /.single-product-gallery -->
