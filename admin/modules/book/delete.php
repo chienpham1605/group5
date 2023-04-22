@@ -1,11 +1,7 @@
 <?php
-include("../../inc/header.php");
 include_once("../../db/DBConnect.php");
 include_once("../../db/database.php");
 
-if (!isset($_GET['book_id'])):
-    header("location:../home/main.php");
-endif;
 
 $book_id = $_GET['book_id'];
 #4. Execute 

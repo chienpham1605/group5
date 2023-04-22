@@ -68,8 +68,7 @@ $rs = mysqli_query($conn, $query);
                             <?= $item['cat_name'] ?>
                         </td>
                         <td>
-                            <button href="edit.php?boook_id=<?= $item['book_id'] ?>">Edit</button>
-                            <button href="delete.php?book_id=<?= $field['book_id'] ?>"
+                            <button href="delete.php?book_id=<?= $item['book_id'] ?>"
                        onclick="return confirm('Are you sure to delete this info ?')">Delete</button>
                         </td>
                     </tr>
