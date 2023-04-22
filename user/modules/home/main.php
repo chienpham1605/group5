@@ -196,7 +196,7 @@ $list_cat = mysqli_fetch_assoc($rs);
                       </div>
                       <!-- /.product --> 
                       
-                    </div>
+                     </div>
                     <!-- /.products --> 
                   </div>
                   <!-- /.item -->

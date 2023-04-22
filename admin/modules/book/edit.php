@@ -1,3 +1,23 @@
+<?php 
+include_once("../../db/DBConnect.php");
+include_once("../../db/database.php");
+
+if (isset($_POST['btnAdd'])):
+        $name = $_POST['txtName'];
+        $Description = $_POST['txtDescription'];
+        $Percentage = $_POST['txtPercentage'];
+        $Strat = $_POST['txtStart'];
+        $End = $_POST['txtEnd'];
+    
+        $query = "insert into discount (discount_name, discount_des, discount_per, discount_start, discount_end) values ('{$name}', '{$Description}', '{$Percentage}', '{$Strat}', '{$End}')";
+        $rs = mysqli_query($conn, $query);
+        if (!$rs):
+            echo 'Nothing to insert!';
+        endif;
+    header("location:read.php");
+endif;
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -32,6 +52,31 @@
   <!-- jquery -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
+  <!-- Date Fonts -->
+       <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+        <link rel="stylesheet" href="/resources/demos/style.css">
+        <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+        <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+
+        <script>
+             $( function() {
+                $( "#start_discount" ).datepicker({
+                    prevText:"Last month",
+                    nextText:"Next month",
+                    dateFormat:"dd/mm/yy",
+                    dayNamesMin: ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"],
+                    discount_start:"slow"
+                });
+                $( "#end_discount" ).datepicker({
+                    prevText:"Last month",
+                    nextText:"Next month",
+                    dateFormat:"dd/mm/yy",
+                    dayNamesMin: ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"],
+                    discount_start:"slow"
+                });
+            } );
+        </script>
+
 </head>
 
 <body>
@@ -47,23 +92,21 @@
       <i class="bi bi-list toggle-sidebar-btn"></i>
     </div><!-- End Logo -->
 
-    <!-- <div class="search-bar">
+    <div class="search-bar">
       <form class="search-form d-flex align-items-center" method="POST" action="#">
         <input type="text" name="query" placeholder="Search" title="Enter search keyword">
         <button type="submit" title="Search"><i class="bi bi-search"></i></button>
       </form>
-    </div> -->
-    <!-- End Search Bar -->
+    </div><!-- End Search Bar -->
 
     <nav class="header-nav ms-auto">
       <ul class="d-flex align-items-center">
 
-        <!-- <li class="nav-item d-block d-lg-none">
+        <li class="nav-item d-block d-lg-none">
           <a class="nav-link nav-icon search-bar-toggle " href="#">
             <i class="bi bi-search"></i>
           </a>
-        </li> -->
-        <!-- End Search Icon-->
+        </li><!-- End Search Icon-->
 
         <li class="nav-item dropdown">
 
@@ -210,13 +253,13 @@
 
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
             <img src="../../public/assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
-            <span class="d-none d-md-block dropdown-toggle ps-2">Pham Quoc Chien</span>
+            <span class="d-none d-md-block dropdown-toggle ps-2">K. Anderson</span>
           </a><!-- End Profile Iamge Icon -->
 
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
             <li class="dropdown-header">
-              <h6>Pham Quoc Chien</h6>
-              <span>Webmaster</span>
+              <h6>Kevin Anderson</h6>
+              <span>Web Designer</span>
             </li>
             <li>
               <hr class="dropdown-divider">
@@ -241,7 +284,7 @@
             <li>
               <hr class="dropdown-divider">
             </li>
-<!-- 
+
             <li>
               <a class="dropdown-item d-flex align-items-center" href="pages-faq.html">
                 <i class="bi bi-question-circle"></i>
@@ -250,7 +293,7 @@
             </li>
             <li>
               <hr class="dropdown-divider">
-            </li> -->
+            </li>
 
             <li>
               <a class="dropdown-item d-flex align-items-center" href="#">
@@ -290,7 +333,7 @@
             </a>
           </li>
           <li>
-            <a href="../publisher/pub_read.php">
+            <a href="components-accordion.html">
               <i class="bi bi-circle"></i><span>Publisher</span>
             </a>
           </li>
@@ -298,7 +341,12 @@
             <a href="components-badges.html">
               <i class="bi bi-circle"></i><span>Book Detail</span>
             </a>
-          </li>   
+          </li>
+          <li>
+            <a href="components-breadcrumbs.html">
+              <i class="bi bi-circle"></i><span>Image</span>
+            </a>
+          </li>
           <li>
             <a href="components-buttons.html">
               <i class="bi bi-circle"></i><span>Discount</span>
@@ -308,55 +356,149 @@
       </li><!-- End Components Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-person"></i><span>Customer</span><i class="bi bi-chevron-down ms-auto"></i>
+        <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-journal-text"></i><span>Sale</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
-        <ul id="tables-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-          <li>
-            <a href="">
-              <i class="bi bi-circle"></i><span>Information</span>
-            </a>
-          </li>
-          <li>
-            <a href="../feedback/read.php">
-              <i class="bi bi-circle"></i><span>Feedback</span>
-            </a>
-          </li>
-        </ul>
-      </li><!-- End Tables Nav --> 
-      
-      <li class="nav-item">
-  <a class="nav-link collapsed" href="../order/main.php">
-    <i class="bi bi-journal-text"></i>
-    <span>Order</span>
-  </a>
-</li><!-- End Profile Page Nav --> 
-
-<li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#report-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-bar-chart"></i><span>Statistics</span><i class="bi bi-chevron-down ms-auto"></i>
-        </a>
-        <ul id="report-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+        <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
             <a href="../order/main.php">
-              <i class="bi bi-circle"></i><span>Stock</span>
+              <i class="bi bi-circle"></i><span>Order List</span>
             </a>
           </li>
           <li>
             <a href="forms-layouts.html">
-              <i class="bi bi-circle"></i><span>Sale</span>
-            </a>
-          </li>       
-          <li>
-            <a href="forms-layouts.html">
-              <i class="bi bi-circle"></i><span>Promotion</span>
+              <i class="bi bi-circle"></i><span>Report</span>
             </a>
           </li>       
         </ul>
       </li><!-- End Forms Nav -->
 
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-layout-text-window-reverse"></i><span>Feedback</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="tables-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="tables-general.html">
+              <i class="bi bi-circle"></i><span>General</span>
+            </a>
+          </li>
+          <li>
+            <a href="tables-data.html">
+              <i class="bi bi-circle"></i><span>Data</span>
+            </a>
+          </li>
+        </ul>
+      </li><!-- End Tables Nav --> 
 
-
-    
+      <li class="nav-heading">Other</li>
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="users-profile.html">
+          <i class="bi bi-person"></i>
+          <span>Profile</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="pages-login.html">
+          <i class="bi bi-box-arrow-in-right"></i>
+          <span>Logout</span>
+        </a>
+      </li>
     </ul>
   </aside><!-- End Sidebar-->
+
+  <main id="main" class="main">
+
+    <div class="pagetitle">
+      <h1>Add Discount</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <li class="breadcrumb-item">Book</li>
+          <li class="breadcrumb-item active">Discount</li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+    <section class="section">
+      <div class="row">
+        <div class="col-lg-3"></div>
+        <div class="col-lg-6">
+
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Add Discount</h5>
+
+              <!-- Horizontal Form -->
+              <form class="row g-3" method="POST" >
+                <div class="col-12">
+                  <label class="form-label">Name</label>
+                  <input class="form-control" name="txtName">
+                </div>
+                <div class="col-12">
+                  <label class="form-label">Description</label>
+                  <input class="form-control" name="txtDescription">
+                </div>
+                <div class="col-12">
+                  <label class="form-label">Percentage</label>
+                  <input name="txtPercentage" class="form-control">
+                </div>
+                <div class="col-12">
+                  <label class="form-label">Date Start</label>
+                  <input type="text" class="form-control" name="txtStart" id="start_discount">
+                </div>
+                <div class="col-12">
+                  <label class="form-label">Date End</label>
+                  <input type="text" class="form-control"  name="txtEnd" id="end_discount">
+                </div>
+                <div class="text-center">
+                  <button type="submit" class="btn btn-primary" name="btnAdd">Submit</button>
+                  <button type="reset" class="btn btn-secondary" name="btnClear">Reset</button>
+                </div>
+              </form>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main><!-- End #main -->
+
+    <!-- ======= Footer ======= -->
+    <footer id="footer" class="footer">
+    <div class="copyright">
+      &copy; Copyright <strong><span>OnBookStore</span></strong>. All Rights Reserved
+    </div>
+    <div class="credits">
+      <!-- All the links in the footer should remain intact. -->
+      <!-- You can delete the links only if you purchased the pro version. -->
+      <!-- Licensing information: https://bootstrapmade.com/license/ -->
+      <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
+      Designed by <a href="https://bootstrapmade.com/">Group 5 Aptech</a>
+    </div>
+  </footer><!-- End Footer -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="../../public/assets/vendor/apexcharts/apexcharts.min.js"></script>
+  <script src="../../public/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../../public/assets/vendor/chart.js/chart.umd.js"></script>
+  <script src="../../public/assets/vendor/echarts/echarts.min.js"></script>
+  <script src="../../public/assets/vendor/quill/quill.min.js"></script>
+  <script src="../../public/assets/vendor/simple-datatables/simple-datatables.js"></script>
+  <script src="../../public/assets/vendor/tinymce/tinymce.min.js"></script>
+  <script src="../../public/assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="../../public/assets/js/main.js"></script>
+
+
+  <!-- khai báo file js tự viết ở đây -->
+  <script src="../../public/assets/js/custom.js"></script>
+  
+
+</body>
+
+</html>
