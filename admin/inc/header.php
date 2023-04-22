@@ -290,7 +290,7 @@
             </a>
           </li>
           <li>
-            <a href="components-accordion.html">
+            <a href="../publisher/pub_read.php">
               <i class="bi bi-circle"></i><span>Publisher</span>
             </a>
           </li>
@@ -300,7 +300,7 @@
             </a>
           </li>   
           <li>
-            <a href="components-buttons.html">
+            <a href="../discount/read.php">
               <i class="bi bi-circle"></i><span>Discount</span>
             </a>
           </li>     

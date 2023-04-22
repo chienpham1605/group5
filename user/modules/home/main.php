@@ -1,6 +1,8 @@
 <?php
-include("../../inc/header.php");
 include_once("../../db/DBConnect.php");
+include_once("../../db/database.php");
+include("../../inc/header.php");
+
 $query = "SELECT * FROM `categories`";
 $rs = mysqli_query($conn, $query);
 $count = mysqli_num_rows($rs);
@@ -44,10 +46,7 @@ $list_cat = mysqli_fetch_assoc($rs);
         </div>
         <!-- /.side-menu --> 
         <!-- ================================== TOP NAVIGATION : END ================================== --> 
-        
-
-        
-        
+     
       </div>
       <!-- /.sidemenu-holder --> 
       <!-- ============================================== SIDEBAR : END ============================================== --> 
@@ -92,7 +91,6 @@ $list_cat = mysqli_fetch_assoc($rs);
         
         <!-- ========================================= SECTION – HERO : END ========================================= --> 
         
-
         <!-- ============================================== SCROLL TABS ============================================== -->
         <div id="product-tabs-slider" class="scroll-tabs outer-top-vs">
           <div class="more-info-tab clearfix ">
@@ -114,7 +112,7 @@ $list_cat = mysqli_fetch_assoc($rs);
                       <div class="product">
                         <div class="product-image">
                           <div class="image"> 
-                          <a href="detail.html">
+                          <a href="../product/detail.php">
                              <img src="../../public/assets/images/products/p1.jpg" alt=""> 
                               <img src="../../public/assets/images/products/p1_hover.jpg" alt="" class="hover-image">
                           </a> 
@@ -126,7 +124,7 @@ $list_cat = mysqli_fetch_assoc($rs);
                         <!-- /.product-image -->
                         
                         <div class="product-info text-left">
-                          <h3 class="name"><a href="detail.html">Floral Print Buttoned</a></h3>
+                          <h3 class="name"><a href="">Floral Print Buttoned</a></h3>
                           <div class="rating rateit-small"></div>
                           <div class="description"></div>
                           <div class="product-price"> <span class="price"> $450.99 </span> <span class="price-before-discount">$ 800</span> </div>
@@ -1593,8 +1591,8 @@ $list_cat = mysqli_fetch_assoc($rs);
     </div>
   </div>
   <!-- /.container --> 
-</div>
- 
-<?php 
+  <?php 
 include("../../inc/footer.php");
 ?>
+</div>
+ 

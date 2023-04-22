@@ -1,7 +1,13 @@
+ <?php
+ include("../../inc/header.php");
+ include("../../db/DBConnect.php");
+$cat_id = $_GET['cat_id'];
+$list_book = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * from book where cat_id = '$cat_id'"));
+var_dump($list_book);
+ ?>
+
 <?php
-include_once("../../db/DBConnect.php");
-include_once("../../db/database.php");
-include("../../inc/header.php");
+ include("../../inc/footer.php");
 
 if (!isset($_GET['cat_id'])){
   header("Location:../home/main.php");
@@ -366,3 +372,4 @@ WHERE categories.cat_id = book.cat_id AND categories.cat_id = $cat_id");
 <?php
 include("../../inc/footer.php");
 ?>
+ ?>

@@ -1,15 +1,14 @@
 <?php
 session_start();
-
 include("../../inc/header.php");
 include_once("../../db/DBConnect.php");
 include_once("../../db/database.php");
 
-$query="SELECT SUM(quantity*book_price) as total, ordermaster.order_id, customer.fullname, 
-ordermaster.order_id, STR_TO_DATE(ordermaster.order_date, '%d/%m/%Y') as order_date, ordermaster.order_status 
+$query="SELECT SUM(quantity*book_price) as total, ordermaster.order_id, customer.name, 
+ordermaster.order_id, STR_TO_DATE(ordermaster.order_date, 'Y-m-d H:i:s') as order_date, ordermaster.order_status 
 FROM orderdetail, ordermaster, customer 
 WHERE orderdetail.order_id = ordermaster.order_id AND ordermaster.cus_id = customer.id
-GROUP BY orderdetail.order_id ORDER BY STR_TO_DATE(ordermaster.order_date, '%d/%m/%Y') DESC";
+GROUP BY orderdetail.order_id ORDER BY STR_TO_DATE(ordermaster.order_date, 'Y-m-d H:i:s') DESC";
 // show_array($order_list);
 //Date filter
 if(isset($_POST['btnFilter'])){
@@ -18,13 +17,13 @@ if(isset($_POST['btnFilter'])){
   // $date_to = strtotime($_POST['date_to']);
 
 if(!empty($date_from)&&!empty($date_to)){
-  $query = "SELECT SUM(quantity*book_price) as total, ordermaster.order_id, customer.fullname, 
-  ordermaster.order_id, STR_TO_DATE(ordermaster.order_date, '%d/%m/%Y') as order_date, ordermaster.order_status 
+  $query = "SELECT SUM(quantity*book_price) as total, ordermaster.order_id, customer.name, 
+  ordermaster.order_id, STR_TO_DATE(ordermaster.order_date, 'Y-m-d H:i:s') as order_date, ordermaster.order_status 
   FROM orderdetail, ordermaster, customer 
   WHERE orderdetail.order_id = ordermaster.order_id AND ordermaster.cus_id = customer.id
-  AND STR_TO_DATE(ordermaster.order_date, '%d/%m/%Y') >= '$date_from'
-  AND STR_TO_DATE(ordermaster.order_date, '%d/%m/%Y') <= '$date_to'  
-  GROUP BY orderdetail.order_id ORDER BY STR_TO_DATE(ordermaster.order_date, '%d/%m/%Y') DESC";
+  AND STR_TO_DATE(ordermaster.order_date, 'Y/m/d H:i:s') >= '$date_from'
+  AND STR_TO_DATE(ordermaster.order_date, 'Y-m-d H:i:s') <= '$date_to'  
+  GROUP BY orderdetail.order_id ORDER BY STR_TO_DATE(ordermaster.order_date, 'Y-m-d H:i:s') DESC";
 }
 
 }
@@ -92,7 +91,7 @@ $order_list = db_fetch_array($query);
                   <tr>
                     <th scope="row"><span>#<?= $item['order_id'] ?></span></th>
                     <td>
-                      <?= $item['fullname'] ?>
+                      <?= $item['name'] ?>
                     </td>
                     <td><span class="text-primary"><?= $item['order_status'] ?></span></td>
                     <td>
