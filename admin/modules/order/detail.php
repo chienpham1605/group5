@@ -127,7 +127,7 @@ $total = 0;
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td><i class="bi bi-mailbox2"></i></i>
+                                    <td><i class="bi bi-envelope-fill"></i></i>
                                         <?= $customer_infor['email'] ?>
                                     </td>
 
