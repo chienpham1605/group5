@@ -300,7 +300,7 @@
             </a>
           </li>   
           <li>
-            <a href="components-buttons.html">
+            <a href="../discount/read.php">
               <i class="bi bi-circle"></i><span>Discount</span>
             </a>
           </li>     
