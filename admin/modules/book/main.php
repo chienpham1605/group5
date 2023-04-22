@@ -3,7 +3,7 @@ session_start();
 include("../../inc/header.php");
 include_once("../../db/DBConnect.php");
 
-$query = "SELECT * from book";
+$query = "SELECT * from book, category, publisher";
 $rs = mysqli_query($conn, $query);
 
 ?>
@@ -33,6 +33,11 @@ $rs = mysqli_query($conn, $query);
                     <th scope="col">Book Author</th>
                     <th scope="col">Book Price</th>
                     <th scope="col">Book Description</th>
+                    <th scope="col">Book Pages</th>
+                    <th scope="col">Book Publisher</th>
+                    <th scope="col">Category</th>
+                    <th scope="col">Image</th>
+
                 </tr>
             </thead>
             <tbody>
