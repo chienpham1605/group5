@@ -101,17 +101,17 @@ include("../../inc/header.php");
             <div class="col-12">
               <label class="form-label">Website</label>
               <input class="form-control" name="txtLinkWeb">
-              <span class="error"> <?php echo $urlErr; ?></span>
+              <span class="error" style="color:red"> <?php echo $urlErr; ?></span>
             </div>
             <div class="col-12">
               <label class="form-label">Phone</label>
               <input type="text" name="txtPhone" class="form-control">
-              <span class="error"> <?php echo $phoneErr; ?></span>
+              <span class="error" style="color:red"> <?php echo $phoneErr; ?></span>
             </div>
             <div class="col-12">
               <label class="form-label">Email</label>
               <input type="text" class="form-control" name="txtEmail">
-              <span class="error"> <?php echo $emailErr; ?></span>
+              <span class="error" style="color:red"> <?php echo $emailErr; ?></span>
             </div>
             <div class="col-12">
               <label class="form-label">Address</label>
