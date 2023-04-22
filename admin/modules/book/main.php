@@ -19,7 +19,7 @@ $rs = mysqli_query($conn, $query);
             </ol>
         </nav>
     </div>
-
+    <h5 class="card-title"><a href="create.php">Add book</h5>
     <form class="card-body" method="post">
         <!-- Table with stripped rows -->
         <table class="table datatable">
