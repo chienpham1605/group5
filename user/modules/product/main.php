@@ -7,7 +7,7 @@
  endif;
 
 $cat_id = $_GET['cat_id'];
-$query = "select * from book where cat_id = '$cat_id'";
+$query = "select * from book,book_image where cat_id = '$cat_id' and book.book_id = book_image.book_image_id";
 $rs = mysqli_query($conn, $query);
  ?>
 <div class="body-content outer-top-xs">
@@ -72,37 +72,8 @@ $rs = mysqli_query($conn, $query);
        
             <!-- /.sidebar-widget --> 
           <!-- /.Testimonials -->
-            <div class="sidebar-widget  outer-top-vs ">
-              <h3>You also maybe like</h3>
-              <div id="advertisement" class="advertisement">
-                <div class="item">
-                  <div class="avatar"><img src="../../public/assets/images/testimonials/member1.png" alt="Image"></div>
-                  <div class="testimonials"><em>"</em> Vtae sodales aliq uam morbi non sem lacus port mollis. Nunc condime tum metus eud molest sed consectetuer. Sed quia non numquam eius modi tempora incidunt ut labore et dolore.<em>"</em></div>
-                  <div class="clients_author">English Grammar in Use Book<span>Raymond Murphy</span> </div>
-                  <!-- /.container-fluid --> 
-                </div>
-                <!-- /.item -->
-                
-                <div class="item">
-                  <div class="avatar"><img src="../../public/assets/images/testimonials/member3.png" alt="Image"></div>
-                  <div class="testimonials"><em>"</em>Vtae sodales aliq uam morbi non sem lacus port mollis. Nunc condime tum metus eud molest sed consectetuer. Sed quia non numquam eius modi tempora incidunt ut labore et dolore.<em>"</em></div>
-                  <div class="clients_author">Atomic Habits <span>Random House Business</span> </div>
-                </div>
-                <!-- /.item -->
-                
-                <div class="item">
-                  <div class="avatar"><img src="../../public/assets/images/testimonials/member2.png" alt="Image"></div>
-                  <div class="testimonials"><em>"</em> Vtae sodales aliq uam morbi non sem lacus port mollis. Nunc condime tum metus eud molest sed consectetuer. Sed quia non numquam eius modi tempora incidunt ut labore et dolore.<em>"</em></div>
-                  <div class="clients_author">Thinking, Fast and Slow <span>Daniel Kahneman</span> </div>
-                  <!-- /.container-fluid --> 
-                </div>
-                <!-- /.item --> 
-                
-              </div>
-              <!-- /.owl-carousel --> 
-            </div>
-            
-            <!-- ============================================== Testimonials: END ============================================== -->           
+
+           <!-- ============================================== Testimonials: END ============================================== -->           
 
             
            
@@ -204,8 +175,7 @@ $rs = mysqli_query($conn, $query);
                             <div class="product-image">
                               <div class="image"> 
                               <a href="">
-                                 <img src="../../public/assets/images/products/p1.jpg" alt=""> 
-                                  <img src="../../public/assets/images/products/p1_hover.jpg" alt="" class="hover-image">
+                                 <img src="<?php $row['img_url']?>" alt=""> 
                               </a>
                                 </div>
                               <!-- /.image -->

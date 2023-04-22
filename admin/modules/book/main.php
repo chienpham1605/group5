@@ -23,7 +23,6 @@ $rs = mysqli_query($conn, $query);
     </div>
 
     <form class="card-body" method="post">
-
         <!-- Table with stripped rows -->
         <table class="table datatable">
             <thead>
@@ -71,11 +70,13 @@ $rs = mysqli_query($conn, $query);
                         <td>
                             <?= $item['cat_name'] ?>
                         </td>
-                        <td rowspan="2" width="20%" >
-                            <img src=<?= $item['img_url']?> width = "150" >
+                        <td>
+                            <img src=<?= $item['img_url']?> width = "100" >
                         </td>
                         <td>
-                            <?= $item['cat_name'] ?>
+                            <button href="edit.php?boook_id=<?= $item['book_id'] ?>">Edit</button>
+                            <button href="delete.php?book_id=<?= $field['book_id'] ?>"
+                       onclick="return confirm('Are you sure to delete this info ?')">Delete</button>
                         </td>
                     </tr>
                     <?php
