@@ -13,14 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       $yearErr = "Year is wrong";
     }
   }
-  // image 
-  if (empty($_POST["txtImg"])) {
-    $imgErr = "image is required";
-  } elseif (!filter_var($_POST["txtImg"], FILTER_VALIDATE_URL)) {
-    $imgErr = "Invalid Url";
-  } else {
-    $img = test_input($_POST["txtImg"]);
-  }
+
 
   //author validate
   if (empty($_POST["txtAuthor"])) {
@@ -101,7 +94,7 @@ if (isset($_POST['btnAdd'])):
   $inventory = $_POST['txtInventory'];
 
   // upload logo
-  $folder = "../../public/assets/img/book/";
+  $folder = "../../../../img/";
   $fileName = $_FILES['txtImg']['name'];
   $fileTmp = $_FILES['txtImg']['tmp_name'];
   $img = $folder . $fileName;
@@ -252,7 +245,6 @@ include("../../inc/header.php");
               <div class="col-12">
                 <label class="form-label">Book Image</label>
                 <input class="form-control" type="file" name="txtImg" value="<?= $fields['book_image'] ?>" >
-                <span class="error" style="color:red"> <?php echo $imgErr; ?></span>
 
               </div>
               <div class="text-center">

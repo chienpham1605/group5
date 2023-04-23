@@ -95,7 +95,7 @@ endif;
                 <div class="hot-deal-wrapper">
                   <div class="image"> 
                   <a href="#">
-                  <img src="../../public/assets/images/hot-deals/p13.jpg" alt="">
+                  <img src="<?= $book_detail['book_image']?>" alt="">
                   </a>
                   </div>
                   <div class="sale-offer-tag"><span><?= $discount['discount_name']?><br>

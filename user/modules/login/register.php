@@ -1,7 +1,7 @@
 <?php 
 include("../../db/DBConnect.php");
 include("../../db/database.php");
-include_once("../../lib/users.php");
+include_once("users.php");
 
 if (isset($_POST["btn_submit"])) {
     register();

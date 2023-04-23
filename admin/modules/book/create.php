@@ -12,15 +12,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       $yearErr = "Year is wrong";
     }
   }
-  // image 
-  if (empty($_POST["txtImg"])) {
-    $imgErr = "image is required";
-  } elseif (!filter_var($_POST["txtImg"], FILTER_VALIDATE_URL)) {
-    $imgErr = "Invalid Url";
-  } else {
-    $img = test_input($_POST["txtImg"]);
-  }
-
   //author validate
   if (empty($_POST["txtAuthor"])) {
     $authorErr = "Author is required";
@@ -48,7 +39,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $priceErr = "price is required";
   } else {
     $Price = test_input($_POST["txtPrice"]);
-    if ($Price< 0 ) {
+    if ($Price < 0 ) {
       $priceErr = "Invalid price";
     }
   }
