@@ -1,11 +1,55 @@
 <?php 
+session_start();
 include("../../db/DBConnect.php");
+
 include("../../db/database.php");
-include_once("users.php");
+// include_once("users.php");
 
 if (isset($_POST["btn_submit"])) {
-    register();
+    $username = $_POST["name"];
+    $password = md5($_POST["pass"]);
+    $cpassword = md5($_POST["cpass"]);
+    $email = $_POST["email"];
+    $phone = $_POST["phone"];
+    $address = $_POST["address"];
+    $gender = $_POST["gender"];
+    // lấy thông tin tu cac form bang phuong thuc POST
+    //$_POST lây gia tri the thong qua name"" - chu khong phai id"" 
+    if ($username == "" || $password == "" || $cpassword == "" || $email == "" || $phone == "" || $address == "" || $gender == "") {
+        echo " Ban vui long nhap day du thong tin";
+    } else {
+        // Kiem tra tai khoan da ton tai chua
+        $sql = "select * from customer  where name= '$username' ";
+        global $conn;
+        $rs = mysqli_query($conn, $sql);
+
+        if (mysqli_num_rows($rs) > 0) {
+            echo "Account already exist";
+        } else {
+            if ($password === $cpassword) {
+                $is_block = 0;
+                // thuc hien viec luu tru du lieu vao db      
+                $sql = "INSERT INTO customer(
+             `name`, `pwd`,`email`, `phone`,`address`,`gender`, `is_block`) VALUES (
+                                       
+                                        '{$username}',
+                                        '{$password}',
+                                        '{$email}',
+                                        '{$phone}',
+                                        '{$address}',
+                                        '{$gender}', '{$is_block}')";
+                // thuc thi cau $sql vao bien conn lay tu file DBConnect.php                            
+                mysqli_query($conn, $sql);
+
+                echo " Signup Successfull";
+                header("Location:../home/main.php");
+            } else {
+                echo "Password didn't match";
+            }
+        }
+    }    
 }
+
 if (isset($_POST['btn-login'])) {
     $error = login();
 }

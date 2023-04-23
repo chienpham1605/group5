@@ -1,4 +1,5 @@
 <?php
+session_start();
 include("../../inc/header.php");
 include("../../db/DBConnect.php");
 include("../../db/database.php");

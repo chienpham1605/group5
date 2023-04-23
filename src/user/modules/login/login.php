@@ -1,14 +1,73 @@
 <?php 
+session_start();
 include("../../db/DBConnect.php");
 include("../../db/database.php");
-include_once("users.php");
+// include_once("users.php");
 
 if (isset($_POST['btn-login'])) {
-    $error = login();
+    $username = $_POST['name'];
+    $password = $_POST['pass'];
+    // $error = [
+    //     'name' => "",
+    //     'pass' => "",
+    //     'common' => ''
+    // ];
+    // $success = true;
+
+    // if (empty(($_POST['name']))) {
+    //     $error['name'] = " username cannot be blank ";
+    //     $success = false;
+    // } else {
+    //     $pattern = '/^[A-Za-z0-9_\.]{6,32}$/';
+    //     if (!preg_match($pattern, $_POST['name'])) {
+    //         $error['name'] = " username  incorrect ";
+    //         $success = false;
+    //     } else {
+    //         $username = $_POST['name'];
+    //     }             // replace username to name
+    // }
+    // // Check password
+    // if (empty($_POST['pass'])) {
+    //     $error['pass'] = " password cannot be blank ";
+    //     $success = false;
+    // } else {
+    //     $pattern = '/^[A-Za-z0-9_\.!@#$%^&*()]{6,32}$/';
+    //     if (!preg_match($pattern, md5($_POST['pass']))) {
+    //         $error['pass'] = " password  incorrect ";
+    //         $success = false;
+    //     }
+    // }
+
+    //Conclusion
+    // if ($success) {
+    //     $password = ($_POST['pass']);
+        $sql = "select * from customer where name ='$username'
+                 and pwd ='$password' ";
+        global $conn;
+        $rs = mysqli_query($conn, $sql);
+
+        if (mysqli_num_rows($rs) > 0) {
+
+            $num = mysqli_fetch_assoc($rs);
+// var_dump($num);die();
+
+            $_SESSION['is_login'] = true;
+            $_SESSION['user_login'] = $num;
+
+            // $user_login = $_SESSION['num'];
+            // header('Location:../home/main.php');
+        } 
+//         else {
+//             $error['common'] = "Login fail!";
+//         }
+//     }
+
+//     return $error;
 }
 
+// var_dump($num);
 ?>
-<?php 
+<?php
 include("../../inc/header.php");
 ?>
 
@@ -50,8 +109,8 @@ include("../../inc/header.php");
                         }
                         ?>
                     </div>
-                <button type ="submit" id="btn-login" name="btn-login"  value ="Login" 
-                        class="btn-upper btn btn-primary checkout-page-button">Login </button>
+                <input type ="submit" id="btn-login" name="btn-login"  value ="Login" 
+                        class="btn-upper btn btn-primary checkout-page-button">
                         <?php
                         if (!empty($error['common'])) {
                             ?>
