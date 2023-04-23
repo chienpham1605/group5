@@ -28,10 +28,6 @@ $rs = mysqli_query($conn, $query);
               </div>
               <!-- /.sidebar-widget-body --> 
             </div>
-            <!-- /.sidebar-widget --> 
-            <!-- ============================================== SIDEBAR CATEGORY : END ============================================== --> 
-            
-            <!-- ============================================== PRICE SILDER============================================== -->
             <div class="sidebar-widget">
               <div class="widget-header">
                 <h4 class="widget-title">Price Slider</h4>
@@ -45,15 +41,9 @@ $rs = mysqli_query($conn, $query);
                 <a href="#" class="lnk btn btn-primary">Show Now</a> </div>
               <!-- /.sidebar-widget-body --> 
             </div>
-            <!-- /.sidebar-widget --> 
-            <!-- ============================================== PRICE SILDER : END ============================================== --> 
-            <!-- ============================================== MANUFACTURES============================================== -->
             <div class="sidebar-widget">
               <!-- /.sidebar-widget-body --> 
             </div>
-            <!-- /.sidebar-widget --> 
-            <!-- ============================================== MANUFACTURES: END ============================================== --> 
-            <!-- ============================================== COLOR============================================== -->
             <div class="sidebar-widget">
               <div class="widget-header">
                 <h4 class="widget-title">Author</h4>
@@ -73,35 +63,6 @@ $rs = mysqli_query($conn, $query);
        
             <!-- /.sidebar-widget --> 
           <!-- /.Testimonials -->
-            <div class="sidebar-widget  outer-top-vs ">
-              <h3>You also maybe like</h3>
-              <div id="advertisement" class="advertisement">
-                <div class="item">
-                  <div class="avatar"><img src="../../public/assets/images/testimonials/member1.png" alt="Image"></div>
-                  <div class="testimonials"><em>"</em> Vtae sodales aliq uam morbi non sem lacus port mollis. Nunc condime tum metus eud molest sed consectetuer. Sed quia non numquam eius modi tempora incidunt ut labore et dolore.<em>"</em></div>
-                  <div class="clients_author">English Grammar in Use Book<span>Raymond Murphy</span> </div>
-                  <!-- /.container-fluid --> 
-                </div>
-                <!-- /.item -->
-                
-                <div class="item">
-                  <div class="avatar"><img src="../../public/assets/images/testimonials/member3.png" alt="Image"></div>
-                  <div class="testimonials"><em>"</em>Vtae sodales aliq uam morbi non sem lacus port mollis. Nunc condime tum metus eud molest sed consectetuer. Sed quia non numquam eius modi tempora incidunt ut labore et dolore.<em>"</em></div>
-                  <div class="clients_author">Atomic Habits <span>Random House Business</span> </div>
-                </div>
-                <!-- /.item -->
-                
-                <div class="item">
-                  <div class="avatar"><img src="../../public/assets/images/testimonials/member2.png" alt="Image"></div>
-                  <div class="testimonials"><em>"</em> Vtae sodales aliq uam morbi non sem lacus port mollis. Nunc condime tum metus eud molest sed consectetuer. Sed quia non numquam eius modi tempora incidunt ut labore et dolore.<em>"</em></div>
-                  <div class="clients_author">Thinking, Fast and Slow <span>Daniel Kahneman</span> </div>
-                  <!-- /.container-fluid --> 
-                </div>
-                <!-- /.item --> 
-                
-              </div>
-              <!-- /.owl-carousel --> 
-            </div>
             
             <!-- ============================================== Testimonials: END ============================================== -->           
 
@@ -184,7 +145,7 @@ $rs = mysqli_query($conn, $query);
                 </ul>
                 <!-- /.list-inline --> 
               </div>
-              <!-- /.pagination-container --> </div>
+             </div>
             <!-- /.col --> 
           </div>
           <!-- /.row --> 
@@ -264,8 +225,8 @@ $rs = mysqli_query($conn, $query);
                 <ul class="list-inline list-unstyled">
                   <li class="prev"><a href="#"><i class="fa fa-angle-left"></i></a></li>
                   <li><a href="#">1</a></li>
-                  <li class="active"><a href="#">2</a></li>
-<li><a href="#">3</a></li>
+                  <li><a href="#">2</a></li>
+                  <li><a href="#">3</a></li>
                   <li><a href="#">4</a></li>
                   <li class="next"><a href="#"><i class="fa fa-angle-right"></i></a></li>
                 </ul>
