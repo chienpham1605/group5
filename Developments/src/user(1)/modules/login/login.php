@@ -54,8 +54,8 @@ if (isset($_POST['btn-login'])) {
             $_SESSION['is_login'] = true;
             $_SESSION['user_login'] = $num;
 
-            // $user_login = $_SESSION['num'];
-            // header('Location:../home/main.php');
+            $user_login = $_SESSION['num'];
+            header('Location:../home/main.php');
         } 
 //         else {
 //             $error['common'] = "Login fail!";
@@ -65,7 +65,7 @@ if (isset($_POST['btn-login'])) {
 //     return $error;
 }
 
-var_dump($num);
+// var_dump($num);
 ?>
 <?php
 include("../../inc/header.php");

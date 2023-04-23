@@ -61,13 +61,12 @@ include("../../inc/header.php");
 											?>
 											<tr>
 												<td class="cart-image">
-													<a class="entry-thumbnail" href="detail.html">
-														<img src="assets/images/products/p1.jpg" alt="">
+														<img src="<?= $item['book_image']?>">
 													</a>
 												</td>
 												<td class="cart-product-name-info">
 													<h4 class='cart-product-description'><a
-															href="?mod=product&act=detail&book_id=<?= $item['book_id'] ?>">
+															href="../product/detail.php?book_id=<?= $item['book_id'] ?>">
 															<?= $item['book_name'] ?>
 														</a></h4>										
 												</td>

@@ -10,8 +10,8 @@ endif;
 $book_id = $_GET['book_id'];
 $book_detail = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM `book`, publisher, discount  WHERE book_id = '{$book_id}' and book.publisher_id = publisher.publisher_id and book.discount_id = discount.discount_id"));
 $detail = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM categories, book WHERE categories.cat_id=book.cat_id AND book.book_id = '{$book_id}' "));
-$query = "SELECT * FROM feedback, book, customer where feedback.book_id=book.book_id AND feedback.customer_id = customer.id and book.book_id = '{$book_id}'";
-$rs_feedback = mysqli_query($conn, $query);
+$sql = "SELECT * FROM feedback, book, customer where feedback.book_id=book.book_id AND feedback.customer_id = customer.id and book.book_id = '{$book_id}'";
+$rs_feedback = mysqli_query($conn, $sql);
 
 // var_dump($img);
 $ratingErr = "";
@@ -42,7 +42,7 @@ if (isset($_POST['btnAdd'])):
     if (!$rs):
       echo 'can not found';
     endif;
-    header("location:Ex01_read.php");
+    header("location:detail.php");
   endif;
 endif;
 ?>
@@ -225,7 +225,7 @@ endif;
 
 
                         <div class="add-btn" data-id="<?= $detail['book_id'] ?>"
-                          data-price="<?= $detail['book_price'] ?>">
+                          data-price="<?= $detail['book_price'] * $book_detail['discount_per']?>">
                           <input type="submit" name="btnAdd" class="btn btn-primary" value="add"></input>
                         </div>
                         <?php
