@@ -124,8 +124,8 @@ var_dump($user_login);
                         <div class="product-image">
                           <div class="image"> 
                           <a href="../product/detail.php">
-                             <img src="<?= $row['image_url']?>"> 
-                              <img src="<?= $row['image_url']?>" alt="" class="hover-image">
+                             <img src="<?= $row['book_image']?>"> 
+                              <img src="<?= $row['book_image']?>" alt="" class="hover-image">
                           </a> 
                        </div>
                           <!-- /.image -->

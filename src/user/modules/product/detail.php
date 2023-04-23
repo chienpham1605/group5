@@ -15,55 +15,55 @@ $query = "SELECT * FROM feedback, book, customer where feedback.book_id=book.boo
 $rs = mysqli_query($conn, $query);
 $count = mysqli_num_rows($rs);
 
-// var_dump($img);
-$ratingErr = "";
-$content = $rating = "";
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-  if (empty($_POST["txtcontent"])) {
-    $content = "";
-  } else {
-    $content = test_input($_POST["txtcontent"]);
-  }
+// // var_dump($img);
+// $ratingErr = "";
+// $content = $rating = "";
+// if ($_SERVER["REQUEST_METHOD"] == "POST") {
+//   if (empty($_POST["txtcontent"])) {
+//     $content = "";
+//   } else {
+//     $content = test_input($_POST["txtcontent"]);
+//   }
 
-  if (empty($_POST["txtstar"])) {
-    $ratingErr = "Date is required";
-  }
-}
-function test_input($data)
-{
-  $data = trim($data);
-  $data = stripslashes($data);
-  $data = htmlspecialchars($data);
-  return $data;
-}
-// function getFeedback() {
-//     global $conn; 
-//     $sql = "SELECT * FROM feedback, customer, book WHERE feedback.customer_id = customer.id AND feedback.book_id = book.book_id";
-//     $result = mysqli_query($conn, $sql);
-//     return mysqli_fetch_all($result, MYSQLI_ASSOC);
+//   if (empty($_POST["txtstar"])) {
+//     $ratingErr = "Date is required";
+//   }
 // }
-// $feedback = getFeedback();
-// foreach ($feedback as $feedbacks) {
-// 	if($feedbacks['book_id'] == $book_id){
-// 	echo "Book: ". $feedbacks['book_name'] . "<br>";
-// 	echo "Name: ". $feedbacks['name'] . "<br>";
-//     echo "Rating: " . $feedbacks['rating'] . "<br>";
-//     echo "Content: " . $feedbacks['content'] . "<br>";
-// 	}
-//}
+// function test_input($data)
+// {
+//   $data = trim($data);
+//   $data = stripslashes($data);
+//   $data = htmlspecialchars($data);
+//   return $data;
+// }
+// // function getFeedback() {
+// //     global $conn; 
+// //     $sql = "SELECT * FROM feedback, customer, book WHERE feedback.customer_id = customer.id AND feedback.book_id = book.book_id";
+// //     $result = mysqli_query($conn, $sql);
+// //     return mysqli_fetch_all($result, MYSQLI_ASSOC);
+// // }
+// // $feedback = getFeedback();
+// // foreach ($feedback as $feedbacks) {
+// // 	if($feedbacks['book_id'] == $book_id){
+// // 	echo "Book: ". $feedbacks['book_name'] . "<br>";
+// // 	echo "Name: ". $feedbacks['name'] . "<br>";
+// //     echo "Rating: " . $feedbacks['rating'] . "<br>";
+// //     echo "Content: " . $feedbacks['content'] . "<br>";
+// // 	}
+// //}
 
-if (isset($_POST['btnAdd'])) :
-  if (empty($ratingErr)) :
-    // echo '<h2 style="color:blue">Welcome '. $sName . ' to my service</h2>';
-    $query = "insert into feedback (content, rating) values('{$content}, '{$rating}')";
-    $rs = mysqli_query($conn, $query);
-    if (!$rs) :
-      echo 'can not found';
-    endif;
-    header("location:Ex01_read.php");
-  endif;
-endif;
-?>
+// if (isset($_POST['btnAdd'])) :
+//   if (empty($ratingErr)) :
+//     // echo '<h2 style="color:blue">Welcome '. $sName . ' to my service</h2>';
+//     $query = "insert into feedback (content, rating) values('{$content}, '{$rating}')";
+//     $rs = mysqli_query($conn, $query);
+//     if (!$rs) :
+//       echo 'can not found';
+//     endif;
+//     header("location:main.php");
+//   endif;
+// endif;
+// ?>
 <div class="breadcrumb">
   <div class="container">
     <div class="breadcrumb-inner">
@@ -413,7 +413,7 @@ endif;
 
                 <div id="owl-single-product" method="post">
                   <div class="single-product-gallery-item" id="slide1">
-                    <img class="img-responsive" src="<?= $book_detail['book_img'] ?>" data-echo="<?= $book_detail['book_img']  ?>" />
+                    <img class="img-responsive" src="<?= $book_detail['book_image'] ?>" data-echo="<?= $book_detail['book_image']  ?>" />
                     </a>
                   </div><!-- /.single-product-gallery-item -->
 
@@ -519,17 +519,11 @@ endif;
 
 
                       <input type="hidden" name="book_id" value="<?= $detail['book_id'] ?>">
-
                       <input type="hidden" name="book_price" value="<?= $detail['book_price'] ?>">
-
-
 
                       <div class="add-btn" data-id="<?= $detail['book_id'] ?>" data-price="<?= $detail['book_price'] ?>">
                         <input type="submit" name="btnAdd" class="btn btn-primary" value="add"></input>
                       </div>
-                      <?php
-
-                      ?>
                     </div><!-- /.row -->
                   </div><!-- /.quantity-container -->
                 </div><!-- /.product-info -->
@@ -548,7 +542,6 @@ endif;
               </ul><!-- /.nav-tabs #product-tabs -->
             </div>
             <div class="col-sm-12 col-md-9 col-lg-9">
-
               <div class="tab-content">
 
                 <div id="description" class="tab-pane in active">
@@ -561,43 +554,8 @@ endif;
                   <div class="product-tab">
                     <div class="product-add-review">
                       <h4>Customer review</h4>
-                      <?php
-                      if ($count == 0) :
-                        echo 'record not found';
-                      else :
-                        while ($feedback = mysqli_fetch_array($rs)) :
-                      ?>
-                          <div class="cus_feedback">
-                          <h5> <?= $feedback['name'] ?></h5>
-                          
-                           <h6> <?= $feedback['rating'] ?> star</h6>
-
-                           <h6> <?= $feedback['content'] ?></h6>
-                          </div>
-                      <?php
-                        endwhile;
-                      endif;
-                      ?>
+        
                       <h4 class="title">Write your own review</h4>
-                      <div class="review-table">
-                        <div class="table-responsive">
-                          <table class="table">
-                            <div class="rate" name="txtstar">
-                              <input type="radio" id="star5" name="rate" value="5" />
-                              <label for="star5" title="text">5 stars</label>
-                              <input type="radio" id="star4" name="rate" value="4" />
-                              <label for="star4" title="text">4 stars</label>
-                              <input type="radio" id="star3" name="rate" value="3" />
-                              <label for="star3" title="text">3 stars</label>
-                              <input type="radio" id="star2" name="rate" value="2" />
-                              <label for="star2" title="text">2 stars</label>
-                              <input type="radio" id="star1" name="rate" value="1" />
-                              <label for="star1" title="text">1 star</label>
-                              <span class="error">
-                              </span>
-                            </div>
-                        </div>
-                      </div>
                       </table><!-- /.table .table-bordered -->
                     </div><!-- /.table-responsive -->
                   </div><!-- /.review-table -->
