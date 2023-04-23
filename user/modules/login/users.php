@@ -75,7 +75,7 @@ function login() {
             $_SESSION['user_login'] = $num;
 
             $user_login = $_SESSION['num'];
-            header('Location:register.php');
+            header('Location:../home/main.php');
         } else {
             $error['common'] = "Login fail!";
         }
@@ -136,6 +136,6 @@ function logout( ){
 
 unset ($_SESSION['user_login']);
 
-header('Location:index.php');
+header('Location:../home/main.php');
 }
 
