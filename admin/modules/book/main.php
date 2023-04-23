@@ -76,10 +76,10 @@ $count = mysqli_num_rows($rs);
                                                 <?= $row['cat_name'] ?>
                                             </td>
                                             <td>
-                                                <img src="<?= $row['book_image']?>" width="100">;
+                                                <img src="<?= $row['book_image']?>" width="100">
                                             </td>
                                             <td>
-                                                <a href="edit.php?book_id=<?= $item['book_id'] ?>">Edit</a>
+                                                <a href="edit.php?id=<?= $row['book_id'] ?>">Edit</a>
                                             </td>
                                         </tr>
                                         <?php
