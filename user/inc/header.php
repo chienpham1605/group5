@@ -133,12 +133,35 @@
               <!-- /.dropdown-menu-->
             </div>
 
-            <div class="dropdown dropdown-cart" style="padding: 12px"> <a href="../login/main.php" class="lnk-cart"
+            <!-- <div class="dropdown dropdown-cart" style="padding: 12px"> <a href="../login/main.php" class="lnk-cart"
                 data-toggle="dropdown">
                 <div class="items-cart-inner">
                   <h4><i class="fa fa-user" style='font-size:24px'></i><a href="../login/main.php"
                       style="color:white">Account</a></h4>
                 </div>
+            </div> -->
+            <div class="dropdown dropdown-cart"> 
+              <a href="#" class="dropdown-toggle lnk-cart" data-toggle="dropdown">
+                <div class="items-cart-inner">
+                  <div style=" padding-right: 30px; padding-top: 8px;">
+                  <div><span style="display: flex; flex-direction: column; align-items: center;"> <i class="fa fa-user" style='font-size:24px'> <br> </i> Account</span></div>
+                  </div>
+                </div>
+              </a>
+              <ul class="dropdown-menu" style="width:180px;">
+                <li>
+                  <div class="clearfix cart-total">
+                    <a href="../login/login.php" class="btn btn-upper btn-primary btn-block m-t-20">Log in</a> </div>
+                  
+                </li>
+                <li>
+                  <div class="clearfix cart-total">
+                    <a href="../login/register.php" class="btn btn-upper btn-primary btn-block m-t-20">Register</a> 
+                  </div>
+                  
+                </li>
+              </ul>
+              <!-- /.dropdown-menu--> 
             </div>
           </div>
         </div>
