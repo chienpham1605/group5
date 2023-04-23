@@ -28,7 +28,7 @@
 
 <!--- CSS cua Quan -->
 <link rel="stylesheet" href="../../public/assets/css/feedback star.css">
-
+<link rel="stylesheet" href="../../public/assets/css/customer feedback.css">
 <!-- Fonts -->
 <link href="https://fonts.googleapis.com/css?family=Barlow:200,300,300i,400,400i,500,500i,600,700,800" rel="stylesheet">
 <link href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,700' rel='stylesheet' type='text/css'>

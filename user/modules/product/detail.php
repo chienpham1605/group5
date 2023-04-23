@@ -11,7 +11,10 @@ $book_id = $_GET['book_id'];
 $book_detail = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM `book`, publisher, discount  WHERE book_id = '{$book_id}' and book.publisher_id = publisher.publisher_id and book.discount_id = discount.discount_id"));
 $detail = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM categories, book WHERE categories.cat_id=book.cat_id AND book.book_id = '{$book_id}' "));
 $discount = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM  publisher"));
-$feedback = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM feedback, book, customer where feedback.book_id=book.book_id AND book.book_id = '{$book_id}' AND  feedback.customer_id = customer.id"));
+$query = "SELECT * FROM feedback, book, customer where feedback.book_id=book.book_id AND book.book_id = '{$book_id}' AND  feedback.customer_id = customer.id";
+$rs = mysqli_query($conn, $query);
+$count = mysqli_num_rows($rs);
+
 // var_dump($img);
 $ratingErr = "";
 $content = $rating = "";
@@ -404,10 +407,23 @@ endif;
                   <div class="product-tab">
                     <div class="product-add-review">
                       <h4>Customer review</h4>
-                      <h5><?= $feedback['name']; ?></h5>
-                      <h5><?= $feedback['rating']; ?></h5>
-                      <h5><?= $feedback['content']; ?></h5>
-                      <h5><?= $feedback['book_name']; ?></h5>
+                      <?php
+                      if ($count == 0) :
+                        echo 'record not found';
+                      else :
+                        while ($feedback = mysqli_fetch_array($rs)) :
+                      ?>
+                          <div class="cus_feedback">
+                          <h5> <?= $feedback['name'] ?></h5>
+                          
+                           <h6> <?= $feedback['rating'] ?> star</h6>
+
+                           <h6> <?= $feedback['content'] ?></h6>
+                          </div>
+                      <?php
+                        endwhile;
+                      endif;
+                      ?>
                       <h4 class="title">Write your own review</h4>
                       <div class="review-table">
                         <div class="table-responsive">
