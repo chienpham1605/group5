@@ -319,7 +319,7 @@ $discount = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM  publisher"));
                                     
                                 
 
-                                        <div class="add-btn" data-id="<?= $detail['book_id'] ?>" data-price="<?= $detail['book_price'] ?>">
+                                        <div class="add-btn" data-id="<?= $detail['book_id'] ?>" data-price="<?= $detail['book_price']* $book_detail['discount_per'] ?>">
                                             <input type="submit" name="btnAdd" class="btn btn-primary" value="add"></input>
                                         </div>
                                         <?php

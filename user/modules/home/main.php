@@ -108,8 +108,10 @@ var_dump($user_login);
               <div class="product-slider">
                 <div class="owl-carousel home-owl-carousel custom-carousel owl-theme">
                   <?php
-                  $new_arrival = db_fetch_array( "SELECT book.*, discount.discount_per as discount_per FROM book, discount WHERE book.discount_id= discount.discount_id
-                   ORDER BY book_id DESC");
+                  $new_arrival = db_fetch_array( "SELECT book.*, discount.discount_per as discount_per  FROM book, discount 
+                  WHERE book.discount_id= discount.discount_id 
+                   GROUP BY book.book_id ORDER BY book.book_id DESC");                 
+                 
                   if(count($new_arrival)==0){
                     echo "no data";
                   }
@@ -122,8 +124,8 @@ var_dump($user_login);
                         <div class="product-image">
                           <div class="image"> 
                           <a href="../product/detail.php">
-                             <img src="../../public/assets/images/products/p1.jpg" alt=""> 
-                              <img src="../../public/assets/images/products/p1_hover.jpg" alt="" class="hover-image">
+                             <img src="<?= $row['image_url']?>"> 
+                              <img src="<?= $row['image_url']?>" alt="" class="hover-image">
                           </a> 
                        </div>
                           <!-- /.image -->
@@ -199,9 +201,9 @@ var_dump($user_login);
           <h3 class="section-title">Hot Deal</h3>
           <div class="owl-carousel home-owl-carousel custom-carousel owl-theme outer-top-xs">
           <?php
-                  $hotdeal = db_fetch_array( "SELECT book.*, discount.discount_per as discount_per FROM book, discount 
+                  $hotdeal = db_fetch_array( "SELECT book.*, discount.discount_per as discount_per  FROM book, discount
                   WHERE book.discount_id= discount.discount_id AND discount.discount_per <1
-                   ORDER BY book_id DESC ");
+                  GROUP BY book.book_id ORDER BY book.book_id DESC ");
                   if(count($hotdeal)==0){
                     echo "no data";
                   }
@@ -213,9 +215,9 @@ var_dump($user_login);
                       <div class="product">
                         <div class="product-image">
                           <div class="image"> 
-                          <a href="../product/detail.php?book_id=<?= $row['book_id']?>">
-                             <img src="../../public/assets/images/products/p1.jpg" alt=""> 
-                              <img src="../../public/assets/images/products/p1_hover.jpg" alt="" class="hover-image">
+                          <a href="../product/detail.php">
+                             <img src="<?= $row['image_url']?>" alt=""> 
+                              <img src="<?= $row['image_url']?>" alt="" class="hover-image">
                           </a> 
                        </div>
                           <!-- /.image -->
@@ -225,7 +227,7 @@ var_dump($user_login);
                         <!-- /.product-image -->
                         
                         <div class="product-info text-left">
-                          <h3 class="name"><a href=""><?= $row['book_name']?></a></h3>
+                          <h3 class="name"><a href="../product/detail.php?book_id=<?=$row['book_id'] ?>"><?= $row['book_name']?></a></h3>
                           <div class="rating rateit-small"></div>
                           <div class="description"></div>
                           <div class="product-price"> <span class="price"> $<?= $row['book_price']*$row['discount_per'] ?> </span> <span class="price-before-discount">$<?= $row['book_price']?></span> </div>
