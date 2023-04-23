@@ -78,7 +78,6 @@ $count = mysqli_num_rows($rs);
                                     endwhile;
                                 endif;
                                 ?>
-
                             </tbody>
                         </table>
                     </div>

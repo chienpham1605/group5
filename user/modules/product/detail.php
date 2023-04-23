@@ -45,8 +45,7 @@ $discount = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM  publisher"));
                 <div class="hot-deal-wrapper">
                   <div class="image"> 
                   <a href="#">
-                  <img src="../../public/assets/images/hot-deals/p13.jpg" alt=""> 
-                  <img src="../../public/assets/images/hot-deals/p13_hover.jpg" alt="" class="hover-image">
+                  <img src="../../public/assets/images/hot-deals/p13.jpg" alt="">
                   </a>
                   </div>
                   <div class="sale-offer-tag"><span><?= $discount['discount_name']?><br>
