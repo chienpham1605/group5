@@ -272,7 +272,6 @@ $list_book = db_fetch_array($query);
                   } else{
                     foreach ($list_book as $row) {                            
                     ?>
-
                     <div class="col-sm-6 col-md-4 col-lg-3">
                       <div class="item">
                         <div class="products">
@@ -280,8 +279,8 @@ $list_book = db_fetch_array($query);
                             <div class="product-image">
                               <div class="image">
                                 <a href="">
-                                  <img src="<?= $row['image_url'] ?>" alt="">
-                                  <img src="<?= $row['image_url'] ?>" alt="" class="hover-image">
+                                  <img src="<?php echo $row['book_image'] ?>" alt="">
+                                  <img src="<?php echo $row['book_image'] ?>" alt="" class="hover-image">
                                 </a>
                               </div>
                               <!-- /.image -->
@@ -329,8 +328,6 @@ $list_book = db_fetch_array($query);
                     <?php
                     }
                   }
-
-                  ;
                   ?>
                 </div>
                 <!-- /.row -->

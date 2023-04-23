@@ -10,7 +10,7 @@ endif;
 $book_id = $_GET['book_id'];
 $book_detail = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM `book`, publisher, discount  WHERE book_id = '{$book_id}' and book.publisher_id = publisher.publisher_id and book.discount_id = discount.discount_id"));
 $detail = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM categories, book WHERE categories.cat_id=book.cat_id AND book.book_id = '{$book_id}' "));
-$discount = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM  publisher"));
+
 $query = "SELECT * FROM feedback, book, customer where feedback.book_id=book.book_id AND book.book_id = '{$book_id}' AND  feedback.customer_id = customer.id";
 $rs = mysqli_query($conn, $query);
 $count = mysqli_num_rows($rs);
@@ -102,7 +102,7 @@ $count = mysqli_num_rows($rs);
                     </span></div>
                   <div class="timing-wrapper">
                     <div class="box-wrapper">
-                      <div class="date box"> <span class="key"><?= $book_detail['']?>/span> </div>
+                      <div class="date box"> <span class="key"></span> </div>
                     </div>
                     <div class="box-wrapper">
                       <div class="hour box"> <span class="key">20</span> <span class="value">HRS</span> </div>
@@ -519,11 +519,17 @@ $count = mysqli_num_rows($rs);
 
 
                       <input type="hidden" name="book_id" value="<?= $detail['book_id'] ?>">
+
                       <input type="hidden" name="book_price" value="<?= $detail['book_price'] ?>">
+
+
 
                       <div class="add-btn" data-id="<?= $detail['book_id'] ?>" data-price="<?= $detail['book_price'] ?>">
                         <input type="submit" name="btnAdd" class="btn btn-primary" value="add"></input>
                       </div>
+                      <?php
+
+                      ?>
                     </div><!-- /.row -->
                   </div><!-- /.quantity-container -->
                 </div><!-- /.product-info -->
@@ -542,6 +548,7 @@ $count = mysqli_num_rows($rs);
               </ul><!-- /.nav-tabs #product-tabs -->
             </div>
             <div class="col-sm-12 col-md-9 col-lg-9">
+
               <div class="tab-content">
 
                 <div id="description" class="tab-pane in active">
@@ -554,8 +561,26 @@ $count = mysqli_num_rows($rs);
                   <div class="product-tab">
                     <div class="product-add-review">
                       <h4>Customer review</h4>
-        
                       <h4 class="title">Write your own review</h4>
+                      <div class="review-table">
+                        <div class="table-responsive">
+                          <table class="table">
+                            <div class="rate" name="txtstar">
+                              <input type="radio" id="star5" name="rate" value="5" />
+                              <label for="star5" title="text">5 stars</label>
+                              <input type="radio" id="star4" name="rate" value="4" />
+                              <label for="star4" title="text">4 stars</label>
+                              <input type="radio" id="star3" name="rate" value="3" />
+                              <label for="star3" title="text">3 stars</label>
+                              <input type="radio" id="star2" name="rate" value="2" />
+                              <label for="star2" title="text">2 stars</label>
+                              <input type="radio" id="star1" name="rate" value="1" />
+                              <label for="star1" title="text">1 star</label>
+                              <span class="error">
+                              </span>
+                            </div>
+                        </div>
+                      </div>
                       </table><!-- /.table .table-bordered -->
                     </div><!-- /.table-responsive -->
                   </div><!-- /.review-table -->
@@ -570,11 +595,9 @@ $count = mysqli_num_rows($rs);
                           </div>
                         </div>
                       </div>
-
-                      <div class="action text-right" name="btnAdd">
-                        <button class="btn btn-primary btn-upper">SUBMIT REVIEW</button>
+                      <div class="action text-right" >
+                        <button name="btnAdd" class="btn btn-primary btn-upper">SUBMIT REVIEW</button>
                       </div>
-
                       </form><!-- /.cnt-form -->
                     </div><!-- /.form-container -->
                   </div><!-- /.review-form -->

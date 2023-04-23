@@ -7,7 +7,6 @@ $query = "SELECT * FROM `categories`";
 $rs = mysqli_query($conn, $query);
 $count = mysqli_num_rows($rs);
 $list_cat = mysqli_fetch_assoc($rs);
-var_dump($user_login);
 ?>
 <div class="body-content outer-top-vs" id="top-banner-and-menu">
   <div class="container">
