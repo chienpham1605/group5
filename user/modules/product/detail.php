@@ -10,9 +10,9 @@ endif;
 $book_id = $_GET['book_id'];
 $book_detail = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM `book`, publisher, discount  WHERE book_id = '{$book_id}' and book.publisher_id = publisher.publisher_id and book.discount_id = discount.discount_id"));
 $detail = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM categories, book WHERE categories.cat_id=book.cat_id AND book.book_id = '{$book_id}' "));
-$img = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM book_image, book WHERE book_image.book_image_id=book.book_id AND book.book_id = '{$book_id}' "));
-
+$discount = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM  publisher"));
 // $feedback = mysqli_fetch_assoc(mysqli_query("SELECT * FROM feedback where feedback.book_id=book.book_id AND book.book_id = '{$book_id}' "));
+// var_dump($img);
 ?>
 <div class="breadcrumb">
     <div class="container">
@@ -45,15 +45,14 @@ $img = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM book_image, book WH
                 <div class="hot-deal-wrapper">
                   <div class="image"> 
                   <a href="#">
-                  <img src="../../public/assets/images/hot-deals/p13.jpg" alt=""> 
-                  <img src="../../public/assets/images/hot-deals/p13_hover.jpg" alt="" class="hover-image">
+                  <img src="../../public/assets/images/hot-deals/p13.jpg" alt="">
                   </a>
                   </div>
-                  <div class="sale-offer-tag"><span>49%<br>
-                    off</span></div>
+                  <div class="sale-offer-tag"><span><?= $discount['discount_name']?><br>
+                    </span></div>
                   <div class="timing-wrapper">
                     <div class="box-wrapper">
-                      <div class="date box"> <span class="key">120</span> <span class="value">DAYS</span> </div>
+                      <div class="date box"> <span class="key"><?= $book_detail['']?>/span> </div>
                     </div>
                     <div class="box-wrapper">
                       <div class="hour box"> <span class="key">20</span> <span class="value">HRS</span> </div>
@@ -195,28 +194,6 @@ $img = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM book_image, book WH
 
 
 <!-- ============================================== Testimonials============================================== -->
-<div class="sidebar-widget  outer-top-vs ">
-    <div id="advertisement" class="advertisement">
-        <div class="item">
-            <div class="avatar"><img src="../../public/assets/images/testimonials/member1.png" alt="Image"></div>
-        <div class="testimonials"><em>"</em> Vtae sodales aliq uam morbi non sem lacus port mollis. Nunc condime tum metus eud molest sed consectetuer.<em>"</em></div>
-        <div class="clients_author">John Doe	<span>Abc Company</span>	</div><!-- /.container-fluid -->
-        </div><!-- /.item -->
-
-         <div class="item">
-             <div class="avatar"><img src="../../public/assets/images/testimonials/member3.png" alt="Image"></div>
-        <div class="testimonials"><em>"</em>Vtae sodales aliq uam morbi non sem lacus port mollis. Nunc condime tum metus eud molest sed consectetuer.<em>"</em></div>
-        <div class="clients_author">Stephen Doe	<span>Xperia Designs</span>	</div>    
-        </div><!-- /.item -->
-
-        <div class="item">
-            <div class="avatar"><img src="../../public/assets/images/testimonials/member2.png" alt="Image"></div>
-        <div class="testimonials"><em>"</em> Vtae sodales aliq uam morbi non sem lacus port mollis. Nunc condime tum metus eud molest sed consectetuer.<em>"</em></div>
-        <div class="clients_author">Saraha Smith	<span>Datsun &amp; Co</span>	</div><!-- /.container-fluid -->
-        </div><!-- /.item -->
-
-    </div><!-- /.owl-carousel -->
-</div>
     
 <!-- ============================================== Testimonials: END ============================================== -->
 
@@ -231,55 +208,7 @@ $img = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM book_image, book WH
 
         <div id="owl-single-product" method="post">
             <div class="single-product-gallery-item" id="slide1">
-                    <img class="img-responsive"  src="<?= $img['img_url'] ?>" data-echo="<?= $img['img_url'] ?>" />
-                </a>
-            </div><!-- /.single-product-gallery-item -->
-
-            <div class="single-product-gallery-item" id="slide2">
-                <a data-lightbox="image-1" data-title="Gallery" href=" <?= $img['img_url'] ?> ">
-                    <img class="img-responsive" alt="" src="<?= $img['img_url'] ?>" data-echo="<?= $img['img_url'] ?>" />
-                </a>
-            </div><!-- /.single-product-gallery-item -->
-
-            <div class="single-product-gallery-item" id="slide3">
-                <a data-lightbox="image-1" data-title="Gallery" href="../../public/assets/images/products/p3.jpg">
-                    <img class="img-responsive" alt="" src="../../public/assets/images/blank.gif" data-echo="../../public/assets/images/products/p3.jpg" />
-                </a>
-            </div><!-- /.single-product-gallery-item -->
-
-            <div class="single-product-gallery-item" id="slide4">
-                <a data-lightbox="image-1" data-title="Gallery" href="../../public/assets/images/products/p4.jpg">
-                    <img class="img-responsive" alt="" src="../../public/assets/images/blank.gif" data-echo="../../public/assets/images/products/p4.jpg" />
-                </a>
-            </div><!-- /.single-product-gallery-item -->
-
-            <div class="single-product-gallery-item" id="slide5">
-                <a data-lightbox="image-1" data-title="Gallery" href="../../public/assets/images/products/p5.jpg">
-                    <img class="img-responsive" alt="" src="../../public/assets/images/blank.gif" data-echo="../../public/assets/images/products/p5.jpg" />
-                </a>
-            </div><!-- /.single-product-gallery-item -->
-
-            <div class="single-product-gallery-item" id="slide6">
-                <a data-lightbox="image-1" data-title="Gallery" href="../../public/assets/images/products/p6.jpg">
-                    <img class="img-responsive" alt="" src="../../public/assets/images/blank.gif" data-echo="../../public/assets/images/products/p6.jpg" />
-                </a>
-            </div><!-- /.single-product-gallery-item -->
-
-            <div class="single-product-gallery-item" id="slide7">
-                <a data-lightbox="image-1" data-title="Gallery" href="../../public/assets/images/products/p7.jpg">
-                    <img class="img-responsive" alt="" src="../../public/assets/images/blank.gif" data-echo="../../public/assets/images/products/p7.jpg" />
-                </a>
-            </div><!-- /.single-product-gallery-item -->
-
-            <div class="single-product-gallery-item" id="slide8">
-                <a data-lightbox="image-1" data-title="Gallery" href="../../public/assets/images/products/p8.jpg">
-                    <img class="img-responsive" alt="" src="../../public/assets/images/blank.gif" data-echo="../../public/assets/images/products/p8.jpg" />
-                </a>
-            </div><!-- /.single-product-gallery-item -->
-
-            <div class="single-product-gallery-item" id="slide9">
-                <a data-lightbox="image-1" data-title="Gallery" href="../../public/assets/images/products/p9.jpg">
-                    <img class="img-responsive" alt="" src="../../public/assets/images/blank.gif" data-echo="../../public/assets/images/products/p9.jpg" />
+                    <img class="img-responsive"  src="<?= $book_detail['book_img'] ?>" data-echo="<?= $book_detail['book_img']  ?>" />
                 </a>
             </div><!-- /.single-product-gallery-item -->
 
@@ -287,9 +216,7 @@ $img = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM book_image, book WH
 
 
         <div class="single-product-gallery-thumbs gallery-thumbs">
-
-
-            
+     
       </div><!-- /.gallery-thumbs -->
 
     </div><!-- /.single-product-gallery -->
@@ -555,364 +482,7 @@ $img = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM book_image, book WH
                         </div><!-- /.row -->
                     </div><!-- /.product-tabs -->
                 <!-- ============================================== UPSELL PRODUCTS ============================================== -->
-<section class="section featured-product">
-<div class="row">
-<div class="col-lg-3">
-          <h3 class="section-title">Relative Products</h3>
-         <div class="ad-imgs">
-         <img class="img-responsive" src="../../public/assets/images/banners/home-banner1.jpg" alt="">
-          <img class="img-responsive" src="../../public/assets/images/banners/home-banner2.jpg" alt="">
-         </div>
-          </div>
-          <div class="col-lg-9">
-    <div class="owl-carousel homepage-owl-carousel upsell-product custom-carousel owl-theme outer-top-xs">
-            
-        <div class="item item-carousel">
-            <div class="products">
-                
-    <div class="product">		
-        <div class="product-image">
-            <div class="image">
-                <a href="detail.html"><img  src="../../public/assets/images/products/p1.jpg" alt=""></a>
-            </div><!-- /.image -->			
 
-                        <div class="tag sale"><span>sale</span></div>            		   
-        </div><!-- /.product-image -->
-            
-        
-        <div class="product-info text-left">
-            <h3 class="name"><a href="detail.html">Floral Print Buttoned</a></h3>
-            <div class="rating rateit-small"></div>
-            <div class="description"></div>
-
-            <div class="product-price">	
-                <span class="price">
-                    $650.99				</span>
-                                             <span class="price-before-discount">$ 800</span>
-                                    
-            </div><!-- /.product-price -->
-            
-        </div><!-- /.product-info -->
-                    <div class="cart clearfix animate-effect">
-                <div class="action">
-                    <ul class="list-unstyled">
-                        <li class="add-cart-button btn-group">
-                            <button class="btn btn-primary icon" data-toggle="dropdown" type="button">
-                                <i class="fa fa-shopping-cart"></i>													
-                            </button>
-                            <button class="btn btn-primary cart-btn" type="button">Add to cart</button>
-                                                    
-                        </li>
-                       
-                        <li class="lnk wishlist">
-                            <a class="add-to-cart" href="detail.html" title="Wishlist">
-                                 <i class="icon fa fa-heart"></i>
-                            </a>
-                        </li>
-
-                        <li class="lnk">
-                            <a class="add-to-cart" href="detail.html" title="Compare">
-                                <i class="fa fa-signal"></i>
-                            </a>
-                        </li>
-                    </ul>
-                </div><!-- /.action -->
-            </div><!-- /.cart -->
-            </div><!-- /.product -->
-      
-            </div><!-- /.products -->
-        </div><!-- /.item -->
-    
-        <div class="item item-carousel">
-            <div class="products">
-                
-    <div class="product">		
-        <div class="product-image">
-            <div class="image">
-                <a href="detail.html"><img  src="../../public/assets/images/products/p2.jpg" alt=""></a>
-            </div><!-- /.image -->			
-
-                        <div class="tag sale"><span>sale</span></div>            		   
-        </div><!-- /.product-image -->
-            
-        
-        <div class="product-info text-left">
-            <h3 class="name"><a href="detail.html">Floral Print Buttoned</a></h3>
-            <div class="rating rateit-small"></div>
-            <div class="description"></div>
-
-            <div class="product-price">	
-                <span class="price">
-                    $650.99				</span>
-                                             <span class="price-before-discount">$ 800</span>
-                                    
-            </div><!-- /.product-price -->
-            
-        </div><!-- /.product-info -->
-                    <div class="cart clearfix animate-effect">
-                <div class="action">
-                    <ul class="list-unstyled">
-                        <li class="add-cart-button btn-group">
-                            <button class="btn btn-primary icon" data-toggle="dropdown" type="button">
-                                <i class="fa fa-shopping-cart"></i>													
-                            </button>
-                            <button class="btn btn-primary cart-btn" type="button">Add to cart</button>
-                                                    
-                        </li>
-                       
-                        <li class="lnk wishlist">
-                            <a class="add-to-cart" href="detail.html" title="Wishlist">
-                                 <i class="icon fa fa-heart"></i>
-                            </a>
-                        </li>
-
-                        <li class="lnk">
-                            <a class="add-to-cart" href="detail.html" title="Compare">
-                                <i class="fa fa-signal"></i>
-                            </a>
-                        </li>
-                    </ul>
-                </div><!-- /.action -->
-            </div><!-- /.cart -->
-            </div><!-- /.product -->
-      
-            </div><!-- /.products -->
-        </div><!-- /.item -->
-    
-        <div class="item item-carousel">
-            <div class="products">
-                
-    <div class="product">		
-        <div class="product-image">
-            <div class="image">
-                <a href="detail.html"><img  src="../../public/assets/images/products/p3.jpg" alt=""></a>
-            </div><!-- /.image -->			
-
-                                    <div class="tag hot"><span>hot</span></div>		   
-        </div><!-- /.product-image -->
-            
-        
-        <div class="product-info text-left">
-            <h3 class="name"><a href="detail.html">Floral Print Buttoned</a></h3>
-            <div class="rating rateit-small"></div>
-            <div class="description"></div>
-
-            <div class="product-price">	
-                <span class="price">
-                    $650.99				</span>
-                                             <span class="price-before-discount">$ 800</span>
-                                    
-            </div><!-- /.product-price -->
-            
-        </div><!-- /.product-info -->
-                    <div class="cart clearfix animate-effect">
-                <div class="action">
-                    <ul class="list-unstyled">
-                        <li class="add-cart-button btn-group">
-                            <button class="btn btn-primary icon" data-toggle="dropdown" type="button">
-                                <i class="fa fa-shopping-cart"></i>													
-                            </button>
-                            <button class="btn btn-primary cart-btn" type="button">Add to cart</button>
-                                                    
-                        </li>
-                       
-                        <li class="lnk wishlist">
-                            <a class="add-to-cart" href="detail.html" title="Wishlist">
-                                 <i class="icon fa fa-heart"></i>
-                            </a>
-                        </li>
-
-                        <li class="lnk">
-                            <a class="add-to-cart" href="detail.html" title="Compare">
-                                <i class="fa fa-signal"></i>
-                            </a>
-                        </li>
-                    </ul>
-                </div><!-- /.action -->
-            </div><!-- /.cart -->
-            </div><!-- /.product -->
-      
-            </div><!-- /.products -->
-        </div><!-- /.item -->
-    
-        <div class="item item-carousel">
-            <div class="products">
-                
-    <div class="product">		
-        <div class="product-image">
-            <div class="image">
-                <a href="detail.html"><img  src="../../public/assets/images/products/p4.jpg" alt=""></a>
-            </div><!-- /.image -->			
-
-            <div class="tag new"><span>new</span></div>                        		   
-        </div><!-- /.product-image -->
-            
-        
-        <div class="product-info text-left">
-            <h3 class="name"><a href="detail.html">Floral Print Buttoned</a></h3>
-            <div class="rating rateit-small"></div>
-            <div class="description"></div>
-
-            <div class="product-price">	
-                <span class="price">
-                    $650.99				</span>
-                                             <span class="price-before-discount">$ 800</span>
-                                    
-            </div><!-- /.product-price -->
-            
-        </div><!-- /.product-info -->
-                    <div class="cart clearfix animate-effect">
-                <div class="action">
-                    <ul class="list-unstyled">
-                        <li class="add-cart-button btn-group">
-                            <button class="btn btn-primary icon" data-toggle="dropdown" type="button">
-                                <i class="fa fa-shopping-cart"></i>													
-                            </button>
-                            <button class="btn btn-primary cart-btn" type="button">Add to cart</button>
-                                                    
-                        </li>
-                       
-                        <li class="lnk wishlist">
-                            <a class="add-to-cart" href="detail.html" title="Wishlist">
-                                 <i class="icon fa fa-heart"></i>
-                            </a>
-                        </li>
-
-                        <li class="lnk">
-                            <a class="add-to-cart" href="detail.html" title="Compare">
-                                <i class="fa fa-signal"></i>
-                            </a>
-                        </li>
-                    </ul>
-                </div><!-- /.action -->
-            </div><!-- /.cart -->
-            </div><!-- /.product -->
-      
-            </div><!-- /.products -->
-        </div><!-- /.item -->
-    
-        <div class="item item-carousel">
-            <div class="products">
-                
-    <div class="product">		
-        <div class="product-image">
-            <div class="image">
-                <a href="detail.html"><img  src="../../public/assets/images/blank.gif" data-echo="../../public/assets/images/products/p5.jpg" alt=""></a>
-            </div><!-- /.image -->			
-
-                                    <div class="tag hot"><span>hot</span></div>		   
-        </div><!-- /.product-image -->
-            
-        
-        <div class="product-info text-left">
-            <h3 class="name"><a href="detail.html">Floral Print Buttoned</a></h3>
-            <div class="rating rateit-small"></div>
-            <div class="description"></div>
-
-            <div class="product-price">	
-                <span class="price">
-                    $650.99				</span>
-                                             <span class="price-before-discount">$ 800</span>
-                                    
-            </div><!-- /.product-price -->
-            
-        </div><!-- /.product-info -->
-                    <div class="cart clearfix animate-effect">
-                <div class="action">
-                    <ul class="list-unstyled">
-                        <li class="add-cart-button btn-group">
-                            <button class="btn btn-primary icon" data-toggle="dropdown" type="button">
-                                <i class="fa fa-shopping-cart"></i>													
-                            </button>
-                            <button class="btn btn-primary cart-btn" type="button">Add to cart</button>
-                                                    
-                        </li>
-                       
-                        <li class="lnk wishlist">
-                            <a class="add-to-cart" href="detail.html" title="Wishlist">
-                                 <i class="icon fa fa-heart"></i>
-                            </a>
-                        </li>
-
-                        <li class="lnk">
-                            <a class="add-to-cart" href="detail.html" title="Compare">
-                                <i class="fa fa-signal"></i>
-                            </a>
-                        </li>
-                    </ul>
-                </div><!-- /.action -->
-            </div><!-- /.cart -->
-            </div><!-- /.product -->
-      
-            </div><!-- /.products -->
-        </div><!-- /.item -->
-    
-        <div class="item item-carousel">
-            <div class="products">
-                
-    <div class="product">		
-        <div class="product-image">
-            <div class="image">
-                <a href="detail.html"><img  src="../../public/assets/images/blank.gif" data-echo="../../public/assets/images/products/p6.jpg" alt=""></a>
-            </div><!-- /.image -->			
-
-            <div class="tag new"><span>new</span></div>                        		   
-        </div><!-- /.product-image -->
-            
-        
-        <div class="product-info text-left">
-            <h3 class="name"><a href="detail.html">Floral Print Buttoned</a></h3>
-            <div class="rating rateit-small"></div>
-            <div class="description"></div>
-
-            <div class="product-price">	
-                <span class="price">
-                    $650.99				</span>
-                                             <span class="price-before-discount">$ 800</span>
-                                    
-            </div><!-- /.product-price -->
-            
-        </div><!-- /.product-info -->
-                    <div class="cart clearfix animate-effect">
-                <div class="action">
-                    <ul class="list-unstyled">
-                        <li class="add-cart-button btn-group">
-                            <button class="btn btn-primary icon" data-toggle="dropdown" type="button">
-                                <i class="fa fa-shopping-cart"></i>													
-                            </button>
-                            <button class="btn btn-primary cart-btn" type="button">Add to cart</button>
-                                                    
-                        </li>
-                       
-                        <li class="lnk wishlist">
-                            <a class="add-to-cart" href="detail.html" title="Wishlist">
-                                 <i class="icon fa fa-heart"></i>
-                            </a>
-                        </li>
-
-                        <li class="lnk">
-                            <a class="add-to-cart" href="detail.html" title="Compare">
-                                <i class="fa fa-signal"></i>
-                            </a>
-                        </li>
-                    </ul>
-                </div><!-- /.action -->
-            </div><!-- /.cart -->
-            </div><!-- /.product -->
-      
-            </div><!-- /.products -->
-        </div><!-- /.item -->
-            </div><!-- /.home-owl-carousel -->
-            </div>
-            </div>
-</section><!-- /.section -->
-<!-- ============================================== UPSELL PRODUCTS : END ============================================== -->
-            
-            </div><!-- /.col -->
-            <div class="clearfix"></div>
-        </div><!-- /.row -->
-        <!-- ============================================== BRANDS CAROUSEL ============================================== -->
-<div id="brands-carousel" class="logo-slider">
 
 <!-- ============================================== BRANDS CAROUSEL : END ============================================== -->	</div><!-- /.container -->
 </div><!-- /.body-content -->

@@ -7,7 +7,7 @@
  endif;
 
 $cat_id = $_GET['cat_id'];
-$query = "select * from book,book_image where cat_id = '$cat_id' and book.book_id = book_image.book_image_id";
+$query = "select * from book where cat_id = '$cat_id'";
 $rs = mysqli_query($conn, $query);
  ?>
 <div class="body-content outer-top-xs">
@@ -175,7 +175,7 @@ $rs = mysqli_query($conn, $query);
                             <div class="product-image">
                               <div class="image"> 
                               <a href="">
-                                 <img src="<?php $row['img_url']?>" alt=""> 
+                                 <img src="<?php $row['book_image']?>" alt=""> 
                               </a>
                                 </div>
                               <!-- /.image -->

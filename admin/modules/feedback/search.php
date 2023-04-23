@@ -18,11 +18,11 @@ if(mysqli_num_rows($rs) > 0){
         <table class="table table-hover table-bordered">
             <tr>
               <th>ID</th>
+              <th>Content</th>
               <th>Book ID</th>
-              <th>Customer</th>
               <th>Rating</th>
               <th>Content</th>
-              <th>Detail ID</th>
+              <th>Customer ID</th>
             </tr>';
         while($data = mysqli_fetch_array($rs)){
                 $return .= '
