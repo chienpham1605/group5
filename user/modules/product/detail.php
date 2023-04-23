@@ -45,7 +45,7 @@ $discount = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM  publisher"));
                 <div class="hot-deal-wrapper">
                   <div class="image"> 
                   <a href="#">
-                  <img src="../../public/assets/images/hot-deals/p13.jpg" alt="">
+                  <img src="<?= $book_detail['book_image']?>" alt="">
                   </a>
                   </div>
                   <div class="sale-offer-tag"><span><?= $discount['discount_name']?><br>
@@ -208,7 +208,7 @@ $discount = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM  publisher"));
 
         <div id="owl-single-product" method="post">
             <div class="single-product-gallery-item" id="slide1">
-                    <img class="img-responsive"  src="<?= $book_detail['book_img'] ?>" data-echo="<?= $book_detail['book_img']  ?>" />
+                    <img class="img-responsive"  src="<?= $book_detail['book_image'] ?>" data-echo="<?= $book_detail['book_image']  ?>" />
                 </a>
             </div><!-- /.single-product-gallery-item -->
 

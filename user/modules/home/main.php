@@ -139,7 +139,7 @@ $list_cat = mysqli_fetch_assoc($rs);
                           <div class="product-price"> 
                             <?php
                             if($row['discount_per']<1){
-                              echo " <span class='price' > $".$row['book_price']*$row['discount_per']."</span> 
+                              echo " <span class='price' > $".$row['book_price']* $row['discount_per']."</span> 
                               <span class='price-before-discount'>$".$row['book_price']."</span> ";
                             }
                             else{
@@ -213,7 +213,7 @@ $list_cat = mysqli_fetch_assoc($rs);
                       <div class="product">
                         <div class="product-image">
                           <div class="image"> 
-                          <a href="../product/detail.php">
+                          <a href="../product/detail.php?book_id=<?= $row['book_id']?>">
                              <img src="../../public/assets/images/products/p1.jpg" alt=""> 
                               <img src="../../public/assets/images/products/p1_hover.jpg" alt="" class="hover-image">
                           </a> 
@@ -240,7 +240,7 @@ $list_cat = mysqli_fetch_assoc($rs);
                                 <button data-toggle="tooltip" class="btn btn-primary icon" type="button" title="Add Cart"> <i class="fa fa-shopping-cart"></i> </button>
                                 <button class="btn btn-primary cart-btn" type="button">Add to cart</button>
                               </li>
-                              <li class="lnk wishlist"> <a data-toggle="tooltip" class="add-to-cart" href="detail.html" title="Wishlist"> <i class="icon fa fa-heart"></i> </a> </li>
+                              <li class="lnk wishlist"> <a data-toggle="tooltip" class="add-to-cart" href="../product/deatil.php?book_id=<?= $row['book_id']?>" title="Wishlist"> <i class="icon fa fa-heart"></i> </a> </li>
                               <li class="lnk"> <a data-toggle="tooltip" class="add-to-cart" href="detail.html" title="Compare"> <i class="fa fa-signal" aria-hidden="true"></i> </a> </li>
                             </ul>
                           </div>
