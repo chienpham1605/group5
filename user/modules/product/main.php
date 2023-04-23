@@ -1,415 +1,199 @@
- <?php
- include("../../inc/header.php");
- include("../../db/DBConnect.php");
+<?php
+include("../../inc/header.php");
+include("../../db/DBConnect.php");
+include("../../db/database.php");
 
- if(!isset($_GET['cat_id'])):
-    header("location:../home/main.php");
- endif;
+if (!isset($_GET['cat_id'])):
+  header("location:../home/main.php");
+endif;
 
 $cat_id = $_GET['cat_id'];
-$query = "select * from book,book_image where cat_id = '$cat_id' and book.book_id = book_image.book_image_id";
-$rs = mysqli_query($conn, $query);
- ?>
-<div class="body-content outer-top-xs">
-  <div class='container'>
-    <div class='row'>
-      <div class='col-xs-12 col-sm-12 col-md-3 sidebar'>       
-        <div class="sidebar-module-container">
-          <div class="sidebar-filter"> 
-            <!-- ============================================== SIDEBAR CATEGORY ============================================== -->
-            <div class="sidebar-widget">
-              <h3 class="section-title">Shop by</h3>
-              <div class="widget-header">
-                <h4 class="widget-title">Rating</h4>
-              </div>
-              <div class="sidebar-widget-body">
-                <!-- /.accordion --> 
-              </div>
-              <!-- /.sidebar-widget-body --> 
-            </div>
-            <!-- /.sidebar-widget --> 
-            <!-- ============================================== SIDEBAR CATEGORY : END ============================================== --> 
-            
-            <!-- ============================================== PRICE SILDER============================================== -->
-            <div class="sidebar-widget">
-              <div class="widget-header">
-                <h4 class="widget-title">Price Slider</h4>
-              </div>
-              <div class="sidebar-widget-body m-t-10">
-                <div class="price-range-holder"> <span class="min-max"> <span class="pull-left">$200.00</span> <span class="pull-right">$800.00</span> </span>
-                  <input type="text" id="amount" style="border:0; color:#666666; font-weight:bold;text-align:center;">
-                  <input type="text" class="price-slider" value="" >
-                </div>
-                <!-- /.price-range-holder --> 
-                <a href="#" class="lnk btn btn-primary">Show Now</a> </div>
-              <!-- /.sidebar-widget-body --> 
-            </div>
-            <!-- /.sidebar-widget --> 
-            <!-- ============================================== PRICE SILDER : END ============================================== --> 
-            <!-- ============================================== MANUFACTURES============================================== -->
-            <div class="sidebar-widget">
-              <!-- /.sidebar-widget-body --> 
-            </div>
-            <!-- /.sidebar-widget --> 
-            <!-- ============================================== MANUFACTURES: END ============================================== --> 
-            <!-- ============================================== COLOR============================================== -->
-            <div class="sidebar-widget">
-              <div class="widget-header">
-                <h4 class="widget-title">Author</h4>
-              </div>
-              <div class="sidebar-widget-body">
-                <ul class="list">
-                  <li><a href="#"><input type="checkbox"> Adams Media</a></li>
-                  <li><a href="#"><input type="checkbox"> Bryan Burrough</a></li>
-                  <li><a href="#"><input type="checkbox"> Camilla Arnold</a></li>
-                  <li><a href="#"><input type="checkbox"> Eric Barker</a></li>
-                  <li><a href="#"><input type="checkbox"> John Helyar</a></li>
-                  <li><a href="#"><input type="checkbox"> Napoleon Hill</a></li>
-                </ul>
-              </div>
-              <!-- /.sidebar-widget-body --> 
-            </div>       
-       
-            <!-- /.sidebar-widget --> 
-          <!-- /.Testimonials -->
-
-           <!-- ============================================== Testimonials: END ============================================== -->           
-
-            
-           
-          </div>
-          <!-- /.sidebar-filter --> 
-        </div>
-        <!-- /.sidebar-module-container --> 
-      </div>
-      <!-- /.sidebar -->
-      <div class="col-xs-12 col-sm-12 col-md-9 rht-col">
-<!-- ========================================== SECTION – HERO ========================================= -->     
-        <div class="clearfix filters-container m-t-10">
-          <div class="row">
-            <div class="col col-sm-6 col-md-3 col-lg-3 col-xs-6">
-              <div class="filter-tabs">
-                <ul id="filter-tabs" class="nav nav-tabs nav-tab-box nav-tab-fa-icon">
-                  <li class="active"> <a data-toggle="tab" href="#grid-container"><i class="icon fa fa-th-large"></i>Grid</a> </li>
-                  <li><a data-toggle="tab" href="#list-container"><i class="icon fa fa-bars"></i>List</a></li>
-                </ul>
-              </div>
-              <!-- /.filter-tabs --> 
-            </div>
-            <!-- /.col -->
-            <div class="col col-sm-12 col-md-5 col-lg-5 hidden-sm">
-              <div class="col col-sm-6 col-md-6 no-padding">
-                <div class="lbl-cnt"> <span class="lbl">Sort by</span>
-                  <div class="fld inline">
-                    <div class="dropdown dropdown-small dropdown-med dropdown-white inline">
-                      <button data-toggle="dropdown" type="button" class="btn dropdown-toggle"> Position <span class="caret"></span> </button>
-                      <ul role="menu" class="dropdown-menu">
-                        <li role="presentation"><a href="#">position</a></li>
-                        <li role="presentation"><a href="#">Price:Lowest first</a></li>
-                        <li role="presentation"><a href="#">Price:HIghest first</a></li>
-                        <li role="presentation"><a href="#">Product Name:A to Z</a></li>
-                      </ul>
-                    </div>
-                  </div>
-                  <!-- /.fld --> 
-                </div>
-                <!-- /.lbl-cnt --> 
-              </div>
-              <!-- /.col -->
-              <div class="col col-sm-6 col-md-6 no-padding hidden-sm hidden-md">
-                <div class="lbl-cnt"> <span class="lbl">Show</span>
-                  <div class="fld inline">
-                  <div class="dropdown dropdown-small dropdown-med dropdown-white inline">
-                      <button data-toggle="dropdown" type="button" class="btn dropdown-toggle"> 1 <span class="caret"></span> </button>
-                      <ul role="menu" class="dropdown-menu">
-                        <li role="presentation"><a href="#">1</a></li>
-                        <li role="presentation"><a href="#">2</a></li>
-                        <li role="presentation"><a href="#">3</a></li>
-                        <li role="presentation"><a href="#">4</a></li>
-                        <li role="presentation"><a href="#">5</a></li>
-                        <li role="presentation"><a href="#">6</a></li>
-                        <li role="presentation"><a href="#">7</a></li>
-                        <li role="presentation"><a href="#">8</a></li>
-                        <li role="presentation"><a href="#">9</a></li>
-                        <li role="presentation"><a href="#">10</a></li>
-                      </ul>
-                    </div>
-                  </div>
-                  <!-- /.fld --> 
-                </div>
-                <!-- /.lbl-cnt --> 
-              </div>
-              <!-- /.col --> 
-            </div>
-            <!-- /.col -->
-            <div class="col col-sm-6 col-md-4 col-xs-6 col-lg-4 text-right">
-              <div class="pagination-container">
-                <ul class="list-inline list-unstyled">
-                  <li class="prev"><a href="#"><i class="fa fa-angle-left"></i></a></li>
-                  <li><a href="#">1</a></li>
-                  <li class="active"><a href="#">2</a></li>
-                  <li><a href="#">3</a></li>
-                  <li><a href="#">4</a></li>
-                  <li class="next"><a href="#"><i class="fa fa-angle-right"></i></a></li>
-                </ul>
-                <!-- /.list-inline --> 
-              </div>
-             </div>
-            <!-- /.col --> 
-          </div>
-          <!-- /.row --> 
-        </div>
-        <div class="search-result-container ">
-          <div id="myTabContent" class="tab-content category-list">
-            <div class="tab-pane active " id="grid-container">
-              <div class="category-product">
-                <div class="row">
-                  <?php
-                     while($row = mysqli_fetch_assoc($rs)):
-                  ?>
-                    
-                 <div class="col-sm-6 col-md-4 col-lg-3">
-                        <div class="item">
-                        <div class="products">
-                          <div class="product">
-                            <div class="product-image">
-                              <div class="image"> 
-                              <a href="">
-                                 <img src="<?php $row['img_url']?>" alt=""> 
-                              </a>
-                                </div>
-                              <!-- /.image -->
-                          
-                              <div class="tag new"><span>new</span></div>
-                            </div>
-                            <!-- /.product-image -->
-                        
-                            <div class="product-info text-left">
-                              <h3 class="name"><a href="../product/detail.php?book_id=<?php echo $row['book_id']?>"><?php echo $row['book_name']?></a></h3>
-                              <div class="rating rateit-small"></div>
-                              <div class="description"></div>
-                              <div class="product-price"> <span class="price"> $<?php echo $row['book_price']?> </span> <span class="price-before-discount">$ 800</span> </div>
-                              <!-- /.product-price --> 
-                          
-                            </div>
-                            <!-- /.product-info -->
-                            <div class="cart clearfix animate-effect">
-                              <div class="action">
-                                <ul class="list-unstyled">
-                                  <li class="add-cart-button btn-group">
-                                    <button class="btn btn-primary icon" data-toggle="dropdown" type="button"> <i class="fa fa-shopping-cart"></i> </button>
-                                    <button class="btn btn-primary cart-btn" type="button">Add to cart</button>
-                                  </li>
-                                  <li class="lnk wishlist"> <a class="add-to-cart" href="../product/main.php?book_id=<?php echo $row['book_id']?>" title="Wishlist"> <i class="icon fa fa-heart"></i> </a> </li>
-                                  <li class="lnk"> <a class="add-to-cart" href="detail.html" title="Compare"> <i class="fa fa-signal"></i> </a> </li>
-                                </ul>
-                              </div>
-                              <!-- /.action --> 
-                            </div>
-                            <!-- /.cart --> 
-                          </div>
-                          <!-- /.product --> 
-                      
-                        </div>
-                        <!-- /.products --> 
-                        </div>
-                      </div>
-                      <!-- /.item -->
-                <?php
-                    endwhile
-                  ?>
-                </div>
-                <!-- /.row --> 
-              </div>
-              <!-- /.category-product --> 
-              
-            </div>
-
-          </div>
-          <!-- /.tab-content -->
-          <div class="clearfix filters-container bottom-row">
-            <div class="text-right">
-              <div class="pagination-container">
-                <ul class="list-inline list-unstyled">
-                  <li class="prev"><a href="#"><i class="fa fa-angle-left"></i></a></li>
-                  <li><a href="#">1</a></li>
-                  <li><a href="#">2</a></li>
-                  <li><a href="#">3</a></li>
-                  <li><a href="#">4</a></li>
-                  <li class="next"><a href="#"><i class="fa fa-angle-right"></i></a></li>
-                </ul>
-                <!-- /.list-inline --> 
-              </div>
-              <!-- /.pagination-container --> </div>
-            <!-- /.text-right --> 
-            
-          </div>
-         
-        </div>
-      </div>
-      <!-- /.col --> 
-    </div>
-  
-</div>
-<?php
- include("../../inc/footer.php");
-
-if (!isset($_GET['cat_id'])){
-  header("Location:../home/main.php");
-} else 
-{ $cat_id = $_GET['cat_id'];
-  
+echo $cat_id;
+$query = "SELECT book.*, discount.discount_per as discount_per  FROM book, discount
+WHERE book.discount_id= discount.discount_id 
+AND book.cat_id =$cat_id GROUP BY book.book_id";
+$list_book = db_fetch_array("SELECT book.*, discount.discount_per as discount_per  FROM book, discount
+WHERE book.discount_id= discount.discount_id 
+AND book.cat_id =$cat_id GROUP BY book.book_id
+");
+$list_author = db_fetch_array("SELECT DISTINCT book.book_author from book
+WHERE book.cat_id = {$cat_id}");
+$list_publisher = db_fetch_array("SELECT DISTINCT publisher.publisher_name, publisher.publisher_id  from book, publisher 
+WHERE book.publisher_id = publisher.publisher_id AND book.cat_id = {$cat_id}");
+var_dump($list_book);
+//filter
+if(isset($_POST['btnFilter'])){
+ 
+if(!isset($author)){
+  $author = $_POST['author'];
+  $publisher_id = TRUE;
+  $query = "SELECT book.*, discount.discount_per as discount_per FROM book, discount
+  WHERE book.discount_id= discount.discount_id AND book.book_author = '{$author}' AND book.publisher_id = $publisher_id
+  AND book.cat_id =$cat_id GROUP BY book.book_id";
 }
-$book_list = db_fetch_array("SELECT categories.cat_name, book.* FROM categories, book
-WHERE categories.cat_id = book.cat_id AND categories.cat_id = $cat_id");
 
+if(!isset($publisher_id)){
+  $author = TRUE;
+  $publisher_id = $_POST['publisher_id']; 
+  $query = "SELECT book.*, discount.discount_per as discount_per FROM book, discount
+  WHERE book.discount_id= discount.discount_id AND book.book_author = '{$author}' AND book.publisher_id = $publisher_id
+  AND book.cat_id =$cat_id GROUP BY book.book_id";
+}
+
+if(!isset($author)&&!isset($publisher_id)){
+  $author = $_POST['author'];
+  $publisher_id = $_POST['publisher_id']; 
+  $query = "SELECT book.*, discount.discount_per as discount_per FROM book, discount
+  WHERE book.discount_id= discount.discount_id AND book.book_author = '{$author}' AND book.publisher_id = $publisher_id
+  AND book.cat_id =$cat_id GROUP BY book.book_id";
+}
+}
+
+$list_book = db_fetch_array($query);
 
 ?>
-<div class="breadcrumb">
-  <div class="container">
-    <div class="breadcrumb-inner">
-      <ul class="list-inline list-unstyled">
-        <li><a href="?mod=home&act=main">Home</a></li>
-        <li class='active'><?= $book_list[0]['cat_name'] ?></li>
-      </ul>
-    </div>
-    <!-- /.breadcrumb-inner --> 
-  </div>
-  <!-- /.container --> 
-</div>
-<!-- /.breadcrumb -->
+
 <div class="body-content outer-top-xs">
   <div class='container'>
     <div class='row'>
-      <div class='col-xs-12 col-sm-12 col-md-3 sidebar'>       
+      <div class='col-xs-12 col-sm-12 col-md-3 sidebar'>
         <div class="sidebar-module-container">
-          <div class="sidebar-filter"> 
-            <!-- ============================================== SIDEBAR CATEGORY ============================================== -->
+          <div class="sidebar-filter">
+            <form method="POST" action="">
             <div class="sidebar-widget">
               <h3 class="section-title">Shop by</h3>
               <div class="widget-header">
                 <h4 class="widget-title">Rating</h4>
+                <input type="radio" name="rating" value="5">
+                <i class="fa fa-star" style="color: orange"></i>
+                <i class="fa fa-star" style="color: orange"></i>
+                <i class="fa fa-star" style="color: orange"></i>
+                <i class="fa fa-star" style="color: orange"></i>
+                <i class="fa fa-star" style="color: orange"></i> 
+                <br>
+                <input type="radio" name="rating" value="4">
+                <i class="fa fa-star" style="color: orange"></i>
+                <i class="fa fa-star" style="color: orange"></i>
+                <i class="fa fa-star" style="color: orange"></i>
+                <i class="fa fa-star" style="color: orange"></i>
+                <i class="fa fa-star"></i>
+                <br>
+                <input type="radio" name="rating" value="3">
+                <i class="fa fa-star" style="color: orange"></i>
+                <i class="fa fa-star" style="color: orange"></i>
+                <i class="fa fa-star" style="color: orange"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <br>
+                <input type="radio" name="rating" value="2">
+                <i class="fa fa-star" style="color: orange"></i>
+                <i class="fa fa-star" style="color: orange"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <br>
+                <input type="radio" name="rating" value="1">
+                <i class="fa fa-star" style="color: orange"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <br>
+
               </div>
               <div class="sidebar-widget-body">
-                <!-- /.accordion --> 
+                <!-- /.accordion -->
               </div>
-              <!-- /.sidebar-widget-body --> 
+              <!-- /.sidebar-widget-body -->
             </div>
-            <!-- /.sidebar-widget --> 
-            <!-- ============================================== SIDEBAR CATEGORY : END ============================================== --> 
-            
-            <!-- ============================================== PRICE SILDER============================================== -->
             <div class="sidebar-widget">
               <div class="widget-header">
-                <h4 class="widget-title">Price Slider</h4>
+                <h4 class="widget-title">Publisher</h4>
               </div>
-              <div class="sidebar-widget-body m-t-10">
-                <div class="price-range-holder"> <span class="min-max"> <span class="pull-left">$200.00</span> <span class="pull-right">$800.00</span> </span>
-                  <input type="text" id="amount" style="border:0; color:#666666; font-weight:bold;text-align:center;">
-                  <input type="text" class="price-slider" value="" >
+              <div class="sidebar-widget-body">
+                <div>
+                  <?php
+                  if (count($list_publisher) == 0) {
+                    echo "no data";
+                  } else {
+                    foreach ($list_publisher as $field) {
+                      ?>
+                      <input type= "hidden" name="publisher_id" value="<?= $field['publisher_id'] ?>">
+                      <input type="radio" name="publisher" value="<?= $field['publisher_name'] ?>">
+                      <?= $field['publisher_name'] ?><br>
+                      <?php
+                    }
+                  }
+                  ?>
                 </div>
-                <!-- /.price-range-holder --> 
-                <a href="#" class="lnk btn btn-primary">Show Now</a> </div>
-              <!-- /.sidebar-widget-body --> 
+              </div>
+              <!-- /.sidebar-widget-body -->
             </div>
-            <!-- /.sidebar-widget --> 
-            <!-- ============================================== PRICE SILDER : END ============================================== --> 
-            <!-- ============================================== MANUFACTURES============================================== -->
-            <div class="sidebar-widget">
-              <!-- /.sidebar-widget-body --> 
-            </div>
-            <!-- /.sidebar-widget --> 
-            <!-- ============================================== MANUFACTURES: END ============================================== --> 
-            <!-- ============================================== COLOR============================================== -->
             <div class="sidebar-widget">
               <div class="widget-header">
                 <h4 class="widget-title">Author</h4>
               </div>
-              <div class="sidebar-widget-body">
-                <ul class="list">
-                  <li><a href="#"><input type="checkbox"> Adams Media</a></li>
-                  <li><a href="#"><input type="checkbox"> Bryan Burrough</a></li>
-                  <li><a href="#"><input type="checkbox"> Camilla Arnold</a></li>
-                  <li><a href="#"><input type="checkbox"> Eric Barker</a></li>
-                  <li><a href="#"><input type="checkbox"> John Helyar</a></li>
-                  <li><a href="#"><input type="checkbox"> Napoleon Hill</a></li>
-                </ul>
+            <div class="sidebar-widget-body">
+                <div>
+                  <?php
+                  if (count($list_author) == 0) {
+                    echo "no data";
+                  } else {
+                    foreach ($list_author as $field) {
+                      ?>
+                      <input type="radio" name="author" value="<?= $field['book_author'] ?>"> <?= $field['book_author'] ?><br>
+                      <?php
+                    }
+                  }
+                  ?>
+                </div>
               </div>
-              <!-- /.sidebar-widget-body --> 
-            </div>       
-       
-            <!-- /.sidebar-widget --> 
-          <!-- /.Testimonials -->
-            <div class="sidebar-widget  outer-top-vs ">
-              <h3>You also maybe like</h3>
-              <div id="advertisement" class="advertisement">
-                <div class="item">
-                  <div class="avatar"><img src="../../public/assets/images/testimonials/member1.png" alt="Image"></div>
-                  <div class="testimonials"><em>"</em> Vtae sodales aliq uam morbi non sem lacus port mollis. Nunc condime tum metus eud molest sed consectetuer. Sed quia non numquam eius modi tempora incidunt ut labore et dolore.<em>"</em></div>
-                  <div class="clients_author">English Grammar in Use Book<span>Raymond Murphy</span> </div>
-                  <!-- /.container-fluid --> 
-                </div>
-                <!-- /.item -->
-                
-                <div class="item">
-                  <div class="avatar"><img src="../../public/assets/images/testimonials/member3.png" alt="Image"></div>
-                  <div class="testimonials"><em>"</em>Vtae sodales aliq uam morbi non sem lacus port mollis. Nunc condime tum metus eud molest sed consectetuer. Sed quia non numquam eius modi tempora incidunt ut labore et dolore.<em>"</em></div>
-                  <div class="clients_author">Atomic Habits <span>Random House Business</span> </div>
-                </div>
-                <!-- /.item -->
-                
-                <div class="item">
-                  <div class="avatar"><img src="../../public/assets/images/testimonials/member2.png" alt="Image"></div>
-                  <div class="testimonials"><em>"</em> Vtae sodales aliq uam morbi non sem lacus port mollis. Nunc condime tum metus eud molest sed consectetuer. Sed quia non numquam eius modi tempora incidunt ut labore et dolore.<em>"</em></div>
-                  <div class="clients_author">Thinking, Fast and Slow <span>Daniel Kahneman</span> </div>
-                  <!-- /.container-fluid --> 
-                </div>
-                <!-- /.item --> 
-                
-              </div>
-              <!-- /.owl-carousel --> 
+              <!-- /.sidebar-widget-body -->
             </div>
-            
-            <!-- ============================================== Testimonials: END ============================================== -->           
-
-            
+            <div class="sidebar-widget">
+              <div class="widget-header">
+                <h4 class="widget-title">Price Slider</h4>
+              </div>        
+              
+              <div class="sidebar-widget-body m-t-10">
+                <div class="price-range-holder"> <span class="min-max"> <span class="pull-left">$200.00</span> <span
+                      class="pull-right">$800.00</span> </span>
+                  <input type="text" id="amount" style="border:0; color:#666666; font-weight:bold;text-align:center;">
+                  <input type="text" class="price-slider" value="">
+                </div>
+              </div>             
+            </div>
            
-          </div>
-          <!-- /.sidebar-filter --> 
-        </div>
-        <!-- /.sidebar-module-container --> 
-      </div>
-      <!-- /.sidebar -->
-      <div class="col-xs-12 col-sm-12 col-md-9 rht-col"> 
-        <!-- ========================================== SECTION – HERO ========================================= -->
-        
-        <div id="category" class="category-carousel hidden-xs">
-          <div class="item">
-            <div class="image"> <img src="../../public/assets/images/banners/cat-banner-1.jpg" alt="" class="img-responsive"> </div>
-            <div class="container-fluid">
-              <div class="caption vertical-top text-left">
-                <div class="big-text"> Big Sale </div>
-                <div class="excerpt hidden-sm hidden-md"> Save up to 49% off </div>
-                <div class="excerpt-normal hidden-sm hidden-md"> Lorem ipsum dolor sit amet, consectetur adipiscing elit </div>
-                <div class="buy-btn"><a href="#" class="lnk btn btn-primary">Show Now</a></div>
+            <div class="sidebar-widget">             
+              <div class="sidebar-widget">
+                <div class="sidebar-widget-body m-t-10">
+
+                  <input type="submit" name="btnFilter" class="lnk btn btn-primary" value="Shop Now">
+                </div>
               </div>
-              <!-- /.caption --> 
+              <!-- /.sidebar-widget -->
             </div>
-            <!-- /.container-fluid --> 
+          </form>
+
           </div>
+
         </div>
-        
-     
+
+      </div>
+
+      <div class="col-xs-12 col-sm-12 col-md-9 rht-col">
+
         <div class="clearfix filters-container m-t-10">
           <div class="row">
             <div class="col col-sm-6 col-md-3 col-lg-3 col-xs-6">
               <div class="filter-tabs">
                 <ul id="filter-tabs" class="nav nav-tabs nav-tab-box nav-tab-fa-icon">
-                  <li class="active"> <a data-toggle="tab" href="#grid-container"><i class="icon fa fa-th-large"></i>Grid</a> </li>
+                  <li class="active"> <a data-toggle="tab" href="#grid-container"><i
+                        class="icon fa fa-th-large"></i>Grid</a> </li>
                   <li><a data-toggle="tab" href="#list-container"><i class="icon fa fa-bars"></i>List</a></li>
                 </ul>
               </div>
-              <!-- /.filter-tabs --> 
+              <!-- /.filter-tabs -->
             </div>
             <!-- /.col -->
             <div class="col col-sm-12 col-md-5 col-lg-5 hidden-sm">
@@ -417,7 +201,8 @@ WHERE categories.cat_id = book.cat_id AND categories.cat_id = $cat_id");
                 <div class="lbl-cnt"> <span class="lbl">Sort by</span>
                   <div class="fld inline">
                     <div class="dropdown dropdown-small dropdown-med dropdown-white inline">
-                      <button data-toggle="dropdown" type="button" class="btn dropdown-toggle"> Position <span class="caret"></span> </button>
+                      <button data-toggle="dropdown" type="button" class="btn dropdown-toggle"> Position <span
+                          class="caret"></span> </button>
                       <ul role="menu" class="dropdown-menu">
                         <li role="presentation"><a href="#">position</a></li>
                         <li role="presentation"><a href="#">Price:Lowest first</a></li>
@@ -426,16 +211,17 @@ WHERE categories.cat_id = book.cat_id AND categories.cat_id = $cat_id");
                       </ul>
                     </div>
                   </div>
-                  <!-- /.fld --> 
+                  <!-- /.fld -->
                 </div>
-                <!-- /.lbl-cnt --> 
+                <!-- /.lbl-cnt -->
               </div>
               <!-- /.col -->
               <div class="col col-sm-6 col-md-6 no-padding hidden-sm hidden-md">
                 <div class="lbl-cnt"> <span class="lbl">Show</span>
                   <div class="fld inline">
                     <div class="dropdown dropdown-small dropdown-med dropdown-white inline">
-                      <button data-toggle="dropdown" type="button" class="btn dropdown-toggle"> 1 <span class="caret"></span> </button>
+                      <button data-toggle="dropdown" type="button" class="btn dropdown-toggle"> 1 <span
+                          class="caret"></span> </button>
                       <ul role="menu" class="dropdown-menu">
                         <li role="presentation"><a href="#">1</a></li>
                         <li role="presentation"><a href="#">2</a></li>
@@ -450,11 +236,11 @@ WHERE categories.cat_id = book.cat_id AND categories.cat_id = $cat_id");
                       </ul>
                     </div>
                   </div>
-                  <!-- /.fld --> 
+                  <!-- /.fld -->
                 </div>
-                <!-- /.lbl-cnt --> 
+                <!-- /.lbl-cnt -->
               </div>
-              <!-- /.col --> 
+              <!-- /.col -->
             </div>
             <!-- /.col -->
             <div class="col col-sm-6 col-md-4 col-xs-6 col-lg-4 text-right">
@@ -467,12 +253,13 @@ WHERE categories.cat_id = book.cat_id AND categories.cat_id = $cat_id");
                   <li><a href="#">4</a></li>
                   <li class="next"><a href="#"><i class="fa fa-angle-right"></i></a></li>
                 </ul>
-                <!-- /.list-inline --> 
+                <!-- /.list-inline -->
               </div>
-              <!-- /.pagination-container --> </div>
-            <!-- /.col --> 
+              <!-- /.pagination-container -->
+            </div>
+            <!-- /.col -->
           </div>
-          <!-- /.row --> 
+          <!-- /.row -->
         </div>
         <div class="search-result-container ">
           <div id="myTabContent" class="tab-content category-list">
@@ -480,65 +267,76 @@ WHERE categories.cat_id = book.cat_id AND categories.cat_id = $cat_id");
               <div class="category-product">
                 <div class="row">
                   <?php
-                     foreach($book_list as $row){
-                  ?>
-                    
-                 <div class="col-sm-6 col-md-4 col-lg-3">
-                        <div class="item">
+                  if(count($list_book)==0){
+                    echo "no data";
+                  } else{
+                    foreach ($list_book as $row) {                            
+                    ?>
+
+                    <div class="col-sm-6 col-md-4 col-lg-3">
+                      <div class="item">
                         <div class="products">
                           <div class="product">
                             <div class="product-image">
-                              <div class="image"> 
-                              <a href="">
-                                 <img src="../../public/assets/images/products/p1.jpg" alt=""> 
-                                  <img src="../../public/assets/images/products/p1_hover.jpg" alt="" class="hover-image">
-                              </a> 
-                           </div>
+                              <div class="image">
+                                <a href="">
+                                  <img src="<?= $row['image_url'] ?>" alt="">
+                                  <img src="<?= $row['image_url'] ?>" alt="" class="hover-image">
+                                </a>
+                              </div>
                               <!-- /.image -->
-                          
+
                               <div class="tag new"><span>new</span></div>
                             </div>
                             <!-- /.product-image -->
-                        
+
                             <div class="product-info text-left">
-                              <h3 class="name"><a href="../product/detail.php?book_id=<?php echo $row['book_id']?>"><?php echo $row['book_name']?></a></h3>
+                              <h3 class="name"><a href="../product/detail.php?book_id=<?php echo $row['book_id'] ?>"><?php echo $row['book_name'] ?></a></h3>
                               <div class="rating rateit-small"></div>
                               <div class="description"></div>
-                              <div class="product-price"> <span class="price"> $<?php echo $row['book_price']?> </span> <span class="price-before-discount">$ 800</span> </div>
-                              <!-- /.product-price --> 
-                          
+                              <div class="product-price"> <span class="price"> $
+                                  <?php echo $row['book_price'] ?>
+                                </span> <span class="price-before-discount">$ 800</span> </div>
+                              <!-- /.product-price -->
+
                             </div>
                             <!-- /.product-info -->
                             <div class="cart clearfix animate-effect">
                               <div class="action">
                                 <ul class="list-unstyled">
                                   <li class="add-cart-button btn-group">
-                                    <button class="btn btn-primary icon" data-toggle="dropdown" type="button"> <i class="fa fa-shopping-cart"></i> </button>
+                                    <button class="btn btn-primary icon" data-toggle="dropdown" type="button"> <i
+                                        class="fa fa-shopping-cart"></i> </button>
                                     <button class="btn btn-primary cart-btn" type="button">Add to cart</button>
                                   </li>
-                                  <li class="lnk wishlist"> <a class="add-to-cart" href="detail.html" title="Wishlist"> <i class="icon fa fa-heart"></i> </a> </li>
-                                  <li class="lnk"> <a class="add-to-cart" href="detail.html" title="Compare"> <i class="fa fa-signal"></i> </a> </li>
+                                  <li class="lnk wishlist"> <a class="add-to-cart" href="detail.html" title="Wishlist"> <i
+                                        class="icon fa fa-heart"></i> </a> </li>
+                                  <li class="lnk"> <a class="add-to-cart" href="detail.html" title="Compare"> <i
+                                        class="fa fa-signal"></i> </a> </li>
                                 </ul>
                               </div>
-                              <!-- /.action --> 
+                              <!-- /.action -->
                             </div>
-                            <!-- /.cart --> 
+                            <!-- /.cart -->
                           </div>
-                          <!-- /.product --> 
-                      
+                          <!-- /.product -->
+
                         </div>
-                        <!-- /.products --> 
-                        </div>
+                        <!-- /.products -->
                       </div>
-                      <!-- /.item -->
-                <?php
-                    };
+                    </div>
+                    <!-- /.item -->
+                    <?php
+                    }
+                  }
+
+                  ;
                   ?>
                 </div>
-                <!-- /.row --> 
+                <!-- /.row -->
               </div>
-              <!-- /.category-product --> 
-              
+              <!-- /.category-product -->
+
             </div>
 
           </div>
@@ -554,67 +352,21 @@ WHERE categories.cat_id = book.cat_id AND categories.cat_id = $cat_id");
                   <li><a href="#">4</a></li>
                   <li class="next"><a href="#"><i class="fa fa-angle-right"></i></a></li>
                 </ul>
-                <!-- /.list-inline --> 
+                <!-- /.list-inline -->
               </div>
-              <!-- /.pagination-container --> </div>
-            <!-- /.text-right --> 
-            
+              <!-- /.pagination-container -->
+            </div>
+            <!-- /.text-right -->
           </div>
-          <!-- /.filters-container --> 
-          
+          <!-- /.filters-container -->
         </div>
-        <!-- /.search-result-container --> 
-        
+        <!-- /.search-result-container -->
       </div>
-      <!-- /.col --> 
+      <!-- /.col -->
     </div>
-    <!-- /.row --> 
-    <!-- ============================================== BRANDS CAROUSEL ============================================== -->
-    <div id="brands-carousel" class="logo-slider">
-      <div class="logo-slider-inner">
-        <div id="brand-slider" class="owl-carousel brand-slider custom-carousel owl-theme">
-          <div class="item m-t-15"><a href="#" class="image"> <img data-echo="../../public/assets/images/brands/brand1.png" src="../../public/assets/images/blank.gif" alt=""> </a> </div>
-          <!--/.item-->
-          
-          <div class="item m-t-10"> <a href="#" class="image"> <img data-echo="../../public/assets/images/brands/brand2.png" src="../../public/assets/images/blank.gif" alt=""> </a> </div>
-          <!--/.item-->
-          
-          <div class="item"> <a href="#" class="image"> <img data-echo="../../public/assets/images/brands/brand3.png" src="../../public/assets/images/blank.gif" alt=""> </a> </div>
-          <!--/.item-->
-          
-          <div class="item"> <a href="#" class="image"> <img data-echo="../../public/assets/images/brands/brand4.png" src="../../public/assets/images/blank.gif" alt=""> </a> </div>
-          <!--/.item-->
-          
-          <div class="item"> <a href="#" class="image"> <img data-echo="../../public/assets/images/brands/brand5.png" src="../../public/assets/images/blank.gif" alt=""> </a> </div>
-          <!--/.item-->
-          
-          <div class="item"> <a href="#" class="image"> <img data-echo="../../public/assets/images/brands/brand6.png" src="../../public/assets/images/blank.gif" alt=""> </a> </div>
-          <!--/.item-->
-          
-          <div class="item"> <a href="#" class="image"> <img data-echo="../../public/assets/images/brands/brand2.png" src="../../public/assets/images/blank.gif" alt=""> </a> </div>
-          <!--/.item-->
-          
-          <div class="item"> <a href="#" class="image"> <img data-echo="../../public/assets/images/brands/brand4.png" src="../../public/assets/images/blank.gif" alt=""> </a> </div>
-          <!--/.item-->
-          
-          <div class="item"> <a href="#" class="image"> <img data-echo="../../public/assets/images/brands/brand1.png" src="../../public/assets/images/blank.gif" alt=""> </a> </div>
-          <!--/.item-->
-          
-          <div class="item"> <a href="#" class="image"> <img data-echo="../../public/assets/images/brands/brand5.png" src="../../public/assets/images/blank.gif" alt=""> </a> </div>
-          <!--/.item--> 
-        </div>
-        <!-- /.owl-carousel #logo-slider --> 
-      </div>
-      <!-- /.logo-slider-inner --> 
-      
-    </div>
-    <!-- /.logo-slider --> 
-    <!-- ============================================== BRANDS CAROUSEL : END ============================================== --> </div>
-  <!-- /.container --> 
-  
+  </div>
 </div>
-<!-- /.body-content --> 
 <?php
 include("../../inc/footer.php");
 ?>
- ?>
+?>
