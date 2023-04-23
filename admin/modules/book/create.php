@@ -8,11 +8,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $yearErr = "year is required";
   } else {
     $yearbook = test_input($_POST["txtYear"]);
-    if ($yearbook < 1400 && $yearbook > 2023) {
+    if ($yearbook < 1400 || $yearbook > 2023) {
       $yearErr = "Year is wrong";
     }
   }
-  // Website
+  // image 
   if (empty($_POST["txtImg"])) {
     $imgErr = "image is required";
   } elseif (!filter_var($_POST["txtImg"], FILTER_VALIDATE_URL)) {
@@ -38,7 +38,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   if (empty($_POST["txtPage"])) {
     $pageErr = "year is required";
   } else {
-    $page = test_input($_POST["txtYear"]);
+    $page = test_input($_POST["txtPage"]);
     if ($page < 0) {
       $pageErr = "Invalid page";
     }
@@ -49,14 +49,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   } else {
     $Price = test_input($_POST["txtPrice"]);
     if ($Price< 0 ) {
-      $pageErr = "Invalid price";
+      $priceErr = "Invalid price";
     }
   }
 
   // inventory
   if (empty($_POST["txtInventory"])) {
     $invenErr = "inventory is required";
-  } else {
+    } else {
     $inventory = test_input($_POST["txtInventory"]);
     if ($inventory < 0) {
       $invenErr = "invalid inventory";
@@ -238,9 +238,11 @@ include_once("../../inc/header.php");
               <div class="col-12">
                 <label class="form-label">Book Image</label>
                 <input class="form-control" type="file" name="txtImg">
+                <span class="error" style="color:red"> <?php echo $imgErr; ?></span>
+
               </div>
               <div class="text-center">
-                <input type="submit" class="btn btn-primary" name="btnAdd" value="Submit">Submit</button>
+                <input type="submit" class="btn btn-primary" name="btnAdd" value="Submit">
                 <button type="reset" class="btn btn-secondary" name="btnClear">Reset</button>
               </div>
             </form>
