@@ -1,7 +1,9 @@
 <?php
+session_start();
 include_once("../../db/DBConnect.php");
 include_once("../../db/database.php");
 include("../../inc/header.php");
+
 
 	$list_cart = array();
 	if (isset($_SESSION['cart'])) {		
@@ -21,7 +23,7 @@ include("../../inc/header.php");
 	<div class="container">
 		<div class="breadcrumb-inner">
 			<ul class="list-inline list-unstyled">
-				<li><a href="?mod=home&act=main">Home</a></li>
+				<li><a href="../home/main.php">Home</a></li>
 				<li class='active'>Shopping Cart</li>
 			</ul>
 		</div><!-- /.breadcrumb-inner -->
@@ -36,7 +38,7 @@ include("../../inc/header.php");
 		else:
 			?>
 
-			<form action="?mod=checkout&act=main" method="POST">
+			<form action="../checkout/main.php" method="POST">
 				<div class="row ">
 					<div class="shopping-cart">
 						<div class="shopping-cart-table ">
@@ -87,7 +89,7 @@ include("../../inc/header.php");
 												</td>
 												<td class="remove-item"
 													onclick="return confirm('Are you sure to delete this item ?')"><a
-														href="?mod=cart&act=delete&book_id=<?= $item['book_id'] ?>"
+														href="delete.php?book_id=<?= $item['book_id'] ?>"
 														title="cancel" class="icon"><i class="fa fa-trash-o"></i></a></td>
 											</tr>
 											<?php
@@ -105,7 +107,7 @@ include("../../inc/header.php");
 														<a href="?mod=home&act=main"
 															class="btn btn-upper btn-primary outer-left-xs">Continue
 															Shopping</a>
-														<a href="?mod=cart&act=delete&book_id"
+														<a href="delete.php?book_id"
 															onclick="return confirm('Are you sure to delete all items ?')"
 															class="btn btn-upper btn-primary pull-right outer-right-xs">Delete
 															all shopping cart</a>
@@ -162,75 +164,7 @@ include("../../inc/header.php");
 		endif
 		?>
 	</div> <!-- /.row -->
-	<!-- ============================================== BRANDS CAROUSEL ============================================== -->
-	<div id="brands-carousel" class="logo-slider wow fadeInUp">
 
-		<div class="logo-slider-inner">
-			<div id="brand-slider" class="owl-carousel brand-slider custom-carousel owl-theme">
-				<div class="item m-t-15">
-					<a href="#" class="image">
-						<img data-echo="assets/images/brands/brand1.png" src="assets/images/blank.gif" alt="">
-					</a>
-				</div><!--/.item-->
-
-				<div class="item m-t-10">
-					<a href="#" class="image">
-						<img data-echo="assets/images/brands/brand2.png" src="assets/images/blank.gif" alt="">
-					</a>
-				</div><!--/.item-->
-
-				<div class="item">
-					<a href="#" class="image">
-						<img data-echo="assets/images/brands/brand3.png" src="assets/images/blank.gif" alt="">
-					</a>
-				</div><!--/.item-->
-
-				<div class="item">
-					<a href="#" class="image">
-						<img data-echo="assets/images/brands/brand4.png" src="assets/images/blank.gif" alt="">
-					</a>
-				</div><!--/.item-->
-
-				<div class="item">
-					<a href="#" class="image">
-						<img data-echo="assets/images/brands/brand5.png" src="assets/images/blank.gif" alt="">
-					</a>
-				</div><!--/.item-->
-
-				<div class="item">
-					<a href="#" class="image">
-						<img data-echo="assets/images/brands/brand6.png" src="assets/images/blank.gif" alt="">
-					</a>
-				</div><!--/.item-->
-
-				<div class="item">
-					<a href="#" class="image">
-						<img data-echo="assets/images/brands/brand2.png" src="assets/images/blank.gif" alt="">
-					</a>
-				</div><!--/.item-->
-
-				<div class="item">
-					<a href="#" class="image">
-						<img data-echo="assets/images/brands/brand4.png" src="assets/images/blank.gif" alt="">
-					</a>
-				</div><!--/.item-->
-
-				<div class="item">
-					<a href="#" class="image">
-						<img data-echo="assets/images/brands/brand1.png" src="assets/images/blank.gif" alt="">
-					</a>
-				</div><!--/.item-->
-
-				<div class="item">
-					<a href="#" class="image">
-						<img data-echo="assets/images/brands/brand5.png" src="assets/images/blank.gif" alt="">
-					</a>
-				</div><!--/.item-->
-			</div><!-- /.owl-carousel #logo-slider -->
-		</div><!-- /.logo-slider-inner -->
-
-	</div><!-- /.logo-slider -->
-	<!-- ============================================== BRANDS CAROUSEL : END ============================================== -->
 </div><!-- /.container -->
 </div><!-- /.body-content -->
 

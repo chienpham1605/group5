@@ -8,7 +8,7 @@ include_once("../../db/database.php");
 
 
 $order_id = $_GET['order_id'];
-$customer_infor = db_fetch_row("SELECT customer.fullname, customer.email, customer.address, customer.phone 
+$customer_infor = db_fetch_row("SELECT customer.name, customer.email, customer.address, customer.phone 
 FROM customer, ordermaster 
 WHERE ordermaster.cus_id = customer.id 
 AND ordermaster.order_id = '{$order_id}'");
@@ -20,7 +20,7 @@ AND ordermaster.order_id = orderdetail.order_id
 AND ordermaster.order_id = '{$order_id}'");
 
 $orderMaster_infor = db_fetch_row("SELECT ordermaster.order_date, ordermaster.order_id, ordermaster.shipping_name, ordermaster.shipping_address, ordermaster.shipping_phone, 
-ordermaster.order_note, ordermaster.order_status, ordermaster.payment_method
+ordermaster.order_note, ordermaster.order_status, ordermaster.payment_method, ordermaster.last_modify_at
 FROM ordermaster WHERE ordermaster.order_id = '{$order_id}'");
 $total = 0;
 
@@ -127,7 +127,7 @@ $total = 0;
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td><i class="bi bi-mailbox2"></i></i>
+                                    <td><i class="bi bi-envelope-fill"></i></i>
                                         <?= $customer_infor['email'] ?>
                                     </td>
 
@@ -136,7 +136,7 @@ $total = 0;
                                 </tr>
                                 <tr>
                                     <td><i class="bi bi-person-fill"></i>
-                                        <?= $customer_infor['fullname'] ?>
+                                        <?= $customer_infor['name'] ?>
                                     </td>
                                     <td><i class="bi bi-person-fill"></i>
                                         <?= $orderMaster_infor['shipping_name'] ?>
@@ -189,7 +189,8 @@ $total = 0;
                             </h5>
                             <span class="badge bg-success">
                                 <?= $orderMaster_infor['order_status'] ?>
-                            </span>                           
+                            </span>    
+                            <div>Last modified at <?=$orderMaster_infor['last_modify_at']?></div>                       
                             <div class="col-md-4">
                                 <label for="inputState" class="form-label"></label>
                                 <select id="inputState" class="form-select" name="orderStatus">
@@ -201,6 +202,7 @@ $total = 0;
                                 </select>
                                 <input type="hidden" value="<?= $order_id ?>" name="order_id">
                             </div>
+                           
                             <div class="text-center">
                                 <button type="submit" class="btn btn-primary" name="btnUpdate"
                                     onclick="return confirm('Are you sure to update order # <?= $order_id ?>?')">Update</button>

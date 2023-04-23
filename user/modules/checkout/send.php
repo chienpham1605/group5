@@ -1,4 +1,7 @@
 <?php
+session_start();
+include_once("../../db/DBConnect.php");
+
 $user_id = (int) $_SESSION['auth']['id'];
 $fullname = $_POST['fullname'];
 $user = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM customer WHERE id =$user_id"));
@@ -9,7 +12,8 @@ $address = $_POST['address'];
 $phone = $_POST['phone'];
 $note = $_POST['note'];
 $payment_method = $_POST['payment_method'];
-$order_status = 0;
+$order_status = "Pending";
+var_dump($payment_method);
 // $checkoutList = $_SESSION['cart']['buy'];
 
 $checkoutList = $_SESSION['cart'];
@@ -25,13 +29,17 @@ $yy = date("y");
 $time = $dd . $hh . $mm . $ss;
 
 $no = $time;
-$date = date("d/m/Y");
+$date = date("Y-m-d H:i:s");
+var_dump($checkoutList);
 // $ccode = 1; //customer ID se truy van tu bang customer
 //3.2 excute query
 
 // $query = "insert into OrderMaster values('{$no}','{$date}', '{$ccode}', '{$order_status}' )";
-$query = "INSERT INTO `ordermaster` (`order_id`, `order_date`, `cus_id`, `order_status`, `shipping_name`, `shipping_address`, `shipping_phone`, `payment_method`, `order_note`) 
-VALUES ('{$no}', '{$date}', '{$user_id}', '{$order_status}', '{$fullname}', '{$address}', '{$phone}', '{$payment_method}', '{$note}')";
+$query = "INSERT INTO `ordermaster` 
+(`order_id`, `order_date`, `cus_id`, `shipping_name`, `shipping_address`, `shipping_phone`,
+ `payment_method`, `order_note`, `last_modify_at`, `order_status`) 
+VALUES ('{$no}', '{$date}', '{$user_id}', '{$fullname}', '{$address}', '{$phone}',
+ '{$payment_method}', '{$note}', '{$date}', '{$order_status}')";
 mysqli_query($conn, $query);
 
 // $checkoutList = $_SESSION['cart']['buy'];
@@ -395,6 +403,6 @@ $mailBody = "<body style='margin: 0 !important; padding: 0 !important; backgroun
 $mailSubject = "[Order Confirm] # $no - OnBookStore";
 // sendmail($email, $mailSubject, $mailBody);
 unset($_SESSION['cart']);
-redirect("?mod=checkout&act=success&order_id=$no");
+header("Location: success.php?order_id=$no");
 
             

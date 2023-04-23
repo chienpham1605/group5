@@ -47,10 +47,10 @@
           </div>
           <div class="col-lg-7 col-md-6 col-sm-8 col-xs-12 top-search-holder">
             <div class="search-area">
-              <form action="../home/main.php" method="post">
+              <form action="../home/search.php" method="post">
                 <div class="control-group">
                   <input class="search-field" name="search_data" placeholder="Enter keyword..." />
-                  <input type="submit" class="search-button" name="btn" value="Search">
+                  <input type="submit" class="search-button" name="btnSearch" value="Search">
                 </div>
               </form>
             </div>

@@ -5,10 +5,10 @@ include_once("../../db/database.php");
   
   if (isset($_POST['btnUpdate'])):
   
-    $modify_at = date("Y-m-d H:i:s");
+    $last_modify_at = date("Y-m-d H:i:s");
 
     $orderStatus = $_POST['orderStatus'];
-    $query = "UPDATE `ordermaster` SET `order_status` = '{$orderStatus}', `modify_at` = '{$modify_at}'  WHERE `ordermaster`.`order_id` = '{$order_id}'";
+    $query = "UPDATE `ordermaster` SET `order_status` = '{$orderStatus}', `last_modify_at` = '{$last_modify_at}'  WHERE `ordermaster`.`order_id` = '{$order_id}'";
     $rs = mysqli_query($conn, $query);
     if (!$rs):
         error_clear_last();

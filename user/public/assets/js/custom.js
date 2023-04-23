@@ -24,11 +24,13 @@ $(document).ready(function () {
     var qty_input = $(".input-qty").val();
     var book_id = $(this).attr("data-id");
     var book_price = $(this).attr("data-price");   
+    
+    // console.log(book_name);
     location.reload(true);
     $.ajax({
       url: "../cart/add.php",
       method: "POST",
-      data: { qty_input: qty_input, book_id: book_id, book_price:book_price  },
+      data: { qty_input: qty_input, book_id: book_id, book_price:book_price},
       success: function (data) {       
         alert("Add cart successfully");       
       },
@@ -44,7 +46,7 @@ $(document).ready(function () {
     var book_price = $(this).attr("data-price");
     var book_id = $(this).attr("data-id");      
     $.ajax({
-      url: "modules/cart/update.php",
+      url: "../cart/update.php",
       method: "POST",
       data: { qty_input: qty_input, book_id: book_id, book_price: book_price },
       dataType: "JSON",

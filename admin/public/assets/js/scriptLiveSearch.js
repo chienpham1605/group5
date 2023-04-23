@@ -2,7 +2,7 @@ $(document).ready(function(){
     load_data();
     function load_data(search){
         $.ajax({
-            url:"../public/modules/feedback/feedback management.php",
+            url:"search.php",
             method:"POST",
             data:{query: search},
             success:function(data){
