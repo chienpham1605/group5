@@ -112,7 +112,7 @@ $list_book = db_fetch_array($query);
               </div>
               <!-- /.sidebar-widget-body -->
             </div>
-            <div class="sidebar-widget">
+            <!-- <div class="sidebar-widget">
               <div class="widget-header">
                 <h4 class="widget-title">Price Slider</h4>
               </div>        
@@ -124,7 +124,7 @@ $list_book = db_fetch_array($query);
                   <input type="text" class="price-slider" value="">
                 </div>
               </div>             
-            </div>
+            </div> -->
            
             <div class="sidebar-widget">             
               <div class="sidebar-widget">
@@ -152,13 +152,13 @@ $list_book = db_fetch_array($query);
                 <ul id="filter-tabs" class="nav nav-tabs nav-tab-box nav-tab-fa-icon">
                   <li class="active"> <a data-toggle="tab" href="#grid-container"><i
                         class="icon fa fa-th-large"></i>Grid</a> </li>
-                  <li><a data-toggle="tab" href="#list-container"><i class="icon fa fa-bars"></i>List</a></li>
+                  <!-- <li><a data-toggle="tab" href="#list-container"><i class="icon fa fa-bars"></i>List</a></li> -->
                 </ul>
               </div>
               <!-- /.filter-tabs -->
             </div>
             <!-- /.col -->
-            <div class="col col-sm-12 col-md-5 col-lg-5 hidden-sm">
+            <!-- <div class="col col-sm-12 col-md-5 col-lg-5 hidden-sm">
               <div class="col col-sm-6 col-md-6 no-padding">
                 <div class="lbl-cnt"> <span class="lbl">Sort by</span>
                   <div class="fld inline">
@@ -172,13 +172,13 @@ $list_book = db_fetch_array($query);
                         <li role="presentation"><a href="#">Product Name:A to Z</a></li>
                       </ul>
                     </div>
-                  </div>
+                  </div> -->
                   <!-- /.fld -->
-                </div>
+                <!-- </div> -->
                 <!-- /.lbl-cnt -->
-              </div>
+              <!-- </div> -->
               <!-- /.col -->
-              <div class="col col-sm-6 col-md-6 no-padding hidden-sm hidden-md">
+              <!-- <div class="col col-sm-6 col-md-6 no-padding hidden-sm hidden-md">
                 <div class="lbl-cnt"> <span class="lbl">Show</span>
                   <div class="fld inline">
                     <div class="dropdown dropdown-small dropdown-med dropdown-white inline">
@@ -197,15 +197,15 @@ $list_book = db_fetch_array($query);
                         <li role="presentation"><a href="#">10</a></li>
                       </ul>
                     </div>
-                  </div>
+                  </div> -->
                   <!-- /.fld -->
-                </div>
+                <!-- </div> -->
                 <!-- /.lbl-cnt -->
-              </div>
+              <!-- </div> -->
               <!-- /.col -->
-            </div>
+            <!-- </div> -->
             <!-- /.col -->
-            <div class="col col-sm-6 col-md-4 col-xs-6 col-lg-4 text-right">
+            <!-- <div class="col col-sm-6 col-md-4 col-xs-6 col-lg-4 text-right">
               <div class="pagination-container">
                 <ul class="list-inline list-unstyled">
                   <li class="prev"><a href="#"><i class="fa fa-angle-left"></i></a></li>
@@ -214,11 +214,11 @@ $list_book = db_fetch_array($query);
                   <li><a href="#">3</a></li>
                   <li><a href="#">4</a></li>
                   <li class="next"><a href="#"><i class="fa fa-angle-right"></i></a></li>
-                </ul>
+                </ul> -->
                 <!-- /.list-inline -->
-              </div>
+              <!-- </div> -->
               <!-- /.pagination-container -->
-            </div>
+            <!-- </div> -->
             <!-- /.col -->
           </div>
           <!-- /.row -->

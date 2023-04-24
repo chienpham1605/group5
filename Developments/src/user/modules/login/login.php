@@ -54,7 +54,7 @@ if (isset($_POST['btn-login'])) {
             $_SESSION['is_login'] = true;
             $_SESSION['user_login'] = $num;
 
-            $user_login = $_SESSION['num'];
+            // $user_login = $_SESSION['num'];
             header('Location:../home/main.php');
         } 
 //         else {
@@ -120,9 +120,11 @@ include("../../inc/header.php");
                 ?>
            </form>
             <!-- <a href="" id ="lost-pass" class="forgot-password pull-right">Forget Password?</a> -->
+            <div>Don't have an account yet? <a href="register.php">Register</a> </div>
         </div>
     </div>
     </div><!-- create a new account --></div><!-- /.row -->
+    
     </div><!-- /.sign-in-->
 </div><!-- /.body-content -->
 

@@ -2,18 +2,25 @@
 session_start();
 include_once("../../db/DBConnect.php");
 include_once("../../db/database.php");
-include("../../inc/header.php");
-$_SESSION['auth']['id'] =3;
-if(!isset($_SESSION['auth']['id'])){
-    header("Location: ../login/main.php");
+
+
+if(!isset($_SESSION['user_login']['id'])){
+    header("Location: ../login/login.php");   
+    
+}else{
+    $user_id = (int) $_SESSION['user_login']['id'];
 }
 
-$user_id = (int) $_SESSION['auth']['id'];
+echo  $user_id;
+
 $checkoutList = $_SESSION['cart'];
 $total = 0;
 foreach ($checkoutList as $item) {
     $total += $item['book_price'] * $item['qty'];
 }
+?>
+<?php
+include("../../inc/header.php");
 ?>
 <div class="breadcrumb">
     <div class="container">
@@ -49,21 +56,23 @@ foreach ($checkoutList as $item) {
                                                 <li>
                                                     <label class="info-title control-label">Fullname
                                                         <span>*</span></label>
-                                                    <input type="text" name="fullname" value=""
+                                                    <input type="text" name="fullname" value="" required
                                                         class="form-control unicase-form-control text-input"
                                                         placeholder="">
                                                 </li>
                                                 <li>
                                                     <label
                                                         class="info-title control-label">Address<span>*</span></label>
-                                                    <input type="text" name="address" value=""
+                                                    <input type="text" name="address" value="" required
                                                         class="form-control unicase-form-control text-input"
                                                         placeholder="">
                                                 </li>
                                                 <li>
                                                     <label class="info-title control-label">Phone
                                                         number<span>*</span></label>
-                                                    <input type="text" name="phone" value=""
+                                                    <input type="text" name="phone" value="" required 
+                                                    pattern="[0-9]{9}" 
+                                                    title="Phone number remaing 9 digit with 0-9"
                                                         class="form-control unicase-form-control text-input"
                                                         placeholder="">
                                                 </li>

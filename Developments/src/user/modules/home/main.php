@@ -7,7 +7,7 @@ include("../../inc/header.php");
 $query = "SELECT * FROM `categories`";
 $rs = mysqli_query($conn, $query);
 $count = mysqli_num_rows($rs);
-$list_cat = mysqli_fetch_assoc($rs);
+$list_cat = db_fetch_array($query);
 
 ?>
 <div class="body-content outer-top-vs" id="top-banner-and-menu">
@@ -27,7 +27,7 @@ $list_cat = mysqli_fetch_assoc($rs);
               if ($count == 0):
                 echo "Record not found";
               else:
-                while ($field = mysqli_fetch_assoc($rs)):
+                foreach ($list_cat as $field){
                   ?>
                   <li class="dropdown menu-item"> 
                     <a href="../product/main.php?cat_id=<?= $field['cat_id'] ?>"><?= $field['cat_name'] ?></a>
@@ -39,7 +39,7 @@ $list_cat = mysqli_fetch_assoc($rs);
                   </li>
 
                       <?php
-                endwhile;
+                };
               endif
               ?>                   
             </ul>
@@ -133,7 +133,7 @@ $list_cat = mysqli_fetch_assoc($rs);
                         <!-- /.product-image -->
                         
                         <div class="product-info text-left">
-                          <h3 class="name"><a href=""><?= $row['book_name']?></a></h3>
+                          <h3 class="name"><a href="../product/detail.php?book_id=<?= $row['book_id']?>"><?= $row['book_name']?></a></h3>
                           <div class="rating rateit-small"></div>
                           <div class="description"></div>
                           <div class="product-price"> 
@@ -224,7 +224,7 @@ $list_cat = mysqli_fetch_assoc($rs);
                         <!-- /.product-image -->
                         
                         <div class="product-info text-left">
-                          <h3 class="name"><a href=""><?= $row['book_name']?></a></h3>
+                          <h3 class="name"><a href="../product/detail.php?book_id=<?= $row['book_id']?>"><?= $row['book_name']?></a></h3>
                           <div class="rating rateit-small"></div>
                           <div class="description"></div>
                           <div class="product-price"> <span class="price"> $<?= $row['book_price']*$row['discount_per'] ?> </span> <span class="price-before-discount">$<?= $row['book_price']?></span> </div>

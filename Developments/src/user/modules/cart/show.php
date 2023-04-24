@@ -46,7 +46,7 @@ include("../../inc/header.php");
 								<table class="table">
 									<thead>
 										<tr>
-											<th class="cart-description item">Image</th>
+											<!-- <th class="cart-description item">Image</th> -->
 											<th class="cart-product-name item">Book Name</th>
 											<th class="cart-qty item">Quantity</th>
 											<th class="cart-sub-total item">Price</th>
@@ -60,10 +60,9 @@ include("../../inc/header.php");
 
 											?>
 											<tr>
-												<td class="cart-image">
-														<img src="<?= $item['book_image']?>">
-													</a>
-												</td>
+												<!-- <td class="cart-image">
+														<img src="<?= $item['book_image']?>">													
+												</td> -->
 												<td class="cart-product-name-info">
 													<h4 class='cart-product-description'><a
 															href="../product/detail.php?book_id=<?= $item['book_id'] ?>">
