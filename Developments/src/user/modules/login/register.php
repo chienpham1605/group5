@@ -13,10 +13,12 @@ if (isset($_POST["btn_submit"])) {
     $phone = $_POST["phone"];
     $address = $_POST["address"];
     $gender = $_POST["gender"];
+     $error =  '';
     // lấy thông tin tu cac form bang phuong thuc POST
     //$_POST lây gia tri the thong qua name"" - chu khong phai id"" 
     if ($username == "" || $password == "" || $cpassword == "" || $email == "" || $phone == "" || $address == "" || $gender == "") {
-        echo " Ban vui long nhap day du thong tin";
+       
+        $error =  " Ban vui long nhap day du thong tin";
     } else {
         // Kiem tra tai khoan da ton tai chua
         $sql = "select * from customer  where name= '$username' ";
@@ -42,7 +44,7 @@ if (isset($_POST["btn_submit"])) {
                 mysqli_query($conn, $sql);
 
                 echo " Signup Successfull";
-                header("Location:../main/home.php");
+                header("Location:../home/main.php");
             } else {
                 echo "Password didn't match";
             }
@@ -69,31 +71,38 @@ include("../../inc/header.php");
                         <div class="col-md-3"></div>
                             <div class="col-md-6 col-sm-6 create-new-account">
                                 <h4 class="checkout-subtitle">Create a new account</h4>
+                            <h6>   <?php if (isset($error)){ echo $error;} ?> </h6>  
                                 <p class="text title-tag-line">Create your new account.</p>
                                 <form class="register-form outer-top-xs" role="form">
                                     <div class="form-group">
                                         <label class="info-title" for="name">User Name <span>*</span></label>
                                         <input type="text" name ="name" class="form-control text-input" id="name" >
+                                        
                                     </div>
                                     <div class="form-group">
                                         <label class="info-title" for="pass">Password <span>*</span></label>
                                         <input type="password" name ="pass"class="form-control text-input" id="pass" >
+                             
                                     </div>
                                     <div class="form-group">
                                         <label class="info-title" for="cpass">Confirm Password <span>*</span></label>
                                         <input type="password" name ="cpass" class="form-control text-input" id="cpass" >
+                                       
                                     </div>
                                     <div class="form-group">
                                         <label class="info-title" for="email">Email <span>*</span></label>
                                         <input type="email" name ="email" class="form-control text-input" id="email" >
+                                        
                                     </div>
                                     <div class="form-group">
                                         <label class="info-title" for="phone">Phone Number <span>*</span></label>
                                         <input type="text" name ="phone" class="form-control text-input" id="phone" >
+                                        
                                     </div>
                                     <div class="form-group">
                                         <label class="info-title" for="address"> Address <span>*</span></label>
                                         <input type="text" name ="address" class="form-control text-input" id="address" >
+                                       
                                     </div>
                                     <div class="form-group">
                                         <label class="info-title" for="gender">Gender <span>*</span></label>
