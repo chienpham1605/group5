@@ -11,7 +11,7 @@ if(!isset($_SESSION['user_login']['id'])){
     $user_id = (int) $_SESSION['user_login']['id'];
 }
 
-echo  $user_id;
+// echo  $user_id;
 
 $checkoutList = $_SESSION['cart'];
 $total = 0;

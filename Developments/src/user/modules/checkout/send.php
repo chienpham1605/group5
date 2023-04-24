@@ -2,7 +2,7 @@
 session_start();
 include_once("../../db/DBConnect.php");
 
-$user_id = (int) $_SESSION['auth']['id'];
+$user_id = (int) $_SESSION['user_login']['id'];
 $fullname = $_POST['fullname'];
 $user = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM customer WHERE id =$user_id"));
 
@@ -13,7 +13,7 @@ $phone = $_POST['phone'];
 $note = $_POST['note'];
 $payment_method = $_POST['payment_method'];
 $order_status = "Pending";
-var_dump($payment_method);
+// var_dump($payment_method);
 // $checkoutList = $_SESSION['cart']['buy'];
 
 $checkoutList = $_SESSION['cart'];
