@@ -331,7 +331,7 @@ endif;
                                 </div>
                               </div>														
                               <div class='action text-right'>
-                                <input  type='submit' name ='btnAddReview' class='btn btn-primary btn-upper'>SUBMIT REVIEW</input>
+                                <input  type='submit' name ='btnAddReview' class='btn btn-primary btn-upper' value='SUBMIT'>
                               </div>											
                           </div>
                         </div>

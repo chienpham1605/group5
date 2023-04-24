@@ -28,7 +28,7 @@ function sendmail($mailTo, $mailSubject, $mailBody)
 
             //Recipients
             $mail->setFrom('nguyenphuonghoa0709@gmail.com', 'OnBookStore');
-            $mail->addAddress($mailTo, 'Nguyen Phuong Hoa'); //Add a recipient
+            $mail->addAddress($mailTo, 'Customer'); //Add a recipient
             // $mail->addAddress('ellen@example.com');               //Name is optional
             $mail->addReplyTo('nguyenphuonghoa0709@gmail.com', 'OnBookStore');
             // $mail->addCC('cc@example.com');

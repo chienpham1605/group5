@@ -41,7 +41,7 @@ endif;
 
                         <form action="show-info.php" method="post">
                             <div class="col-md-6 col-sm-6 create-new-account">
-                                <h4 class="checkout-subtitle">Info User</h4>
+                                <h4 class="checkout-subtitle">Customer Information</h4>
                                 <form class="register-form outer-top-xs" role="form">
                                     <div class =" form-group">
                                         <input type ="hidden" value=" <?php echo $info_user['id'] ?>" name ="id">
@@ -69,11 +69,13 @@ endif;
                                         <input <?php if ($info_user ['gender'] == 0) echo 'checked'; ?> type="radio" class="form-control unicase-form-control text-input" value="0"name="gender"  > Female 
                                     </div>
 
-                                    <button type="submit" name ="btn-update" value ="Update" class="btn-upper btn btn-primary checkout-page-button"
-                                            ">Edit</button>
-                                     <button type="submit" name ="btn_resetpass" value ="resetpass" class="btn-upper btn btn-primary checkout-page-button">Reset Password</button>       
+                                    <button type="submit" name ="btn-update" value ="Update" 
+                                    class="btn-upper btn btn-primary checkout-page-button"
+                                            >Edit</button>
+                                        
                             </div>
                         </form>
+                        <a href="change-pass.php" >Change pass</a>
 
                     </div><!-- create a new account --></div><!-- /.row -->
             </div><!-- /.sign-in-->

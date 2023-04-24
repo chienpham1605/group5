@@ -1,6 +1,7 @@
 <?php
 session_start();
 include_once("../../db/DBConnect.php");
+include_once("../../lib/mail/sendmail.php");
 
 $user_id = (int) $_SESSION['user_login']['id'];
 $fullname = $_POST['fullname'];
@@ -401,8 +402,8 @@ $mailBody = "<body style='margin: 0 !important; padding: 0 !important; backgroun
 
 
 $mailSubject = "[Order Confirm] # $no - OnBookStore";
-// sendmail($email, $mailSubject, $mailBody);
+sendmail($email, $mailSubject, $mailBody);
 unset($_SESSION['cart']);
-header("Location: success.php?order_id=$no");
+// header("Location: success.php?order_id=$no");
 
             

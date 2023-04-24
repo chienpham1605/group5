@@ -7,72 +7,77 @@ include("../../db/database.php");
 if (isset($_POST['btn-login'])) {
     $username = $_POST['name'];
     $password = $_POST['pass'];
-     $error = [
-         'name' => "",
-         'pass' => "",
-        'common' => ''
-     ];
-     $success = true; 
-     
-     
-     if (empty(($_POST['name']))) {
-//         var_dump($_POST['name']);die();
-         $error['name'] = " username cannot be blank ";
-         $success = false;
-     } else {
-         $pattern = '/^[A-Za-z0-9_\.]{6,32}$/';
-            
-         if (!preg_match($pattern, $_POST['name'])) {
-             $error['name'] = " username  incorrect ";
-             
-             $success = false;
-         } else {
-             $username = $_POST['name'];
-         }             // replace username to name
-     }
-     // Check password
-     if (empty($_POST['pass'])) {
-         $error['pass'] = " password cannot be blank ";
-         $success = false;
-     } else {
-         $pattern = '/^[A-Za-z0-9_\.!@#$%^&*()]{6,32}$/';
-         if (!preg_match($pattern, md5($_POST['pass']))) {
-             $error['pass'] = " password  incorrect ";
-             $success = false;
-         }
-     }
-    
+    // $error = [
+    //     'name' => "",
+    //     'pass' => "",
+    //     'common' => ''
+    // ];
+    // $success = true;
+
+    // if (empty(($_POST['name']))) {
+    //     $error['name'] = " username cannot be blank ";
+    //     $success = false;
+    // } else {
+    //     $pattern = '/^[A-Za-z0-9_\.]{6,32}$/';
+    //     if (!preg_match($pattern, $_POST['name'])) {
+    //         $error['name'] = " username  incorrect ";
+    //         $success = false;
+    //     } else {
+    //         $username = $_POST['name'];
+    //     }             // replace username to name
+    // }
+    // // Check password
+    // if (empty($_POST['pass'])) {
+    //     $error['pass'] = " password cannot be blank ";
+    //     $success = false;
+    // } else {
+    //     $pattern = '/^[A-Za-z0-9_\.!@#$%^&*()]{6,32}$/';
+    //     if (!preg_match($pattern, md5($_POST['pass']))) {
+    //         $error['pass'] = " password  incorrect ";
+    //         $success = false;
+    //     }
+    // }
+
     //Conclusion
-     if ($success) {
-         $password = ($_POST['pass']);
-         $md5password= md5($password);
+    // if ($success) {
+    //     $password = ($_POST['pass']);
         $sql = "select * from customer where name ='$username'
-                 and pwd = '$md5password' ";
-        
+                 and pwd ='$password' ";
         global $conn;
         $rs = mysqli_query($conn, $sql);
+
         if (mysqli_num_rows($rs) > 0) {
+
             $num = mysqli_fetch_assoc($rs);
 // var_dump($num);die();
 
             $_SESSION['is_login'] = true;
             $_SESSION['user_login'] = $num;
-            var_dump(789);
-             $user_login = $_SESSION['num'];
+
+            // $user_login = $_SESSION['num'];
             header('Location:../home/main.php');
         } 
-         else {
-             $error['common'] = "Login fail!";
-         }    }
-     return $error;
-}
+//         else {
+//             $error['common'] = "Login fail!";
+//         }
+//     }
 
-// var_dump($num);
+//     return $error;
+}
 ?>
 <?php
 include("../../inc/header.php");
 ?>
-
+<div class="breadcrumb">
+	<div class="container">
+		<div class="breadcrumb-inner">
+			<ul class="list-inline list-unstyled">
+				<li><a href="../home/main.php">Home</a></li>
+				<li class='active'>Login</li>
+			</ul>
+		</div><!-- /.breadcrumb-inner -->
+	</div><!-- /.container -->
+</div><!-- /.breadcrumb -->
 <div class="body-content">
     <div class="container">
     <div class="sign-in-page">

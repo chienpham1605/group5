@@ -113,8 +113,9 @@
 
 
 
+
 <!-- Khu vực khai báo file js viết thêm -->
-<script src="../../public/assets/js/custom.js"></script>
+<script src="../../public/assets/js/custom.js"></>
 <!-- <script src="../../public/assets/js/ajaxLiveSearch.js"></script> -->
 </body>
 
