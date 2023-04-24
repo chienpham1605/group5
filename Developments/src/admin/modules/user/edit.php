@@ -59,18 +59,16 @@ endif;
         }
     }
 
-    
+    var_dump($fields);
 ?>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>Edit Info</title>
+
         <?php
-        require_once '../../lib/template.php';
-        get_header();
+        // require_once '../../lib/template.php';
+        // get_header();
+        include("../../inc/header.php");
         ?>
 
-    </head>
+
     <body class="container">
         <h2>Update Item</h2>
 
@@ -100,43 +98,46 @@ endif;
                                     <div class="row mb-3">
                                         <label for="inputNumber" class="col-sm-2 col-form-label">ID</label>
                                         <div class="col-sm-10">
-                                            <input type="Number" name ="id" class="form-control" value="<?= $fields[0] ?>" readonly>
+                                            <input type="Number" readonly name ="id" class="form-control" value="<?= $fields['id'] ?>" readonly>
                                         </div>
                                     </div>
                                     <div class="row mb-3">
                                         <label for="inputText" class="col-sm-2 col-form-label" >Name</label>
                                         <div class="col-sm-10">
-                                            <input type="text" name ="name"  class="form-control" value="<?= $fields[1] ?>">
+                                            <input type="text" name ="name" readonly class="form-control" value="<?= $fields['name'] ?>">
                                         </div>
                                     </div>
                                     <div class="row mb-3">
                                         <label for="inputText" class="col-sm-2 col-form-label">Email</label>
                                         <div class="col-sm-10">
-                                            <input type="Text" name ="email" class="form-control" value="<?= $fields[3] ?>">
+                                            <input type="Text" name ="email" readonly class="form-control" value="<?= $fields['email'] ?>">
                                         </div>
                                     </div>
                                     <div class="row mb-3">
                                         <label for="inputNumber" class="col-sm-2 col-form-label">Phone</label>
                                         <div class="col-sm-10">
-                                            <input type="Number" name ="phone"  class="form-control" value="<?= $fields[4] ?>">
+                                            <input type="Number" name ="phone" readonly  class="form-control" value="<?= $fields['phone'] ?>">
                                         </div>
                                     </div>
                                     <div class="row mb-3">
                                         <label for="inputText" class="col-sm-2 col-form-label">Address</label>
                                         <div class="col-sm-10">
-                                            <input type="text" name ="address"  class="form-control" value="<?= $fields[5] ?>">
+                                            <input type="text" name ="address" readonly class="form-control" value="<?= $fields['address'] ?>">
                                         </div>
                                     </div>
                                     <div class="row mb-3">
                                         <label for="inputNumber" class="col-sm-2 col-form-label">Gender</label>
                                         <div class="col-sm-10">
-                                            <input type="number" name ="gender"  class="form-control" value="<?= $fields[6] ?>">
+                                            <input type="text" name ="gender" readonly class="form-control" value="<?php echo $fields['gender']?"Male":"Female" ?>">
                                         </div>
                                     </div>
                                     
                                    <tr>
                                         <td nowrap="nowrap">Status:</td>
-                                        <td><input  type="radio" id="is_block" name="is_block" value="-1" >Lock</td>
+                                        <td>
+                                            <input  type="radio" id="is_block" name="is_block" value="1" >Lock 
+                                            <input  type="radio" id="is_block" name="is_block" value="0" >Unlock
+                                    </td>
                                     </tr>
 
                                     <div class="row mb-3">
@@ -164,7 +165,7 @@ endif;
         </main>
         <!-- End #main -->
         <?php
-        get_footer();
+        // get_footer();
+        include("../../inc/footer.php");
         ?>
     </body>
-</html>

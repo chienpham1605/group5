@@ -7,8 +7,12 @@ include_once '../../db/database.php';
     $count = mysqli_num_rows($rs);
 ?>
 
-        <?php require_once '../../lib/template.php';
-        get_header();?>
+        <?php 
+        // require_once '../../lib/template.php';
+        include("../../inc/header.php");
+
+        // get_header();
+        ?>
         
         <main id="main" class="main">
 
@@ -40,7 +44,7 @@ include_once '../../db/database.php';
                 <th scope="col">phone</th>
                 <th scope="col">address</th>
                 <th scope="col">gender</th>
-                <th scope="col">block</th>
+                <th scope="col">Is Block</th>
                 
             </tr>
             </thead>
@@ -50,27 +54,27 @@ include_once '../../db/database.php';
     if($count ==0):
         echo 'Record not found!';
     else:
-        while($fields = mysqli_fetch_array($rs)):
+        foreach(db_fetch_array($query) as $fields ){
    
     ?>
             
             <tr>
-                <td><?= $fields[0]?></td>
-                <td><?= $fields[1]?></td>
-                <td><?= $fields[3]?></td>
-                <td><?= $fields[4]?></td>
-                <td><?= $fields[5]?></td>
-                <td><?= $fields[6]?></td>
-                <td><?= $fields[7]?></td>
+                <td><?= $fields['id']?></td>
+                <td><?= $fields['name']?></td>
+                <td><?= $fields['email']?></td>
+                <td><?= $fields['phone']?></td>
+                <td><?= $fields['address']?></td>
+                <td><?= $fields['gender']?"Male":"Female"?></td>
+                <td><?= $fields['is_block']?"Yes":"No"?></td>
                 <td>
-                    <a href="edit.php?id=<?= $fields[0]  ?>">Edit</a>
+                    <a href="edit.php?id=<?= $fields['id']  ?>">Edit</a>
                    
                     
                 </td>
             </tr>
             
     <?php
-                endwhile;
+                };
         endif;
     ?>
             </tbody>
@@ -83,7 +87,8 @@ include_once '../../db/database.php';
       </div>
     </section>
         </main>
-<?php get_footer();  ?>
-   
-</body>
-</html>
+<?php 
+// get_footer();  
+include("../../inc/footer.php");
+?>
+
