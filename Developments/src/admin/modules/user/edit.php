@@ -59,7 +59,7 @@ endif;
         }
     }
 
-    var_dump($fields);
+    // var_dump($fields);
 ?>
 
         <?php
