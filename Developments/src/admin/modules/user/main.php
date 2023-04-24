@@ -45,6 +45,7 @@ include_once '../../db/database.php';
                 <th scope="col">address</th>
                 <th scope="col">gender</th>
                 <th scope="col">Is Block</th>
+                <th scope="col">Action</th>
                 
             </tr>
             </thead>

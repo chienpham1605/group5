@@ -30,8 +30,8 @@ header("Location: change-pass.php?error=The confirmation password  does not matc
 exit();
 } else {
 // hashing the password
-// $op = md5($op);
-// $np = md5($np);
+ $op = md5($op);
+ $np = md5($np);
 $id = $_SESSION['user_login']['id'];
 
 $squery = "SELECT pwd

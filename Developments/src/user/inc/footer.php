@@ -38,7 +38,7 @@
   <div class="footer-bottom">
     <div class="container">
       <div class="row">
-        <div class="col-xs-12 col-sm-6 col-md-4">
+        <div class="col-xs-12 col-sm-6 col-md-3">
           <div class="address-block">
             <div class="module-body">
               <ul class="toggle-footer" style="">
@@ -65,7 +65,7 @@
             </div>
           </div>
         </div>
-        <div class="col-xs-12 col-sm-6 col-md-4">
+        <div class="col-xs-12 col-sm-6 col-md-3">
           <div class="module-heading">
             <h4 class="module-title">Customer Service</h4>
           </div>
@@ -76,7 +76,7 @@
             </ul>
           </div>
         </div>
-        <div class="col-xs-12 col-sm-6 col-md-4">
+        <div class="col-xs-12 col-sm-6 col-md-3">
           <div class="module-heading">
             <h4 class="module-title">Support</h4>
           </div>
@@ -89,6 +89,14 @@
             </ul>
           </div>
         </div>
+        <div class="col-xs-12 col-sm-6 col-md-3">
+                  <div class="module-heading">
+                    <h4 class="module-title">About us</h4>
+                    <h5 style="width: 80%; text-align: justify; color: white">Onbookstore has a reputation for offering competitive 
+                      prices, fast shipping, and excellent customer service. Whether you're looking for the latest bestseller or a rare and 
+                      hard-to-find book, Onbookstore is the go-to destination for book lovers worldwide.</h5>
+                  </div>
+                </div>
       </div>
     </div>
   </div>

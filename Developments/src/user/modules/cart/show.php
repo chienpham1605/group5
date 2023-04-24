@@ -102,7 +102,7 @@ include("../../inc/header.php");
 											<td colspan="7">
 												<div class="shopping-cart-btn">
 													<span class="">
-														<a href="?mod=home&act=main"
+														<a href="../home/main.php"
 															class="btn btn-upper btn-primary outer-left-xs">Continue
 															Shopping</a>
 														<a href="delete.php?book_id"

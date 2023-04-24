@@ -67,9 +67,7 @@ endif;
     <div class="breadcrumb-inner">
       <ul class="list-inline list-unstyled">
         <li><a href="../home/main.php">Home</a></li>
-        <li><a href="#">
-            <?= $detail['cat_name'] ?>
-          </a></li>
+        <li><a href="#"> <?= $detail['cat_name'] ?></a></li>      
         <li class='active'>
           <?= $detail['book_name'] ?>
         </li>
@@ -180,7 +178,7 @@ endif;
                         </div>
                       </div>
 
-                      <div class="col-sm-6 col-xs-6">
+                      <!-- <div class="col-sm-6 col-xs-6">
                         <div class="favorite-button m-t-5">
                           <a class="btn btn-primary" data-toggle="tooltip" data-placement="right" title="Wishlist"
                             href="#">
@@ -195,7 +193,7 @@ endif;
                             <i class="fa fa-envelope"></i>
                           </a>
                         </div>
-                      </div>
+                      </div> -->
 
                     </div><!-- /.row -->
                   </div><!-- /.price-container -->

@@ -9,7 +9,7 @@ if (!isset($_GET['cat_id'])):
 endif;
 
 $cat_id = $_GET['cat_id'];
-echo $cat_id;
+// echo $cat_id;
 $query = "SELECT book.*, discount.discount_per as discount_per  FROM book, discount
 WHERE book.discount_id= discount.discount_id 
 AND book.cat_id =$cat_id GROUP BY book.book_id";
@@ -150,8 +150,8 @@ $list_book = db_fetch_array($query);
             <div class="col col-sm-6 col-md-3 col-lg-3 col-xs-6">
               <div class="filter-tabs">
                 <ul id="filter-tabs" class="nav nav-tabs nav-tab-box nav-tab-fa-icon">
-                  <li class="active"> <a data-toggle="tab" href="#grid-container"><i
-                        class="icon fa fa-th-large"></i>Grid</a> </li>
+                  <!-- <li class="active"> <a data-toggle="tab" href="#grid-container"><i
+                        class="icon fa fa-th-large"></i>Grid</a> </li> -->
                   <!-- <li><a data-toggle="tab" href="#list-container"><i class="icon fa fa-bars"></i>List</a></li> -->
                 </ul>
               </div>
@@ -256,8 +256,8 @@ $list_book = db_fetch_array($query);
                               <div class="rating rateit-small"></div>
                               <div class="description"></div>
                               <div class="product-price"> <span class="price"> $
-                                  <?php echo $row['book_price'] ?>
-                                </span> <span class="price-before-discount">$ 800</span> </div>
+                                  <?php echo $row['book_price']*$row['discount_per'] ?>
+                                </span> <span class="price-before-discount">$  <?php echo $row['book_price'] ?></span> </div>
                               <!-- /.product-price -->
 
                             </div>
@@ -300,7 +300,7 @@ $list_book = db_fetch_array($query);
 
           </div>
           <!-- /.tab-content -->
-          <div class="clearfix filters-container bottom-row">
+          <!-- <div class="clearfix filters-container bottom-row">
             <div class="text-right">
               <div class="pagination-container">
                 <ul class="list-inline list-unstyled">
@@ -311,12 +311,12 @@ $list_book = db_fetch_array($query);
                   <li><a href="#">4</a></li>
                   <li class="next"><a href="#"><i class="fa fa-angle-right"></i></a></li>
                 </ul>
-                <!-- /.list-inline -->
+              
               </div>
-              <!-- /.pagination-container -->
+            
             </div>
-            <!-- /.text-right -->
-          </div>
+           
+          </div> -->
           <!-- /.filters-container -->
         </div>
         <!-- /.search-result-container -->
