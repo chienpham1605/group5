@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 23, 2023 at 09:55 PM
+-- Generation Time: Apr 24, 2023 at 11:38 AM
 -- Server version: 10.4.24-MariaDB
--- PHP Version: 8.0.19
+-- PHP Version: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -48,14 +48,14 @@ CREATE TABLE `book` (
 --
 
 INSERT INTO `book` (`book_id`, `book_name`, `book_author`, `book_price`, `book_des`, `cat_id`, `book_status`, `discount_id`, `publisher_id`, `page`, `YearBook`, `inventory`, `book_image`) VALUES
-(1, 'Conan', 'Ayoma Gosho', 1.00, 'Conan Edogawa is the alias used by Shinichi Kudo in his shrunken form. Shinichi took the appearance of his six or seven-year-old self after being exposed to a prototype poison called APTX 4869, which he had been forced to swallow by two men in black later revealed to be members of the Black Organization.[4] The poison de-aged Shinichi\'s entire body except for his nervous system and therefore he still has the personality, memories, and incredible deductive ability of his teenage self. Conan\'s goal is to hunt down the Black Organization and have them arrested for their crimes, as well as find an antidote to the APTX 4869. To do so he plans to make the washout detective Kogoro Mouri famous in hopes of attracting cases related to the Black Organization.', 1, 1, 4, 1, 20, 2008, 23, '../../../../img/conan.jpg'),
-(2, 'Sherlock Holme', 'Conan Doyle', 12.00, 'dsadacax', 1, 1, 1, 1, 150, 1987, 20, '../../../../img/sherlock holmes.jpg'),
-(3, 'Lich su the gioi co dai', 'Nha lich su hoc Viet nam', 2.00, 'Vietnam\'s history is a long and complex one, filled with periods of war, colonization, and revolution. The earliest known Vietnamese civilization was the Hong Bang dynasty, which existed over 2,000 years ago. Many different groups, including the Chinese and the French, have invaded and occupied Vietnam throughout its history', 5, 1, 1, 3, 150, 1999, 15, '../../../../img/lich su the gioi.jpg'),
-(4, 'Harry Potter', 'J.K.Rowling', 1.00, 'asdasdsa', 1, 1, 1, 1, 150, 1999, 12, '../../../../img/harry potter.jpg'),
-(5, 'Dolly Parton', 'J.K.Rowling', 2.00, 'ghdkfgkdj', 3, 1, 2, 1, 120, 2003, 6, '../../../../img/Dolly Parton.jpg'),
-(10, 'Harry va bao boi tu than', 'J.K.Rowling', 20.00, 'abc', 2, 1, 2, 1, 12, 2010, 2, '../../../../img/HARRY bao boi tu than.jpg'),
-(11, 'Oxford Dictionary', 'Oxford Publisher', 15.00, 'sadasd', 6, 1, 2, 2, 150, 2019, 12, '../../../../img/p1_hover.jpg'),
-(14, 'aptech', 'asdas', 1.90, 'sadasd', 1, 1, 1, 1, 17, 1945, 12, '../../public/assets/img/book/z4036380563967_b5854a0df77f6335ec94f1d52614e945.jpg');
+(1, 'Conan', 'Ayoma Gosho', 100.00, 'Conan Edogawa is the alias used by Shinichi Kudo in his shrunken form. Shinichi took the appearance of his six or seven-year-old self after being exposed to a prototype poison called APTX 4869, which he had been forced to swallow by two men in black later revealed to be members of the Black Organization.[4] The poison de-aged Shinichi\'s entire body except for his nervous system and therefore he still has the personality, memories, and incredible deductive ability of his teenage self. Conan\'s goal is to hunt down the Black Organization and have them arrested for their crimes, as well as find an antidote to the APTX 4869. To do so he plans to make the washout detective Kogoro Mouri famous in hopes of attracting cases related to the Black Organization.', 1, 1, 1, 1, 20, 2008, 23, '../../../../img/Step03.jpg'),
+(2, 'Sherlock Holme', 'Conan Doyle', 120.00, 'dsadacax', 1, 1, 1, 1, 150, 1987, 20, '../../../../img/sherlock holmes.jpg'),
+(3, 'Lich su the gioi co dai', 'Nha lich su hoc Viet nam', 200.00, 'Vietnam\'s history is a long and complex one, filled with periods of war, colonization, and revolution. The earliest known Vietnamese civilization was the Hong Bang dynasty, which existed over 2,000 years ago. Many different groups, including the Chinese and the French, have invaded and occupied Vietnam throughout its history', 5, 1, 1, 3, 150, 1999, 15, '../../../../img/lich su the gioi.jpg'),
+(4, 'Harry Potter', 'J.K.Rowling', 150.00, 'asdasdsa', 1, 1, 1, 1, 150, 1999, 12, '../../../../img/harry potter.jpg'),
+(5, 'Dolly Parton', 'J.K.Rowling', 220.00, 'ghdkfgkdj', 3, 1, 2, 1, 120, 2003, 6, '../../../../img/Dolly Parton.jpg'),
+(10, 'Harry va bao boi tu than', 'J.K.Rowling', 210.00, 'abc', 2, 1, 2, 1, 12, 2010, 2, '../../../../img/HARRY bao boi tu than.jpg'),
+(11, 'Oxford Dictionary', 'Oxford Publisher', 150.00, 'sadasd', 6, 1, 2, 2, 150, 2019, 12, '../../../../img/p1_hover.jpg'),
+(14, 'aptech', 'asdas', 190.00, 'sadasd', 1, 1, 1, 1, 17, 1945, 12, '../../public/assets/img/book/z4036380563967_b5854a0df77f6335ec94f1d52614e945.jpg');
 
 -- --------------------------------------------------------
 
@@ -103,12 +103,12 @@ CREATE TABLE `customer` (
 --
 
 INSERT INTO `customer` (`id`, `name`, `pwd`, `phone`, `address`, `gender`, `email`, `is_block`) VALUES
-(1, 'Pham Quoc Chien', 'phamquocchien123', 912121166, '123/14/6 duong so 5, p. binh hung hoa', 1, 'chien@gmail.com', 0),
-(2, 'hoa', '123456', 912121166, '123 abc ', 0, 'hoasenxanh0709@gmail.com', 0),
+(1, 'Pham Quoc Chien', 'phamquocchien123', 912121166, '123/14/6 duong so 5, p. binh hung hoa', 1, 'chien@gmail.com', 1),
+(2, 'hoa', '123456', 912121166, '123456', 0, 'hoasenxanh0709@gmail.com', 0),
 (3, 'Manh Cat', 'mancat112', 912121, '275 Nguyen Van Dau', 1, 'cat@gmail.com', 0),
 (4, 'Hoang Quoc', 'quoc112', 912121166, '275 bca, p. 1, Q.1', 1, 'quoc@gmail.com', 0),
 (5, 'Ho Anh Quan', 'anhquan123', 912121, '178/5 CMT8, Q. Tan Binh', 1, 'quan@gmail.com', 0),
-(6, 'chien', '202cb962ac59075b964b07152d234b70', 912184166, '123/14/5 duong so 3', 1, 'phamquocchien160501@gmail.com', 0),
+(6, 'chien', '202cb962ac59075b964b07152d234b70', 912184166, '123/14/5 duong so 3', 1, 'phamquocchien160501@gmail.com', 1),
 (7, 'chien123', '202cb962ac59075b964b07152d234b70', 912184166, '123/14/5 duong so 3', 1, 'chienguvn@gmail.com', 0),
 (8, 'chien145', '2b24d495052a8ce66358eb576b8912c8', 912184166, '123/14/5 duong so 3', 1, 'chienguvn@gmail.com', 0),
 (9, 'chien089', '202cb962ac59075b964b07152d234b70', 912184166, '123/14/5 duong so 3', 1, 'chienpqts2204021@fpt.edu.vn', 0);
@@ -160,7 +160,16 @@ CREATE TABLE `feedback` (
 INSERT INTO `feedback` (`feedback_id`, `content`, `rating`, `book_id`, `customer_id`) VALUES
 (1, 'sadljfnsdaljfb', 4, 4, 2),
 (2, 'WOW', 3, 1, 1),
-(3, 'This is amazing book\r\n', 5, 2, 1);
+(3, 'This is amazing book\r\n', 5, 2, 1),
+(5, 'hgdhgdf', 2, 1, 9),
+(6, 'hfh', 2, 1, 9),
+(7, 'sach rat hay', 5, 1, 9),
+(8, 'sach rat hay', 5, 1, 2),
+(9, 'hfgjfaaaa', 4, 1, 2),
+(10, 'sach rat thu vi', 4, 2, 2),
+(11, 'sach rat thu vi', 4, 2, 2),
+(12, 'hgfjf jg6836', 3, 2, 2),
+(13, 'hgfjf jg6836', 3, 2, 2);
 
 -- --------------------------------------------------------
 
@@ -186,7 +195,11 @@ INSERT INTO `orderdetail` (`detail_id`, `order_id`, `book_id`, `quantity`, `book
 (6, 22060942, 1, 1, 1),
 (7, 22062009, 2, 1, 12),
 (8, 22035302, 2, 3, 12),
-(9, 23124550, 1, 3, 1);
+(9, 23124550, 1, 3, 1),
+(10, 24085949, 1, 1, 50),
+(11, 24090649, 1, 1, 50),
+(12, 24091059, 1, 1, 50),
+(13, 24091216, 1, 1, 50);
 
 -- --------------------------------------------------------
 
@@ -219,7 +232,11 @@ INSERT INTO `ordermaster` (`order_id`, `order_date`, `cus_id`, `shipping_name`, 
 (22035302, '2023-04-22 15:53:02', 3, '', '', '', 'COD', '', '2023-04-22 15:53:02', 'Pending'),
 (22060942, '2023-04-22 18:09:42', 3, 'hoa', '195 tan son', '705069879', 'COD', 'fghf', '2023-04-22 18:09:42', 'Pending'),
 (22062009, '2023-04-22 18:20:09', 3, 'hoa', 'fdfhd', '75687087', 'COD', 'hfgjf', '2023-04-22 18:20:09', 'Pending'),
-(23124550, '2023-04-23 12:45:50', 3, 'chien', '123/14/5 duong so 3', '0912184166', 'Bank Transfer', 'sadasdasd', '2023-04-23 12:45:50', 'Pending');
+(23124550, '2023-04-23 12:45:50', 3, 'chien', '123/14/5 duong so 3', '0912184166', 'Bank Transfer', 'sadasdasd', '2023-04-23 12:45:50', 'Pending'),
+(24085949, '2023-04-24 08:59:49', 3, 'hoa', 'gkdh', 'ghkdhf ', 'COD', '', '2023-04-24 08:59:49', 'Pending'),
+(24090649, '2023-04-24 09:06:49', 3, 'hfghf', 'hfghf', '6767637', 'COD', '', '2023-04-24 09:06:49', 'Pending'),
+(24091059, '2023-04-24 09:10:59', 3, 'hfg', 'hfgh', '7912345678', 'COD', '', '2023-04-24 09:10:59', 'Pending'),
+(24091216, '2023-04-24 09:12:16', 3, '57', 'hfghjf', '123456789', 'COD', '', '2023-04-24 09:12:16', 'Pending');
 
 -- --------------------------------------------------------
 
@@ -242,7 +259,7 @@ CREATE TABLE `publisher` (
 --
 
 INSERT INTO `publisher` (`publisher_id`, `publisher_name`, `publisher_logo`, `publisher_web`, `publisher_phone`, `publisher_email`, `publisher_address`) VALUES
-(1, 'Kim Dong 111', '../../public/assets/img/publisher/', 'https://tiki.vn/', 912164166, 'gb@gmail.com', 'asdASasd 756jf '),
+(1, 'Kim Dong 3333', '../../public/assets/img/publisher/', 'https://tiki.vn/', 912164166, 'gb@gmail.com', 'asdASasd 756jf '),
 (2, 'ABC Publisher', '../../public/assets/img/publisher/Step04.jpg', 'https://tiki.vn/', 2147483647, 'ghd@gmail.com', 'adsfsadf 8678 hfghjgfh'),
 (3, 'Nha xuat ban giao duc ', '../../public/assets/img/publisher/Step05.jpg', 'https://www.nxbgd.vn/', 2147483647, 'ghdg@gmail.com', ' hfg6ghn hf'),
 (4, 'ih', '../../public/assets/img/publisher/UTF-8 Region.png', 'https://tiki.vn/', 2147483647, 'gdb@gmail.com', '6875 hfgjfj'),
@@ -371,19 +388,19 @@ ALTER TABLE `discount`
 -- AUTO_INCREMENT for table `feedback`
 --
 ALTER TABLE `feedback`
-  MODIFY `feedback_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `feedback_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `orderdetail`
 --
 ALTER TABLE `orderdetail`
-  MODIFY `detail_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `detail_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `ordermaster`
 --
 ALTER TABLE `ordermaster`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23124551;
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24091217;
 
 --
 -- AUTO_INCREMENT for table `publisher`
