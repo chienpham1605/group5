@@ -4,23 +4,25 @@ include("../../inc/header.php");
 include_once("../../db/DBConnect.php");
 include_once("../../db/database.php");
 
-$current_day = date("");
+$current_day = date("Y-m-d");
 echo $current_day ;
+$previous_day = date("Y-m-d",strtotime("-1 days"));
+$this_month = date("Y-m");
 
-$previous_day = date("Y-m-d H:i:s",strtotime("-1 days"));
 $report_current = db_fetch_row("SELECT COUNT(ordermaster.order_id) AS sale, 
 SUM(orderdetail.book_price*orderdetail.quantity) AS revenue, 
 COUNT(distinct ordermaster.cus_id) as customer 
-FROM ordermaster, orderdetail WHERE ordermaster.order_id = orderdetail.order_id AND ordermaster.order_date = '$current_day'");
+FROM ordermaster, orderdetail WHERE ordermaster.order_id = orderdetail.order_id AND ordermaster.order_date LIKE '$current_day%'");
 $report_previous =db_fetch_row("SELECT COUNT(ordermaster.order_id) AS sale, 
 SUM(orderdetail.book_price*orderdetail.quantity) AS revenue, 
 COUNT(distinct ordermaster.cus_id) as customer 
-FROM ordermaster, orderdetail WHERE ordermaster.order_id = orderdetail.order_id AND ordermaster.order_date = '$previous_day'");
+FROM ordermaster, orderdetail WHERE ordermaster.order_id = orderdetail.order_id AND ordermaster.order_date LIKE '$previous_day%'");
 
 
 $order_list = db_fetch_array("SELECT SUM(quantity*book_price) as total, ordermaster.order_id, customer.name, ordermaster.order_id, ordermaster.order_date, ordermaster.order_status  
 FROM orderdetail, ordermaster, customer 
-WHERE orderdetail.order_id = ordermaster.order_id AND ordermaster.cus_id = customer.id GROUP BY orderdetail.order_id;");
+WHERE orderdetail.order_id = ordermaster.order_id AND ordermaster.cus_id = customer.id AND ordermaster.order_date LIKE '$this_month%'
+GROUP BY orderdetail.order_id;");
 
 
 $top_selling_list = db_fetch_array("SELECT book.book_id, book.book_name, book.book_price as current_price,
@@ -32,13 +34,13 @@ FROM book, orderdetail WHERE book.book_id = orderdetail.book_id GROUP BY book.bo
 //chart month
 $this_month = date("m");
 $this_year = date("Y");
-$revenue_report_month = db_fetch_array("SELECT SUM(order_total) AS revenue, COUNT(order_total) AS order_count, revenue_total.order_date 
-FROM ((SELECT SUM(orderdetail.quantity*orderdetail.book_price) as order_total, ordermaster.order_date FROM ordermaster, orderdetail WHERE ordermaster.order_id = orderdetail.order_id GROUP BY ordermaster.order_id) as revenue_total) 
-WHERE revenue_total.order_date LIKE '$this_year-$this_month-%' GROUP BY revenue_total.order_date");
+$revenue_report_month = db_fetch_array("SELECT SUM(order_total) AS revenue, COUNT(order_total) AS order_count, revenue_total.order_date
+FROM ((SELECT SUM(orderdetail.quantity*orderdetail.book_price) as order_total, LEFT(ordermaster.order_date, 10) as order_date FROM ordermaster, orderdetail WHERE ordermaster.order_id = orderdetail.order_id GROUP BY ordermaster.order_id) as revenue_total) 
+WHERE revenue_total.order_date LIKE '$this_year-$this_month-%'
+GROUP BY revenue_total.order_date");
 
-$customer_report_month = db_fetch_array("SELECT COUNT(ordermaster.cus_id) AS customer_count, ordermaster.order_date 
-FROM `ordermaster` WHERE ordermaster.order_date LIKE '$this_year-$this_month-%' 
-GROUP BY ordermaster.order_date");
+$customer_report_month = db_fetch_array("SELECT COUNT(ordermaster.cus_id) AS customer_count, LEFT(ordermaster.order_date, 10) 
+FROM `ordermaster` WHERE ordermaster.order_date LIKE '$this_year-$this_month-%' GROUP BY LEFT(ordermaster.order_date, 10);");
 foreach($customer_report_month as $field){   
     $customer_count[] = $field['customer_count'];
 }
@@ -251,22 +253,8 @@ foreach($revenue_report_month as $field){
                     <!-- Recent Sales -->
                     <div class="col-12">
                         <div class="card recent-sales overflow-auto">
-
-                            <div class="filter">
-                                <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                                    <li class="dropdown-header text-start">
-                                        <h6>Filter</h6>
-                                    </li>
-
-                                    <li><a class="dropdown-item" href="#">Today</a></li>
-                                    <li><a class="dropdown-item" href="#">This Month</a></li>
-                                    <li><a class="dropdown-item" href="#">This Year</a></li>
-                                </ul>
-                            </div>
-
                             <div class="card-body">
-                                <h5 class="card-title"><a href="?mod=order&act=main">Sales</a> <span>| Today</span></h5>
+                                <h5 class="card-title"><a href="?mod=order&act=main">Sales</a> <span>| This Month</span></h5>
 
                                 <table class="table table-borderless datatable">
                                     <thead>
@@ -307,23 +295,10 @@ foreach($revenue_report_month as $field){
 
                     <!-- Top Selling -->
                     <div class="col-12">
-                        <div class="card top-selling overflow-auto">
-
-                            <div class="filter">
-                                <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                                    <li class="dropdown-header text-start">
-                                        <h6>Filter</h6>
-                                    </li>
-
-                                    <li><a class="dropdown-item" href="#">Today</a></li>
-                                    <li><a class="dropdown-item" href="#">This Month</a></li>
-                                    <li><a class="dropdown-item" href="#">This Year</a></li>
-                                </ul>
-                            </div>
+                        <div class="card top-selling overflow-auto">                 
 
                             <div class="card-body pb-0">
-                                <h5 class="card-title">Top 10 Selling <span>| Today</span></h5>
+                                <h5 class="card-title">Top 10 Book Best Selling</h5>
 
                                 <table class="table table-borderless">
                                     <thead>

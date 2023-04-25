@@ -1,9 +1,9 @@
 <?php
 $conn = mysqli_connect('localhost', 'root', '', 'onbookstore_db');
-$current_day = date("d/m/Y");
-$previous_day = date("d/m/Y",strtotime("-1 days"));
-$this_month = date("m/Y");
-$previous_month = date("m/Y",strtotime("-1 months"));
+$current_day = date("Y-m-d");
+$previous_day = date("Y-m-d",strtotime("-1 days"));
+$this_month = date("Y-m");
+$previous_month = date("Y-m",strtotime("-1 months"));
 $this_year = date("Y");
 $previous_year = date("Y",strtotime("-1 years"));
 
@@ -12,16 +12,16 @@ if(isset($_POST['filter'])&&isset($_POST['scope'])){
     if($_POST['scope']=="sale"){
         switch($filter){
             case "today":
-                $current = mysqli_fetch_assoc(mysqli_query($conn, "SELECT COUNT(order_id) AS report FROM ordermaster WHERE ordermaster.order_date = '$current_day'"));
-                $previous = mysqli_fetch_assoc(mysqli_query($conn, "SELECT COUNT(order_id) AS report FROM ordermaster WHERE ordermaster.order_date = '$previous_day'"));  
+                $current = mysqli_fetch_assoc(mysqli_query($conn, "SELECT COUNT(order_id) AS report FROM ordermaster WHERE ordermaster.order_date LIKE '$current_day%'"));
+                $previous = mysqli_fetch_assoc(mysqli_query($conn, "SELECT COUNT(order_id) AS report FROM ordermaster WHERE ordermaster.order_date LIKE '$previous_day%'"));  
                 break;
             case "this_month":
-                $current = mysqli_fetch_assoc(mysqli_query($conn, "SELECT COUNT(order_id) AS report FROM ordermaster WHERE ordermaster.order_date LIKE '__/$this_month'"));
-                $previous = mysqli_fetch_assoc(mysqli_query($conn, "SELECT COUNT(order_id) AS report FROM ordermaster WHERE ordermaster.order_date LIKE '__/$previous_month'"));
+                $current = mysqli_fetch_assoc(mysqli_query($conn, "SELECT COUNT(order_id) AS report FROM ordermaster WHERE ordermaster.order_date LIKE '$this_month%'"));
+                $previous = mysqli_fetch_assoc(mysqli_query($conn, "SELECT COUNT(order_id) AS report FROM ordermaster WHERE ordermaster.order_date LIKE '$previous_month%'"));
                 break;
             case "this_year":
-                $current = mysqli_fetch_assoc(mysqli_query($conn, "SELECT COUNT(order_id) AS report FROM ordermaster WHERE ordermaster.order_date LIKE '__/__/$this_year'"));
-                $previous = mysqli_fetch_assoc(mysqli_query($conn, "SELECT COUNT(order_id) AS report FROM ordermaster WHERE ordermaster.order_date LIKE '__/__/$previous_year'"));
+                $current = mysqli_fetch_assoc(mysqli_query($conn, "SELECT COUNT(order_id) AS report FROM ordermaster WHERE ordermaster.order_date LIKE '$this_year%'"));
+                $previous = mysqli_fetch_assoc(mysqli_query($conn, "SELECT COUNT(order_id) AS report FROM ordermaster WHERE ordermaster.order_date LIKE '$previous_year%'"));
                 break;
             default:
                 echo "Something went wrong !";
@@ -32,21 +32,21 @@ if(isset($_POST['filter'])&&isset($_POST['scope'])){
         switch($filter){
             case "today":
                 $current = mysqli_fetch_assoc(mysqli_query($conn, "SELECT SUM(orderdetail.book_price*orderdetail.quantity) AS report FROM ordermaster, orderdetail 
-                WHERE ordermaster.order_id = orderdetail.order_id AND ordermaster.order_date = '$current_day'"));
+                WHERE ordermaster.order_id = orderdetail.order_id AND ordermaster.order_date LIKE '$current_day%'"));
                 $previous = mysqli_fetch_assoc(mysqli_query($conn, "SELECT SUM(orderdetail.book_price*orderdetail.quantity) AS report FROM ordermaster, orderdetail 
-                WHERE ordermaster.order_id = orderdetail.order_id AND ordermaster.order_date = '$previous_day'"));  
+                WHERE ordermaster.order_id = orderdetail.order_id AND ordermaster.order_date LIKE '$previous_day%'"));  
                 break;
             case "this_month":
                 $current = mysqli_fetch_assoc(mysqli_query($conn, "SELECT SUM(orderdetail.book_price*orderdetail.quantity) AS report FROM ordermaster, orderdetail 
-                WHERE ordermaster.order_id = orderdetail.order_id AND ordermaster.order_date LIKE '__/$this_month'"));
+                WHERE ordermaster.order_id = orderdetail.order_id AND ordermaster.order_date LIKE '$this_month%'"));
                 $previous = mysqli_fetch_assoc(mysqli_query($conn, "SELECT SUM(orderdetail.book_price*orderdetail.quantity) AS report FROM ordermaster, orderdetail 
-                WHERE ordermaster.order_id = orderdetail.order_id AND ordermaster.order_date LIKE '__/$previous_month'"));
+                WHERE ordermaster.order_id = orderdetail.order_id AND ordermaster.order_date LIKE '$previous_month%'"));
                 break;
             case "this_year":
                 $current = mysqli_fetch_assoc(mysqli_query($conn, "SELECT SUM(orderdetail.book_price*orderdetail.quantity) AS report FROM ordermaster, orderdetail 
-                WHERE ordermaster.order_id = orderdetail.order_id AND ordermaster.order_date LIKE '__/__/$this_year'"));
+                WHERE ordermaster.order_id = orderdetail.order_id AND ordermaster.order_date LIKE '$this_year%'"));
                 $previous = mysqli_fetch_assoc(mysqli_query($conn, "SELECT SUM(orderdetail.book_price*orderdetail.quantity) AS report FROM ordermaster, orderdetail 
-                WHERE ordermaster.order_id = orderdetail.order_id AND ordermaster.order_date LIKE '__/__/$previous_year'"));
+                WHERE ordermaster.order_id = orderdetail.order_id AND ordermaster.order_date LIKE '$previous_year%'"));
                 break;
             default:
                 echo "Something went wrong !";
@@ -57,16 +57,16 @@ if(isset($_POST['filter'])&&isset($_POST['scope'])){
     else if($_POST['scope']=="customer"){
         switch($filter){
             case "today":
-                $current = mysqli_fetch_assoc(mysqli_query($conn, "SELECT COUNT(distinct ordermaster.cus_id) AS report FROM ordermaster WHERE ordermaster.order_date = '$current_day'"));
-                $previous = mysqli_fetch_assoc(mysqli_query($conn, "SELECT COUNT(distinct ordermaster.cus_id) AS report FROM ordermaster WHERE ordermaster.order_date = '$previous_day'"));  
+                $current = mysqli_fetch_assoc(mysqli_query($conn, "SELECT COUNT(distinct ordermaster.cus_id) AS report FROM ordermaster WHERE ordermaster.order_date LIKE '$current_day%'"));
+                $previous = mysqli_fetch_assoc(mysqli_query($conn, "SELECT COUNT(distinct ordermaster.cus_id) AS report FROM ordermaster WHERE ordermaster.order_date LIKE '$previous_day%'"));  
                 break;
             case "this_month":
-                $current = mysqli_fetch_assoc(mysqli_query($conn, "SELECT COUNT(distinct ordermaster.cus_id) AS report FROM ordermaster WHERE ordermaster.order_date LIKE '__/$this_month'"));
-                $previous = mysqli_fetch_assoc(mysqli_query($conn, "SELECT COUNT(distinct ordermaster.cus_id) AS report FROM ordermaster WHERE ordermaster.order_date LIKE '__/$previous_month'"));
+                $current = mysqli_fetch_assoc(mysqli_query($conn, "SELECT COUNT(distinct ordermaster.cus_id) AS report FROM ordermaster WHERE ordermaster.order_date LIKE '$this_month%'"));
+                $previous = mysqli_fetch_assoc(mysqli_query($conn, "SELECT COUNT(distinct ordermaster.cus_id) AS report FROM ordermaster WHERE ordermaster.order_date LIKE '$previous_month%'"));
                 break;
             case "this_year":
-                $current = mysqli_fetch_assoc(mysqli_query($conn, "SELECT COUNT(distinct ordermaster.cus_id) AS report FROM ordermaster WHERE ordermaster.order_date LIKE '__/__/$this_year'"));
-                $previous = mysqli_fetch_assoc(mysqli_query($conn, "SELECT COUNT(distinct ordermaster.cus_id) AS report FROM ordermaster WHERE ordermaster.order_date LIKE '__/__/$previous_year'"));
+                $current = mysqli_fetch_assoc(mysqli_query($conn, "SELECT COUNT(distinct ordermaster.cus_id) AS report FROM ordermaster WHERE ordermaster.order_date LIKE '$this_year%'"));
+                $previous = mysqli_fetch_assoc(mysqli_query($conn, "SELECT COUNT(distinct ordermaster.cus_id) AS report FROM ordermaster WHERE ordermaster.order_date LIKE '$previous_year%'"));
                 break;
             default:
                 echo "Something went wrong !";    

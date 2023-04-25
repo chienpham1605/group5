@@ -30,8 +30,8 @@
 
   <!-- khai báo file js tự viết ở đây -->
   <script src="../../public/assets/js/custom.js"></script>
-  <script src="../../public/assets/js/scriptLiveSearch.js"></script>
-  <!-- <script>
+  <!-- search feedback -->
+  <script>
     $(document).ready(function(){
     load_data();
     function load_data(search){
@@ -54,7 +54,7 @@
         }
     });
 });
-  </script> -->
+  </script>
 
 </body>
 

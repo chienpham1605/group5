@@ -1,35 +1,44 @@
 <?php
 session_start();
-include("../../inc/header.php");
+
 include_once("../../db/DBConnect.php");
 include_once("../../db/database.php");
 
 $query="SELECT SUM(quantity*book_price) as total, ordermaster.order_id, customer.name, 
-ordermaster.order_id, STR_TO_DATE(ordermaster.order_date, 'Y-m-d H:i:s') as order_date, ordermaster.order_status 
+ordermaster.order_id, ordermaster.order_date, ordermaster.order_status 
 FROM orderdetail, ordermaster, customer 
 WHERE orderdetail.order_id = ordermaster.order_id AND ordermaster.cus_id = customer.id
-GROUP BY orderdetail.order_id ORDER BY STR_TO_DATE(ordermaster.order_date, 'Y-m-d H:i:s') DESC";
-// show_array($order_list);
+GROUP BY orderdetail.order_id ORDER BY ordermaster.order_date DESC";
+
+
+$filter_error = '';  
+
+
+
 //Date filter
 if(isset($_POST['btnFilter'])){
-  $date_from = $_POST['date_from'];
-  $date_to = $_POST['date_to'];
-  // $date_to = strtotime($_POST['date_to']);
+  $date_from = strtotime($_POST['date_from']);
+  $date_to = strtotime($_POST['date_to']) +3600*24;
+if($date_from > $date_to){
+  $filter_error ="Date From must be less than or equal Date To";
+} else{
+  $filter_error='';
+}
 
 if(!empty($date_from)&&!empty($date_to)){
   $query = "SELECT SUM(quantity*book_price) as total, ordermaster.order_id, customer.name, 
-  ordermaster.order_id, STR_TO_DATE(ordermaster.order_date, 'Y-m-d H:i:s') as order_date, ordermaster.order_status 
+  ordermaster.order_id, ordermaster.order_date, ordermaster.order_status 
   FROM orderdetail, ordermaster, customer 
   WHERE orderdetail.order_id = ordermaster.order_id AND ordermaster.cus_id = customer.id
-  AND STR_TO_DATE(ordermaster.order_date, 'Y/m/d H:i:s') >= '$date_from'
-  AND STR_TO_DATE(ordermaster.order_date, 'Y-m-d H:i:s') <= '$date_to'  
-  GROUP BY orderdetail.order_id ORDER BY STR_TO_DATE(ordermaster.order_date, 'Y-m-d H:i:s') DESC";
+  AND UNIX_TIMESTAMP(STR_TO_DATE(ordermaster.order_date, '%Y-%m-%d %H:%i:%s')) >= $date_from
+  AND UNIX_TIMESTAMP(STR_TO_DATE(ordermaster.order_date, '%Y-%m-%d %H:%i:%s')) <= $date_to
+  GROUP BY orderdetail.order_id ORDER BY ordermaster.order_date DESC";
 }
-
 }
 $order_list = db_fetch_array($query);
-
-
+?>
+<?php
+include("../../inc/header.php");
 ?>
 <main id="main" class="main">
 
@@ -37,7 +46,7 @@ $order_list = db_fetch_array($query);
     <!-- <h1>Sale Report</h1> -->
     <nav>
       <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+        <li class="breadcrumb-item"><a href="../home/main.php">Home</a></li>
         <li class="breadcrumb-item">Order</li>
         <!-- <li class="breadcrumb-item active">Sale</li> -->
       </ol>
@@ -49,7 +58,7 @@ $order_list = db_fetch_array($query);
       <div class="col-lg-12">
 
         <div class="card">
-          <form method="POST" action="#">
+          <form method="POST" action="">
           <div class="card-body">
             <h5 class="card-title">Filter</h5>
             <div class="row mb-3">
@@ -62,9 +71,18 @@ $order_list = db_fetch_array($query);
                 <input type="date" name="date_to" class="form-control" value="<?= (isset($_POST['date_to']))?$_POST['date_to']:''?>">
               </div>
               <div class="col-sm-2"><button class="btn btn-primary" name="btnFilter">Filter</button></div>
+              <div>
+              <?php
+   if($filter_error != ''){
+    echo "<div class='text-danger'>".$filter_error. "</div>";
+   }
+
+      
+?>            
+              </div>
             </div>
           </div>
-          </form>
+          </form>      
         </div>
 
         <div class="card-body">

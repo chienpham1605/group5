@@ -2,7 +2,9 @@
  $date_from = strtotime($_POST['date_from']);
  $date_to = strtotime($_POST['date_to']);
  echo $date_from;
+ echo "----";
  echo $date_to;
+ 
  die();
 
 if(isset($_POST['btnFilter'])){
@@ -14,8 +16,8 @@ if(isset($_POST['btnFilter'])){
       FROM orderdetail, ordermaster, customer 
       WHERE orderdetail.order_id = ordermaster.order_id 
       AND ordermaster.cus_id = customer.id 
-      AND STR_TO_DATE(ordermaster.order_date, '%d/%m/%Y')>=$date_from 
-      AND STR_TO_DATE(ordermaster.order_date, '%d/%m/%Y')<=$date_to 
+      AND ordermaster.order_date >='$date_from' 
+      AND ordermaster.order_date <='$date_to' 
       GROUP BY orderdetail.order_id";
     }
     }

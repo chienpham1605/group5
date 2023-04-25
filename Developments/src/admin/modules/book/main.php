@@ -26,7 +26,7 @@ $count = mysqli_num_rows($rs);
 
                 <div class="card">
                     <div class="card-body">
-                    <h5><a href="create.php">Add book</h5>
+                    <h5><a href="create.php">Add book</a></h5>
                         <!-- Table with stripped rows -->
                         <table class="table datatable">
                             <thead>
@@ -35,7 +35,7 @@ $count = mysqli_num_rows($rs);
                                     <th scope="col">Book Name</th>
                                     <th scope="col">Book Author</th>
                                     <th scope="col">Book Price</th>
-                                    <th scope="col">Book Description</th>
+                                    <!-- <th scope="col">Book Description</th> -->
                                     <th scope="col">Book Pages</th>
                                     <th scope="col">Book Publisher</th>
                                     <th scope="col">Category</th>
@@ -63,9 +63,9 @@ $count = mysqli_num_rows($rs);
                                             <td>
                                                 <?= $row['book_price'] ?>
                                             </td>
-                                            <td>
+                                            <!-- <td>
                                                 <?= $row['book_des'] ?>
-                                            </td>
+                                            </td> -->
                                             <td>
                                                 <?= $row['page'] ?>
                                             </td>
