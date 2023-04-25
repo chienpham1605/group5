@@ -91,7 +91,7 @@ CREATE TABLE `customer` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
   `pwd` varchar(255) NOT NULL,
-  `phone` int(11) NOT NULL,
+  `phone` varchar(11) NOT NULL,
   `address` varchar(255) NOT NULL,
   `gender` tinyint(1) NOT NULL,
   `email` varchar(50) NOT NULL,
@@ -249,7 +249,7 @@ CREATE TABLE `publisher` (
   `publisher_name` varchar(500) NOT NULL,
   `publisher_logo` varchar(100) NOT NULL,
   `publisher_web` varchar(500) NOT NULL,
-  `publisher_phone` int(11) NOT NULL,
+  `publisher_phone` varchar(11) NOT NULL,
   `publisher_email` varchar(200) NOT NULL,
   `publisher_address` varchar(500) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
