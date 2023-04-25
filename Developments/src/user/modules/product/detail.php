@@ -175,6 +175,7 @@ endif;
                           <span class="price-strike">$
                             <?= $detail['book_price'] ?>
                           </span>
+                          <span class="price-name"><?= $book_detail['discount_name']?></span>
                         </div>
                       </div>
 
