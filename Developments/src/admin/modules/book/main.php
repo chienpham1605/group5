@@ -26,7 +26,7 @@ $count = mysqli_num_rows($rs);
 
                 <div class="card">
                     <div class="card-body">
-                    <h5><a href="create.php">Add book</h5>
+                    <h5><a href="create.php">Add book</a></h5>
                         <!-- Table with stripped rows -->
                         <table class="table datatable">
                             <thead>
