@@ -30,10 +30,10 @@ if (isset($_POST['btnSearch'])) {
 $rs = mysqli_query($conn, $query);
 $num_row = mysqli_num_rows($rs);
 // $rs = db_fetch_array($query);
-echo "<pre>";
-print_r($rs);
-echo $current_date;
-echo "</pre>";
+// echo "<pre>";
+// print_r($rs);
+// echo $current_date;
+// echo "</pre>";
 ?>
 <div class="body-content outer-top-xs">
   <div class='container'>

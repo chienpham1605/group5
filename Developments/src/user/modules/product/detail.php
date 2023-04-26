@@ -14,7 +14,7 @@ $book_id = $_GET['book_id'];
 $book_detail = mysqli_fetch_assoc(mysqli_query($conn, "SELECT book.*, publisher.*, 
 discount.discount_per,
 UNIX_TIMESTAMP(STR_TO_DATE(discount.discount_start, '%d/%m/%Y')) as discount_start, 
-UNIX_TIMESTAMP(STR_TO_DATE(discount.discount_end, '%d/%m/%Y')) as discount_end 
+UNIX_TIMESTAMP(STR_TO_DATE(discount.discount_end, '%d/%m/%Y')) as discount_end, discount.discount_name 
 FROM `book`, publisher, discount  
 WHERE book_id = '{$book_id}' and book.publisher_id = publisher.publisher_id and book.discount_id = discount.discount_id"));
 $detail = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM categories, book WHERE categories.cat_id=book.cat_id AND book.book_id = '{$book_id}' "));
@@ -56,6 +56,7 @@ if (isset($_POST['btnAddReview'])):
    
   endif;
 endif;
+
 ?>
 <?php
 // include("../../inc/header.php");
@@ -185,7 +186,7 @@ endif;
                                     }
                                     ?>
                           </span>
-                          <div class="btn_discount_detail"><?= $book_detail['discount_name']?></div>
+                          <button class="btn_discount_detail"></button>
                         </div>
                       </div>
 
