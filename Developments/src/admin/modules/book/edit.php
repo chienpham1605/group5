@@ -1,9 +1,7 @@
 <?php
 include_once("../../db/DBConnect.php");
-
-
-$nameErr = $imgErr = $yearErr  = $pageErr = $invenErr = $authorErr = $priceErr="";
-$yearbook = $img = $name = $page = $inventory = $Author = $Price = "" ;
+$nameErr = $imgErr = $yearErr = $pageErr = $invenErr = $authorErr = $priceErr = "";
+$yearbook = $img = $name = $page = $inventory = $Author = $Price = "";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   if (empty($_POST["txtYear"])) {
     $yearErr = "year is required";
@@ -13,8 +11,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       $yearErr = "Year is wrong";
     }
   }
-
-
   //author validate
   if (empty($_POST["txtAuthor"])) {
     $authorErr = "Author is required";
@@ -42,15 +38,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $priceErr = "price is required";
   } else {
     $Price = test_input($_POST["txtPrice"]);
-    if ($Price < 0 ) {
+    if ($Price < 0) {
       $priceErr = "Invalid price";
     }
   }
-
   // inventory
   if (empty($_POST["txtInventory"])) {
     $invenErr = "inventory is required";
-    } else {
+  } else {
     $inventory = test_input($_POST["txtInventory"]);
     if ($inventory < 0) {
       $invenErr = "invalid inventory";
@@ -92,7 +87,6 @@ if (isset($_POST['btnAdd'])):
   $bookstatus = $_POST['txtBook'];
   $publisherid = $_POST['publisher'];
   $inventory = $_POST['txtInventory'];
-
   // upload logo
   $folder = "../../../../img/";
   $fileName = $_FILES['txtImg']['name'];
@@ -100,79 +94,90 @@ if (isset($_POST['btnAdd'])):
   $img = $folder . $fileName;
 
   move_uploaded_file($fileTmp, $img);
-  if (empty($nameErr) && empty($imgErr) && empty($priceErr) && empty($authorErr) && 
-  empty($yearErr) && empty($pageErr) && empty($invenErr) ):
-  $query = "update book set book_name = '{$name}', book_author = '{$Author}', book_price = '{$Price}', page = '{$page}', YearBook = '{$yearbook}', book_image = '{$img}', inventory = '{$inventory}', book_status ='{$bookstatus}', cat_id = '{$categoryid}', publisher_id ='{$publisherid}', discount_id = '{$discountid}' where book_id = '{$bookid}'";
-  $rs = mysqli_query($conn, $query);
-  if (!$rs):
-    echo 'Nothing to update!';
+  if (
+    empty($nameErr) && empty($imgErr) && empty($priceErr) && empty($authorErr) &&
+    empty($yearErr) && empty($pageErr) && empty($invenErr)
+  ):
+    $query = "update book set book_name = '{$name}', book_author = '{$Author}', book_price = '{$Price}', page = '{$page}', YearBook = '{$yearbook}', book_image = '{$img}', inventory = '{$inventory}', book_status ='{$bookstatus}', cat_id = '{$categoryid}', publisher_id ='{$publisherid}', discount_id = '{$discountid}' where book_id = '{$bookid}'";
+    $rs = mysqli_query($conn, $query);
+    if (!$rs):
+      echo 'Nothing to update!';
+    endif;
+    header("location:main.php");
   endif;
-  header("location:main.php");
-endif;
 endif;
 mysqli_close($conn);
 ?>
 <?php
 include("../../inc/header.php");
 ?>
-
 <main id="main" class="main">
-
-    <div class="pagetitle">
-      <h1>Update Publisher</h1>
-      <nav>
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-          <li class="breadcrumb-item">Book</li>
-
-        </ol>
-      </nav>
-    </div><!-- End Page Title -->
-    <section class="section">
-      <div class="row">
+  <div class="pagetitle">
+    <h1>Edit Book</h1>  
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="../home/main.php">Home</a></li>
+        <li class="breadcrumb-item">Book</li>
+        <li class="breadcrumb-item active">Book Detail</li>
+      </ol>
+    </nav>
+  </div><!-- End Page Title -->
+  <section class="section">
+    <div class="row">
       <div class="col-lg-3"></div>
-        <div class="col-lg-6">
+      <div class="col-lg-6">
 
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Edit Book</h5>
-
-              <!-- Horizontal Form -->
-              <form class="row g-3" method="post" enctype="multipart/form-data">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Edit Book</h5>
+            <!-- Horizontal Form -->
+            <form class="row g-3" method="post" enctype="multipart/form-data">
               <div class="col-12">
                 <label class="form-label">ID</label>
-                <input class="form-control" value="<?= $fields['book_id'] ?>" readonly! >
-                <span class="error" style="color:red"> <?php echo $nameErr; ?></span>
+                <input class="form-control" value="<?= $fields['book_id'] ?>" readonly!>
+                <span class="error" style="color:red">
+                  <?php echo $nameErr; ?>
+                </span>
               </div>
               <div class="col-12">
                 <label class="form-label">Name</label>
-                <input class="form-control" name="txtName" value="<?= $fields['book_name'] ?>" >
-                <span class="error" style="color:red"> <?php echo $nameErr; ?></span>
+                <input class="form-control" name="txtName" value="<?= $fields['book_name'] ?>">
+                <span class="error" style="color:red">
+                  <?php echo $nameErr; ?>
+                </span>
               </div>
               <div class="col-12">
                 <label class="form-label">Author</label>
-                <input name="txtAuthor" class="form-control" value="<?= $fields['book_author'] ?>" >
-                <span class="error" style="color:red"> <?php echo $authorErr; ?></span>
+                <input name="txtAuthor" class="form-control" value="<?= $fields['book_author'] ?>">
+                <span class="error" style="color:red">
+                  <?php echo $authorErr; ?>
+                </span>
               </div>
               <div class="col-12">
                 <label class="form-label">Price</label>
-                <input type="text" class="form-control" name="txtPrice" value="<?= $fields['book_price'] ?>" >
-                <span class="error" style="color:red"> <?php echo $priceErr; ?></span>
+                <input type="text" class="form-control" name="txtPrice" value="<?= $fields['book_price'] ?>">
+                <span class="error" style="color:red">
+                  <?php echo $priceErr; ?>
+                </span>
               </div>
               <div class="col-25">
                 <label class="form-label">Description</label>
-                <input type="text" class="form-control" name="txtDescription" value="<?= $fields['book_des'] ?>" >
+                <input type="text" class="form-control" name="txtDescription" value="<?= $fields['book_des'] ?>">
               </div>
 
               <div class="col-12">
                 <label class="form-label">Page</label>
-                <input type="text" class="form-control" name="txtPage" value="<?= $fields['page'] ?>" >
-                <span class="error" style="color:red"> <?php echo $pageErr; ?></span>
+                <input type="text" class="form-control" name="txtPage" value="<?= $fields['page'] ?>">
+                <span class="error" style="color:red">
+                  <?php echo $pageErr; ?>
+                </span>
               </div>
               <div class="col-12">
                 <label class="form-label">Year of book</label>
-                <input type="text" class="form-control" name="txtYear" value="<?= $fields['YearBook'] ?>" >
-                <span class="error" style="color:red"> <?php echo $yearErr; ?></span>
+                <input type="text" class="form-control" name="txtYear" value="<?= $fields['YearBook'] ?>">
+                <span class="error" style="color:red">
+                  <?php echo $yearErr; ?>
+                </span>
               </div>
               <div class="col-12"> Category
                 <select name="category" class="form-control col-12 ">
@@ -208,7 +213,7 @@ include("../../inc/header.php");
                       <?php echo $discount['discount_name'];
                       ?>
                     </option>
-                  <?php
+                    <?php
                   endwhile;
                   ?>
               </div>
@@ -228,23 +233,25 @@ include("../../inc/header.php");
                       <?php echo $publisher["publisher_name"];
                       ?>
                     </option>
-                  <?php
+                    <?php
                   endwhile;
                   ?>
               </div>
               </select>
               <div class="col-12">
                 <label class="form-label">oo</label>
-                <input type="text" class="form-control" name="txtBook" value="<?= $fields['book_status'] ?>" >
+                <input type="text" class="form-control" name="txtBook" value="<?= $fields['book_status'] ?>">
               </div>
               <div class="col-12">
                 <label class="form-label">Inventory</label>
-                <input type="text" class="form-control" name="txtInventory" value="<?= $fields['inventory'] ?>" >
-                <span class="error" style="color:red"> <?php echo $invenErr; ?></span>
+                <input type="text" class="form-control" name="txtInventory" value="<?= $fields['inventory'] ?>">
+                <span class="error" style="color:red">
+                  <?php echo $invenErr; ?>
+                </span>
               </div>
               <div class="col-12">
                 <label class="form-label">Book Image</label>
-                <input class="form-control" type="file" name="txtImg" value="<?= $fields['book_image'] ?>" >
+                <input class="form-control" type="file" name="txtImg" value="<?= $fields['book_image'] ?>">
 
               </div>
               <div class="text-center">
@@ -252,11 +259,10 @@ include("../../inc/header.php");
                 <button type="reset" class="btn btn-secondary" name="btnClear">Reset</button>
               </div>
             </form>
-            </div>
           </div>
-
         </div>
-      </div>
-    </section>
 
-  </main><!-- End #main -->
+      </div>
+    </div>
+  </section>
+</main><!-- End #main -->

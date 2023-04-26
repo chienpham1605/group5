@@ -150,6 +150,10 @@
                   <hr>           
                 </li>              
                 <li>
+                  <a href='../login/change-pass.php'>Change Password</a>  
+                  <hr>           
+                </li>              
+                <li>
                   <a href='../checkout/show_order.php'>My Order</a>  
                   <hr>           
                 </li>              

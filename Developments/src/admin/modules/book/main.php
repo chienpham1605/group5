@@ -17,6 +17,7 @@ $count = mysqli_num_rows($rs);
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="../home/main.php">Home</a></li>
                 <li class="breadcrumb-item">Book</li>
+                <li class="breadcrumb-item active">Book Detail</li>
             </ol>
         </nav>
     </div>
@@ -88,15 +89,11 @@ $count = mysqli_num_rows($rs);
                                 ?>
                             </tbody>
                         </table>
-                        <!-- End Table with stripped rows -->
-
                     </div>
                 </div>
             </div>
         </div>
-    </section>
-
-   
+    </section>   
 </main>
 <?php
 include("../../inc/footer.php");

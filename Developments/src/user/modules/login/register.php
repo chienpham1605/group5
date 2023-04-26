@@ -60,7 +60,16 @@ if (isset($_POST['btn-login'])) {
 <?php 
 include("../../inc/header.php");
 ?>
-
+<div class="breadcrumb">
+    <div class="container">
+        <div class="breadcrumb-inner">
+            <ul class="list-inline list-unstyled">
+                <li><a href="../home/main.php">Home</a></li>
+                <li class='active'>Register</li>
+            </ul>
+        </div>
+    </div>
+</div>
 <div class="body-content">
     <div class="container">
         <div class="sign-in-page">

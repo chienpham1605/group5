@@ -4,10 +4,7 @@ include("../../inc/header.php");
 include_once("../../db/DBConnect.php");
 include_once("../../db/database.php");
 
-
-
-
-$order_id = $_GET['order_id'];
+$order_id = (int)$_GET['order_id'];
 $customer_infor = db_fetch_row("SELECT customer.name, customer.email, customer.address, customer.phone 
 FROM customer, ordermaster 
 WHERE ordermaster.cus_id = customer.id 
@@ -29,13 +26,12 @@ $total = 0;
     <div class="pagetitle">
         <nav>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                <li class="breadcrumb-item">Order</li>
+                <li class="breadcrumb-item"><a href="../home/main.php">Home</a></li>
+                <li class="breadcrumb-item"><a href="main.php">Order</a></li>
                 <li class="breadcrumb-item active">Detail</li>
             </ol>
         </nav>
-    </div><!-- End Page Title -->
-
+    </div>
     <section class="section">
         <div class="row">
             <div class="col-lg-8">
@@ -44,8 +40,7 @@ $total = 0;
                         <h5 class="card-title">Order #
                             <?= $order_id ?> Placed at
                             <?= $orderMaster_infor['order_date'] ?>
-                        </h5>
-                        <!-- Table with hoverable rows -->
+                        </h5>                   
                         <table class="table table-hover">
                             <thead>
                                 <tr>
@@ -108,8 +103,7 @@ $total = 0;
                                 </tr>
 
                             </tbody>
-                        </table>
-                        <!-- End Table with hoverable rows -->
+                        </table>                      
                     </div>
                 </div>
                 <div class="card">
@@ -130,7 +124,6 @@ $total = 0;
                                     <td><i class="bi bi-envelope-fill"></i></i>
                                         <?= $customer_infor['email'] ?>
                                     </td>
-
                                     <td>
                                     </td>
                                 </tr>
@@ -187,7 +180,7 @@ $total = 0;
                         <div class="card-body">
                             <h5 class="card-title">Order Status
                             </h5>
-                            <span class="badge bg-success">
+                            <span class="badge bg-primary">
                                 <?= $orderMaster_infor['order_status'] ?>
                             </span>    
                             <div>Last modified at <?=$orderMaster_infor['last_modify_at']?></div>                       
@@ -195,14 +188,23 @@ $total = 0;
                                 <label for="inputState" class="form-label"></label>
                                 <select id="inputState" class="form-select" name="orderStatus">
                                     <option selected="Pending">Pending</option>
-                                    <option value="Cancel">Cancel</option>
-                                    <option value="Processing">Processing</option>
+                                    <option value="Cancel">Cancel</option>                                   
                                     <option value="Completed">Completed</option>
                                     <option value="Refund">Refund</option>
                                 </select>
+                                <?php                            
+                            if (isset($_GET['successUpdate'])):
+                                echo '<span class="badge bg-success">Update successfully</span>';
+                            endif;
+                            if (isset($_GET['errorUpdate'])):
+                                echo '<span class="badge bg-danger">Update error</span>';
+                            endif;
+                            if (isset($_GET['errorStock'])):
+                                echo '<span class="badge bg-warning">Not enough in stock</span>';
+                            endif;
+                            ?>  
                                 <input type="hidden" value="<?= $order_id ?>" name="order_id">
                             </div>
-                           
                             <div class="text-center">
                                 <button type="submit" class="btn btn-primary" name="btnUpdate"
                                     onclick="return confirm('Are you sure to update order # <?= $order_id ?>?')">Update</button>
@@ -214,8 +216,7 @@ $total = 0;
             </div>
         </div>
     </section>
-
-</main><!-- End #main -->
+</main>
 <?php
 include("../../inc/footer.php");
 ?>

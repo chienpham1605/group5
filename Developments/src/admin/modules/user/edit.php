@@ -6,16 +6,12 @@ $id = -1;
 if (!isset($_GET['id'])):
     header("location:main.php");
 endif;
-
 $id = $_GET['id'];
-#5. Execute query (for data reading by Item code)
 $query = "select * from customer where id = '{$id}'";
 $rs = mysqli_query($conn, $query);
 $fields = mysqli_fetch_array($rs);
 
-#6. Check form is sumitted
 if (isset($_POST['btn-update'])):
-#7. Read new data from Input elements
     $id = $_POST['id'];
     $name = $_POST['name'];
     $email = $_POST['email'];
@@ -35,8 +31,7 @@ if (isset($_POST['btn-update'])):
             $rs = mysqli_query($conn, $query);
     if (!$rs):
         error_clear_last();
-        echo 'Nothing to Update!';
-      
+        echo 'Nothing to Update!';      
     endif;
 
     $id = -1;
@@ -49,7 +44,6 @@ if (isset($_POST['btn-update'])):
         header("location:main.php");
                 mysqli_close($conn);
 endif;
-
     while ($data = mysqli_fetch_array($rs)) {
         $i = 1;
         $id = $data['id'];
@@ -57,43 +51,31 @@ endif;
         if ($data['is_block'] == 1) {
             $is_block = "checked='checked'";
         }
-    }
-
-    // var_dump($fields);
+    }  
 ?>
-
-        <?php
-        // require_once '../../lib/template.php';
-        // get_header();
+        <?php     
         include("../../inc/header.php");
         ?>
-
-
     <body class="container">
-        <h2>Update Item</h2>
-
+        <h2>Update Customer</h2>
         <main id="main" class="main">
-
             <div class="pagetitle">
-                <h1>Form Elements</h1>
+                <h1>Update Customer</h1>
                 <nav>
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                        <li class="breadcrumb-item">Forms</li>
-                        <li class="breadcrumb-item active">Elements</li>
+                        <li class="breadcrumb-item"><a href="../home/main.php">Home</a></li>
+                        <li class="breadcrumb-item">Customer</li>
+                        <li class="breadcrumb-item active">Customer Information</li>
                     </ol>
                 </nav>
-            </div><!-- End Page Title -->
-
+            </div>
             <section class="section">
                 <div class="row">
                     <div class="col-lg-10">
 
                         <div class="card">
                             <div class="card-body">
-                                <h5 class="card-title">General Form Elements</h5>
-
-                                <!-- General Form Elements -->
+                                <h5 class="card-title">General Form Elements</h5>                             
                                 <form method ="POST">
                                     <div class="row mb-3">
                                         <label for="inputNumber" class="col-sm-2 col-form-label">ID</label>
@@ -130,28 +112,33 @@ endif;
                                         <div class="col-sm-10">
                                             <input type="text" name ="gender" readonly class="form-control" value="<?php echo $fields['gender']?"Male":"Female" ?>">
                                         </div>
-                                    </div>
-                                    
-                                   <tr>
+                                    </div>                                    
+                                    <div class="row mb-3">
+                                        <label for="inputNumber" class="col-sm-2 col-form-label">Status</label>
+                                        <div class="col-sm-10">
+                                            <input  type="radio" id="is_block" name="is_block" value="1" >Lock 
+                                            <input  type="radio" id="is_block" name="is_block" value="0" >Unlock
+                                        </div>
+                                    </div>                                    
+                                   <!-- <tr>
                                         <td nowrap="nowrap">Status:</td>
                                         <td>
                                             <input  type="radio" id="is_block" name="is_block" value="1" >Lock 
                                             <input  type="radio" id="is_block" name="is_block" value="0" >Unlock
-                                    </td>
-                                    </tr>
-
+                                        </td>
+                                    </tr> -->
                                     <div class="row mb-3">
-                                        <label class="col-sm-2 col-form-label">Update</label>
+                                        <label class="col-sm-2 col-form-label"></label>
                                         <div class="col-sm-10">
 
-                                            <button type="submit" name="btn-update" value="Update" 
+                                            <input type="submit" name="btn-update" value="Update" 
 
-                                                    onclick="return confirm(' Are you sure to update <?= $fields[0] ?>?');"
-                                                    class="btn btn-primary">Update</button>
+                                                    onclick="return confirm(' Are you sure to update customer with ID <?= $fields[0] ?>?');"
+                                                    class="btn btn-primary">
                                         </div>
                                     </div>
 
-                                </form><!-- End General Form Elements -->
+                                </form>
                             </div>
                         </div>
 

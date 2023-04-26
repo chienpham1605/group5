@@ -25,7 +25,7 @@ include("../../inc/header.php");
         <div class="breadcrumb-inner">
             <ul class="list-inline list-unstyled">
                 <li><a href="../home/main.php">Home</a></li>
-                <li class='active'>My Order</li>
+                <li class='active'>Order</li>
             </ul>
         </div><!-- /.breadcrumb-inner -->
     </div><!-- /.container -->

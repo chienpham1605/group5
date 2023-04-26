@@ -1,6 +1,5 @@
 <?php
 session_start();
-
 include_once("../../db/DBConnect.php");
 include_once("../../db/database.php");
 
@@ -10,12 +9,8 @@ FROM orderdetail, ordermaster, customer
 WHERE orderdetail.order_id = ordermaster.order_id AND ordermaster.cus_id = customer.id
 GROUP BY orderdetail.order_id ORDER BY ordermaster.order_date DESC";
 
-
 $filter_error = '';  
 
-
-
-//Date filter
 if(isset($_POST['btnFilter'])){
   $date_from = strtotime($_POST['date_from']);
   $date_to = strtotime($_POST['date_to']) +3600*24;
@@ -41,18 +36,14 @@ $order_list = db_fetch_array($query);
 include("../../inc/header.php");
 ?>
 <main id="main" class="main">
-
-  <div class="pagetitle">
-    <!-- <h1>Sale Report</h1> -->
+  <div class="pagetitle">  
     <nav>
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="../home/main.php">Home</a></li>
-        <li class="breadcrumb-item">Order</li>
-        <!-- <li class="breadcrumb-item active">Sale</li> -->
+        <li class="breadcrumb-item">Order</li>        
       </ol>
     </nav>
-  </div><!-- End Page Title -->
-
+  </div>
   <section class="section">
     <div class="row">
       <div class="col-lg-12">
@@ -73,21 +64,16 @@ include("../../inc/header.php");
               <div class="col-sm-2"><button class="btn btn-primary" name="btnFilter">Filter</button></div>
               <div>
               <?php
-   if($filter_error != ''){
-    echo "<div class='text-danger'>".$filter_error. "</div>";
-   }
-
-      
-?>            
+                if($filter_error != ''){
+                  echo "<div class='text-danger'>".$filter_error. "</div>";
+                }      
+              ?>            
               </div>
             </div>
           </div>
           </form>      
         </div>
-
         <div class="card-body">
-
-          <!-- Table with stripped rows -->
           <table class="table datatable">
             <thead>
               <tr>
@@ -126,16 +112,12 @@ include("../../inc/header.php");
               ?>
             </tbody>
           </table>
-          <!-- End Table with stripped rows -->
-
         </div>
       </div>
-
     </div>
     </div>
   </section>
-
-</main><!-- End #main -->
+</main>
 <?php
 include("../../inc/footer.php");
 ?>

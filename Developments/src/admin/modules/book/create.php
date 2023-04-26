@@ -54,7 +54,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
   }
 }
-
 function test_input($data)
 {
   $data = trim($data);
@@ -109,11 +108,12 @@ include_once("../../inc/header.php");
 ?>
 <main id="main" class="main">
   <div class="pagetitle">
-    <h1>Add Discount</h1>
+  <h1>Add Book</h1>  
     <nav>
       <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="main.php">Home</a></li>
-        <li class="breadcrumb-item">Book</li>
+        <li class="breadcrumb-item"><a href="../home/main.php">Home</a></li>
+        <li class="breadcrumb-item"><a href="main.php">Book</a></li>
+        <li class="breadcrumb-item active">Book Detail</li>
       </ol>
     </nav>
   </div><!-- End Page Title -->
@@ -125,8 +125,6 @@ include_once("../../inc/header.php");
         <div class="card">
           <div class="card-body">
             <h5 class="card-title">Add book</h5>
-
-
             <form class="row g-3" method="post" enctype="multipart/form-data">
               <div class="col-12">
                 <label class="form-label">Name</label>
@@ -147,7 +145,6 @@ include_once("../../inc/header.php");
                 <label class="form-label">Description</label>
                 <input type="text" class="form-control" name="txtDescription">
               </div>
-
               <div class="col-12">
                 <label class="form-label">Page</label>
                 <input type="text" class="form-control" name="txtPage">
@@ -230,7 +227,6 @@ include_once("../../inc/header.php");
                 <label class="form-label">Book Image</label>
                 <input class="form-control" type="file" name="txtImg">
                 <span class="error" style="color:red"> <?php echo $imgErr; ?></span>
-
               </div>
               <div class="text-center">
                 <input type="submit" class="btn btn-primary" name="btnAdd" value="Submit">
@@ -245,7 +241,6 @@ include_once("../../inc/header.php");
     </div>
   </section>
 </main>
-
 <?php
 include_once("../../inc/footer.php");
 ?>

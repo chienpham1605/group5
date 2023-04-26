@@ -26,23 +26,31 @@ if (isset($_POST['btn-update'])):
     $_SESSION['user_login'] = $num;
     header('location: show-info.php');
 
-    #9. Close connection
     mysqli_close($conn);
 endif;
 ?>
 <?php
 include("../../inc/header.php");
 ?>
-
+<div class="breadcrumb">
+    <div class="container">
+        <div class="breadcrumb-inner">
+            <ul class="list-inline list-unstyled">
+                <li><a href="../home/main.php">Home</a></li>
+                <li class='active'>My Profile</li>
+            </ul>
+        </div>
+    </div>
+</div>
 <body class="cnt-home">
     <div class="body-content">
         <div class="container">
             <div class="sign-in-page">
                 <div class="row">
-
+                    <div class="col-md-3"></div>
                     <form action="show-info.php" method="post">
-                        <div class="col-md-12 col-sm-12 create-new-account">
-                            <h3 class="checkout-subtitle text-center">Customer Information</h3>
+                        <div class="col-md-6 col-sm-12 create-new-account">
+                            <h3 class="checkout-subtitle">Customer Information</h3>
                             <form class="register-form outer-top-xs" role="form">
                                 <div class=" form-group">
                                     <input type="hidden" value=" <?php echo $info_user['id'] ?>" name="id">
@@ -71,7 +79,6 @@ include("../../inc/header.php");
                                 </div>
                                 <div class="form-group">
                                     <label class="info-title" for="gender">Gender <span></span></label>
-
                                     <input <?php if ($info_user['gender'] == 1)
                                         echo 'checked'; ?> type="radio"
                                         class="form-control unicase-form-control text-input" value="1"
@@ -84,20 +91,16 @@ include("../../inc/header.php");
                                 <div >
                                     <button type="submit" name="btn-update" value="Update"
                                         class="btn-upper btn btn-primary checkout-page-button">Edit</button>
-                                    <a href="change-pass.php"
-                                        class="btn-upper btn btn-primary checkout-page-button">Change password</a>
-
+                                    <!-- <a href="change-pass.php"
+                                        class="btn-upper btn btn-primary checkout-page-button">Change password</a> -->
                                 </div>
-
-
                         </div>
                     </form>
-
-
-                </div><!-- create a new account -->
-            </div><!-- /.row -->
-        </div><!-- /.sign-in-->
-    </div><!-- /.body-content -->
+                    <div class="col-md-3"></div>
+                </div>
+            </div>
+        </div>
+    </div>
     <?php
     include("../../inc/footer.php");
     ?>

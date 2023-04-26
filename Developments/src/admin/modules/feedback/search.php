@@ -7,6 +7,8 @@ if(isset($_POST["query"])){
     $search = mysqli_real_escape_string($conn, $_POST["query"]);
     $query = "select * from feedback where "
             . "feedback_id like '%{$search}%' or "
+            . "content like '%{$search}%' or "
+            . "rating like '%{$search}%' or "
             . "book_id like '%{$search}%'";      
 }
 else{
@@ -20,8 +22,7 @@ if(mysqli_num_rows($rs) > 0){
               <th>ID</th>
               <th>Content</th>
               <th>Book ID</th>
-              <th>Rating</th>
-              <th>Content</th>
+              <th>Rating</th>              
               <th>Customer ID</th>
             </tr>';
         while($data = mysqli_fetch_array($rs)){
@@ -30,8 +31,7 @@ if(mysqli_num_rows($rs) > 0){
                 <td>' . $data[0] . '</td>
                 <td>' . $data[1] . '</td>
                 <td>' . $data[3] . '</td>
-                <td>' . $data[2] . '</td>
-                <td>' . $data[1] . '</td>
+                <td>' . $data[2] . '</td>              
                 <td>' . $data[4] . '</td>
                 </tr>';
         }

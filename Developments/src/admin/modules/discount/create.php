@@ -20,9 +20,7 @@ endif;
 <?php 
 include("../../inc/header.php");
 ?>
-
   <main id="main" class="main">
-
     <div class="pagetitle">
       <h1>Add Discount</h1>
       <nav>
@@ -31,17 +29,14 @@ include("../../inc/header.php");
           <li class="breadcrumb-item active">Discount</li>
         </ol>
       </nav>
-    </div><!-- End Page Title -->
+    </div>
     <section class="section">
       <div class="row">
         <div class="col-lg-3"></div>
         <div class="col-lg-6">
-
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Add Discount</h5>
-
-              <!-- Horizontal Form -->
+              <h5 class="card-title">Add Discount</h5>            
               <form class="row g-3" method="POST" >
                 <div class="col-12">
                   <label class="form-label">Name</label>
@@ -68,16 +63,12 @@ include("../../inc/header.php");
                   <button type="reset" class="btn btn-secondary" name="btnClear">Reset</button>
                 </div>
               </form>
-
             </div>
           </div>
-
         </div>
       </div>
     </section>
-
-  </main><!-- End #main -->
-
+  </main>
 <?php 
 include("../../inc/footer.php");
 ?>
