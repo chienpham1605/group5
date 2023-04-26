@@ -185,6 +185,7 @@ endif;
                                     }
                                     ?>
                           </span>
+                          <span class="tag new"><?= $book_detail['discount_name']?></span>
                         </div>
                       </div>
 
