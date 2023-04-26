@@ -7,9 +7,7 @@ $query = "select * from discount";
 $rs = mysqli_query($conn, $query);
 $count = mysqli_num_rows($rs);
 ?>
-
 <main id="main" class="main">
-
     <div class="pagetitle">
       <h1>Discount Tables</h1>
       <nav>
@@ -19,17 +17,13 @@ $count = mysqli_num_rows($rs);
           <li class="breadcrumb-item active">Discount</li>
         </ol>
       </nav>
-    </div><!-- End Page Title -->
-
+    </div>
     <section class="section">
       <div class="row">
         <div class="col-lg-12">
-
           <div class="card">
             <div class="card-body">
-              <a href="create.php" class="card-title">New Discount</a>
-
-              <!-- Table with stripped rows -->
+              <a href="create.php" class="card-title">New Discount</a>           
               <table class="table datatable">
                 <thead>
                   <tr>
@@ -40,7 +34,6 @@ $count = mysqli_num_rows($rs);
                     <th scope="col">Start</th>
                     <th scope="col">End</th>
                     <th scope="col">Function</th>
-
                   </tr>
                 </thead>
                 <tbody>
@@ -58,9 +51,9 @@ $count = mysqli_num_rows($rs);
                                     <td><?= $fields[4] ?></td>
                                     <td><?= $fields[5] ?></td>
                                     <td>
-                                        <a href="update.php?code=<?= $fields[0] ?>">Edit</a>   |
-                                        <a href="delete.php?code=<?= $fields[0] ?>"
-                                        onclick="return confirm('Are you sure to delete Item <?= $fields[0] ?>')">Delete</a>
+                                        <a href="update.php?code=<?= $fields[0] ?>">Edit</a>
+                                        <!-- <a href="delete.php?code=<?= $fields[0] ?>"
+                                        onclick="return confirm('Are you sure to delete Item <?= $fields[0] ?>')">Delete</a> -->
                                     </td>
                                 </tr>
                         <?php
@@ -69,18 +62,13 @@ $count = mysqli_num_rows($rs);
                         ?>
                   
                 </tbody>
-              </table>
-              <!-- End Table with stripped rows -->
-
+              </table>            
             </div>
           </div>
-
         </div>
       </div>
     </section>
-
-  </main><!-- End #main -->
-
+  </main>
 <?php 
 include("../../inc/footer.php");
 ?>

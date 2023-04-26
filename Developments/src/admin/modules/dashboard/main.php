@@ -8,7 +8,6 @@ $current_day = date("Y-m-d");
 echo $current_day ;
 $previous_day = date("Y-m-d",strtotime("-1 days"));
 $this_month = date("Y-m");
-
 $report_current = db_fetch_row("SELECT COUNT(ordermaster.order_id) AS sale, 
 SUM(orderdetail.book_price*orderdetail.quantity) AS revenue, 
 COUNT(distinct ordermaster.cus_id) as customer 
@@ -18,20 +17,15 @@ SUM(orderdetail.book_price*orderdetail.quantity) AS revenue,
 COUNT(distinct ordermaster.cus_id) as customer 
 FROM ordermaster, orderdetail WHERE ordermaster.order_id = orderdetail.order_id AND ordermaster.order_date LIKE '$previous_day%'");
 
-
 $order_list = db_fetch_array("SELECT SUM(quantity*book_price) as total, ordermaster.order_id, customer.name, ordermaster.order_id, ordermaster.order_date, ordermaster.order_status  
 FROM orderdetail, ordermaster, customer 
 WHERE orderdetail.order_id = ordermaster.order_id AND ordermaster.cus_id = customer.id AND ordermaster.order_date LIKE '$this_month%'
 GROUP BY orderdetail.order_id;");
 
-
 $top_selling_list = db_fetch_array("SELECT book.book_id, book.book_name, book.book_price as current_price,
 SUM(orderdetail.quantity) as sold, SUM(orderdetail.book_price*orderdetail.quantity) as revenue 
 FROM book, orderdetail WHERE book.book_id = orderdetail.book_id GROUP BY book.book_id ORDER BY `sold` DESC LIMIT 10");
 
-
-
-//chart month
 $this_month = date("m");
 $this_year = date("Y");
 $revenue_report_month = db_fetch_array("SELECT SUM(order_total) AS revenue, COUNT(order_total) AS order_count, revenue_total.order_date
@@ -60,19 +54,13 @@ foreach($revenue_report_month as $field){
                 <li class="breadcrumb-item active">Dashboard</li>
             </ol>
         </nav>
-    </div><!-- End Page Title -->
-
+    </div>
     <section class="section dashboard">
-        <div class="row">
-
-            <!-- Left side columns -->
+        <div class="row">        
             <div class="col-lg-12">
                 <div class="row">
-
-                    <!-- Sales Card -->
                     <div class="col-xxl-4 col-md-6">
                         <div class="card info-card sales-card">
-
                             <div class="filter">                         
                             <select id="sale" class="form-control">
                                 <option selected value="today">Today</option>
@@ -80,10 +68,8 @@ foreach($revenue_report_month as $field){
                                 <option value="this_year">This Year</option>
                             </select>                            
                             </div>
-
                             <div class="card-body">
                                 <h5 class="card-title">Sales</h5>
-
                                 <div class="d-flex align-items-center">
                                     <div
                                         class="card-icon rounded-circle d-flex align-items-center justify-content-center">
@@ -102,14 +88,10 @@ foreach($revenue_report_month as $field){
                                     </div>
                                 </div>
                             </div>
-
                         </div>
-                    </div><!-- End Sales Card -->
-
-                    <!-- Revenue Card -->
+                    </div>                  
                     <div class="col-xxl-4 col-md-6">
                         <div class="card info-card revenue-card">
-
                             <div class="filter">
                                 <select id="revenue" class="form-control">
                                     <option value="today" selected>Today</option>
@@ -117,10 +99,8 @@ foreach($revenue_report_month as $field){
                                     <option value="this_year">This Year</option>
                                 </select> 
                             </div>
-
                             <div class="card-body">
                                 <h5 class="card-title">Revenue</h5>
-
                                 <div class="d-flex align-items-center">
                                     <div
                                         class="card-icon rounded-circle d-flex align-items-center justify-content-center">
@@ -135,19 +115,13 @@ foreach($revenue_report_month as $field){
                                         <span class="text-muted small pt-2 ps-1" id="status_revenue">
                                         <?= ($report_previous['revenue']<$report_current['revenue'])?"increase":"decrease"?>
                                         </span>
-
                                     </div>
                                 </div>
                             </div>
-
                         </div>
-                    </div><!-- End Revenue Card -->
-
-                    <!-- Customers Card -->
+                    </div>                  
                     <div class="col-xxl-4 col-xl-12">
-
                         <div class="card info-card customers-card">
-
                             <div class="filter">
                                 <select id="customer" class="form-control">
                                     <option value="today" selected>Today</option>
@@ -155,10 +129,8 @@ foreach($revenue_report_month as $field){
                                     <option value="this_year">This Year</option>
                                 </select> 
                             </div>
-
                             <div class="card-body">
                                 <h5 class="card-title">Customers</h5>
-
                                 <div class="d-flex align-items-center">
                                     <div
                                         class="card-icon rounded-circle d-flex align-items-center justify-content-center">
@@ -173,24 +145,16 @@ foreach($revenue_report_month as $field){
                                         <span class="text-muted small pt-2 ps-1" id="status_customer">
                                         <?= ($report_previous['customer']<$report_current['customer'])?"increase":"decrease"?>
                                         </span>
-
                                     </div>
                                 </div>
-
                             </div>
                         </div>
-
-                    </div><!-- End Customers Card -->
-
-                    <!-- Reports -->
+                    </div>
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <h5 class="card-title">Reports <span>/This Month</span></h5>
-
-                                <!-- Line Chart -->
+                                <h5 class="card-title">Reports <span>/This Month</span></h5>                              
                                 <div id="reportsChartMonth"></div>
-
                                 <script>
                                     document.addEventListener("DOMContentLoaded", () => {
                                         new ApexCharts(document.querySelector("#reportsChartMonth"), {
@@ -242,15 +206,10 @@ foreach($revenue_report_month as $field){
                                             }
                                         }).render();
                                     });
-                                </script>
-                                <!-- End Line Chart -->
-
+                                </script>                              
                             </div>
-
                         </div>
-                    </div><!-- End Reports -->
-
-                    <!-- Recent Sales -->
+                    </div>                  
                     <div class="col-12">
                         <div class="card recent-sales overflow-auto">
                             <div class="card-body">
@@ -287,13 +246,9 @@ foreach($revenue_report_month as $field){
                                         ?>
                                     </tbody>
                                 </table>
-
                             </div>
-
                         </div>
-                    </div><!-- End Recent Sales -->
-
-                    <!-- Top Selling -->
+                    </div>                  
                     <div class="col-12">
                         <div class="card top-selling overflow-auto">                 
 
@@ -329,17 +284,14 @@ foreach($revenue_report_month as $field){
                                         ?>                                                           
                                     </tbody>
                                 </table>
-
                             </div>
-
                         </div>
-                    </div><!-- End Top Selling -->
+                    </div>
                 </div>
-            </div><!-- End Left side columns -->
+            </div>
         </div>
     </section>
-
-</main><!-- End #main -->
+</main>
 <?php
 include("../../inc/footer.php");
 ?>

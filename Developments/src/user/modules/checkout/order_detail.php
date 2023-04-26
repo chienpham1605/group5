@@ -3,13 +3,12 @@ session_start();
 include_once("../../db/DBConnect.php");
 include_once("../../db/database.php");
 include("../../inc/header.php");
-
-
 $order_id = $_GET['order_id'];
 $customer_infor = db_fetch_row("SELECT customer.name, customer.email, customer.address, customer.phone 
 FROM customer, ordermaster 
 WHERE ordermaster.cus_id = customer.id 
 AND ordermaster.order_id = '{$order_id}'");
+
 $orderDetail_infor = db_fetch_array("SELECT book.book_id, book.book_name, 
 orderdetail.quantity as qty, orderdetail.book_price
 FROM ordermaster, orderdetail, book 
@@ -30,11 +29,11 @@ $total = 0;
             <ul class="list-inline list-unstyled">
                 <li><a href="../home/main.php">Home</a></li>
                 <li><a href="show_order.php">Order</a></li>
-                <li class='order_detail.php'>Detail</li>
+                <li class='active'>Detail</li>
             </ul>
-        </div><!-- /.breadcrumb-inner -->
-    </div><!-- /.container -->
-</div><!-- /.breadcrumb -->
+        </div>
+    </div>
+</div>
 <div class="body-content">
     <div class="container">
         <form method="POST" action="send.php">
@@ -42,7 +41,6 @@ $total = 0;
                 <div class="row">
                     <div class="col-xs-12 col-sm-5 col-md-5">
                         <div class="panel-group checkout-steps">
-                            <!-- checkout-step-03  -->
                             <div class="panel panel-default checkout-step-03">
                                 <div class="panel-heading">
                                     <h4 class="unicase-checkout-title">
@@ -57,34 +55,38 @@ $total = 0;
                                             <ul class="nav nav-checkout-progress list-unstyled">
                                                 <li>
                                                     <label class="info-title control-label">Fullname
-                                                        </label> </br>
-                                                    <p><?= $orderMaster_infor['shipping_name']?></p>
+                                                    </label> </br>
+                                                    <p>
+                                                        <?= $orderMaster_infor['shipping_name'] ?>
+                                                    </p>
                                                 </li>
                                                 <li>
-                                                    <label
-                                                        class="info-title control-label">Address</label>
-                                                        </br>
-                                                    <p><?= $orderMaster_infor['shipping_address']?></p>
+                                                    <label class="info-title control-label">Address</label>
+                                                    </br>
+                                                    <p>
+                                                        <?= $orderMaster_infor['shipping_address'] ?>
+                                                    </p>
                                                 </li>
                                                 <li>
                                                     <label class="info-title control-label">Phone
                                                         number</label>
-                                                        </br>
-                                                    <p><?= $orderMaster_infor['shipping_phone']?></p>
+                                                    </br>
+                                                    <p>
+                                                        <?= $orderMaster_infor['shipping_phone'] ?>
+                                                    </p>
                                                 </li>
                                                 <li>
                                                     <label class="info-title control-label">Note</label>
                                                     </br>
-                                                    <p><?= $orderMaster_infor['order_note']?></p>
+                                                    <p>
+                                                        <?= $orderMaster_infor['order_note'] ?>
+                                                    </p>
                                                 </li>
                                             </ul>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <!-- checkout-step-03  -->
-
-                            <!-- checkout-step-04  -->
                             <div class="panel panel-default checkout-step-04">
                                 <div class="panel-heading">
                                     <h4 class="unicase-checkout-title">
@@ -99,9 +101,6 @@ $total = 0;
                                     </div>
                                 </div>
                             </div>
-                            <!-- checkout-step-04  -->
-
-                            <!-- checkout-step-05  -->
                             <div class="panel panel-default checkout-step-04">
                                 <div class="panel-heading">
                                     <h4 class="unicase-checkout-title">
@@ -112,11 +111,10 @@ $total = 0;
                                 </div>
                                 <div id="collapseFour" class="panel-collapse collapse show">
                                     <div class="panel-body">
-                                    <?= $orderMaster_infor['payment_method']?>
+                                        <?= $orderMaster_infor['payment_method'] ?>
                                     </div>
                                 </div>
                             </div>
-                            <!-- checkout-step-05  -->
                             <div class="panel panel-default checkout-step-04">
                                 <div class="panel-heading">
                                     <h4 class="unicase-checkout-title">
@@ -127,17 +125,15 @@ $total = 0;
                                 </div>
                                 <div id="collapseFour" class="panel-collapse collapse show">
                                     <div class="panel-body">
-                                    <?= $orderMaster_infor['order_status']?>
+                                        <?= $orderMaster_infor['order_status'] ?>
                                     </div>
                                 </div>
                             </div>
-                       
-                            <!-- checkout-step-05  -->
-                        </div><!-- /.checkout-steps -->
+                        </div>
                     </div>
                     <div class="col-xs-12 col-sm-7 col-md-7">
                         <div class="panel-group checkout-steps">
-                        <div class="panel panel-default checkout-step-06">
+                            <div class="panel panel-default checkout-step-06">
                                 <div class="panel-heading">
                                     <h4 class="unicase-checkout-title">
                                         <a>
@@ -146,19 +142,14 @@ $total = 0;
                                     </h4>
                                 </div>
                                 <div id="collapseSix" class="panel-collapse collapse show">
-                                <div class="panel-body"><label class="info-title control-label">Order ID: </label>
-                                    <?= $orderMaster_infor['order_id']?>
+                                    <div class="panel-body"><label class="info-title control-label">Order ID: </label>
+                                        <?= $orderMaster_infor['order_id'] ?>
                                     </div>
                                     <div class="panel-body"><label class="info-title control-label">Order Date: </label>
-                                    <?= $orderMaster_infor['order_date']?>
+                                        <?= $orderMaster_infor['order_date'] ?>
                                     </div>
-
-
-                                    </div>
-                            </div>                      
-
-                        
-                            <!-- checkout-step-06  -->
+                                </div>
+                            </div>
                             <div class="panel panel-default checkout-step-06">
                                 <div class="panel-heading">
                                     <h4 class="unicase-checkout-title">
@@ -230,7 +221,6 @@ $total = 0;
                                                         <td><strong>
                                                                 <?= $total ?> $
                                                             </strong>
-
                                                         </td>
                                                     </tr>
                                                 </tfoot>
@@ -238,19 +228,14 @@ $total = 0;
                                         </ul>
                                     </div>
                                 </div>
-                            </div>                      
-
-                        </div><!-- /.checkout-steps -->
+                            </div>
+                        </div>
                     </div>
-
-                    <!-- checkout-progress-sidebar -->
                 </div>
-            </div><!-- /.row -->
+            </div>
         </form>
-    </div><!-- /.checkout-box -->
-
-   
-</div><!-- /.container -->
+    </div>
+</div>
 <?php
 include("../../inc/footer.php");
 ?>

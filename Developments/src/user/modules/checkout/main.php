@@ -4,15 +4,11 @@ include_once("../../db/DBConnect.php");
 include_once("../../db/database.php");
 
 
-if(!isset($_SESSION['user_login']['id'])){
-    header("Location: ../login/login.php");   
-    
-}else{
+if (!isset($_SESSION['user_login']['id'])) {
+    header("Location: ../login/login.php");
+} else {
     $user_id = (int) $_SESSION['user_login']['id'];
 }
-
-// echo  $user_id;
-
 $checkoutList = $_SESSION['cart'];
 $total = 0;
 foreach ($checkoutList as $item) {
@@ -29,10 +25,9 @@ include("../../inc/header.php");
                 <li><a href="?mod=hom&act=main">Home</a></li>
                 <li class='active'>Checkout</li>
             </ul>
-        </div><!-- /.breadcrumb-inner -->
-    </div><!-- /.container -->
-</div><!-- /.breadcrumb -->
-
+        </div>
+    </div>
+</div>
 <div class="body-content">
     <div class="container">
         <form method="POST" action="send.php">
@@ -40,7 +35,6 @@ include("../../inc/header.php");
                 <div class="row">
                     <div class="col-xs-12 col-sm-6 col-md-6">
                         <div class="panel-group checkout-steps">
-                            <!-- checkout-step-03  -->
                             <div class="panel panel-default checkout-step-03">
                                 <div class="panel-heading">
                                     <h4 class="unicase-checkout-title">
@@ -70,9 +64,8 @@ include("../../inc/header.php");
                                                 <li>
                                                     <label class="info-title control-label">Phone
                                                         number<span>*</span></label>
-                                                    <input type="text" name="phone" value="" required 
-                                                    pattern="[0-9]{9}" 
-                                                    title="Phone number remaing 9 digit with 0-9"
+                                                    <input type="text" name="phone" value="" required pattern="[0-9]{9}"
+                                                        title="Phone number remaing 9 digit with 0-9"
                                                         class="form-control unicase-form-control text-input"
                                                         placeholder="">
                                                 </li>
@@ -87,9 +80,6 @@ include("../../inc/header.php");
                                     </div>
                                 </div>
                             </div>
-                            <!-- checkout-step-03  -->
-
-                            <!-- checkout-step-04  -->
                             <div class="panel panel-default checkout-step-04">
                                 <div class="panel-heading">
                                     <h4 class="unicase-checkout-title">
@@ -104,9 +94,6 @@ include("../../inc/header.php");
                                     </div>
                                 </div>
                             </div>
-                            <!-- checkout-step-04  -->
-
-                            <!-- checkout-step-05  -->
                             <div class="panel panel-default checkout-step-05">
                                 <div class="panel-heading">
                                     <h4 class="unicase-checkout-title">
@@ -135,12 +122,10 @@ include("../../inc/header.php");
 
                                 </div>
                             </div>
-                            <!-- checkout-step-05  -->
-                        </div><!-- /.checkout-steps -->
+                        </div>
                     </div>
                     <div class="col-xs-12 col-sm-6 col-md-6">
                         <div class="panel-group checkout-steps">
-                            <!-- checkout-step-06  -->
                             <div class="panel panel-default checkout-step-06">
                                 <div class="panel-heading">
                                     <h4 class="unicase-checkout-title">
@@ -195,7 +180,6 @@ include("../../inc/header.php");
                                                         <td><strong>
                                                                 <?= $total ?>$
                                                             </strong>
-
                                                         </td>
                                                     </tr>
                                                     <tr>
@@ -211,7 +195,6 @@ include("../../inc/header.php");
                                                         <td><strong>
                                                                 <?= $total ?> $
                                                             </strong>
-
                                                         </td>
                                                     </tr>
                                                 </tfoot>
@@ -220,24 +203,17 @@ include("../../inc/header.php");
                                     </div>
                                 </div>
                             </div>
-                            <!-- checkout-step-06  -->
                             <div class="cart-checkout-btn pull-right">
-                                <button type="submit" class="btn btn-primary checkout-btn" name = "checkoutBtn">CHECKOUT</button>
-                                <!-- <span class="">Checkout with multiples address!</span> -->
+                                <button type="submit" class="btn btn-primary checkout-btn"
+                                    name="checkoutBtn">CHECKOUT</button>
                             </div>
-
-                        </div><!-- /.checkout-steps -->
+                        </div>
                     </div>
-
-                    <!-- checkout-progress-sidebar -->
                 </div>
-            </div><!-- /.row -->
+            </div>
         </form>
-    </div><!-- /.checkout-box -->
-
-   
-</div><!-- /.container -->
-
+    </div>
+</div>
 <?php
 include("../../inc/footer.php");
 ?>

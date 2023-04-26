@@ -3,26 +3,23 @@ session_start();
 include("../../inc/header.php");
 include_once("../../db/DBConnect.php");
 include_once("../../db/database.php");
-
-
 if (!isset($_GET['book_id'])):
   header("../../home/main.php");
 endif;
-
-
 if(isset($_SESSION['user_login']['id'])){
-  $user_id = (int) $_SESSION['user_login']['id'];
-  
+  $user_id = (int) $_SESSION['user_login']['id'];  
 }
-
-
+$current_date = time();
 $book_id = $_GET['book_id'];
-$book_detail = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM `book`, publisher, discount  WHERE book_id = '{$book_id}' and book.publisher_id = publisher.publisher_id and book.discount_id = discount.discount_id"));
+$book_detail = mysqli_fetch_assoc(mysqli_query($conn, "SELECT book.*, publisher.*, 
+discount.discount_per,
+UNIX_TIMESTAMP(STR_TO_DATE(discount.discount_start, '%d/%m/%Y')) as discount_start, 
+UNIX_TIMESTAMP(STR_TO_DATE(discount.discount_end, '%d/%m/%Y')) as discount_end 
+FROM `book`, publisher, discount  
+WHERE book_id = '{$book_id}' and book.publisher_id = publisher.publisher_id and book.discount_id = discount.discount_id"));
 $detail = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM categories, book WHERE categories.cat_id=book.cat_id AND book.book_id = '{$book_id}' "));
 $sql = "SELECT * FROM feedback, book, customer where feedback.book_id=book.book_id AND feedback.customer_id = customer.id and book.book_id = '{$book_id}'";
 $rs_feedback = db_fetch_array($sql);
-
-// var_dump($rs_feedback);
 
 $ratingErr = "";
 $content = $rating = "";
@@ -56,11 +53,12 @@ if (isset($_POST['btnAddReview'])):
     if (!$rs):
       echo 'can not found';
     endif;
-    // header("location:detail.php");
+   
   endif;
 endif;
 ?>
 <?php
+// include("../../inc/header.php");
 ?>
 <div class="breadcrumb">
   <div class="container">
@@ -124,7 +122,7 @@ endif;
                         </div>
                         <div class="pull-left">
                           <div class="reviews">
-                            <a href="#" class="lnk">(13 Reviews)</a>
+                            <a href="#" class="lnk">(<?= count($rs_feedback)?> Reviews)</a>
                           </div>
                         </div>
                       </div>
@@ -170,10 +168,22 @@ endif;
                       <div class="col-sm-6 col-xs-6">
                         <div class="price-box">
                           <span class="price">$
-                            <?= $detail['book_price'] * $book_detail['discount_per'] ?>
+                            <?php 
+                             if ($current_date >= $book_detail['discount_start'] && $current_date <= $book_detail['discount_end']) {
+                              echo $book_detail['book_price'] * $book_detail['discount_per'];
+                            } else {
+                              echo $book_detail['book_price'];
+                            } 
+                            ?>
                           </span>
-                          <span class="price-strike">$
-                            <?= $detail['book_price'] ?>
+                          <span class="price-strike">
+                          <?php
+                                    if ($current_date >= $book_detail['discount_start'] && $current_date <= $book_detail['discount_end']) {
+                                      echo '$' . $book_detail['book_price'];
+                                    } else {
+                                      echo '';
+                                    }
+                                    ?>
                           </span>
                           <div class="btn_discount_detail"><?= $book_detail['discount_name']?></div>
                         </div>
@@ -220,7 +230,9 @@ endif;
                         </div>
                       </div>
                       <div class="add-btn" data-id="<?= $detail['book_id'] ?>"
-                        data-price="<?= $detail['book_price'] * $book_detail['discount_per'] ?>">
+                        data-price="<?= (($current_date >= $book_detail['discount_start'] && $current_date<=$book_detail['discount_end']))?
+                              $book_detail['book_price']*$book_detail['discount_per']:$book_detail['book_price']
+                              ?>">
                         <input type="submit" name="btnAdd" class="btn btn-primary" value="add"></input>
                       </div>
                       <?php

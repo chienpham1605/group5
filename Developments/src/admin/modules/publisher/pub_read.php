@@ -8,39 +8,33 @@ $count = mysqli_num_rows($rs);
 ?>
 
 <main id="main" class="main">
-
     <div class="pagetitle">
-        <h1>Publisher Tables</h1>
+        <h1>Publisher</h1>
         <nav>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item">Tables</li>
-                <li class="breadcrumb-item active">Data</li>
+                <li class="breadcrumb-item"><a href="../home/main.php">Home</a></li>
+                <li class="breadcrumb-item">Book</li>
+                <li class="breadcrumb-item active">Publisher</li>
             </ol>
         </nav>
-    </div><!-- End Page Title -->
-
+    </div>
     <section class="section">
         <div class="row">
             <div class="col-lg-12">
 
                 <div class="card">
                     <div class="card-body">
-                        <a href="pub_create.php" class="card-title">New Publisher</a>
-
-                        <!-- Table with stripped rows -->
+                        <a href="pub_create.php" class="card-title">New Publisher</a>                       
                         <table class="table datatable">
                             <thead>
                                 <tr>
                                     <th scope="col">ID</th>
                                     <th scope="col">Logo</th>
-                                    <th scope="col">Name</th>
-                                    <th scope="col">Website</th>
+                                    <th scope="col">Name</th>                                   
                                     <th scope="col">Phone</th>
                                     <th scope="col">Email</th>
                                     <th scope="col">Address</th>
                                     <th scope="col">Action</th>
-
                                 </tr>
                             </thead>
                             <tbody>
@@ -56,11 +50,8 @@ $count = mysqli_num_rows($rs);
                                             </td>
                                             <td><img src="<?= $fields[2] ?>" width="100"></td>
                                             <td>
-                                                <?= $fields[1] ?>
-                                            </td>
-                                            <td>
-                                                <?= $fields[3] ?>
-                                            </td>
+                                                <a href="<?= $fields[3] ?>"> <?= $fields[1] ?></a>                                               
+                                            </td>                                           
                                             <td>
                                                 <?= $fields[4] ?>
                                             </td>
