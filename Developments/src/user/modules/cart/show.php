@@ -72,7 +72,7 @@ include("../../inc/header.php");
 
 												<td class="cart-product-quantity">
 													<div class="quant-input">
-														<input class="input-qty" type="number" style="width:100px" min="1" max="200" 
+														<input class="input-qty" type="number" style="width:100px" min="1" max="100" 
 														data-price="<?= $item['book_price']?>"
 														data-id="<?= $item['book_id']?>"
 														value="<?= $item['qty'] ?>">

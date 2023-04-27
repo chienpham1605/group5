@@ -8,12 +8,13 @@ if (!isset($_GET['cat_id'])):
   header("location:../home/main.php");
 endif;
 $cat_id = $_GET['cat_id'];
-$query = "SELECT book.*, discount.discount_per as discount_per  FROM book, discount
+$query = "SELECT book.*, discount.discount_per,
+UNIX_TIMESTAMP(STR_TO_DATE(discount.discount_start, '%d/%m/%Y')) as discount_start, 
+UNIX_TIMESTAMP(STR_TO_DATE(discount.discount_end, '%d/%m/%Y')) as discount_end  FROM book, discount
 WHERE book.discount_id= discount.discount_id 
 AND book.cat_id =$cat_id GROUP BY book.book_id";
 
 $current_date = time();
-
 
 $list_book = db_fetch_array("SELECT book.*, discount.discount_per,
 UNIX_TIMESTAMP(STR_TO_DATE(discount.discount_start, '%d/%m/%Y')) as discount_start, 
@@ -26,36 +27,22 @@ WHERE book.cat_id = {$cat_id}");
 $list_publisher = db_fetch_array("SELECT DISTINCT publisher.publisher_name, publisher.publisher_id  from book, publisher 
 WHERE book.publisher_id = publisher.publisher_id AND book.cat_id = {$cat_id}");
 
-$_POST['author'] = TRUE;
-$_POST['publisher'] = TRUE;
 //filter
-if (isset($_POST['btnFilter'])) {
-  $_POST['author'] = TRUE;
-  $_POST['publisher'] = TRUE;
-  if (!isset($author)) {
-    $author = $_POST['author'];
-    $publisher_id = TRUE;
-    $query = "SELECT book.*, discount.discount_per as discount_per FROM book, discount
-  WHERE book.discount_id= discount.discount_id AND book.book_author = '{$author}' AND book.publisher_id = $publisher_id
-  AND book.cat_id =$cat_id GROUP BY book.book_id";
-  }
-  if (!isset($publisher_id)) {
-    $author = TRUE;
-    $publisher_id = $_POST['publisher_id'];
-    $query = "SELECT book.*, discount.discount_per as discount_per FROM book, discount
-  WHERE book.discount_id= discount.discount_id AND book.book_author = '{$author}' AND book.publisher_id = $publisher_id
-  AND book.cat_id =$cat_id GROUP BY book.book_id";
-  }
-
-  if (!isset($author) && !isset($publisher_id)) {
+$errorFilter ='';
+if (isset($_POST['btnFilter'])) { 
+  if (isset($_POST['author'])&&isset($_POST['publisher_id'])) { 
     $author = $_POST['author'];
     $publisher_id = $_POST['publisher_id'];
-    $query = "SELECT book.*, discount.discount_per as discount_per FROM book, discount
+    $query = "SELECT book.*, discount.discount_per,
+    UNIX_TIMESTAMP(STR_TO_DATE(discount.discount_start, '%d/%m/%Y')) as discount_start, 
+    UNIX_TIMESTAMP(STR_TO_DATE(discount.discount_end, '%d/%m/%Y')) as discount_end FROM book, discount
   WHERE book.discount_id= discount.discount_id AND book.book_author = '{$author}' AND book.publisher_id = $publisher_id
   AND book.cat_id =$cat_id GROUP BY book.book_id";
+  } else{
+    $errorFilter = 'Must choose Author and Publisher';
   }
 }
-// $list_book = db_fetch_array($query);
+$list_book = db_fetch_array($query);
 ?>
 <div class="body-content outer-top-xs">
   <div class='container'>
@@ -109,12 +96,16 @@ if (isset($_POST['btnFilter'])) {
                     }
                     ?>
                   </div>
-                </div>
+                </div>              
               </div>
+              <div class="sidebar-widget">
+                  <div>
+                <p><?= $errorFilter;              
+              ?></p></div>              
+              </div>              
               <div class="sidebar-widget">
                 <div class="sidebar-widget">
                   <div class="sidebar-widget-body m-t-10">
-
                     <input type="submit" name="btnFilter" class="lnk btn btn-primary" value="Shop Now">
                   </div>
                 </div>
@@ -155,13 +146,10 @@ if (isset($_POST['btnFilter'])) {
                                     <img src="<?php echo $row['book_image'] ?>" alt="">
                                     <img src="<?php echo $row['book_image'] ?>" alt="" class="hover-image">
                                   </a>
-                                </div>
-                                <!-- /.image -->
+                                </div>                             
 
                                 <div class="tag new"><span>new</span></div>
-                              </div>
-                              <!-- /.product-image -->
-
+                              </div>                          
                               <div class="product-info text-left">
                                 <h3 class="name"><a href="../product/detail.php?book_id=<?php echo $row['book_id'] ?>"><?php echo $row['book_name'] ?></a></h3>
                                 <div class="rating rateit-small"></div>

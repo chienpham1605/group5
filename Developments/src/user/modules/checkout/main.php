@@ -64,8 +64,9 @@ include("../../inc/header.php");
                                                 <li>
                                                     <label class="info-title control-label">Phone
                                                         number<span>*</span></label>
-                                                    <input type="text" name="phone" value="" required pattern="[0-9]{9}"
-                                                        title="Phone number remaing 9 digit with 0-9"
+                                                    <input type="text" name="phone" value="" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"
+                                                     required pattern="[0-9]{9,12}"
+                                                        title="Phone number remaing 9-12 digit with 0-9"
                                                         class="form-control unicase-form-control text-input"
                                                         placeholder="">
                                                 </li>

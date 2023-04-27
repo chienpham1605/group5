@@ -14,14 +14,9 @@ $phone = $_POST['phone'];
 $note = $_POST['note'];
 $payment_method = $_POST['payment_method'];
 $order_status = "Pending";
-// var_dump($payment_method);
-// $checkoutList = $_SESSION['cart']['buy'];
 
 $checkoutList = $_SESSION['cart'];
 
-// show_array($_SESSION['cart']['buy']);
-//3. save new ordermaster
-//3.1 make orderno
 $dd = date("d");
 $hh = date("h");
 $mm = date("i");
@@ -32,10 +27,7 @@ $time = $dd . $hh . $mm . $ss;
 $no = $time;
 $date = date("Y-m-d H:i:s");
 var_dump($checkoutList);
-// $ccode = 1; //customer ID se truy van tu bang customer
-//3.2 excute query
 
-// $query = "insert into OrderMaster values('{$no}','{$date}', '{$ccode}', '{$order_status}' )";
 $query = "INSERT INTO `ordermaster` 
 (`order_id`, `order_date`, `cus_id`, `shipping_name`, `shipping_address`, `shipping_phone`,
  `payment_method`, `order_note`, `last_modify_at`, `order_status`) 
@@ -43,19 +35,16 @@ VALUES ('{$no}', '{$date}', '{$user_id}', '{$fullname}', '{$address}', '{$phone}
  '{$payment_method}', '{$note}', '{$date}', '{$order_status}')";
 mysqli_query($conn, $query);
 
-// $checkoutList = $_SESSION['cart']['buy'];
-// show_array($checkoutList);
 $total =0;
 foreach ($checkoutList as $item):
 $total += $item['book_price']*$item['qty'];
 
-    //4.2 get value from cart
+   
     $book_id = $item['book_id'];
     $qty = $item['qty'];
     $book_price = $item['book_price'];
 
-    //4.3 excute query
-    // $query = "insert into orderdetail(order_id, book_id, quantity) values('{$no}', '{$ICode}', '{$Qty}')";
+   
     $query = "INSERT INTO `orderdetail` (`order_id`, `book_id`, `quantity`, `book_price`) VALUES ('{$no}', '{$book_id}', '{$qty}', '{$book_price}')";
     mysqli_query($conn, $query);
 endforeach;
@@ -402,7 +391,7 @@ $mailBody = "<body style='margin: 0 !important; padding: 0 !important; backgroun
 
 
 $mailSubject = "[Order Confirm] # $no - OnBookStore";
-// sendmail($email, $mailSubject, $mailBody);
+sendmail($email, $mailSubject, $mailBody);
 unset($_SESSION['cart']);
 header("Location: success.php?order_id=$no");
 
