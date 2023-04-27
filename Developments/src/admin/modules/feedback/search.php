@@ -1,5 +1,6 @@
 <?php
 #1. Kết nối CSDL
+session_start();
 include_once '../../db/DBConnect.php';    
 $return = '';
 #2. Thực hiện query

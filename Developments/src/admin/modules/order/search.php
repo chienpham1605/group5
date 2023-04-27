@@ -1,4 +1,5 @@
 <?php
+session_start();
  $date_from = strtotime($_POST['date_from']);
  $date_to = strtotime($_POST['date_to']);
  echo $date_from;

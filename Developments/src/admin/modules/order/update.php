@@ -1,4 +1,5 @@
 <?php
+session_start();
 include_once("../../db/DBConnect.php");
 include_once("../../db/database.php");
 $order_id = (int) $_POST['order_id'];
@@ -30,7 +31,12 @@ if (isset($_POST['btnUpdate'])) {
       $quantity = $row['quantity'];
       $inventory = $row['inventory'];
 
-      if ($inventory > $quantity) {
+      if ($inventory < $quantity) {
+        header("Location:detail.php?order_id=$order_id&errorStock");
+
+             
+      } else {
+        
         $update_query = "UPDATE book SET book.inventory = book.inventory-$quantity WHERE book.book_id = $book_id";
         $result = mysqli_query($conn, $update_query);
         if (!$result) {
@@ -45,12 +51,12 @@ if (isset($_POST['btnUpdate'])) {
           error_clear_last();
           echo 'nothing to update';
           header("Location:detail.php?order_id=$order_id&errorUpdate");
-        }        
-      } else {
-        header("Location:detail.php?order_id=$order_id&errorStock");
+        }  
+        header("Location:detail.php?order_id=$order_id&successUpdate");  
       }
+      
     }
-    header("Location:detail.php?order_id=$order_id&successUpdate");   
+     
 
   }
   if ($orderStatus == "Refund") {

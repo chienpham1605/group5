@@ -4,7 +4,7 @@ require_once '../../db/DBConnect.php';
 require_once '../../db/database.php';
 $info_admin =$_SESSION['admin_login'];
 $emailerror = "";
-$query = "SELECT * FROM webmaster where admin_id ='$info_admin'";
+$query = "SELECT * FROM webmaster where admin_id =1";
 $rs = mysqli_query($conn, $query);
 $num = mysqli_fetch_assoc($rs);
 $_SESSION['admin_login'] = $num;
@@ -18,7 +18,7 @@ include("../../inc/header.php");
     <nav>
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-        <li class="breadcrumb-item">Users</li>
+        <li class="breadcrumb-item">Admin</li>
         <li class="breadcrumb-item active">Profile</li>
       </ol>
     </nav>
@@ -29,8 +29,8 @@ include("../../inc/header.php");
         <div class="card">
           <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
             <i class="bi bi-person-fill" style="font-size:120px"></i>
-            <h2>Pham Quoc Chien</h2>
-            <h3>Webmater</h3>
+            <h2>admin</h2>
+            <h3></h3>
           </div>
         </div>
       </div>

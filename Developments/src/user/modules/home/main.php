@@ -210,11 +210,13 @@ $current_date = time();
           <div class="owl-carousel home-owl-carousel custom-carousel owl-theme outer-top-xs">
             <?php
             $hotdeal = db_fetch_array("SELECT book.*, discount.discount_per,
-                  UNIX_TIMESTAMP(STR_TO_DATE(discount.discount_start, '%d/%m/%Y')) as discount_start, 
-                  UNIX_TIMESTAMP(STR_TO_DATE(discount.discount_end, '%d/%m/%Y')) as discount_end
-                  FROM book, discount 
-                  WHERE book.discount_id= discount.discount_id AND discount.discount_per <1
-                   ORDER BY book_id DESC ");
+            UNIX_TIMESTAMP(STR_TO_DATE(discount.discount_start, '%d/%m/%Y')) as discount_start, 
+            UNIX_TIMESTAMP(STR_TO_DATE(discount.discount_end, '%d/%m/%Y')) as discount_end
+            FROM book, discount 
+            WHERE book.discount_id= discount.discount_id AND discount.discount_per <1 
+            AND UNIX_TIMESTAMP() <=UNIX_TIMESTAMP(STR_TO_DATE(discount.discount_end, '%d/%m/%Y'))
+            AND UNIX_TIMESTAMP() >=UNIX_TIMESTAMP(STR_TO_DATE(discount.discount_start, '%d/%m/%Y'))
+            ORDER BY book_id DESC");
             if (count($hotdeal) == 0) {
               echo "no data";
             } else {
@@ -261,7 +263,7 @@ $current_date = time();
 
                       </div>
                       <!-- /.product-info -->
-                      <div class="cart clearfix animate-effect">
+                      <!-- <div class="cart clearfix animate-effect">
                         <div class="action">
                           <ul class="list-unstyled">
                             <li class="add-cart-button btn-group">
@@ -274,9 +276,8 @@ $current_date = time();
                             <li class="lnk"> <a data-toggle="tooltip" class="add-to-cart" href="detail.html"
                                 title="Compare"> <i class="fa fa-signal" aria-hidden="true"></i> </a> </li>
                           </ul>
-                        </div>
-                        <!-- /.action -->
-                      </div>
+                        </div>                      
+                      </div> -->
                       <!-- /.cart -->
                     </div>
                     <!-- /.product -->

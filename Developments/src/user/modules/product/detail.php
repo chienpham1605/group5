@@ -1,6 +1,6 @@
 <?php
 session_start();
-include("../../inc/header.php");
+// include("../../inc/header.php");
 include_once("../../db/DBConnect.php");
 include_once("../../db/database.php");
 if (!isset($_GET['book_id'])):
@@ -12,12 +12,13 @@ if(isset($_SESSION['user_login']['id'])){
 $current_date = time();
 $book_id = $_GET['book_id'];
 $book_detail = mysqli_fetch_assoc(mysqli_query($conn, "SELECT book.*, publisher.*, 
-discount.discount_per,
+discount.discount_per, discount.discount_name,
 UNIX_TIMESTAMP(STR_TO_DATE(discount.discount_start, '%d/%m/%Y')) as discount_start, 
 UNIX_TIMESTAMP(STR_TO_DATE(discount.discount_end, '%d/%m/%Y')) as discount_end 
 FROM `book`, publisher, discount  
 WHERE book_id = '{$book_id}' and book.publisher_id = publisher.publisher_id and book.discount_id = discount.discount_id"));
-$detail = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM categories, book WHERE categories.cat_id=book.cat_id AND book.book_id = '{$book_id}' "));
+$detail = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM categories, book 
+WHERE categories.cat_id=book.cat_id AND book.book_id = '{$book_id}' "));
 $sql = "SELECT * FROM feedback, book, customer where feedback.book_id=book.book_id AND feedback.customer_id = customer.id and book.book_id = '{$book_id}'";
 $rs_feedback = db_fetch_array($sql);
 
@@ -53,12 +54,12 @@ if (isset($_POST['btnAddReview'])):
     if (!$rs):
       echo 'can not found';
     endif;
-   
+   header("Location:detail.php?book_id=$book_id");
   endif;
 endif;
 ?>
 <?php
-// include("../../inc/header.php");
+include("../../inc/header.php");
 ?>
 <div class="breadcrumb">
   <div class="container">
@@ -139,7 +140,7 @@ endif;
                         </div>
                         <div class="pull-left">
                           <div class="stock-box">
-                            <span class="value">In Stock</span>
+                            <span class="value"> <?= $detail['inventory']>0?'In Stock':'Not in Stock' ?></span>
                           </div>
                         </div>
                       </div>
@@ -185,7 +186,20 @@ endif;
                                     }
                                     ?>
                           </span>
-                          <span class="tag new"><?= $book_detail['discount_name']?></span>
+                          
+                          <?php
+                                    if ($current_date >= $book_detail['discount_start'] && $current_date <= $book_detail['discount_end']) {
+                                      echo "<span style='margin-left: 4px;
+                                      padding: 12px;
+                                      border: none;
+                                      border-radius: 3px;
+                                      background-image: linear-gradient(0, #ea5c2e, #f5aa39);
+                                      color: white;'>"."- ".($book_detail['discount_per']*100)."%"."</span>";                                 
+                                      } else {
+                                      echo '';
+                                    }
+                                    ?>
+                          
                         </div>
                       </div>
 
@@ -215,7 +229,6 @@ endif;
                       <div class="qty">
                         <span class="label">Qty :</span>
                       </div>
-
                       <div class="qty-count">
                         <div class="cart-quantity">
                           <div class="quant-input">
@@ -225,9 +238,10 @@ endif;
                               <div class="arrow minus gradient"><span class="ir"><i
                                     class="icon fa fa-sort-desc"></i></span></div>
                             </div>
-                            <input type="number" name="qty" class="input-qty" value="1">
+                            <input type="text" name="qty" id="input-qty" value="1"
+                             oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" />                           
                           </div>
-                        </div>
+                        </div>                       
                       </div>
                       <div class="add-btn" data-id="<?= $detail['book_id'] ?>"
                         data-price="<?= (($current_date >= $book_detail['discount_start'] && $current_date<=$book_detail['discount_end']))?
@@ -282,7 +296,7 @@ endif;
 													<div class="review-title"><span class="summary"><?= $feedback['name']?></span>                          
                           </div>
                           <div><?= $feedback['rating']?><i class="fa fa-star" style="color: orange"></i></div>
-													<div class="text">"<?= $feedback['content']?>"</div>
+													<div class="text"><?= $feedback['content']?></div>
 																										</div>
 											
 											</div><!-- /.reviews -->
@@ -329,6 +343,8 @@ endif;
                             </table><!-- /.table .table-bordered -->
                           </div><!-- /.table-responsive -->
                         </div><!-- /.review-table -->
+                        <div style='color:red'>".$ratingErr."
+                        </div>
                         
                         <div class='review-form'>
                           <div class='form-container'>										

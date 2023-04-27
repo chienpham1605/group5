@@ -29,11 +29,7 @@ if (isset($_POST['btnSearch'])) {
 }
 $rs = mysqli_query($conn, $query);
 $num_row = mysqli_num_rows($rs);
-// $rs = db_fetch_array($query);
-echo "<pre>";
-print_r($rs);
-echo $current_date;
-echo "</pre>";
+
 ?>
 <div class="body-content outer-top-xs">
   <div class='container'>
@@ -93,7 +89,7 @@ echo "</pre>";
 
                               </div>
                               <!-- /.product-info -->
-                              <div class="cart clearfix animate-effect">
+                              <!-- <div class="cart clearfix animate-effect">
                                 <div class="action">
                                   <ul class="list-unstyled">
                                     <li class="add-cart-button btn-group">
@@ -108,8 +104,8 @@ echo "</pre>";
                                           class="fa fa-signal"></i> </a> </li>
                                   </ul>
                                 </div>
-                                <!-- /.action -->
-                              </div>
+                                
+                              </div> -->
                               <!-- /.cart -->
                             </div>
                             <!-- /.product -->

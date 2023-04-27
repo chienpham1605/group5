@@ -11,11 +11,11 @@ $this_month = date("Y-m");
 $report_current = db_fetch_row("SELECT COUNT(ordermaster.order_id) AS sale, 
 SUM(orderdetail.book_price*orderdetail.quantity) AS revenue, 
 COUNT(distinct ordermaster.cus_id) as customer 
-FROM ordermaster, orderdetail WHERE ordermaster.order_id = orderdetail.order_id AND ordermaster.order_date LIKE '$current_day%'");
+FROM ordermaster, orderdetail WHERE ordermaster.order_status LIKE'Completed' AND ordermaster.order_id = orderdetail.order_id AND ordermaster.order_date LIKE '$current_day%'");
 $report_previous =db_fetch_row("SELECT COUNT(ordermaster.order_id) AS sale, 
 SUM(orderdetail.book_price*orderdetail.quantity) AS revenue, 
 COUNT(distinct ordermaster.cus_id) as customer 
-FROM ordermaster, orderdetail WHERE ordermaster.order_id = orderdetail.order_id AND ordermaster.order_date LIKE '$previous_day%'");
+FROM ordermaster, orderdetail WHERE ordermaster.order_status LIKE'Completed' AND ordermaster.order_id = orderdetail.order_id AND ordermaster.order_date LIKE '$previous_day%'");
 
 $order_list = db_fetch_array("SELECT SUM(quantity*book_price) as total, ordermaster.order_id, customer.name, ordermaster.order_id, ordermaster.order_date, ordermaster.order_status  
 FROM orderdetail, ordermaster, customer 
@@ -29,12 +29,13 @@ FROM book, orderdetail WHERE book.book_id = orderdetail.book_id GROUP BY book.bo
 $this_month = date("m");
 $this_year = date("Y");
 $revenue_report_month = db_fetch_array("SELECT SUM(order_total) AS revenue, COUNT(order_total) AS order_count, revenue_total.order_date
-FROM ((SELECT SUM(orderdetail.quantity*orderdetail.book_price) as order_total, LEFT(ordermaster.order_date, 10) as order_date FROM ordermaster, orderdetail WHERE ordermaster.order_id = orderdetail.order_id GROUP BY ordermaster.order_id) as revenue_total) 
+FROM ((SELECT SUM(orderdetail.quantity*orderdetail.book_price) as order_total, LEFT(ordermaster.order_date, 10) as order_date FROM ordermaster, orderdetail 
+WHERE ordermaster.order_status LIKE'Completed' AND ordermaster.order_id = orderdetail.order_id GROUP BY ordermaster.order_id) as revenue_total) 
 WHERE revenue_total.order_date LIKE '$this_year-$this_month-%'
 GROUP BY revenue_total.order_date");
 
 $customer_report_month = db_fetch_array("SELECT COUNT(ordermaster.cus_id) AS customer_count, LEFT(ordermaster.order_date, 10) 
-FROM `ordermaster` WHERE ordermaster.order_date LIKE '$this_year-$this_month-%' GROUP BY LEFT(ordermaster.order_date, 10);");
+FROM `ordermaster` WHERE ordermaster.order_status LIKE'Completed' AND ordermaster.order_date LIKE '$this_year-$this_month-%' GROUP BY LEFT(ordermaster.order_date, 10);");
 foreach($customer_report_month as $field){   
     $customer_count[] = $field['customer_count'];
 }
