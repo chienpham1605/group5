@@ -82,7 +82,7 @@ if (isset($_POST['btnAdd'])):
   $inventory = $_POST['txtInventory'];
 
   // upload logo
-  $folder = "../../public/assets/img/book/";
+  $folder = "../../../../img/";
   $fileName = $_FILES['txtImg']['name'];
   $fileTmp = $_FILES['txtImg']['tmp_name'];
   $img = $folder . $fileName;

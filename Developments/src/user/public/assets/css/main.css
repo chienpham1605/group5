@@ -7335,7 +7335,14 @@ li.dropdown.navbar-right.special-menu {
 .filters-container .lbl-cnt .lbl {display:none}
 
 }
-
+.btn_discount_detail{
+  margin-left: 4px;
+  padding-left: 11px;
+  border: none;
+  border-radius: 3px;
+  background-image: linear-gradient(0, #ea5c2e, #f5aa39);
+  color: white;
+}
 @media(min-width: 1300px){
 	.container {
 		padding: 0 60px;
