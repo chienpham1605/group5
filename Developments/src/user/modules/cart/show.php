@@ -80,10 +80,10 @@ include("../../inc/header.php");
 												</td>
 												
 												<td class="cart-product-grand-total"><span class="subtotal"
-														><?= $item['book_price']?></span>
+														>$<?= $item['book_price']?></span>
 												</td>
 												<td class="cart-product-sub-total">
-													<span class="cart-sub-total-price" id="subtotal-<?= $item['book_id']?>"><?= $item['subtotal'] ?></span>
+													<span class="cart-sub-total-price" id="subtotal-<?= $item['book_id']?>">$<?= $item['subtotal'] ?></span>
 												</td>
 												<td class="remove-item"
 													onclick="return confirm('Are you sure to delete this item ?')"><a

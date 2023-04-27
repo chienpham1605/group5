@@ -141,7 +141,7 @@ include("../../inc/header.php");
                         </div>
                         <div class="pull-left">
                           <div class="stock-box">
-                            <span class="value"> <?= $detail['inventory']>0?'In Stock':'Not in Stock' ?></span>
+                            <span class="value"> <?= $detail['inventory']>0 ?'In Stock':'Not in Stock' ?></span>
                           </div>
                         </div>
                       </div>

@@ -251,7 +251,7 @@ include("../../inc/header.php");
               </div>
               <div class="col-12">
                 <label class="form-label">Book Image</label>
-                <input class="form-control" type="file" name="txtImg" value="<?= $fields['book_image'] ?>">
+                <input class="form-control" type="file" name="txtImg" value="<?= $fields['book_image'] ?>" required>
 
               </div>
               <div class="text-center">
